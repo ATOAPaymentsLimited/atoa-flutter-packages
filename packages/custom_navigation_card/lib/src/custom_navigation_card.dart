@@ -7,18 +7,80 @@ import 'colors.dart';
 import 'focus_lines_shape_animation.dart';
 
 class CustomNavigationCard extends StatelessWidget {
+  /// Main title of card
   final String title;
+
+  /// Description text for the card
   final String subTitle;
-  final String? chipTitle;
+
+  /// [borderColor] is used to specify border color of card when highlighted,
+  /// for this [highlightCard] should be true.
+  final Color? borderColor;
+
+  /// [backgroundColor] is used to specify background color of card
+  final Color? backgroundColor;
+
+  /// [foregroundColor] is used to specify the color of text and svg
+  final Color? foregroundColor;
+
+  /// [subTitleTextColor] is used to specify description text color
+  final Color? subTitleTextColor;
+
+  /// [splashColor] creates an ink well
+  final Color? splashColor;
+
+  /// use [icon] as an alternative to include your own custom widget,
+  /// instead of svg
   final Widget? icon;
-  final bool highlightCard;
-  final bool showFocusLines;
+
+  /// use [svgAsset] to directly include svg icons, [icon] should be null in
+  /// this case
   final String? svgAsset;
+
+  /// [onPressed] can be used to pass callback to whole card.
   final VoidCallback onPressed;
-  final Color? bgColor;
-  final Color? iconColor;
+
+  /// [chipTitle] can be used to have text on custom chip placed on top right
+  /// corner. it will only show chip, when [chipTitle] is not null.
+  final String? chipTitle;
+
+  /// [chipTextColor] can be used to change custom chip text color, only applies
+  /// when [chipTitle] is not null
+  final Color? chipTextColor;
+
+  /// [chipBackgroundColor] can be used to change custom chip background color,
+  /// only applies when [chipTitle] is not null
+  final Color? chipBackgroundColor;
+
+  /// [chipBorderColor] can be used to change custom chip border color,
+  /// only applies when [chipTitle] is not null
+  final Color? chipBorderColor;
+
+  /// [highlightCard] can be used to highlight card with a glow and border, and
+  /// colors can be changed when used with combination of [borderColor]
+  final bool highlightCard;
+
+  /// [showFocusLines] can be used to enable a custom focus lines animation
+  /// inside the card
+  final bool showFocusLines;
+
+  /// [focusLinesDuration] can be used with [showFocusLines] to change it's
+  /// animation duration
+  final Duration? focusLinesDuration;
+
+  /// [focusLinesgradientColor] can be used with [showFocusLines] to change it's
+  /// the shapes gradient color
+  final Color? focusLinesgradientColor;
+
   final bool _showTileView;
 
+  /// [CustomNavigationCard] can be used to create a custom card designs that
+  /// is built for grids. [title] & [onPressed] can't be null, Either [icon] or
+  /// [svgAsset] can be used to have a icon, one is required and both can't be
+  /// used at once. It supports Custom Chip, that can be enabled with
+  /// [chipTitle]. Card can be highlighted with a border and
+  /// glow using [highlightCard], with option to change colors. Also has a focus
+  /// lines shape animation that can be enabled with [showFocusLines]
   const CustomNavigationCard({
     Key? key,
     required this.title,
@@ -28,57 +90,93 @@ class CustomNavigationCard extends StatelessWidget {
     this.chipTitle,
     this.highlightCard = false,
     this.showFocusLines = false,
-    this.bgColor = Colors.white,
-    this.iconColor,
-  })  : assert(!(icon == null && svgAsset == null)),
-        assert(!(icon != null && svgAsset != null)),
+    this.borderColor = CustomColors.lightBeige4,
+    this.backgroundColor = Colors.white,
+    this.foregroundColor = CustomColors.navyBlue1,
+    this.splashColor,
+    this.chipBackgroundColor,
+    this.chipBorderColor,
+    this.chipTextColor,
+    this.focusLinesDuration = const Duration(milliseconds: 24000),
+    this.focusLinesgradientColor = CustomColors.beige,
+  })  : assert(
+            !(chipTitle == null &&
+                (chipBackgroundColor != null ||
+                    chipBorderColor != null ||
+                    chipTextColor != null)),
+            "Custom Chip Properties can't be set unless you specify chipTitle"),
+        assert(!(icon == null && svgAsset == null),
+            "Either icon or svgAsset is Required"),
+        assert(!(icon != null && svgAsset != null),
+            "You can only have icon or svgAsset"),
         _showTileView = false,
         subTitle = '',
+        subTitleTextColor = null,
         super(key: key);
 
+  /// [CustomNavigationCard.tile] can be used to create a custom card tile
+  ///  designs that can be used in a listView, or an Column, It takes [title],
+  /// [subTitle], along with either [icon] or [svgAsset]. [onPressed] can be
+  /// used to provide callback.
+  ///
+  /// [foregroundColor], [backgroundColor] & [subTitleTextColor] can be used to
+  /// change design colors.
   const CustomNavigationCard.tile({
     Key? key,
     required this.title,
     required this.subTitle,
+    this.icon,
     this.svgAsset,
+    this.subTitleTextColor,
     required this.onPressed,
-    this.bgColor = Colors.white,
-    this.iconColor,
-  })  : _showTileView = true,
+    this.backgroundColor = Colors.white,
+    this.foregroundColor = CustomColors.navyBlue1,
+    this.splashColor,
+  })  : assert(!(icon == null && svgAsset == null),
+            "Either icon or svgAsset is Required"),
+        assert(!(icon != null && svgAsset != null),
+            "You can only have icon or svgAsset"),
+        _showTileView = true,
         highlightCard = false,
         showFocusLines = false,
         chipTitle = null,
-        icon = null,
+        chipBackgroundColor = null,
+        chipBorderColor = null,
+        chipTextColor = null,
+        focusLinesDuration = null,
+        focusLinesgradientColor = null,
+        borderColor = null,
         super(key: key);
+
   @override
   Widget build(BuildContext context) {
     if (_showTileView) {
       return Material(
-        color: bgColor,
+        color: backgroundColor,
         child: InkWell(
-          splashColor: Colors.grey.withOpacity(0.2),
+          splashColor: splashColor ?? Colors.grey.withOpacity(0.2),
           onTap: onPressed,
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 24.sp, vertical: 12.sp),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                  height: 48.sp,
-                  width: 48.sp,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16.r),
-                    color: CustomColors.lightestGrey,
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.all(12.sp),
-                    child: icon ??
-                        SvgPicture.asset(
+                icon ??
+                    Container(
+                      height: 48.sp,
+                      width: 48.sp,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(16.r),
+                        color: CustomColors.lightestGrey,
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.all(12.sp),
+                        child: SvgPicture.asset(
                           svgAsset!,
-                          color: iconColor ?? CustomColors.navyBlue1,
+                          color: foregroundColor ?? CustomColors.navyBlue1,
                         ),
-                  ),
-                ),
+                      ),
+                    ),
                 SizedBox(width: 24.sp),
                 Expanded(
                   child: Column(
@@ -86,10 +184,10 @@ class CustomNavigationCard extends StatelessWidget {
                     children: [
                       Text(
                         title,
-                        style: Theme.of(context)
-                            .textTheme
-                            .subtitle2
-                            ?.copyWith(fontWeight: FontWeight.w600),
+                        style: Theme.of(context).textTheme.subtitle2?.copyWith(
+                              color: foregroundColor,
+                              fontWeight: FontWeight.w600,
+                            ),
                       ),
                       const SizedBox(height: 4.0),
                       AutoSizeText(
@@ -98,7 +196,8 @@ class CustomNavigationCard extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                         style: Theme.of(context).textTheme.bodyText1!.copyWith(
                               fontWeight: FontWeight.w400,
-                              color: CustomColors.lightGrey40,
+                              color:
+                                  subTitleTextColor ?? CustomColors.lightGrey40,
                             ),
                       ),
                     ],
@@ -118,7 +217,7 @@ class CustomNavigationCard extends StatelessWidget {
           decoration: BoxDecoration(boxShadow: [
             if (highlightCard)
               BoxShadow(
-                color: CustomColors.lightBeige4,
+                color: borderColor!,
                 blurRadius: 20.r,
                 offset: const Offset(0, 2),
                 spreadRadius: 0,
@@ -132,7 +231,7 @@ class CustomNavigationCard extends StatelessWidget {
               ),
           ]),
           child: Material(
-            color: bgColor,
+            color: backgroundColor,
             borderRadius: BorderRadius.circular(12.r),
             child: InkWell(
               borderRadius: BorderRadius.circular(12.r),
@@ -146,7 +245,7 @@ class CustomNavigationCard extends StatelessWidget {
                       borderRadius: BorderRadius.circular(12.r),
                       border: highlightCard
                           ? Border.all(
-                              color: CustomColors.beige,
+                              color: borderColor!,
                               width: 1,
                             )
                           : null,
@@ -162,7 +261,8 @@ class CustomNavigationCard extends StatelessWidget {
                                 padding: EdgeInsets.all(2.sp),
                                 child: SvgPicture.asset(
                                   svgAsset!,
-                                  color: iconColor ?? CustomColors.navyBlue1,
+                                  color:
+                                      foregroundColor ?? CustomColors.navyBlue1,
                                 ),
                               ),
                             ),
@@ -173,15 +273,19 @@ class CustomNavigationCard extends StatelessWidget {
                           style:
                               Theme.of(context).textTheme.bodyText1?.copyWith(
                                     height: 1.18,
+                                    color: foregroundColor,
                                   ),
                         )
                       ],
                     ),
                   ),
                   if (showFocusLines)
-                    const CustomFocusLinesShapeAnimation(
+                    CustomFocusLinesShapeAnimation(
                       height: double.infinity,
                       width: double.infinity,
+                      animationDuration: focusLinesDuration!,
+                      gradientColor: focusLinesgradientColor!,
+                      borderRadius: BorderRadius.circular(12.r),
                     ),
                 ],
               ),
@@ -194,10 +298,10 @@ class CustomNavigationCard extends StatelessWidget {
             right: -6.sp,
             child: Container(
               decoration: BoxDecoration(
-                color: CustomColors.lightBeige3,
+                color: chipBackgroundColor ?? CustomColors.lightBeige3,
                 border: Border.all(
                   width: 1.sp,
-                  color: CustomColors.beige,
+                  color: chipBorderColor ?? CustomColors.beige,
                 ),
                 borderRadius: BorderRadius.circular(
                   24.r,
@@ -212,6 +316,7 @@ class CustomNavigationCard extends StatelessWidget {
                   chipTitle!,
                   style: Theme.of(context).textTheme.bodyText1?.copyWith(
                         fontWeight: FontWeight.w700,
+                        color: chipTextColor,
                         height: 1.18,
                       ),
                 ),
