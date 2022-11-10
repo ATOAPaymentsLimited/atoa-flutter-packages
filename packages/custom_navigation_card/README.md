@@ -38,6 +38,6 @@ CustomNavigationCard(
 
 ### ScreenShots
 
-|                                                  1                                                   |
-| :--------------------------------------------------------------------------------------------------: |
-| ![CustomNavigationcard](packages/custom_navigation_card/example/showcase/custom_navigation_card.png) |
+|                                  1                                   |
+| :------------------------------------------------------------------: |
+| ![CustomNavigationcard](example/showcase/custom_navigation_card.png) |
