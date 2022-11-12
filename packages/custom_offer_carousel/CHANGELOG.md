@@ -1,3 +1,4 @@
 ## 0.0.1
 
-* TODO: Describe initial release.
+- Offer's Carousel Options
+- Indicator Options

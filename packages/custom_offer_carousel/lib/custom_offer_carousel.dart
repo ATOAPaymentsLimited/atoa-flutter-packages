@@ -1,7 +1,6 @@
 library custom_offer_carousel;
 
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
+export 'src/custom_offers_slider_widget.dart';
+export 'src/custom_offer_item_widget.dart';
+export 'src/offers_carousel_options.dart';
+export 'src/offers_indicator_options.dart';
