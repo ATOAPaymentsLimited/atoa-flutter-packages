@@ -10,6 +10,9 @@ class CustomNavigationCard extends StatelessWidget {
   /// Main title of card
   final String title;
 
+  // Can be used to make Title Bold
+  final FontWeight titleFontWeight;
+
   /// Description text for the card
   final String subTitle;
 
@@ -90,6 +93,7 @@ class CustomNavigationCard extends StatelessWidget {
     this.chipTitle,
     this.highlightCard = false,
     this.showFocusLines = false,
+    this.titleFontWeight = FontWeight.w400,
     this.borderColor = CustomColors.lightBeige4,
     this.backgroundColor = Colors.white,
     this.foregroundColor = CustomColors.navyBlue1,
@@ -129,6 +133,7 @@ class CustomNavigationCard extends StatelessWidget {
     this.svgAsset,
     this.subTitleTextColor,
     required this.onPressed,
+    this.titleFontWeight = FontWeight.w600,
     this.backgroundColor = Colors.white,
     this.foregroundColor = CustomColors.navyBlue1,
     this.splashColor,
@@ -186,7 +191,7 @@ class CustomNavigationCard extends StatelessWidget {
                         title,
                         style: Theme.of(context).textTheme.subtitle2?.copyWith(
                               color: foregroundColor,
-                              fontWeight: FontWeight.w600,
+                              fontWeight: titleFontWeight,
                             ),
                       ),
                       const SizedBox(height: 4.0),
@@ -256,14 +261,11 @@ class CustomNavigationCard extends StatelessWidget {
                       children: [
                         icon ??
                             SizedBox(
-                              height: 26.sp,
-                              child: Padding(
-                                padding: EdgeInsets.all(2.sp),
-                                child: SvgPicture.asset(
-                                  svgAsset!,
-                                  color:
-                                      foregroundColor ?? CustomColors.navyBlue1,
-                                ),
+                              height: 32.sp,
+                              child: SvgPicture.asset(
+                                svgAsset!,
+                                color:
+                                    foregroundColor ?? CustomColors.navyBlue1,
                               ),
                             ),
                         SizedBox(height: 8.sp),
@@ -273,6 +275,7 @@ class CustomNavigationCard extends StatelessWidget {
                           style:
                               Theme.of(context).textTheme.bodyText1?.copyWith(
                                     height: 1.18,
+                                    fontWeight: titleFontWeight,
                                     color: foregroundColor,
                                   ),
                         )
