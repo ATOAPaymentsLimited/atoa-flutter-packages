@@ -33,13 +33,41 @@ Host atoa.github.com
 ```yaml
 dependencies:
   custom_navigation_card:
-    url: git@atoa.github.com:ATOAPaymentsLimited/atoa-flutter-packages.git
-    ref: master
-    path: packages/custom_navigation_card
+    git:
+      url: git@atoa.github.com:ATOAPaymentsLimited/atoa-flutter-packages.git
+      ref: main
+      path: packages/custom_navigation_card
 ```
 
-Need to include the import the package to the dart file where it will be used, use the below command,
+Need to include the import of the package to the dart file where it will be used, use the below command,
 
 ```dart
 import 'package:custom_navigation_card/custom_navigation_card.dart';
+```
+
+### 2. Custom Offer Carousel
+
+#### ScreenShots
+
+|                                                 1                                                 |
+| :-----------------------------------------------------------------------------------------------: |
+| ![CustomOffercarousel](packages/custom_offer_carousel/example/showcase/custom_offer_carousel.png) |
+
+#### Usage
+
+- Add dependecies
+
+```yaml
+dependencies:
+  custom_offer_carousel:
+    git:
+      url: git@atoa.github.com:ATOAPaymentsLimited/atoa-flutter-packages.git
+      ref: main
+      path: packages/custom_offer_carousel
+```
+
+Need to include the import of the package to the dart file where it will be used, use the below command,
+
+```dart
+import 'package:custom_offer_carousel/custom_offer_carousel.dart';
 ```
