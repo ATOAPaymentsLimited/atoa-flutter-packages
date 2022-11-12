@@ -33,9 +33,10 @@ Host atoa.github.com
 ```yaml
 dependencies:
   custom_navigation_card:
-    url: git@atoa.github.com:ATOAPaymentsLimited/atoa-flutter-packages.git
-    ref: master
-    path: packages/custom_navigation_card
+    git:
+      url: git@atoa.github.com:ATOAPaymentsLimited/atoa-flutter-packages.git
+      ref: main
+      path: packages/custom_navigation_card
 ```
 
 Need to include the import the package to the dart file where it will be used, use the below command,
