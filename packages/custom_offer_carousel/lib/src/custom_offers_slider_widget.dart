@@ -97,6 +97,16 @@ class _CustomOffersSliderWidgetState extends State<CustomOffersSliderWidget>
     }
   }
 
+  @override
+  void didUpdateWidget(covariant CustomOffersSliderWidget oldWidget) {
+    if (oldWidget.isFetching != widget.isFetching) {
+      if (oldWidget.isFetching) {
+        _offersItemList = _getCustomOffersItemWidgetList();
+      }
+    }
+    super.didUpdateWidget(oldWidget);
+  }
+
   void _onPageChanged(int index, CarouselPageChangedReason reason) {
     currentOfferIndexNotifier.value = index;
 
