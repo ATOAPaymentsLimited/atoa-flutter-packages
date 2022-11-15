@@ -96,7 +96,7 @@ final kThemeData = ThemeData.light().copyWith(
       side: MaterialStateProperty.resolveWith(
         (states) {
           if (states.contains(MaterialState.disabled)) {
-            return const BorderSide(color: AtoaColors.disabledGrey);
+            return BorderSide(color: AtoaColors.grey.disabled);
           }
           return const BorderSide(color: AtoaColors.indigo);
         },

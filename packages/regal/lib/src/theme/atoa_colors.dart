@@ -12,5 +12,4 @@ class AtoaColors {
   static const red = Red();
   static const gold = Gold();
   static const grey = Grey();
-  static const disabledGrey = Color(0xFF79828F);
 }

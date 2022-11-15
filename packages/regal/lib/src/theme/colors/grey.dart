@@ -21,4 +21,6 @@ class Grey extends ColorSystem {
 
   @override
   Color get shade80 => const Color(0xFF333333);
+
+  Color get disabled => const Color(0xFF79828F);
 }
