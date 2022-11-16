@@ -74,6 +74,13 @@ final kThemeData = ThemeData.light().copyWith(
       ),
     ),
   ),
+  elevatedButtonTheme: ElevatedButtonThemeData(
+    style: ElevatedButton.styleFrom(
+      shape: const StadiumBorder(),
+      backgroundColor: AtoaColors.indigo,
+      disabledBackgroundColor: AtoaColors.grey.disabled,
+    ),
+  ),
   outlinedButtonTheme: OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
       foregroundColor: AtoaColors.indigo,
