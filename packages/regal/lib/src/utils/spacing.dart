@@ -3,12 +3,11 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-// TODO(amanxatoa): ask @Skand for common spacing values
-const double ktiny = 5;
-const double ksmall = 10;
-const double kmedium = 18;
-const double klarge = 25;
-const double kxtraLarge = 30;
+const double ktiny = 4;
+const double ksmall = 8;
+const double kmedium = 12;
+const double klarge = 16;
+const double kxtraLarge = 20;
 
 enum Spacing {
   tiny,
@@ -34,22 +33,24 @@ extension SpacingX on Spacing {
     }
   }
 
-  EdgeInsets get x => EdgeInsets.symmetric(horizontal: value.w);
+  EdgeInsets get x => EdgeInsets.symmetric(horizontal: value.sp);
 
-  EdgeInsets get y => EdgeInsets.symmetric(vertical: value.h);
+  EdgeInsets get y => EdgeInsets.symmetric(vertical: value.sp);
 
-  EdgeInsets get all =>
-      EdgeInsets.symmetric(vertical: value.h, horizontal: value.w);
+  EdgeInsets get all => EdgeInsets.symmetric(
+        vertical: value.sp,
+        horizontal: value.sp,
+      );
 
-  EdgeInsets get left => EdgeInsets.only(left: value.w);
+  EdgeInsets get left => EdgeInsets.only(left: value.sp);
 
-  EdgeInsets get right => EdgeInsets.only(right: value.w);
+  EdgeInsets get right => EdgeInsets.only(right: value.sp);
 
-  EdgeInsets get top => EdgeInsets.only(top: value.h);
+  EdgeInsets get top => EdgeInsets.only(top: value.sp);
 
-  EdgeInsets get bottom => EdgeInsets.only(bottom: value.h);
+  EdgeInsets get bottom => EdgeInsets.only(bottom: value.sp);
 
-  SizedBox get xBox => SizedBox(width: value.w);
+  SizedBox get xBox => SizedBox(width: value.sp);
 
-  SizedBox get yBox => SizedBox(height: value.h);
+  SizedBox get yBox => SizedBox(height: value.sp);
 }
