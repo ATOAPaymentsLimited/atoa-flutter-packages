@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:regal/regal.dart';
 
-/// The atoa colors.
-class AtoaColors {
-  AtoaColors._();
+/// The regal colors.
+class RegalColors {
+  RegalColors._();
 
   static const yankeesBlue = Color(0xFF0F2649);
   static const indigo = Color(0xFF15376A);

@@ -7,8 +7,8 @@ import 'package:regal/regal.dart';
 
 /// The theme of the application.
 final kThemeData = ThemeData.light().copyWith(
-  primaryColor: AtoaColors.indigo,
-  primaryColorDark: AtoaColors.yankeesBlue,
+  primaryColor: RegalColors.indigo,
+  primaryColorDark: RegalColors.yankeesBlue,
   scaffoldBackgroundColor: const Color(0xffffffff),
   textTheme: GoogleFonts.latoTextTheme(),
   appBarTheme: const AppBarTheme(
@@ -16,7 +16,7 @@ final kThemeData = ThemeData.light().copyWith(
     color: Colors.transparent,
     elevation: 0,
     iconTheme: IconThemeData(
-      color: AtoaColors.yankeesBlue,
+      color: RegalColors.yankeesBlue,
     ),
   ),
   inputDecorationTheme: InputDecorationTheme(
@@ -26,40 +26,40 @@ final kThemeData = ThemeData.light().copyWith(
     contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 14.0.h),
     border: OutlineInputBorder(
       borderRadius: BorderRadius.circular(12.r),
-      borderSide: BorderSide(color: AtoaColors.grey.shade40),
+      borderSide: BorderSide(color: RegalColors.grey.shade40),
     ),
     enabledBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(12.r),
-      borderSide: BorderSide(color: AtoaColors.grey.shade40),
+      borderSide: BorderSide(color: RegalColors.grey.shade40),
     ),
     focusedBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(12.r),
-      borderSide: BorderSide(color: AtoaColors.grey.shade40),
+      borderSide: BorderSide(color: RegalColors.grey.shade40),
     ),
-    iconColor: AtoaColors.yankeesBlue,
+    iconColor: RegalColors.yankeesBlue,
     errorBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(12.r),
       borderSide: const BorderSide(color: Colors.redAccent),
     ),
     errorMaxLines: 2,
     hintStyle: TextStyle(
-      color: AtoaColors.yankeesBlue.withOpacity(0.6),
+      color: RegalColors.yankeesBlue.withOpacity(0.6),
       fontSize: 18.sp,
       height: 1.3,
     ),
     errorStyle: TextStyle(fontSize: 12.sp),
     isCollapsed: true,
-    prefixIconColor: AtoaColors.yankeesBlue,
-    suffixIconColor: AtoaColors.yankeesBlue,
-    prefixStyle: const TextStyle(color: AtoaColors.yankeesBlue),
-    suffixStyle: const TextStyle(color: AtoaColors.yankeesBlue),
+    prefixIconColor: RegalColors.yankeesBlue,
+    suffixIconColor: RegalColors.yankeesBlue,
+    prefixStyle: const TextStyle(color: RegalColors.yankeesBlue),
+    suffixStyle: const TextStyle(color: RegalColors.yankeesBlue),
   ),
   textSelectionTheme:
-      const TextSelectionThemeData(cursorColor: AtoaColors.yankeesBlue),
+      const TextSelectionThemeData(cursorColor: RegalColors.yankeesBlue),
   textButtonTheme: TextButtonThemeData(
     style: TextButton.styleFrom(
-      foregroundColor: AtoaColors.grey.shade10,
-      backgroundColor: AtoaColors.indigo,
+      foregroundColor: RegalColors.grey.shade10,
+      backgroundColor: RegalColors.indigo,
       disabledForegroundColor: Colors.white.withOpacity(0.38),
       textStyle: GoogleFonts.lato(
         color: Colors.white,
@@ -77,15 +77,15 @@ final kThemeData = ThemeData.light().copyWith(
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       shape: const StadiumBorder(),
-      backgroundColor: AtoaColors.indigo,
-      disabledBackgroundColor: AtoaColors.grey.disabled,
+      backgroundColor: RegalColors.indigo,
+      disabledBackgroundColor: RegalColors.grey.disabled,
     ),
   ),
   outlinedButtonTheme: OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
-      foregroundColor: AtoaColors.indigo,
+      foregroundColor: RegalColors.indigo,
       textStyle: const TextStyle(
-        color: AtoaColors.indigo,
+        color: RegalColors.indigo,
         fontSize: 14,
         fontWeight: FontWeight.bold,
         letterSpacing: 1.12,
@@ -94,7 +94,7 @@ final kThemeData = ThemeData.light().copyWith(
       minimumSize: Size(double.infinity, 48.w),
       maximumSize: Size(double.infinity, 60.w),
       side: const BorderSide(
-        color: AtoaColors.indigo,
+        color: RegalColors.indigo,
       ),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(100.w),
@@ -103,21 +103,21 @@ final kThemeData = ThemeData.light().copyWith(
       side: MaterialStateProperty.resolveWith(
         (states) {
           if (states.contains(MaterialState.disabled)) {
-            return BorderSide(color: AtoaColors.grey.disabled);
+            return BorderSide(color: RegalColors.grey.disabled);
           }
-          return const BorderSide(color: AtoaColors.indigo);
+          return const BorderSide(color: RegalColors.indigo);
         },
       ),
     ),
   ),
   iconTheme: const IconThemeData(
-    color: AtoaColors.indigo,
+    color: RegalColors.indigo,
   ),
   checkboxTheme: CheckboxThemeData(
     checkColor: MaterialStateProperty.all(Colors.white),
-    fillColor: MaterialStateProperty.all(AtoaColors.indigo),
+    fillColor: MaterialStateProperty.all(RegalColors.indigo),
     shape: RoundedRectangleBorder(
-      side: const BorderSide(color: AtoaColors.indigo),
+      side: const BorderSide(color: RegalColors.indigo),
       borderRadius: BorderRadius.circular(4.r),
     ),
     visualDensity: VisualDensity.compact,
@@ -134,12 +134,12 @@ final kThemeData = ThemeData.light().copyWith(
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
     titleTextStyle: TextStyle(
       fontSize: 20.0.sp,
-      color: AtoaColors.yankeesBlue,
+      color: RegalColors.yankeesBlue,
       fontWeight: FontWeight.bold,
     ),
     contentTextStyle: TextStyle(
       fontSize: 14.0.sp,
-      color: AtoaColors.yankeesBlue,
+      color: RegalColors.yankeesBlue,
     ),
   ),
 );

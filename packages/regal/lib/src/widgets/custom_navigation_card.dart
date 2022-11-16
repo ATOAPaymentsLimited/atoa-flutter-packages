@@ -27,13 +27,13 @@ class CustomNavigationCard extends StatelessWidget {
     this.titleFontWeight = FontWeight.w400,
     this.borderColor,
     this.backgroundColor = Colors.white,
-    this.foregroundColor = AtoaColors.yankeesBlue,
+    this.foregroundColor = RegalColors.yankeesBlue,
     this.splashColor,
     this.chipBackgroundColor,
     this.chipBorderColor,
     this.chipTextColor,
     this.focusLinesDuration = const Duration(milliseconds: 24000),
-    this.focusLinesgradientColor = AtoaColors.gold,
+    this.focusLinesgradientColor = RegalColors.gold,
   })  : assert(
           !(chipTitle == null &&
               (chipBackgroundColor != null ||
@@ -64,7 +64,7 @@ class CustomNavigationCard extends StatelessWidget {
     required this.onPressed,
     this.titleFontWeight = FontWeight.w600,
     this.backgroundColor = Colors.white,
-    this.foregroundColor = AtoaColors.yankeesBlue,
+    this.foregroundColor = RegalColors.yankeesBlue,
     this.splashColor,
   })  : assert(
           !(icon == null && svgAsset == null),
@@ -174,13 +174,13 @@ class CustomNavigationCard extends StatelessWidget {
                       width: 48.sp,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(16.r),
-                        color: AtoaColors.grey.shade5,
+                        color: RegalColors.grey.shade5,
                       ),
                       child: Padding(
                         padding: EdgeInsets.all(12.sp),
                         child: SvgPicture.asset(
                           svgAsset!,
-                          color: foregroundColor ?? AtoaColors.yankeesBlue,
+                          color: foregroundColor ?? RegalColors.yankeesBlue,
                         ),
                       ),
                     ),
@@ -204,7 +204,7 @@ class CustomNavigationCard extends StatelessWidget {
                         style: Theme.of(context).textTheme.bodyText1!.copyWith(
                               fontWeight: FontWeight.w400,
                               color:
-                                  subTitleTextColor ?? AtoaColors.grey.shade40,
+                                  subTitleTextColor ?? RegalColors.grey.shade40,
                             ),
                       ),
                     ],
@@ -225,7 +225,7 @@ class CustomNavigationCard extends StatelessWidget {
             boxShadow: [
               if (highlightCard)
                 BoxShadow(
-                  color: borderColor ?? AtoaColors.grey.shade10,
+                  color: borderColor ?? RegalColors.grey.shade10,
                   blurRadius: 20.r,
                   offset: const Offset(0, 2),
                 )
@@ -252,7 +252,7 @@ class CustomNavigationCard extends StatelessWidget {
                       borderRadius: BorderRadius.circular(12.r),
                       border: highlightCard
                           ? Border.all(
-                              color: borderColor ?? AtoaColors.grey.shade10,
+                              color: borderColor ?? RegalColors.grey.shade10,
                             )
                           : null,
                     ),
@@ -265,7 +265,7 @@ class CustomNavigationCard extends StatelessWidget {
                               child: SvgPicture.asset(
                                 svgAsset!,
                                 color:
-                                    foregroundColor ?? AtoaColors.yankeesBlue,
+                                    foregroundColor ?? RegalColors.yankeesBlue,
                               ),
                             ),
                         SizedBox(height: 8.sp),
@@ -301,10 +301,10 @@ class CustomNavigationCard extends StatelessWidget {
             right: -6.sp,
             child: DecoratedBox(
               decoration: BoxDecoration(
-                color: chipBackgroundColor ?? AtoaColors.gold.shade80,
+                color: chipBackgroundColor ?? RegalColors.gold.shade80,
                 border: Border.all(
                   width: 1.sp,
-                  color: chipBorderColor ?? AtoaColors.gold,
+                  color: chipBorderColor ?? RegalColors.gold,
                 ),
                 borderRadius: BorderRadius.circular(
                   24.r,
