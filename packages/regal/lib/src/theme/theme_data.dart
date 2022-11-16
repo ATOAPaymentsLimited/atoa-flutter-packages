@@ -42,17 +42,17 @@ final kThemeData = ThemeData.light().copyWith(
       borderSide: const BorderSide(color: Colors.redAccent),
     ),
     errorMaxLines: 2,
-    hintStyle: TextStyle(
+    hintStyle: GoogleFonts.lato(
       color: RegalColors.yankeesBlue.withOpacity(0.6),
       fontSize: 18.sp,
       height: 1.3,
     ),
-    errorStyle: TextStyle(fontSize: 12.sp),
+    errorStyle: GoogleFonts.lato(fontSize: 12.sp),
     isCollapsed: true,
     prefixIconColor: RegalColors.yankeesBlue,
     suffixIconColor: RegalColors.yankeesBlue,
-    prefixStyle: const TextStyle(color: RegalColors.yankeesBlue),
-    suffixStyle: const TextStyle(color: RegalColors.yankeesBlue),
+    prefixStyle: GoogleFonts.lato(color: RegalColors.yankeesBlue),
+    suffixStyle: GoogleFonts.lato(color: RegalColors.yankeesBlue),
   ),
   textSelectionTheme:
       const TextSelectionThemeData(cursorColor: RegalColors.yankeesBlue),
@@ -84,12 +84,11 @@ final kThemeData = ThemeData.light().copyWith(
   outlinedButtonTheme: OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
       foregroundColor: RegalColors.indigo,
-      textStyle: const TextStyle(
+      textStyle: GoogleFonts.lato(
         color: RegalColors.indigo,
         fontSize: 14,
         fontWeight: FontWeight.bold,
         letterSpacing: 1.12,
-        fontFamily: 'Lato',
       ),
       minimumSize: Size(double.infinity, 48.w),
       maximumSize: Size(double.infinity, 60.w),
@@ -132,12 +131,12 @@ final kThemeData = ThemeData.light().copyWith(
   ),
   dialogTheme: DialogTheme(
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
-    titleTextStyle: TextStyle(
+    titleTextStyle: GoogleFonts.lato(
       fontSize: 20.0.sp,
       color: RegalColors.yankeesBlue,
       fontWeight: FontWeight.bold,
     ),
-    contentTextStyle: TextStyle(
+    contentTextStyle: GoogleFonts.lato(
       fontSize: 14.0.sp,
       color: RegalColors.yankeesBlue,
     ),
