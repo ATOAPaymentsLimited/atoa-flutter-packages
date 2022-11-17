@@ -3,18 +3,22 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-const double ktiny = 4;
+const double ktiny = 2;
+const double kMini = 4;
 const double ksmall = 8;
 const double kmedium = 12;
 const double klarge = 16;
 const double kxtraLarge = 20;
+const double kHuge = 24;
 
 enum Spacing {
   tiny,
+  mini,
   small,
   medium,
   large,
   xtraLarge,
+  huge,
 }
 
 extension SpacingX on Spacing {
@@ -22,6 +26,8 @@ extension SpacingX on Spacing {
     switch (this) {
       case Spacing.tiny:
         return ktiny;
+      case Spacing.mini:
+        return kMini;
       case Spacing.small:
         return ksmall;
       case Spacing.medium:
@@ -30,6 +36,8 @@ extension SpacingX on Spacing {
         return klarge;
       case Spacing.xtraLarge:
         return kxtraLarge;
+      case Spacing.huge:
+        return kHuge;
     }
   }
 
