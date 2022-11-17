@@ -17,9 +17,7 @@ class MyApp extends StatelessWidget {
       builder: (context, _) {
         return MaterialApp(
           title: 'Custom Home Grid',
-          theme: ThemeData(
-            primarySwatch: Colors.blue,
-          ),
+          theme: kThemeData,
           home: const MyHomePage(),
         );
       },
@@ -205,7 +203,28 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
                 onPressed: () {},
-              )
+              ),
+              Spacing.large.yBox,
+              SizedBox(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextButton(
+                    onPressed: () {},
+                    child: const Text("Pay"),
+                  ),
+                ),
+              ),
+              SizedBox(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextButton.icon(
+                    onPressed: () {},
+                    icon: const Icon(Icons.call_split_rounded),
+                    label: const Text("Split Bills"),
+                  ),
+                ),
+              ),
+              Spacing.large.yBox,
             ],
           ),
         ),

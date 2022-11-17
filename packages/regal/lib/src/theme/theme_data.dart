@@ -59,7 +59,7 @@ final kThemeData = ThemeData.light().copyWith(
   textButtonTheme: TextButtonThemeData(
     style: TextButton.styleFrom(
       foregroundColor: RegalColors.grey.shade10,
-      backgroundColor: RegalColors.indigo,
+      backgroundColor: RegalColors.celticBlue,
       disabledForegroundColor: Colors.white.withOpacity(0.38),
       textStyle: GoogleFonts.lato(
         color: Colors.white,
