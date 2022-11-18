@@ -58,7 +58,7 @@ final kThemeData = ThemeData.light().copyWith(
       const TextSelectionThemeData(cursorColor: RegalColors.yankeesBlue),
   textButtonTheme: TextButtonThemeData(
     style: TextButton.styleFrom(
-      foregroundColor: RegalColors.grey.shade10,
+      foregroundColor: Colors.white,
       backgroundColor: RegalColors.celticBlue,
       disabledForegroundColor: Colors.white.withOpacity(0.38),
       textStyle: GoogleFonts.lato(
