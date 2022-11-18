@@ -67,8 +67,9 @@ class _SupportedBankSliderState extends State<SupportedBankSlider>
       ..addStatusListener((status) {
         if (status == AnimationStatus.completed) {
           final first = _bankIconUrlList.first;
-          _bankIconUrlList.removeAt(0);
-          _bankIconUrlList.add(first);
+          _bankIconUrlList
+            ..removeAt(0)
+            ..add(first);
           _animationController.forward(from: 0);
         }
       });

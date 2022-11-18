@@ -33,6 +33,14 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final List<String> _bankIconUrls = [
+    "https://1000logos.net/wp-content/uploads/2016/10/Barclays-Logo.png",
+    "https://www.financialexpress.com/wp-content/uploads/2022/08/HSBC-Bank.jpg",
+    "https://d3atsf3fgek2rw.cloudfront.net/content/uploads/2013/09/LLOYS.jpg",
+    "https://financialit.net/sites/default/files/nwlogostposcmyk-1.png",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4FJuUznkKg2vGQBdDMiqMX-k5bW4-n4HJJTkiXaDz193UhEZzEVTRZ5ZUvcgSmC09XLw&usqp=CAU",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Banco_Santander_Logotipo.svg/2560px-Banco_Santander_Logotipo.svg.png",
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -225,6 +233,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
               Spacing.large.yBox,
+              SupportedBankSlider(bankIconUrlList: _bankIconUrls),
             ],
           ),
         ),
