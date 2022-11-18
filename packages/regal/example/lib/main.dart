@@ -33,6 +33,21 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final List<String> _bankIconUrls = [
+    "https://1000logos.net/wp-content/uploads/2016/10/Barclays-Logo.png",
+    "https://www.financialexpress.com/wp-content/uploads/2022/08/HSBC-Bank.jpg",
+    "https://d3atsf3fgek2rw.cloudfront.net/content/uploads/2013/09/LLOYS.jpg",
+    "https://financialit.net/sites/default/files/nwlogostposcmyk-1.png",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4FJuUznkKg2vGQBdDMiqMX-k5bW4-n4HJJTkiXaDz193UhEZzEVTRZ5ZUvcgSmC09XLw&usqp=CAU",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Banco_Santander_Logotipo.svg/2560px-Banco_Santander_Logotipo.svg.png",
+  ];
+
+  List<String> offerImgUrl = [
+    "https://images.ctfassets.net/lzny33ho1g45/T5qqQQVznbZaNyxmHybDT/b76e0ff25a495e00647fa9fa6193a3c2/best-url-shorteners-00-hero.png?w=1520&fm=jpg&q=30&fit=thumb&h=760",
+    "https://s17233.pcdn.co/blog/wp-content/uploads/2022/02/SMS-Phone-graphic@2x.png",
+    "https://t4.ftcdn.net/jpg/02/61/01/87/360_F_261018762_f15Hmze7A0oL58Uwe7SrDKNS4fZIjLiF.jpg"
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -225,6 +240,30 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
               Spacing.large.yBox,
+              SupportedBankSlider(bankIconUrlList: _bankIconUrls),
+              Spacing.large.yBox,
+              CarouselSlider(
+                offersListCount: offerImgUrl.length,
+                options: CarouselOptions(),
+                offersItemWidgetBuilder: (context, index) {
+                  return CarouselItemWidget(
+                    imageUrl: offerImgUrl[index],
+                  );
+                },
+              ),
+              Spacing.large.yBox,
+              CarouselSlider(
+                options: CarouselOptions(),
+                indicatorOptions: const IndicatorOptions(
+                  activeColor: Colors.red,
+                ),
+                offersListCount: offerImgUrl.length,
+                offersItemWidgetBuilder: (context, index) {
+                  return CarouselItemWidget(
+                    imageUrl: offerImgUrl[index],
+                  );
+                },
+              )
             ],
           ),
         ),
