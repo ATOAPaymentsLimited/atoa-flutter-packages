@@ -25,31 +25,27 @@ class CarouselItemWidget extends StatelessWidget {
             children: [
               CachedNetworkImage(
                 imageUrl: imageUrl,
-                errorWidget: (context, url, dynamic error) {
-                  return Shimmer.fromColors(
-                    enabled: !disableAnimationsForTest,
-                    baseColor: RegalColors.grey.shade20,
-                    highlightColor: RegalColors.grey.shade20.withOpacity(0.05),
+                errorWidget: (_, __, ___) => Shimmer.fromColors(
+                  enabled: !disableAnimationsForTest,
+                  baseColor: RegalColors.grey.shade20,
+                  highlightColor: RegalColors.grey.shade20.withOpacity(0.05),
+                  child: Container(
+                    width: double.infinity,
+                    color: Colors.white,
+                  ),
+                ),
+                placeholder: (_, __) => Shimmer.fromColors(
+                  enabled: !disableAnimationsForTest,
+                  baseColor: RegalColors.grey.shade20,
+                  highlightColor: RegalColors.grey.shade20.withOpacity(0.05),
+                  child: AspectRatio(
+                    aspectRatio: 2.358,
                     child: Container(
                       width: double.infinity,
                       color: Colors.white,
                     ),
-                  );
-                },
-                placeholder: (context, url) {
-                  return Shimmer.fromColors(
-                    enabled: !disableAnimationsForTest,
-                    baseColor: RegalColors.grey.shade20,
-                    highlightColor: RegalColors.grey.shade20.withOpacity(0.05),
-                    child: AspectRatio(
-                      aspectRatio: 2.358,
-                      child: Container(
-                        width: double.infinity,
-                        color: Colors.white,
-                      ),
-                    ),
-                  );
-                },
+                  ),
+                ),
                 fit: BoxFit.fill,
                 width: double.infinity,
               ),

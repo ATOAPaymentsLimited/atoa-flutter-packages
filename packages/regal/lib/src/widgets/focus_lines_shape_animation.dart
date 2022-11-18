@@ -51,43 +51,39 @@ class _CustomFocusLinesShapeAnimationState
   }
 
   @override
-  Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: widget.borderRadius,
-      child: SizedBox(
-        width: widget.width,
-        height: widget.height,
-        child: Stack(
-          children: [
-            Center(
-              child: Transform.scale(
-                scale: widget.scaleLines,
-                child: AnimatedBuilder(
-                  animation: _rotationAnimationController,
-                  builder: (context, child) {
-                    return Transform.rotate(
+  Widget build(BuildContext context) => ClipRRect(
+        borderRadius: widget.borderRadius,
+        child: SizedBox(
+          width: widget.width,
+          height: widget.height,
+          child: Stack(
+            children: [
+              Center(
+                child: Transform.scale(
+                  scale: widget.scaleLines,
+                  child: AnimatedBuilder(
+                    animation: _rotationAnimationController,
+                    builder: (context, child) => Transform.rotate(
                       angle: _rotationAnimationController.value,
                       child: CustomPaint(
-                        size: Size(widget.width, widget.width),
-                        painter: FocusLinesShapePainter(
+                        size: Size.square(widget.width),
+                        painter: _FocusLinesShapePainter(
                           gradientColor:
                               widget.gradientColor ?? RegalColors.gold.shade60,
                         ),
                       ),
-                    );
-                  },
+                    ),
+                  ),
                 ),
-              ),
-            )
-          ],
+              )
+            ],
+          ),
         ),
-      ),
-    );
-  }
+      );
 }
 
-class FocusLinesShapePainter extends CustomPainter {
-  const FocusLinesShapePainter({required this.gradientColor});
+class _FocusLinesShapePainter extends CustomPainter {
+  const _FocusLinesShapePainter({required this.gradientColor});
   final Color gradientColor;
 
   @override
@@ -239,7 +235,5 @@ class FocusLinesShapePainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) {
-    return true;
-  }
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => true;
 }

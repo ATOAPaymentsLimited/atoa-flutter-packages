@@ -141,50 +141,47 @@ class _CustomOffersSliderWidgetState extends State<CarouselSlider>
   }
 
   /// Get List of [CarouselSlider] through [offersItemWidgetBuilder]
-  List<CarouselItemWidget> _getCarouselItemWidgetList() {
-    return List<CarouselItemWidget>.generate(widget.offersListCount!, (index) {
-      return widget.offersItemWidgetBuilder!(context, index);
-    }).take(_maxofferToDisplay).toList();
-  }
+  List<CarouselItemWidget> _getCarouselItemWidgetList() =>
+      List<CarouselItemWidget>.generate(
+        widget.offersListCount!,
+        (index) => widget.offersItemWidgetBuilder!(context, index),
+      ).take(_maxofferToDisplay).toList();
 
   @override
-  Widget build(BuildContext context) {
-    return AnimatedSwitcher(
-      duration: const Duration(milliseconds: 300),
-      transitionBuilder: (child, animation) {
-        return FadeTransition(
+  Widget build(BuildContext context) => AnimatedSwitcher(
+        duration: const Duration(milliseconds: 300),
+        transitionBuilder: (child, animation) => FadeTransition(
           opacity: animation,
           child: child,
-        );
-      },
-      child: Column(
-        children: [
-          slider.CarouselSlider(
-            items: widget.isFetching ||
-                    (widget.offersListCount != null &&
-                        widget.offersListCount == 0)
-                ? [
-                    PlaceHolderCarousel(
-                      aspectRatio: widget.options.aspectRatio,
-                      disableAnimationsForTest: widget.disableAnimationsForTest,
-                    )
-                  ]
-                : _offersItemList,
-            options: widget.options.copyWith(
-              autoPlay: _shouldAutoPlay,
-              onPageChanged: _onPageChanged,
+        ),
+        child: Column(
+          children: [
+            slider.CarouselSlider(
+              items: widget.isFetching ||
+                      (widget.offersListCount != null &&
+                          widget.offersListCount == 0)
+                  ? [
+                      PlaceHolderCarousel(
+                        aspectRatio: widget.options.aspectRatio,
+                        disableAnimationsForTest:
+                            widget.disableAnimationsForTest,
+                      )
+                    ]
+                  : _offersItemList,
+              options: widget.options.copyWith(
+                autoPlay: _shouldAutoPlay,
+                onPageChanged: _onPageChanged,
+              ),
             ),
-          ),
-          if (_maxofferToDisplay > 1)
-            PageIndicators(
-              count: _maxofferToDisplay,
-              currentOfferIndexNotifier: currentOfferIndexNotifier,
-              options: widget.indicatorOptions,
-            ),
-        ],
-      ),
-    );
-  }
+            if (_maxofferToDisplay > 1)
+              PageIndicators(
+                count: _maxofferToDisplay,
+                currentOfferIndexNotifier: currentOfferIndexNotifier,
+                options: widget.indicatorOptions,
+              ),
+          ],
+        ),
+      );
 
   @override
   void dispose() {

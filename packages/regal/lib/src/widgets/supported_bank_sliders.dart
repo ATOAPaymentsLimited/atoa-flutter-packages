@@ -107,81 +107,75 @@ class _SupportedBankSliderState extends State<SupportedBankSlider>
   }
 
   @override
-  Widget build(BuildContext context) {
-    return AnimatedSwitcher(
-      duration: const Duration(milliseconds: 300),
-      transitionBuilder: (child, animation) {
-        return FadeTransition(
+  Widget build(BuildContext context) => AnimatedSwitcher(
+        duration: const Duration(milliseconds: 300),
+        transitionBuilder: (child, animation) => FadeTransition(
           opacity: animation,
           child: child,
-        );
-      },
-      child: widget.bankIconUrlList.isEmpty
-          ? SizedBox(
-              height: 95.sp,
-              width: double.infinity,
-            )
-          : Container(
-              height: 95.sp,
-              width: double.infinity,
-              color: widget.primaryBackgroundColor,
-              child: Padding(
-                padding: widget.contentPadding ??
-                    EdgeInsets.symmetric(
-                      vertical: 12.sp,
-                    ),
-                child: Column(
-                  children: [
-                    Text(
-                      'Supported Bank',
-                      style: Theme.of(context).textTheme.bodyText1?.copyWith(
-                            fontSize: 12.sp,
-                            fontWeight: FontWeight.w400,
-                          ),
-                    ),
-                    Container(
-                      color: widget.sliderBackgroundColor,
-                      width: double.infinity,
-                      height: 56.h,
-                      child: Stack(
-                        children: [
-                          ..._bankIconUrlList.map(
-                            (bankIconurl) {
-                              final index = _bankIconUrlList.indexWhere(
-                                (element) => element == bankIconurl,
-                              );
+        ),
+        child: widget.bankIconUrlList.isEmpty
+            ? SizedBox(
+                height: 95.sp,
+                width: double.infinity,
+              )
+            : Container(
+                height: 95.sp,
+                width: double.infinity,
+                color: widget.primaryBackgroundColor,
+                child: Padding(
+                  padding: widget.contentPadding ??
+                      EdgeInsets.symmetric(
+                        vertical: 12.sp,
+                      ),
+                  child: Column(
+                    children: [
+                      Text(
+                        'Supported Bank',
+                        style: Theme.of(context).textTheme.bodyText1?.copyWith(
+                              fontSize: 12.sp,
+                              fontWeight: FontWeight.w400,
+                            ),
+                      ),
+                      Container(
+                        color: widget.sliderBackgroundColor,
+                        width: double.infinity,
+                        height: 56.h,
+                        child: Stack(
+                          children: [
+                            ..._bankIconUrlList.map(
+                              (bankIconurl) {
+                                final index = _bankIconUrlList.indexWhere(
+                                  (element) => element == bankIconurl,
+                                );
 
-                              return Positioned.fromRect(
-                                rect: _getBankLogoRect(index, 56.h),
-                                child: AspectRatio(
-                                  aspectRatio: 1,
-                                  child: Padding(
-                                    padding: EdgeInsets.all(8.sp),
-                                    child: CachedNetworkImage(
-                                      imageUrl: bankIconurl,
-                                      fit: BoxFit.contain,
+                                return Positioned.fromRect(
+                                  rect: _getBankLogoRect(index, 56.h),
+                                  child: AspectRatio(
+                                    aspectRatio: 1,
+                                    child: Padding(
+                                      padding: EdgeInsets.all(8.sp),
+                                      child: CachedNetworkImage(
+                                        imageUrl: bankIconurl,
+                                        fit: BoxFit.contain,
+                                      ),
                                     ),
                                   ),
-                                ),
-                              );
-                            },
-                          ),
-                        ],
+                                );
+                              },
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
-            ),
-    );
-  }
+      );
 
-  Rect _getBankLogoRect(int index, double size) {
-    return Rect.fromLTWH(
-      index * size - (_animationController.value * size),
-      0,
-      size,
-      size,
-    );
-  }
+  Rect _getBankLogoRect(int index, double size) => Rect.fromLTWH(
+        index * size - (_animationController.value * size),
+        0,
+        size,
+        size,
+      );
 }
