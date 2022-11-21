@@ -10,7 +10,7 @@ final kThemeData = ThemeData.light().copyWith(
   primaryColor: RegalColors.indigo,
   primaryColorDark: RegalColors.indigo,
   scaffoldBackgroundColor: const Color(0xffffffff),
-  textTheme: GoogleFonts.latoTextTheme(),
+  textTheme: GoogleFonts.latoTextTheme(_kTextTheme),
   appBarTheme: const AppBarTheme(
     systemOverlayStyle: SystemUiOverlayStyle.dark,
     color: Colors.transparent,
@@ -140,5 +140,52 @@ final kThemeData = ThemeData.light().copyWith(
       fontSize: 14.0.sp,
       color: RegalColors.indigo,
     ),
+  ),
+);
+
+final _kTextTheme = TextTheme(
+  displayLarge: TextStyle(
+    fontSize: 48.sp,
+    fontWeight: FontWeight.bold,
+  ),
+  displayMedium: TextStyle(
+    fontSize: 36.sp,
+    fontWeight: FontWeight.bold,
+  ),
+  headlineLarge: TextStyle(
+    fontSize: 32.sp,
+    fontWeight: FontWeight.bold,
+  ),
+  headlineMedium: TextStyle(
+    fontSize: 28.sp,
+    fontWeight: FontWeight.bold,
+  ),
+  titleLarge: TextStyle(
+    fontSize: 24.sp,
+    fontWeight: FontWeight.w400,
+  ),
+  labelLarge: TextStyle(
+    fontSize: 20.sp,
+    fontWeight: FontWeight.w400,
+  ),
+  labelMedium: TextStyle(
+    fontSize: 18.sp,
+    fontWeight: FontWeight.w400,
+  ),
+  labelSmall: TextStyle(
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w400,
+  ),
+  bodyLarge: TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w400,
+  ),
+  bodyMedium: TextStyle(
+    fontSize: 12.sp,
+    fontWeight: FontWeight.w400,
+  ),
+  bodySmall: TextStyle(
+    fontSize: 11.sp,
+    fontWeight: FontWeight.w400,
   ),
 );

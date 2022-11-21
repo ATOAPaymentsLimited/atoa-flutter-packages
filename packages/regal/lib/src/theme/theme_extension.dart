@@ -59,91 +59,67 @@ extension ThemeX on BuildContext {
 
   /// performs a simple [Theme.of(context).displayLarge] action and returns given [displayLarge]
   /// ```
-  /// displayLarge        57.0  FontWeight.w400
+  /// displayLarge        48.0  FontWeight.w700
   /// ```
   TextStyle? get displayLarge => textTheme.displayLarge;
 
   /// performs a simple [Theme.of(context).displayMedium] action and returns given [displayMedium]
   /// ```
-  /// displayMedium       45.0  FontWeight.w400
+  /// displayMedium       36.0  FontWeight.w700
   /// ```
   TextStyle? get displayMedium => textTheme.displayMedium;
 
-  /// performs a simple [Theme.of(context).displaySmall] action and returns given [displaySmall]
-  /// ```
-  /// displaySmall        34.0  FontWeight.w400
-  /// ```
-  TextStyle? get displaySmall => textTheme.displaySmall;
-
   /// performs a simple [Theme.of(context).headlineLarge] action and returns given [headlineLarge]
   /// ```
-  /// headlineLarge        32.0  FontWeight.w400
+  /// headlineLarge        32.0  FontWeight.w700
   /// ```
   TextStyle? get headlineLarge => textTheme.headlineLarge;
 
   /// performs a simple [Theme.of(context).headlineMedium] action and returns given [headlineMedium]
   /// ```
-  /// headlineMedium       28.0  FontWeight.w400
+  /// headlineMedium       28.0  FontWeight.w700
   /// ```
   TextStyle? get headlineMedium => textTheme.headlineMedium;
 
-  /// performs a simple [Theme.of(context).headlineSmall] action and returns given [headlineSmall]
-  /// ```
-  /// headlineSmall        24.0  FontWeight.w400
-  /// ```
-  TextStyle? get headlineSmall => textTheme.headlineSmall;
-
   /// performs a simple [Theme.of(context).titleLarge] action and returns given [titleLarge]
   /// ```
-  /// titleLarge           22.0  FontWeight.w400
+  /// titleLarge           24.0  FontWeight.w400
   /// ```
   TextStyle? get titleLarge => textTheme.titleLarge;
 
-  /// performs a simple [Theme.of(context).titleMedium] action and returns given [titleMedium]
-  /// ```
-  /// titleMedium          16.0  FontWeight.w400
-  /// ```
-  TextStyle? get titleMedium => textTheme.titleMedium;
-
-  /// performs a simple [Theme.of(context).titleSmall] action and returns given [titleSmall]
-  /// ```
-  /// titleSmall           14.0  FontWeight.w400
-  /// ```
-  TextStyle? get titleSmall => textTheme.titleSmall;
-
   /// performs a simple [Theme.of(context).labelLarge] action and returns given [labelLarge]
   /// ```
-  /// labelLarge           14.0  FontWeight.w400
+  /// labelLarge           20.0  FontWeight.w400
   /// ```
   TextStyle? get labelLarge => textTheme.labelLarge;
 
   /// performs a simple [Theme.of(context).labelMedium] action and returns given [labelMedium]
   /// ```
-  /// labelMedium          12.0  FontWeight.w400
+  /// labelMedium          18.0  FontWeight.w400
   /// ```
   TextStyle? get labelMedium => textTheme.labelMedium;
 
   /// performs a simple [Theme.of(context).labelSmall] action and returns given [labelSmall]
   /// ```
-  /// labelSmall           11.0  FontWeight.w400
+  /// labelSmall           16.0  FontWeight.w400
   /// ```
   TextStyle? get labelSmall => textTheme.labelSmall;
 
   /// performs a simple [Theme.of(context).bodyLarge] action and returns given [bodyLarge]
   /// ```
-  /// bodyLarge            16.0  FontWeight.w400
+  /// bodyLarge            14.0  FontWeight.w400
   /// ```
   TextStyle? get bodyLarge => textTheme.bodyLarge;
 
   /// performs a simple [Theme.of(context).bodyMedium] action and returns given [bodyMedium]
   /// ```
-  /// bodyMedium           14.0  FontWeight.w400
+  /// bodyMedium           12.0  FontWeight.w400
   /// ```
   TextStyle? get bodyMedium => textTheme.bodyMedium;
 
   /// performs a simple [Theme.of(context).bodySmall] action and returns given [bodySmall]
   /// ```
-  /// bodySmall            12.0  FontWeight.w400
+  /// bodySmall            11.0  FontWeight.w400
   /// ```
   TextStyle? get bodySmall => textTheme.bodySmall;
 }
