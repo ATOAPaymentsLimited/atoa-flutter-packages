@@ -8,15 +8,15 @@ import 'package:regal/regal.dart';
 /// The theme of the application.
 final kThemeData = ThemeData.light().copyWith(
   primaryColor: RegalColors.indigo,
-  primaryColorDark: RegalColors.yankeesBlue,
+  primaryColorDark: RegalColors.indigo,
   scaffoldBackgroundColor: const Color(0xffffffff),
-  textTheme: GoogleFonts.latoTextTheme(),
+  textTheme: GoogleFonts.latoTextTheme(_kTextTheme),
   appBarTheme: const AppBarTheme(
     systemOverlayStyle: SystemUiOverlayStyle.dark,
     color: Colors.transparent,
     elevation: 0,
     iconTheme: IconThemeData(
-      color: RegalColors.yankeesBlue,
+      color: RegalColors.indigo,
     ),
   ),
   inputDecorationTheme: InputDecorationTheme(
@@ -36,26 +36,26 @@ final kThemeData = ThemeData.light().copyWith(
       borderRadius: BorderRadius.circular(12.r),
       borderSide: BorderSide(color: RegalColors.grey.shade40),
     ),
-    iconColor: RegalColors.yankeesBlue,
+    iconColor: RegalColors.indigo,
     errorBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(12.r),
       borderSide: const BorderSide(color: Colors.redAccent),
     ),
     errorMaxLines: 2,
     hintStyle: GoogleFonts.lato(
-      color: RegalColors.yankeesBlue.withOpacity(0.6),
+      color: RegalColors.indigo.withOpacity(0.6),
       fontSize: 18.sp,
       height: 1.3,
     ),
     errorStyle: GoogleFonts.lato(fontSize: 12.sp),
     isCollapsed: true,
-    prefixIconColor: RegalColors.yankeesBlue,
-    suffixIconColor: RegalColors.yankeesBlue,
-    prefixStyle: GoogleFonts.lato(color: RegalColors.yankeesBlue),
-    suffixStyle: GoogleFonts.lato(color: RegalColors.yankeesBlue),
+    prefixIconColor: RegalColors.indigo,
+    suffixIconColor: RegalColors.indigo,
+    prefixStyle: GoogleFonts.lato(color: RegalColors.indigo),
+    suffixStyle: GoogleFonts.lato(color: RegalColors.indigo),
   ),
   textSelectionTheme:
-      const TextSelectionThemeData(cursorColor: RegalColors.yankeesBlue),
+      const TextSelectionThemeData(cursorColor: RegalColors.indigo),
   textButtonTheme: TextButtonThemeData(
     style: TextButton.styleFrom(
       foregroundColor: Colors.white,
@@ -83,9 +83,9 @@ final kThemeData = ThemeData.light().copyWith(
   ),
   outlinedButtonTheme: OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
-      foregroundColor: RegalColors.indigo,
+      foregroundColor: RegalColors.celticBlue,
       textStyle: GoogleFonts.lato(
-        color: RegalColors.indigo,
+        color: RegalColors.celticBlue,
         fontSize: 14,
         fontWeight: FontWeight.bold,
         letterSpacing: 1.12,
@@ -93,7 +93,7 @@ final kThemeData = ThemeData.light().copyWith(
       minimumSize: Size(double.infinity, 48.w),
       maximumSize: Size(double.infinity, 60.w),
       side: const BorderSide(
-        color: RegalColors.indigo,
+        color: RegalColors.celticBlue,
       ),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(100.w),
@@ -104,7 +104,7 @@ final kThemeData = ThemeData.light().copyWith(
           if (states.contains(MaterialState.disabled)) {
             return BorderSide(color: RegalColors.grey.disabled);
           }
-          return const BorderSide(color: RegalColors.indigo);
+          return const BorderSide(color: RegalColors.celticBlue);
         },
       ),
     ),
@@ -133,12 +133,59 @@ final kThemeData = ThemeData.light().copyWith(
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
     titleTextStyle: GoogleFonts.lato(
       fontSize: 20.0.sp,
-      color: RegalColors.yankeesBlue,
+      color: RegalColors.indigo,
       fontWeight: FontWeight.bold,
     ),
     contentTextStyle: GoogleFonts.lato(
       fontSize: 14.0.sp,
-      color: RegalColors.yankeesBlue,
+      color: RegalColors.indigo,
     ),
+  ),
+);
+
+final _kTextTheme = TextTheme(
+  displayLarge: TextStyle(
+    fontSize: 48.sp,
+    fontWeight: FontWeight.bold,
+  ),
+  displayMedium: TextStyle(
+    fontSize: 36.sp,
+    fontWeight: FontWeight.bold,
+  ),
+  headlineLarge: TextStyle(
+    fontSize: 32.sp,
+    fontWeight: FontWeight.bold,
+  ),
+  headlineMedium: TextStyle(
+    fontSize: 28.sp,
+    fontWeight: FontWeight.bold,
+  ),
+  titleLarge: TextStyle(
+    fontSize: 24.sp,
+    fontWeight: FontWeight.w400,
+  ),
+  labelLarge: TextStyle(
+    fontSize: 20.sp,
+    fontWeight: FontWeight.w400,
+  ),
+  labelMedium: TextStyle(
+    fontSize: 18.sp,
+    fontWeight: FontWeight.w400,
+  ),
+  labelSmall: TextStyle(
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w400,
+  ),
+  bodyLarge: TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w400,
+  ),
+  bodyMedium: TextStyle(
+    fontSize: 12.sp,
+    fontWeight: FontWeight.w400,
+  ),
+  bodySmall: TextStyle(
+    fontSize: 11.sp,
+    fontWeight: FontWeight.w400,
   ),
 );

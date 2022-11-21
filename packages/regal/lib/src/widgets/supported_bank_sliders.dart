@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:regal/regal.dart';
 
 class SupportedBankSlider extends StatefulWidget {
   ///[SupportedBankSlider] creates a animated logo slider that slides
@@ -15,6 +16,7 @@ class SupportedBankSlider extends StatefulWidget {
     this.sliderBackgroundColor = Colors.white,
     this.contentPadding,
     this.disableAnimationsForTest = false,
+    this.title,
   });
 
   /// [bankIconUrlList] takes list of bank logo url's
@@ -43,6 +45,8 @@ class SupportedBankSlider extends StatefulWidget {
   /// Helper parameter, if you want to disable animation while doing integration
   /// tests
   final bool disableAnimationsForTest;
+
+  final String? title;
 
   @override
   State<SupportedBankSlider> createState() => _SupportedBankSliderState();
@@ -107,70 +111,72 @@ class _SupportedBankSliderState extends State<SupportedBankSlider>
   }
 
   @override
-  Widget build(BuildContext context) => AnimatedSwitcher(
-        duration: const Duration(milliseconds: 300),
-        transitionBuilder: (child, animation) => FadeTransition(
-          opacity: animation,
-          child: child,
-        ),
-        child: widget.bankIconUrlList.isEmpty
-            ? SizedBox(
-                height: 95.sp,
-                width: double.infinity,
-              )
-            : Container(
-                height: 95.sp,
-                width: double.infinity,
-                color: widget.primaryBackgroundColor,
-                child: Padding(
-                  padding: widget.contentPadding ??
-                      EdgeInsets.symmetric(
-                        vertical: 12.sp,
-                      ),
-                  child: Column(
-                    children: [
+  Widget build(BuildContext context) {
+    final title = widget.title;
+    final hasTitle = title != null && title.isNotEmpty;
+    return AnimatedSwitcher(
+      duration: const Duration(milliseconds: 300),
+      transitionBuilder: (child, animation) => FadeTransition(
+        opacity: animation,
+        child: child,
+      ),
+      child: widget.bankIconUrlList.isEmpty
+          ? SizedBox(
+              height: hasTitle ? 95.sp : 84.sp,
+              width: double.infinity,
+            )
+          : Container(
+              height: hasTitle ? 95.sp : 84.sp,
+              width: double.infinity,
+              color: widget.primaryBackgroundColor,
+              child: Padding(
+                padding: widget.contentPadding ??
+                    EdgeInsets.symmetric(
+                      vertical: 12.sp,
+                    ),
+                child: Column(
+                  children: [
+                    if (hasTitle)
                       Text(
-                        'Supported Bank',
-                        style: Theme.of(context).textTheme.bodyText1?.copyWith(
-                              fontSize: 12.sp,
-                              fontWeight: FontWeight.w400,
-                            ),
+                        title,
+                        style: context.bodySmall,
                       ),
-                      Container(
-                        color: widget.sliderBackgroundColor,
-                        width: double.infinity,
-                        height: 56.h,
-                        child: Stack(
-                          children: [
-                            ..._bankIconUrlList.map(
-                              (bankIconurl) {
-                                final index = _bankIconUrlList.indexWhere(
-                                  (element) => element == bankIconurl,
-                                );
+                    Container(
+                      color: widget.sliderBackgroundColor,
+                      width: double.infinity,
+                      height: 56.h,
+                      child: Stack(
+                        children: [
+                          ..._bankIconUrlList.map(
+                            (bankIconurl) {
+                              final index = _bankIconUrlList.indexWhere(
+                                (element) => element == bankIconurl,
+                              );
 
-                                return Positioned.fromRect(
-                                  rect: _getBankLogoRect(index, 56.h),
-                                  child: AspectRatio(
-                                    aspectRatio: 1,
-                                    child: Padding(
-                                      padding: EdgeInsets.all(8.sp),
-                                      child: CachedNetworkImage(
-                                        imageUrl: bankIconurl,
-                                        fit: BoxFit.contain,
-                                      ),
+                              return Positioned.fromRect(
+                                rect: _getBankLogoRect(index, 56.h),
+                                child: AspectRatio(
+                                  aspectRatio: 1,
+                                  child: Padding(
+                                    padding: EdgeInsets.all(8.sp),
+                                    child: CachedNetworkImage(
+                                      imageUrl: bankIconurl,
+                                      fit: BoxFit.contain,
                                     ),
                                   ),
-                                );
-                              },
-                            ),
-                          ],
-                        ),
+                                ),
+                              );
+                            },
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
-      );
+            ),
+    );
+  }
 
   Rect _getBankLogoRect(int index, double size) => Rect.fromLTWH(
         index * size - (_animationController.value * size),
