@@ -19,6 +19,7 @@ final kThemeData = ThemeData.light().copyWith(
       color: RegalColors.indigo,
     ),
   ),
+  progressIndicatorTheme: const ProgressIndicatorThemeData(color: Colors.white),
   inputDecorationTheme: InputDecorationTheme(
     floatingLabelBehavior: FloatingLabelBehavior.never,
     alignLabelWithHint: true,
@@ -46,7 +47,9 @@ final kThemeData = ThemeData.light().copyWith(
       color: RegalColors.indigo.withOpacity(0.6),
       height: 1.3,
     ),
-    errorStyle: _kTextTheme.bodyMedium,
+    errorStyle: _kTextTheme.bodyMedium?.copyWith(
+      color: RegalColors.red,
+    ),
     isCollapsed: true,
     prefixIconColor: RegalColors.indigo,
     suffixIconColor: RegalColors.indigo,

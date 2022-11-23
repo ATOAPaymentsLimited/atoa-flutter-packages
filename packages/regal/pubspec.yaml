@@ -1,6 +1,6 @@
 name: regal
 description: ATOA Design System
-version: 0.1.0+3
+version: 0.1.0+4
 publish_to: none
 
 environment:
@@ -17,6 +17,7 @@ dependencies:
   flutter_svg: ^1.1.6
   google_fonts: ^3.0.1
   shimmer: ^2.0.0
+  timelines: ^0.1.0
 
 dev_dependencies:
   flutter_test:
