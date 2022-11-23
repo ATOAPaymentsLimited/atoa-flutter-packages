@@ -19,6 +19,7 @@ final kThemeData = ThemeData.light().copyWith(
       color: RegalColors.indigo,
     ),
   ),
+  progressIndicatorTheme: const ProgressIndicatorThemeData(color: Colors.white),
   inputDecorationTheme: InputDecorationTheme(
     floatingLabelBehavior: FloatingLabelBehavior.never,
     alignLabelWithHint: true,
