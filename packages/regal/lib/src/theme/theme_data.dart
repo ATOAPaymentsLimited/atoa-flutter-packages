@@ -76,7 +76,7 @@ final kThemeData = ThemeData.light().copyWith(
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       shape: const StadiumBorder(),
-      backgroundColor: RegalColors.indigo,
+      backgroundColor: RegalColors.celticBlue,
       disabledBackgroundColor: RegalColors.grey.disabled,
     ),
   ),

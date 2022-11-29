@@ -10,12 +10,25 @@ const double kxtraLarge = 20;
 const double kHuge = 24;
 
 enum Spacing {
+  /// 2
   tiny,
+
+  /// 4
   mini,
+
+  /// 8
   small,
+
+  /// 12
   medium,
+
+  /// 16
   large,
+
+  /// 20
   xtraLarge,
+
+  /// 24
   huge,
 }
 
