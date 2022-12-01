@@ -77,7 +77,12 @@ final kThemeData = ThemeData.light().copyWith(
     style: ElevatedButton.styleFrom(
       shape: const StadiumBorder(),
       backgroundColor: RegalColors.celticBlue,
-      disabledBackgroundColor: RegalColors.grey.disabled,
+      disabledBackgroundColor: RegalColors.grey.shade20,
+      disabledForegroundColor: Colors.white,
+      textStyle: _kTextTheme.labelSmall?.copyWith(
+        color: Colors.white,
+        fontWeight: FontWeight.bold,
+      ),
     ),
   ),
   outlinedButtonTheme: OutlinedButtonThemeData(
