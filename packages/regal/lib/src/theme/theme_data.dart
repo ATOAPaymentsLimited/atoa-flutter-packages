@@ -11,12 +11,15 @@ final kThemeData = ThemeData.light().copyWith(
   primaryColorDark: RegalColors.indigo,
   scaffoldBackgroundColor: const Color(0xffffffff),
   textTheme: _kTextTheme,
-  appBarTheme: const AppBarTheme(
+  appBarTheme: AppBarTheme(
     systemOverlayStyle: SystemUiOverlayStyle.dark,
     color: Colors.transparent,
     elevation: 0,
-    iconTheme: IconThemeData(
+    iconTheme: const IconThemeData(
       color: RegalColors.indigo,
+    ),
+    titleTextStyle: _kTextTheme.labelLarge!.copyWith(
+      fontWeight: FontWeight.bold,
     ),
   ),
   progressIndicatorTheme: const ProgressIndicatorThemeData(color: Colors.white),
@@ -75,10 +78,12 @@ final kThemeData = ThemeData.light().copyWith(
   ),
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
+      elevation: 0,
       shape: const StadiumBorder(),
       backgroundColor: RegalColors.celticBlue,
       disabledBackgroundColor: RegalColors.grey.shade20,
       disabledForegroundColor: Colors.white,
+      fixedSize: Size.fromHeight(60.sp),
       textStyle: _kTextTheme.labelSmall?.copyWith(
         color: Colors.white,
         fontWeight: FontWeight.bold,
@@ -89,6 +94,7 @@ final kThemeData = ThemeData.light().copyWith(
     style: OutlinedButton.styleFrom(
       foregroundColor: RegalColors.celticBlue,
       backgroundColor: Colors.white,
+      fixedSize: Size.fromHeight(60.sp),
       textStyle: _kTextTheme.bodyLarge?.copyWith(
         color: RegalColors.celticBlue,
         fontWeight: FontWeight.bold,
