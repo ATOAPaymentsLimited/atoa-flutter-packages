@@ -63,7 +63,8 @@ final kThemeData = ThemeData.light().copyWith(
     style: TextButton.styleFrom(
       foregroundColor: Colors.white,
       backgroundColor: RegalColors.celticBlue,
-      disabledForegroundColor: Colors.white.withOpacity(0.38),
+      disabledForegroundColor: Colors.white,
+      disabledBackgroundColor: RegalColors.grey.shade20,
       textStyle: _kTextTheme.labelSmall?.copyWith(
         color: Colors.white,
         fontWeight: FontWeight.w700,
@@ -87,7 +88,9 @@ final kThemeData = ThemeData.light().copyWith(
       fixedSize: Size.fromHeight(60.sp),
       textStyle: _kTextTheme.labelSmall?.copyWith(
         color: Colors.white,
-        fontWeight: FontWeight.bold,
+        fontWeight: FontWeight.w700,
+        height: 1.2,
+        letterSpacing: 1.12,
       ),
     ),
   ),
