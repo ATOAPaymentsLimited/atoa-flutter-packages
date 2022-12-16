@@ -13,4 +13,5 @@ class RegalColors {
   static const red = Red();
   static const gold = Gold();
   static const grey = Grey();
+  static const orange = Color(0xFFF0873A);
 }
