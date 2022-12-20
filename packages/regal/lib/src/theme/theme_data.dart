@@ -63,11 +63,13 @@ final kThemeData = ThemeData.light().copyWith(
     style: TextButton.styleFrom(
       foregroundColor: Colors.white,
       backgroundColor: RegalColors.celticBlue,
-      disabledForegroundColor: Colors.white.withOpacity(0.38),
+      disabledForegroundColor: Colors.white,
+      disabledBackgroundColor: RegalColors.grey.shade20,
       textStyle: _kTextTheme.labelSmall?.copyWith(
         color: Colors.white,
-        fontWeight: FontWeight.bold,
-        height: 1.1,
+        fontWeight: FontWeight.w700,
+        height: 1.2,
+        letterSpacing: 1.12,
       ),
       minimumSize: Size(double.infinity, 48.w),
       maximumSize: Size(double.infinity, 60.w),
@@ -86,7 +88,9 @@ final kThemeData = ThemeData.light().copyWith(
       fixedSize: Size.fromHeight(60.sp),
       textStyle: _kTextTheme.labelSmall?.copyWith(
         color: Colors.white,
-        fontWeight: FontWeight.bold,
+        fontWeight: FontWeight.w700,
+        height: 1.2,
+        letterSpacing: 1.12,
       ),
     ),
   ),
@@ -94,10 +98,10 @@ final kThemeData = ThemeData.light().copyWith(
     style: OutlinedButton.styleFrom(
       foregroundColor: RegalColors.celticBlue,
       backgroundColor: Colors.white,
-      fixedSize: Size.fromHeight(60.sp),
-      textStyle: _kTextTheme.bodyLarge?.copyWith(
+      textStyle: _kTextTheme.labelSmall?.copyWith(
         color: RegalColors.celticBlue,
-        fontWeight: FontWeight.bold,
+        fontWeight: FontWeight.w700,
+        height: 1.2,
         letterSpacing: 1.12,
       ),
       minimumSize: Size(double.infinity, 48.w),

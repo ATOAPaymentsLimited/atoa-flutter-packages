@@ -14,4 +14,6 @@ class RegalColors {
   static const gold = Gold();
   static const grey = Grey();
   static const orange = Color(0xFFF0873A);
+  static const aliceBlue = Color(0xFFF4F8FD);
+  static const lavender = Color(0xFFE9F0FB);
 }
