@@ -180,7 +180,10 @@ class CustomNavigationCard extends StatelessWidget {
                         padding: EdgeInsets.all(12.sp),
                         child: SvgPicture.asset(
                           svgAsset!,
-                          color: foregroundColor ?? RegalColors.yankeesBlue,
+                          theme: SvgTheme(
+                            currentColor:
+                                foregroundColor ?? RegalColors.yankeesBlue,
+                          ),
                         ),
                       ),
                     ),
@@ -191,7 +194,7 @@ class CustomNavigationCard extends StatelessWidget {
                     children: [
                       Text(
                         title,
-                        style: Theme.of(context).textTheme.subtitle2?.copyWith(
+                        style: Theme.of(context).textTheme.titleSmall?.copyWith(
                               color: foregroundColor,
                               fontWeight: titleFontWeight,
                             ),
@@ -201,7 +204,7 @@ class CustomNavigationCard extends StatelessWidget {
                         subTitle,
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
-                        style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                        style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                               fontWeight: FontWeight.w400,
                               color:
                                   subTitleTextColor ?? RegalColors.grey.shade40,
@@ -264,8 +267,10 @@ class CustomNavigationCard extends StatelessWidget {
                               height: 32.sp,
                               child: SvgPicture.asset(
                                 svgAsset!,
-                                color:
-                                    foregroundColor ?? RegalColors.yankeesBlue,
+                                theme: SvgTheme(
+                                  currentColor: foregroundColor ??
+                                      RegalColors.yankeesBlue,
+                                ),
                               ),
                             ),
                         SizedBox(height: 8.sp),
@@ -273,7 +278,7 @@ class CustomNavigationCard extends StatelessWidget {
                           title,
                           maxLines: 1,
                           style:
-                              Theme.of(context).textTheme.bodyText1?.copyWith(
+                              Theme.of(context).textTheme.bodyLarge?.copyWith(
                                     height: 1.18,
                                     fontWeight: titleFontWeight,
                                     color: foregroundColor,
@@ -317,7 +322,7 @@ class CustomNavigationCard extends StatelessWidget {
                 ),
                 child: Text(
                   chipTitle!,
-                  style: Theme.of(context).textTheme.bodyText1?.copyWith(
+                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                         fontWeight: FontWeight.w700,
                         color: chipTextColor,
                         height: 1.18,
