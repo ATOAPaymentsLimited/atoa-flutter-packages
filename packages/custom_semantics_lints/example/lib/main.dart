@@ -43,7 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(
           widget.title,
-          semanticsLabel: 'widget.title',
+          semanticsLabel: widget.title,
         ),
       ),
       body: Center(

@@ -16,7 +16,7 @@ class AddSemanticsLabelFix extends DartFix {
       if (node.staticType!.element!.displayName != 'Text') return;
 
       // We verify that the variable declaration is where our warning is located
-      if (!analysisError.sourceRange.intersects(node.sourceRange)) return;
+      // if (!analysisError.sourceRange.intersects(node.sourceRange)) return;
 
       // We define one edit, giving it a message which will show-up in the IDE.
       final changeBuilder = reporter.createChangeBuilder(
@@ -29,7 +29,7 @@ class AddSemanticsLabelFix extends DartFix {
       changeBuilder.addDartFileEdit((builder) async {
         builder.addSimpleInsertion(
           analysisError.sourceRange.end - 1,
-          "semanticsLabel: '${node.argumentList.arguments[0].toString().split(' ').last}',",
+          "semanticsLabel: ${node.argumentList.arguments[0].toString().split(' ').last},",
         );
       });
     });
