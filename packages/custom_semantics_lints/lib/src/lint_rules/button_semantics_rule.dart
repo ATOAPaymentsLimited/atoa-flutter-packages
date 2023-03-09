@@ -24,7 +24,7 @@ class ButtonSemanticsRule extends DartLintRule {
   ) {
     // InstanceCreationExpression refer to the widgets in the widget tree.
     context.registry.addInstanceCreationExpression((node) {
-      if ((node.staticType!.element!.displayName.contains('Button') ||
+      if ((node.staticType!.element!.displayName.endsWith('Button') ||
               node.staticType!.element!.displayName == 'CustomSwitch') &&
           node.parent!.parent!.parent!.beginToken.toString() != 'Semantics') {
         reporter.reportErrorForNode(code, node);

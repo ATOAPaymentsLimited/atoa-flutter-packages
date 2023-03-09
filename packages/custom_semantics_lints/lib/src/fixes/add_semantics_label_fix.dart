@@ -13,10 +13,10 @@ class AddSemanticsLabelFix extends DartFix {
   ) {
     // InstanceCreationExpression refer to the widgets in the widget tree.
     context.registry.addInstanceCreationExpression((node) {
-      if (node.staticType!.element!.displayName != 'Text') return;
+      if (node.staticType?.element?.displayName != 'Text') return;
 
       // We verify that the variable declaration is where our warning is located
-      // if (!analysisError.sourceRange.intersects(node.sourceRange)) return;
+      if (!analysisError.sourceRange.intersects(node.sourceRange)) return;
 
       // We define one edit, giving it a message which will show-up in the IDE.
       final changeBuilder = reporter.createChangeBuilder(
