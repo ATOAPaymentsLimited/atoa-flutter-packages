@@ -2,14 +2,14 @@ import 'package:analyzer/error/error.dart';
 import 'package:analyzer/error/listener.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
-import '../fixes/wrap_with_semantics_widget_fix.dart';
+import '../fixes/wrap_button_with_semantics_widget_fix.dart';
 
 class ButtonSemanticsRule extends DartLintRule {
   ButtonSemanticsRule() : super(code: _code);
 
   // Message to be shown for this semantic rule
   static const _code = LintCode(
-    name: 'semantics_widget_missing',
+    name: 'button_semantics_widget_missing',
     problemMessage: 'Button should be wrapped with Semantics widget',
     errorSeverity: ErrorSeverity.ERROR,
   );
@@ -24,8 +24,7 @@ class ButtonSemanticsRule extends DartLintRule {
   ) {
     // InstanceCreationExpression refer to the widgets in the widget tree.
     context.registry.addInstanceCreationExpression((node) {
-      if ((node.staticType!.element!.displayName.endsWith('Button') ||
-              node.staticType!.element!.displayName == 'CustomSwitch') &&
+      if (node.staticType!.element!.displayName.endsWith('Button') &&
           node.parent!.parent!.parent!.beginToken.toString() != 'Semantics') {
         reporter.reportErrorForNode(code, node);
       }
@@ -34,7 +33,5 @@ class ButtonSemanticsRule extends DartLintRule {
 
   // Retrieve quick fix for this semantic rule
   @override
-  List<Fix> getFixes() => [
-        WrapWithSemanticsFix(isTextField: false),
-      ];
+  List<Fix> getFixes() => [WrapButtonWithSemanticsFix()];
 }

@@ -1,6 +1,6 @@
 name: custom_semantics_lints
 description: Custom semantics lints for ATOA internal packages.
-version: 1.0.2
+version: 1.0.3
 publish_to: none
 
 environment:

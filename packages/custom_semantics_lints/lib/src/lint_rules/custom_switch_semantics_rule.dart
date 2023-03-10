@@ -2,14 +2,15 @@ import 'package:analyzer/error/error.dart';
 import 'package:analyzer/error/listener.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
-import '../fixes/wrap_with_semantics_widget_fix.dart';
+import '../fixes/wrap_switch_with_semantics_widget_fix.dart';
 
 class CustomSwitchSemanticsRule extends DartLintRule {
   CustomSwitchSemanticsRule() : super(code: _code);
 
   // Message to be shown for this semantic rule
   static const _code = LintCode(
-    name: 'semantics_widget_missing',
+    name: 'custom_switch_semantics_widget_missing',
+    uniqueName: 'custom_switch_semantics_widget_missing',
     problemMessage: 'Custom switch should be wrapped with Semantics widget',
     errorSeverity: ErrorSeverity.ERROR,
   );
@@ -33,7 +34,5 @@ class CustomSwitchSemanticsRule extends DartLintRule {
 
   // Retrieve quick fix for this semantic rule
   @override
-  List<Fix> getFixes() => [
-        WrapWithSemanticsFix(isTextField: false),
-      ];
+  List<Fix> getFixes() => [WrapSwitchWithSemanticsFix()];
 }

@@ -52,7 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             Text(
               widget.title,
-              semanticsLabel: 'widget.title',
+              semanticsLabel: widget.title,
             ),
             const Text(
               'You have pushed the button this many times:',
@@ -66,7 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
             Semantics(
               button: true,
               enabled: true,
-              label: "child: Text('Test', semanticsLabel: 'Test')",
+              label: "{}",
               child: TextButton(
                 onPressed: () {},
                 child: const Text(
@@ -84,8 +84,9 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             Semantics(
-              textField: true,
-              label: "Icon(Icons.add)",
+              button: true,
+              enabled: true,
+              label: "{}",
               child: IconButton(
                 onPressed: () {},
                 icon: const Icon(Icons.add),
@@ -94,23 +95,24 @@ class _MyHomePageState extends State<MyHomePage> {
             Semantics(
               button: true,
               enabled: true,
-              label: "activeColor: Colors.white",
+              label: "{}",
               child: CustomSwitch(
                 onChanged: (value) {},
                 activeColor: Colors.white,
               ),
             ),
             Semantics(
-                textField: true,
-                label: "100",
-                child: TextField(
-                  controller: TextEditingController(),
-                  maxLength: 100,
-                  decoration: const InputDecoration(
-                    counterText: '',
-                    hintText: '',
-                  ),
-                )),
+              textField: true,
+              label: "TextEditingController()",
+              child: TextField(
+                controller: TextEditingController(),
+                maxLength: 100,
+                decoration: const InputDecoration(
+                  counterText: '',
+                  hintText: '',
+                ),
+              ),
+            ),
           ],
         ),
       ),
