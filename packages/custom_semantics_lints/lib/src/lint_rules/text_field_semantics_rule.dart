@@ -2,14 +2,15 @@ import 'package:analyzer/error/error.dart';
 import 'package:analyzer/error/listener.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
-import '../fixes/wrap_with_semantics_widget_fix.dart';
+import '../fixes/wrap_text_field_with_semantics_widget_fix.dart';
 
 class TextFieldSemanticsRule extends DartLintRule {
   TextFieldSemanticsRule() : super(code: _code);
 
   // Message to be shown for this semantic rule
   static const _code = LintCode(
-    name: 'semantics_widget_missing',
+    name: 'text_field_semantics_widget_missing',
+    uniqueName: 'text_field_semantics_widget_missing',
     problemMessage: 'TextField should be wrapped with Semantics widget',
     errorSeverity: ErrorSeverity.ERROR,
   );
@@ -33,7 +34,5 @@ class TextFieldSemanticsRule extends DartLintRule {
 
   // Retrieve quick fixed for this semantic rule
   @override
-  List<Fix> getFixes() => [
-        WrapWithSemanticsFix(isTextField: true),
-      ];
+  List<Fix> getFixes() => [WrapTextFieldWithSemanticsFix()];
 }

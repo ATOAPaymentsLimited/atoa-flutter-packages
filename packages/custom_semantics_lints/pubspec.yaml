@@ -1,7 +1,8 @@
 name: custom_semantics_lints
-description: A starting point for Dart libraries or applications.
-version: 1.0.0
-# repository: https://github.com/my_org/my_repo
+description: Custom semantics lints for ATOA internal packages.
+version: 1.0.3
+publish_to: none
+
 environment:
   sdk: ">=2.18.0 <3.0.0"
 

@@ -52,11 +52,11 @@ analyzer:
 
 - Add below lines to pubspec.yaml under `dev_dependencies`
 ```yaml
-custom_semantics_lint:
+custom_semantics_lints:
     git:
       url: git@atoa.github.com:ATOAPaymentsLimited/atoa-flutter-packages.git
       ref: main
-      path: packages/custom_semantics_lint
+      path: packages/custom_semantics_lints
 ```
 ```yaml
 flutter_lints: ^2.0.0

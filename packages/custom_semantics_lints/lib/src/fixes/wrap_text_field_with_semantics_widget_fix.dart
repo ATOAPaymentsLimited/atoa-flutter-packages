@@ -2,13 +2,7 @@ import 'package:analyzer/error/error.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
 // Fix to wrap widget with Semantics widget
-class WrapWithSemanticsFix extends DartFix {
-  final bool isTextField;
-
-  WrapWithSemanticsFix({
-    required this.isTextField,
-  });
-
+class WrapTextFieldWithSemanticsFix extends DartFix {
   @override
   void run(
     CustomLintResolver resolver,
@@ -21,9 +15,7 @@ class WrapWithSemanticsFix extends DartFix {
     context.registry.addInstanceCreationExpression((node) {
       // Check whether Button or CustomSwitch or TextField widget
       // is wrapped with Semantics widget or not.
-      if ((!node.staticType!.element!.displayName.contains('Button') &&
-              node.staticType!.element!.displayName != 'CustomSwitch' &&
-              node.staticType!.element!.displayName != 'TextField') ||
+      if (node.staticType!.element!.displayName != 'TextField' ||
           node.parent!.parent!.parent!.beginToken.toString() == 'Semantics') {
         return;
       }
@@ -41,15 +33,9 @@ class WrapWithSemanticsFix extends DartFix {
       changeBuilder.addDartFileEdit((builder) async {
         builder.addSimpleInsertion(
           analysisError.sourceRange.offset,
-          isTextField
-              ? """Semantics(
+          """Semantics(
             textField: true, 
-            label: "${node.argumentList.arguments[1].toString().split(' ').last}",
-            child: """
-              : """Semantics(
-            button: true, 
-            enabled: true, 
-            label: "${node.argumentList.arguments[1].toString().split(' ').last}",
+            label: "${node.argumentList.arguments[0].toString().split(' ').last}",
             child: """,
         );
         builder.addSimpleInsertion(
