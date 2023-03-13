@@ -38,3 +38,26 @@ Need to include the import the package to the dart file where it will be used, u
 ```dart
 import 'package:regal/regal.dart';;
 ```
+
+### 2. Custom Semantics Lint - Custom lint to add semanticsLabel or Wrap with Semantics widget for improving accessibility
+
+### Usage
+
+- Add below lines to analysis_options.yaml
+```yaml
+analyzer:
+  plugins:
+    - custom_lint
+```
+
+- Add below lines to pubspec.yaml under `dev_dependencies`
+```yaml
+custom_semantics_lints:
+    git:
+      url: git@atoa.github.com:ATOAPaymentsLimited/atoa-flutter-packages.git
+      ref: main
+      path: packages/custom_semantics_lints
+```
+```yaml
+flutter_lints: ^2.0.0
+```
