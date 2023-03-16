@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meta/meta.dart';
 
 typedef TrackClickEvent = void Function(
   BuildContext context,
@@ -13,21 +14,19 @@ class CustomClickEventTrackHandler {
   static void registerCallback(TrackClickEvent onCallback) {
     _onCallback = onCallback;
   }
-}
 
-/// Done this to hide it access/view outside the package
-extension TrackCustomClickEvent on CustomClickEventTrackHandler {
+  @internal
   static void dispatch(
     BuildContext context,
     String trackLabel, {
     Map<String, dynamic>? trackProperties,
   }) {
-    if (CustomClickEventTrackHandler._onCallback == null) {
+    if (_onCallback == null) {
       throw FlutterError(
         'TrackClickEvent Callback must be defined before using widgets that require it',
       );
     }
-    CustomClickEventTrackHandler._onCallback?.call(
+    _onCallback?.call(
       context,
       trackLabel,
       trackProperties: trackProperties,

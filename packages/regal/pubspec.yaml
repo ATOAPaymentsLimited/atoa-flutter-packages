@@ -16,6 +16,7 @@ dependencies:
   flutter_screenutil: ^5.6.0
   flutter_svg: ^2.0.1
   google_fonts: ^4.0.3
+  meta: ^1.8.0
   shimmer: ^2.0.0
   timelines: ^0.1.0
 

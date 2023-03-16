@@ -60,7 +60,7 @@ class CustomTextButton extends TextButton {
       return;
     }
     try {
-      TrackCustomClickEvent.dispatch(context, trackLabel);
+      CustomClickEventTrackHandler.dispatch(context, trackLabel);
     } catch (e) {
       // Fail Silently
     }
