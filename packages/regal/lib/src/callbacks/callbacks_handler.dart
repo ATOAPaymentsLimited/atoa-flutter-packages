@@ -11,8 +11,17 @@ class CustomClickEventTrackHandler {
   static TrackClickEvent? _onCallback;
 
   // ignore: use_setters_to_change_properties
-  static void registerCallback(TrackClickEvent onCallback) {
-    _onCallback = onCallback;
+  static void registerCallback({required TrackClickEvent onClickEvent}) {
+    if (_onCallback != null) {
+      throw FlutterError(
+        '''
+  TrackClickEvent Callback is already registered.
+
+  Did you call it multiple times in your application?
+          ''',
+      );
+    }
+    _onCallback = onClickEvent;
   }
 
   @internal
@@ -22,8 +31,14 @@ class CustomClickEventTrackHandler {
     Map<String, dynamic>? trackProperties,
   }) {
     if (_onCallback == null) {
-      throw FlutterError(
-        'TrackClickEvent Callback must be defined before using widgets that require it',
+      throw UnimplementedError(
+        '''
+  TrackClickEvent Callback must be defined before using widgets that require it.
+  Did you forget to do CustomClickEventTrackHandler.registerCallback() ?
+
+  Register the callback at top-level of your app, to log and track your click events, 
+  or you can disable tracking by setting enableTracking:false in your widget
+          ''',
       );
     }
     _onCallback?.call(

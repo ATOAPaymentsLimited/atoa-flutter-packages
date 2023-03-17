@@ -62,6 +62,11 @@ class CustomTextButton extends TextButton {
     try {
       CustomClickEventTrackHandler.dispatch(context, trackLabel);
     } catch (e) {
+      if (e is UnimplementedError) {
+        throw FlutterError(
+          e.message ?? 'Seems that callback is not registered',
+        );
+      }
       // Fail Silently
     }
   }
