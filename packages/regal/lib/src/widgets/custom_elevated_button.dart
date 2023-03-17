@@ -4,8 +4,8 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:regal/src/mixin/event_track_mixin.dart';
 
-class CustomTextButton extends TextButton with EventTrackMixin {
-  const CustomTextButton({
+class CustomElevatedButton extends ElevatedButton with EventTrackMixin {
+  const CustomElevatedButton({
     super.key,
     required this.context,
     required this.trackLabel,
@@ -22,7 +22,7 @@ class CustomTextButton extends TextButton with EventTrackMixin {
     this.enableTracking = true,
   });
 
-  factory CustomTextButton.icon({
+  factory CustomElevatedButton.icon({
     Key? key,
     required BuildContext context,
     required String trackLabel,
@@ -38,7 +38,7 @@ class CustomTextButton extends TextButton with EventTrackMixin {
     required Widget icon,
     required Widget label,
     bool enableTracking,
-  }) = _CustomTextButtonWithIcon;
+  }) = _CustomElevatedButtonWithIcon;
 
   final BuildContext context;
 
@@ -56,8 +56,8 @@ class CustomTextButton extends TextButton with EventTrackMixin {
       : null;
 }
 
-class _CustomTextButtonWithIcon extends CustomTextButton {
-  _CustomTextButtonWithIcon({
+class _CustomElevatedButtonWithIcon extends CustomElevatedButton {
+  _CustomElevatedButtonWithIcon({
     super.key,
     required super.context,
     required super.trackLabel,
@@ -76,15 +76,15 @@ class _CustomTextButtonWithIcon extends CustomTextButton {
   }) : super(
           autofocus: autofocus ?? false,
           clipBehavior: clipBehavior ?? Clip.none,
-          child: _CustomTextButtonWithIconChild(icon: icon, label: label),
+          child: _CustomElevatedButtonWithIconChild(icon: icon, label: label),
         );
 
   @override
   ButtonStyle defaultStyleOf(BuildContext context) {
     final scaledPadding = ButtonStyleButton.scaledPadding(
-      const EdgeInsets.all(8),
-      const EdgeInsets.symmetric(horizontal: 4),
-      const EdgeInsets.symmetric(horizontal: 4),
+      const EdgeInsetsDirectional.fromSTEB(12, 0, 16, 0),
+      const EdgeInsets.symmetric(horizontal: 8),
+      const EdgeInsetsDirectional.fromSTEB(8, 0, 4, 0),
       MediaQuery.maybeOf(context)?.textScaleFactor ?? 1,
     );
     return super.defaultStyleOf(context).copyWith(
@@ -93,8 +93,8 @@ class _CustomTextButtonWithIcon extends CustomTextButton {
   }
 }
 
-class _CustomTextButtonWithIconChild extends StatelessWidget {
-  const _CustomTextButtonWithIconChild({
+class _CustomElevatedButtonWithIconChild extends StatelessWidget {
+  const _CustomElevatedButtonWithIconChild({
     required this.label,
     required this.icon,
   });

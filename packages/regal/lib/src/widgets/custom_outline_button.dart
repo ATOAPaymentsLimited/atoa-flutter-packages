@@ -4,8 +4,8 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:regal/src/mixin/event_track_mixin.dart';
 
-class CustomTextButton extends TextButton with EventTrackMixin {
-  const CustomTextButton({
+class CustomOutlinedButton extends OutlinedButton with EventTrackMixin {
+  const CustomOutlinedButton({
     super.key,
     required this.context,
     required this.trackLabel,
@@ -22,14 +22,12 @@ class CustomTextButton extends TextButton with EventTrackMixin {
     this.enableTracking = true,
   });
 
-  factory CustomTextButton.icon({
+  factory CustomOutlinedButton.icon({
     Key? key,
     required BuildContext context,
     required String trackLabel,
     required VoidCallback? onPressed,
     VoidCallback? onLongPress,
-    ValueChanged<bool>? onHover,
-    ValueChanged<bool>? onFocusChange,
     ButtonStyle? style,
     FocusNode? focusNode,
     bool? autofocus,
@@ -38,7 +36,7 @@ class CustomTextButton extends TextButton with EventTrackMixin {
     required Widget icon,
     required Widget label,
     bool enableTracking,
-  }) = _CustomTextButtonWithIcon;
+  }) = _CustomOutlinedButtonWithIcon;
 
   final BuildContext context;
 
@@ -56,15 +54,13 @@ class CustomTextButton extends TextButton with EventTrackMixin {
       : null;
 }
 
-class _CustomTextButtonWithIcon extends CustomTextButton {
-  _CustomTextButtonWithIcon({
+class _CustomOutlinedButtonWithIcon extends CustomOutlinedButton {
+  _CustomOutlinedButtonWithIcon({
     super.key,
     required super.context,
     required super.trackLabel,
     required super.onPressed,
     super.onLongPress,
-    super.onHover,
-    super.onFocusChange,
     super.style,
     super.focusNode,
     bool? autofocus,
@@ -76,25 +72,12 @@ class _CustomTextButtonWithIcon extends CustomTextButton {
   }) : super(
           autofocus: autofocus ?? false,
           clipBehavior: clipBehavior ?? Clip.none,
-          child: _CustomTextButtonWithIconChild(icon: icon, label: label),
+          child: _CustomOutlinedButtonWithIconChild(icon: icon, label: label),
         );
-
-  @override
-  ButtonStyle defaultStyleOf(BuildContext context) {
-    final scaledPadding = ButtonStyleButton.scaledPadding(
-      const EdgeInsets.all(8),
-      const EdgeInsets.symmetric(horizontal: 4),
-      const EdgeInsets.symmetric(horizontal: 4),
-      MediaQuery.maybeOf(context)?.textScaleFactor ?? 1,
-    );
-    return super.defaultStyleOf(context).copyWith(
-          padding: MaterialStatePropertyAll<EdgeInsetsGeometry>(scaledPadding),
-        );
-  }
 }
 
-class _CustomTextButtonWithIconChild extends StatelessWidget {
-  const _CustomTextButtonWithIconChild({
+class _CustomOutlinedButtonWithIconChild extends StatelessWidget {
+  const _CustomOutlinedButtonWithIconChild({
     required this.label,
     required this.icon,
   });

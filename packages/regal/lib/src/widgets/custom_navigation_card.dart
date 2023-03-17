@@ -34,6 +34,7 @@ class CustomNavigationCard extends StatelessWidget {
     this.chipTextColor,
     this.focusLinesDuration = const Duration(milliseconds: 24000),
     this.focusLinesgradientColor = RegalColors.gold,
+    this.enableTracking = true,
   })  : assert(
           !(chipTitle == null &&
               (chipBackgroundColor != null ||
@@ -66,6 +67,7 @@ class CustomNavigationCard extends StatelessWidget {
     this.backgroundColor = Colors.white,
     this.foregroundColor = RegalColors.yankeesBlue,
     this.splashColor,
+    this.enableTracking = true,
   })  : assert(
           !(icon == null && svgAsset == null),
           'Either icon or svgAsset is Required',
@@ -155,12 +157,19 @@ class CustomNavigationCard extends StatelessWidget {
 
   final bool _showTileView;
 
+  /// [enableTracking] can be used for analytics for tracking click events to the
+  /// widgets
+  final bool enableTracking;
+
   @override
   Widget build(BuildContext context) {
     if (_showTileView) {
       return Material(
         color: backgroundColor,
-        child: InkWell(
+        child: CustomInkWell(
+          context: context,
+          trackLabel: '$title Card',
+          enableTracking: enableTracking,
           splashColor: splashColor ?? Colors.grey.withOpacity(0.2),
           onTap: onPressed,
           child: Padding(
@@ -243,7 +252,10 @@ class CustomNavigationCard extends StatelessWidget {
           child: Material(
             color: backgroundColor,
             borderRadius: BorderRadius.circular(12.r),
-            child: InkWell(
+            child: CustomInkWell(
+              context: context,
+              trackLabel: '$title Card',
+              enableTracking: enableTracking,
               borderRadius: BorderRadius.circular(12.r),
               splashColor: Colors.grey.withOpacity(0.4),
               onTap: onPressed,
