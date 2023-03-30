@@ -9,25 +9,34 @@ class CarouselItemWidget extends StatelessWidget {
     required this.imageUrl,
     this.onTap,
     this.disableAnimationsForTest = false,
-    required this.aspectRatio,
+    this.padding,
   });
 
   final String imageUrl;
   final VoidCallback? onTap;
   final bool disableAnimationsForTest;
-  final double aspectRatio;
+  final EdgeInsets? padding;
 
   @override
   Widget build(BuildContext context) => Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 4),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(12),
-          child: Stack(
-            fit: StackFit.expand,
-            children: [
-              CachedNetworkImage(
-                imageUrl: imageUrl,
-                errorWidget: (_, __, ___) => Shimmer.fromColors(
+        padding: padding ?? const EdgeInsets.all(4),
+        child: Stack(
+          fit: StackFit.expand,
+          children: [
+            CachedNetworkImage(
+              imageUrl: imageUrl,
+              errorWidget: (_, __, ___) => Shimmer.fromColors(
+                enabled: !disableAnimationsForTest,
+                baseColor: RegalColors.grey.shade20,
+                highlightColor: RegalColors.grey.shade20.withOpacity(0.05),
+                child: Container(
+                  width: double.infinity,
+                  color: Colors.white,
+                ),
+              ),
+              placeholder: (_, __) => ClipRRect(
+                borderRadius: BorderRadius.circular(24),
+                child: Shimmer.fromColors(
                   enabled: !disableAnimationsForTest,
                   baseColor: RegalColors.grey.shade20,
                   highlightColor: RegalColors.grey.shade20.withOpacity(0.05),
@@ -36,31 +45,16 @@ class CarouselItemWidget extends StatelessWidget {
                     color: Colors.white,
                   ),
                 ),
-                placeholder: (_, __) => Shimmer.fromColors(
-                  enabled: !disableAnimationsForTest,
-                  baseColor: RegalColors.grey.shade20,
-                  highlightColor: RegalColors.grey.shade20.withOpacity(0.05),
-                  child: AspectRatio(
-                    aspectRatio: 2.358,
-                    child: Container(
-                      width: double.infinity,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-                fit: BoxFit.fill,
-                width: double.infinity,
               ),
-              Material(
-                color: Colors.transparent,
-                borderRadius: BorderRadius.circular(12),
-                child: InkWell(
-                  onTap: onTap,
-                  splashColor: RegalColors.celticBlue.withOpacity(0.22),
-                ),
-              ),
-            ],
-          ),
+              fit: BoxFit.fill,
+              width: double.infinity,
+            ),
+            InkWell(
+              borderRadius: BorderRadius.circular(24),
+              onTap: onTap,
+              splashColor: RegalColors.celticBlue.withOpacity(0.22),
+            ),
+          ],
         ),
       );
 }
