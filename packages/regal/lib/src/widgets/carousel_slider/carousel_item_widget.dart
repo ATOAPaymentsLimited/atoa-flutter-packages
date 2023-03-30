@@ -9,11 +9,13 @@ class CarouselItemWidget extends StatelessWidget {
     required this.imageUrl,
     this.onTap,
     this.disableAnimationsForTest = false,
+    required this.aspectRatio,
   });
 
   final String imageUrl;
   final VoidCallback? onTap;
   final bool disableAnimationsForTest;
+  final double aspectRatio;
 
   @override
   Widget build(BuildContext context) => Padding(
