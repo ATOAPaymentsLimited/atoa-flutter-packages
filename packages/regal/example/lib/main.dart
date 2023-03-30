@@ -248,6 +248,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 offersItemWidgetBuilder: (context, index) {
                   return CarouselItemWidget(
                     imageUrl: offerImgUrl[index],
+                    aspectRatio: 1.17,
                   );
                 },
               ),
@@ -261,6 +262,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 offersItemWidgetBuilder: (context, index) {
                   return CarouselItemWidget(
                     imageUrl: offerImgUrl[index],
+                    aspectRatio: 1.17,
                   );
                 },
               )
