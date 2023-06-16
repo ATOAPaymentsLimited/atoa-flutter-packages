@@ -1,7 +1,7 @@
 import 'dart:io';
 
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 import 'package:image/image.dart' as img;
@@ -12,6 +12,8 @@ import 'kyb_view.dart';
 
 class FaceDetectorView extends StatefulWidget {
   final Widget? bottomSheet;
+  final Widget Function(BuildContext context, bool canCapture,
+      CameraController? cameraController)? floatingActionButton;
   final PermissionStatus Function()? cameraPermissionError;
   final Image Function()? onCapture;
   final Widget? cameraPermissionDeniedScreen;
@@ -21,6 +23,7 @@ class FaceDetectorView extends StatefulWidget {
   const FaceDetectorView({
     super.key,
     this.bottomSheet,
+    this.floatingActionButton,
     this.cameraPermissionError,
     this.onCapture,
     this.errorScreen,
@@ -55,11 +58,12 @@ class _FaceDetectorViewState extends State<FaceDetectorView>
     }
   }
 
-  @override
-  void dispose() {
-    _faceDetectorController.dispose();
-    super.dispose();
-  }
+  //TODO: Doubt: adding this here gives a 'already disposed' error
+  // @override
+  // void dispose() {
+  //   _faceDetectorController.dispose();
+  //   super.dispose();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -93,6 +97,8 @@ class _FaceDetectorViewState extends State<FaceDetectorView>
           widget.onValidatedImageCapture.call(image);
         },
         errorScreen: widget.errorScreen,
+        bottomSheet: widget.bottomSheet,
+        floatingActionButton: widget.floatingActionButton,
       );
     }
   }

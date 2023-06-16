@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:camera/camera.dart';
 import 'package:face_detector_view/src/utils/face_extension.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:face_detector_view/src/views/default_floating_action_button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mlkit_face_detection/google_mlkit_face_detection.dart';
 
@@ -13,14 +13,15 @@ class CameraView extends StatefulWidget {
   const CameraView({
     Key? key,
     required this.cameras,
-    required this.title,
     required this.onValidatedImageCapture,
     this.bottomSheet,
+    this.floatingActionButton,
     this.initialDirection = CameraLensDirection.front,
   }) : super(key: key);
 
-  final String title;
   final Widget? bottomSheet;
+  final Widget Function(BuildContext, bool, CameraController?)?
+      floatingActionButton;
   final List<CameraDescription> cameras;
   final Function(XFile) onValidatedImageCapture;
   final CameraLensDirection initialDirection;
@@ -32,7 +33,6 @@ class CameraView extends StatefulWidget {
 class _CameraViewState extends State<CameraView> with WidgetsBindingObserver {
   CameraController? _controller;
   int _cameraIndex = -1;
-  final ValueNotifier<bool> pressed = ValueNotifier(false);
 
   bool _isBusy = false;
   bool _canCapture = false;
@@ -51,6 +51,7 @@ class _CameraViewState extends State<CameraView> with WidgetsBindingObserver {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
 
+    //TODO: test this code
     if (widget.cameras.any(
       (element) =>
           element.lensDirection == widget.initialDirection &&
@@ -90,6 +91,11 @@ class _CameraViewState extends State<CameraView> with WidgetsBindingObserver {
   }
 
   @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+  }
+
+  @override
   void dispose() {
     _stopLiveFeed();
     WidgetsBinding.instance.removeObserver(this);
@@ -102,31 +108,6 @@ class _CameraViewState extends State<CameraView> with WidgetsBindingObserver {
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: _liveFeedBody(),
-    );
-  }
-
-  Widget? _floatingActionButton() {
-    return ValueListenableBuilder<bool>(
-      valueListenable: pressed,
-      builder: (context, state, _) {
-        return Align(
-          alignment: Alignment.bottomCenter,
-          child: SizedBox(
-            height: 100.0,
-            width: 100.0,
-            child: InkWell(
-              onTap: _canCapture ? onImageCapture : null,
-              child: SvgPicture.asset(
-                'assets/click_picture_button.svg',
-                colorFilter: ColorFilter.mode(
-                  pressed.value || !_canCapture ? Colors.grey : Colors.white,
-                  BlendMode.srcIn,
-                ),
-              ),
-            ),
-          ),
-        );
-      },
     );
   }
 
@@ -162,9 +143,13 @@ class _CameraViewState extends State<CameraView> with WidgetsBindingObserver {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                if (_floatingActionButton() != null) ...[
-                  _floatingActionButton()!,
-                ],
+                widget.floatingActionButton
+                        ?.call(context, _canCapture, _controller) ??
+                    DefaultFloatingActionButton(
+                      enabled: _canCapture,
+                      cameraController: _controller!,
+                      onValidatedImageCapture: widget.onValidatedImageCapture,
+                    ),
                 const SizedBox(
                   height: 20.0,
                 ),
@@ -174,7 +159,7 @@ class _CameraViewState extends State<CameraView> with WidgetsBindingObserver {
                 ),
               ],
             ),
-          )
+          ),
         ],
       ),
     );
@@ -200,7 +185,9 @@ class _CameraViewState extends State<CameraView> with WidgetsBindingObserver {
   }
 
   Future _stopLiveFeed() async {
-    await _controller?.stopImageStream();
+    if (_controller?.value.isStreamingImages ?? true) {
+      await _controller?.stopImageStream();
+    }
     await _controller?.dispose();
     _controller = null;
   }
@@ -248,14 +235,16 @@ class _CameraViewState extends State<CameraView> with WidgetsBindingObserver {
   Future<void> processImage(InputImage inputImage) async {
     if (_isBusy) return;
     _isBusy = true;
+    final size = MediaQuery.of(context).size;
 
     final faces = await _faceDetector.processImage(inputImage);
 
     if (inputImage.metadata?.size != null &&
         inputImage.metadata?.rotation != null &&
         faces.length == 1 &&
-        faceInCenter(faces.first)) {
-      final isFaceValidated = faceInCenter(faces.first);
+        //TODO: Multiple faceInCenter calls
+        faces.first.faceInCenter(size)) {
+      final isFaceValidated = faces.first.faceInCenter(size);
 
       //TODO: ValueChanged can be used here to prevent setStates? (Millions)
       _customPaint = CustomPaint(
@@ -272,45 +261,5 @@ class _CameraViewState extends State<CameraView> with WidgetsBindingObserver {
     }
     _isBusy = false;
     if (mounted) setState(() {});
-  }
-
-  void onImageCapture() async {
-    pressed.value = true;
-    //TODO:
-    await _controller!.stopImageStream();
-    final faceImage = await _controller!.takePicture();
-    widget.onValidatedImageCapture.call(faceImage);
-    await Future.delayed(const Duration(milliseconds: 200));
-    pressed.value = false;
-  }
-
-  bool faceInCenter(Face face) {
-    final boundingBox = face.boundingBox;
-
-    final size = MediaQuery.of(context).size;
-    final centerOffset = Offset(size.width / 2, size.height / 2);
-    final maxDeviation = Offset(centerOffset.dx + 200, centerOffset.dy + 400);
-    final minDeviation = Offset(centerOffset.dx, centerOffset.dy + 100);
-
-    if (isSmallerThan(minDeviation, boundingBox.center) &&
-        isSmallerThan(boundingBox.center, maxDeviation) &&
-        face.isNotPannedLeftOrRight() &&
-        face.isNotPannedTopOrBottom() &&
-        face.isNotRotated()) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  bool isSmallerThan(Offset x, Offset y) {
-    if (x.dx > y.dx) {
-      return false;
-    }
-    if (x.dy > y.dy) {
-      return false;
-    }
-
-    return true;
   }
 }

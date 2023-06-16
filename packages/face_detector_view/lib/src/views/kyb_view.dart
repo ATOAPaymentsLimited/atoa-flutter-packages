@@ -4,12 +4,17 @@ import 'package:flutter/material.dart';
 import 'camera_view.dart';
 
 class KybView extends StatefulWidget {
+  final Widget? bottomSheet;
+  final Widget Function(BuildContext, bool, CameraController?)?
+      floatingActionButton;
   final Image Function()? onCapture;
   final Widget? errorScreen;
   final Function(XFile) onValidatedImageCapture;
 
   const KybView({
     super.key,
+    this.bottomSheet,
+    this.floatingActionButton,
     this.onCapture,
     this.errorScreen,
     required this.onValidatedImageCapture,
@@ -36,9 +41,10 @@ class _KybViewState extends State<KybView> with WidgetsBindingObserver {
           }
 
           return CameraView(
-            title: 'Face Detector',
             cameras: snapshot.data!,
             onValidatedImageCapture: widget.onValidatedImageCapture,
+            bottomSheet: widget.bottomSheet,
+            floatingActionButton: widget.floatingActionButton,
           );
         }
 
