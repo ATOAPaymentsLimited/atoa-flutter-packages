@@ -58,12 +58,12 @@ class _FaceDetectorViewState extends State<FaceDetectorView>
     }
   }
 
-  //TODO: Doubt: adding this here gives a 'already disposed' error
-  // @override
-  // void dispose() {
-  //   _faceDetectorController.dispose();
-  //   super.dispose();
-  // }
+  @override
+  void dispose() {
+    //TODO: Doubt: adding this here gives a 'already disposed' error
+    // _faceDetectorController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -73,7 +73,7 @@ class _FaceDetectorViewState extends State<FaceDetectorView>
         selector: (_, state) => state.permissionStatus,
         builder: (context, permissionStatus, child) {
           return AnimatedSwitcher(
-            duration: const Duration(milliseconds: 300),
+            duration: const Duration(milliseconds: 200),
             child: _getChild(permissionStatus),
           );
         },

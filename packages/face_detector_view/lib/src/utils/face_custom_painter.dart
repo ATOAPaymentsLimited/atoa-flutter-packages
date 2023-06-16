@@ -113,7 +113,6 @@ class FaceCutoutPainter extends CustomPainter {
     return true;
   }
 
-  //TODO: Regal design system
   Color getStrokeColor() {
     return canTakePhoto ? Colors.green : const Color(0xffD2DDF1);
   }

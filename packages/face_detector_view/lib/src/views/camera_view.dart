@@ -4,6 +4,7 @@ import 'package:camera/camera.dart';
 import 'package:face_detector_view/src/utils/face_extension.dart';
 import 'package:face_detector_view/src/views/default_floating_action_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:google_mlkit_face_detection/google_mlkit_face_detection.dart';
 
 import '../utils/face_custom_painter.dart';
@@ -51,23 +52,10 @@ class _CameraViewState extends State<CameraView> with WidgetsBindingObserver {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
 
-    //TODO: test this code
-    if (widget.cameras.any(
-      (element) =>
-          element.lensDirection == widget.initialDirection &&
-          element.sensorOrientation == 0,
-    )) {
-      _cameraIndex = widget.cameras.indexOf(
-        widget.cameras.firstWhere((element) =>
-            element.lensDirection == widget.initialDirection &&
-            element.sensorOrientation == 0),
-      );
-    } else {
-      for (var i = 0; i < widget.cameras.length; i++) {
-        if (widget.cameras[i].lensDirection == widget.initialDirection) {
-          _cameraIndex = i;
-          break;
-        }
+    for (var i = 0; i < widget.cameras.length; i++) {
+      if (widget.cameras[i].lensDirection == widget.initialDirection) {
+        _cameraIndex = i;
+        break;
       }
     }
 
@@ -82,17 +70,15 @@ class _CameraViewState extends State<CameraView> with WidgetsBindingObserver {
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) async {
+    await Future<void>.delayed(const Duration(milliseconds: 100));
     if (state == AppLifecycleState.paused) {
       _controller?.pausePreview();
     }
     if (state == AppLifecycleState.resumed) {
-      _controller?.resumePreview();
+      SchedulerBinding.instance.addPostFrameCallback((_) {
+        _controller?.resumePreview();
+      });
     }
-  }
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
   }
 
   @override
@@ -196,7 +182,7 @@ class _CameraViewState extends State<CameraView> with WidgetsBindingObserver {
     final inputImage = _inputImageFromCameraImage(image);
     if (inputImage == null) return;
 
-    processImage(inputImage);
+    _processImage(inputImage);
   }
 
   InputImage? _inputImageFromCameraImage(CameraImage image) {
@@ -232,34 +218,23 @@ class _CameraViewState extends State<CameraView> with WidgetsBindingObserver {
     );
   }
 
-  Future<void> processImage(InputImage inputImage) async {
+  Future<void> _processImage(InputImage inputImage) async {
     if (_isBusy) return;
     _isBusy = true;
     final size = MediaQuery.of(context).size;
+    final prevValueCanCapture = _canCapture;
 
     final faces = await _faceDetector.processImage(inputImage);
 
-    if (inputImage.metadata?.size != null &&
-        inputImage.metadata?.rotation != null &&
-        faces.length == 1 &&
-        //TODO: Multiple faceInCenter calls
-        faces.first.faceInCenter(size)) {
-      final isFaceValidated = faces.first.faceInCenter(size);
+    if (faces.length == 1) {
+      final isFaceValidated = faces.first.faceWithinCutout(size);
 
-      //TODO: ValueChanged can be used here to prevent setStates? (Millions)
       _customPaint = CustomPaint(
-        painter: FaceCutoutPainter(
-          canTakePhoto: isFaceValidated,
-        ),
+        painter: FaceCutoutPainter(canTakePhoto: isFaceValidated),
       );
-      _canCapture = true;
-    } else {
-      _customPaint = const CustomPaint(
-        painter: FaceCutoutPainter(canTakePhoto: false),
-      );
-      _canCapture = false;
+      _canCapture = isFaceValidated;
     }
     _isBusy = false;
-    if (mounted) setState(() {});
+    if (mounted && prevValueCanCapture != _canCapture) setState(() {});
   }
 }

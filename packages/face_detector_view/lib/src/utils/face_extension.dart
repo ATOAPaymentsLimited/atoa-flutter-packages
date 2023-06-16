@@ -32,7 +32,7 @@ extension FaceCheck on Face {
         (headEulerAngleZ! < maxDeviation);
   }
 
-  bool faceInCenter(Size mediaSize) {
+  bool faceWithinCutout(Size mediaSize) {
     final boundingBox = this.boundingBox;
 
     final centerOffset = Offset(mediaSize.width / 2, mediaSize.height / 2);
