@@ -36,8 +36,8 @@ extension FaceCheck on Face {
     final boundingBox = this.boundingBox;
 
     final centerOffset = Offset(mediaSize.width / 2, mediaSize.height / 2);
-    final maxDeviation = Offset(centerOffset.dx + 200, centerOffset.dy + 400);
-    final minDeviation = Offset(centerOffset.dx, centerOffset.dy + 100);
+    final maxDeviation = Offset(centerOffset.dx + 250, centerOffset.dy + 300);
+    final minDeviation = Offset(centerOffset.dx + 50, centerOffset.dy + 100);
 
     if (isSmallerThan(minDeviation, boundingBox.center) &&
         isSmallerThan(boundingBox.center, maxDeviation) &&

@@ -118,9 +118,10 @@ class _CameraViewState extends State<CameraView> with WidgetsBindingObserver {
           ),
           Align(
             alignment: Alignment.center.add(const Alignment(0, -0.25)),
-            child: SizedBox(
+            child: Container(
               width: 400,
               height: 400,
+              padding: const EdgeInsets.all(25.0),
               child: _customPaint,
             ),
           ),

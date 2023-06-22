@@ -59,13 +59,6 @@ class _FaceDetectorViewState extends State<FaceDetectorView>
   }
 
   @override
-  void dispose() {
-    //TODO: Doubt: adding this here gives a 'already disposed' error
-    // _faceDetectorController.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (context) => _faceDetectorController,
