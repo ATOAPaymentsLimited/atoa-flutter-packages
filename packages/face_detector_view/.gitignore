@@ -35,3 +35,7 @@ build/
 # Flutter
 .flutter-plugins
 .flutter-plugins-dependencies
+
+# Flutter ios
+./ios/Flutter/Generated.xcconfig
+./ios/Flutter/flutter_export_environment.sh
