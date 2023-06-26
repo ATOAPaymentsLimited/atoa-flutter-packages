@@ -1,10 +1,10 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:camera/camera.dart';
 import 'package:face_detector_view/src/utils/face_extension.dart';
 import 'package:face_detector_view/src/views/default_floating_action_button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:google_mlkit_face_detection/google_mlkit_face_detection.dart';
 
 import '../utils/face_custom_painter.dart';
@@ -70,12 +70,14 @@ class _CameraViewState extends State<CameraView> with WidgetsBindingObserver {
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) async {
-    await Future<void>.delayed(const Duration(milliseconds: 100));
-    if (state == AppLifecycleState.paused) {
+    log(state.toString());
+
+    if (state == AppLifecycleState.paused ||
+        state == AppLifecycleState.inactive) {
       _controller?.pausePreview();
     }
     if (state == AppLifecycleState.resumed) {
-      SchedulerBinding.instance.addPostFrameCallback((_) {
+      WidgetsBinding.instance.addPostFrameCallback((_) async {
         _controller?.resumePreview();
       });
     }
@@ -98,12 +100,13 @@ class _CameraViewState extends State<CameraView> with WidgetsBindingObserver {
   }
 
   Widget _liveFeedBody() {
-    if (_controller?.value.isInitialized == false) {
+    if (_controller == null || _controller?.value.isInitialized == false) {
       return Container();
     }
 
     final size = MediaQuery.of(context).size;
-    final scale = 1 / (_controller!.value.aspectRatio * size.aspectRatio);
+    final scale =
+        1 / ((_controller?.value.aspectRatio ?? 1.0) * size.aspectRatio);
 
     return Container(
       color: Colors.black,
@@ -152,7 +155,7 @@ class _CameraViewState extends State<CameraView> with WidgetsBindingObserver {
     );
   }
 
-  Future _startLiveFeed() async {
+  Future<void> _startLiveFeed() async {
     final camera = widget.cameras[_cameraIndex];
     _controller = CameraController(
       camera,
@@ -171,7 +174,7 @@ class _CameraViewState extends State<CameraView> with WidgetsBindingObserver {
     });
   }
 
-  Future _stopLiveFeed() async {
+  Future<void> _stopLiveFeed() async {
     if (_controller?.value.isStreamingImages ?? true) {
       await _controller?.stopImageStream();
     }
