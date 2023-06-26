@@ -70,10 +70,14 @@ class _DefaultFloatingActionButtonState
   }
 
   void onImageCapture() async {
-    pressed.value = true;
+    if (pressed.value == false) {
+      pressed.value = true;
+    }
 
     //TODO: stopimageStream is a temp fix
-    await widget.cameraController.stopImageStream();
+    if (widget.cameraController.value.isStreamingImages) {
+      await widget.cameraController.stopImageStream();
+    }
     final faceImage = await widget.cameraController.takePicture();
     pressed.value = false;
 
