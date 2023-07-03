@@ -70,8 +70,6 @@ class _CameraViewState extends State<CameraView> with WidgetsBindingObserver {
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) async {
-    log(state.toString());
-
     if (state == AppLifecycleState.paused ||
         state == AppLifecycleState.inactive) {
       _controller?.pausePreview();
@@ -122,8 +120,8 @@ class _CameraViewState extends State<CameraView> with WidgetsBindingObserver {
           Align(
             alignment: Alignment.center.add(const Alignment(0, -0.25)),
             child: Container(
-              width: 400,
-              height: 400,
+              width: 350,
+              height: 350,
               padding: const EdgeInsets.all(25.0),
               child: _customPaint,
             ),
@@ -132,6 +130,7 @@ class _CameraViewState extends State<CameraView> with WidgetsBindingObserver {
             alignment: Alignment.bottomCenter,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 widget.floatingActionButton
                         ?.call(context, _canCapture, _controller) ??
