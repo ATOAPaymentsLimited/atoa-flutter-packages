@@ -74,7 +74,7 @@ class _DefaultFloatingActionButtonState
       pressed.value = true;
     }
 
-    //TODO: stopimageStream is a temp fix
+    //TODO: stopimageStream is a temporary fix
     if (widget.cameraController.value.isStreamingImages) {
       await widget.cameraController.stopImageStream();
     }
