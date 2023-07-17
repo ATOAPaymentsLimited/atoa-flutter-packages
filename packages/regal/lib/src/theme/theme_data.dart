@@ -13,7 +13,7 @@ final kThemeData = ThemeData.light().copyWith(
   colorScheme: ColorScheme.fromSeed(
     seedColor: RegalColors.vividRed,
     onPrimary: RegalColors.darkGrey,
-    error: Colors.red,
+    error: RegalColors.darkOrange,
   ),
   textTheme: _kTextTheme,
   appBarTheme: AppBarTheme(
@@ -159,7 +159,7 @@ final kDarkThemData = kThemeData.copyWith(
     primary: RegalColors.claretRed,
     onPrimary: RegalColors.darkGrey,
     brightness: Brightness.dark,
-    error: Colors.red,
+    error: RegalColors.darkOrange,
   ),
   textTheme: _kTextTheme.apply(
     bodyColor: RegalColors.darkGrey,
