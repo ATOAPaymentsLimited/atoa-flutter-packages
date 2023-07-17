@@ -18,4 +18,5 @@ class RegalColors {
   static const indigo = Color(0xFF15376A);
   static const grey = Grey();
   static const darkGrey = Grey(true);
+  static const licoriceBlack = Color(0xFF200E11);
 }

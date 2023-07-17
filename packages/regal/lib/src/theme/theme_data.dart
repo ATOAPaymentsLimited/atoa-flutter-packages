@@ -61,20 +61,10 @@ final kThemeData = ThemeData.light().copyWith(
       const TextSelectionThemeData(cursorColor: RegalColors.claretRed),
   textButtonTheme: TextButtonThemeData(
     style: TextButton.styleFrom(
-      foregroundColor: Colors.white,
-      backgroundColor: RegalColors.celticBlue,
-      disabledForegroundColor: Colors.white,
-      disabledBackgroundColor: RegalColors.grey.shade20,
+      foregroundColor: RegalColors.vividRed,
       textStyle: _kTextTheme.labelSmall?.copyWith(
-        color: Colors.white,
+        color: RegalColors.vividRed,
         fontWeight: FontWeight.w700,
-        height: 1.2,
-        letterSpacing: 1.12,
-      ),
-      minimumSize: Size(double.infinity, 60.sp),
-      maximumSize: Size(double.infinity, 60.sp),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(100.w),
       ),
     ),
   ),
@@ -82,9 +72,8 @@ final kThemeData = ThemeData.light().copyWith(
     style: ElevatedButton.styleFrom(
       elevation: 0,
       shape: const StadiumBorder(),
-      backgroundColor: RegalColors.celticBlue,
-      disabledBackgroundColor: RegalColors.grey.shade20,
-      disabledForegroundColor: Colors.white,
+      backgroundColor: RegalColors.vividRed,
+      disabledBackgroundColor: const Color.fromRGBO(246, 186, 195, 1),
       fixedSize: Size.fromHeight(60.sp),
       textStyle: _kTextTheme.labelSmall?.copyWith(
         color: Colors.white,
@@ -96,10 +85,10 @@ final kThemeData = ThemeData.light().copyWith(
   ),
   outlinedButtonTheme: OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
-      foregroundColor: RegalColors.celticBlue,
+      foregroundColor: RegalColors.vividRed,
       backgroundColor: Colors.white,
       textStyle: _kTextTheme.labelSmall?.copyWith(
-        color: RegalColors.celticBlue,
+        color: RegalColors.vividRed,
         fontWeight: FontWeight.w700,
         height: 1.2,
         letterSpacing: 1.12,
@@ -107,7 +96,7 @@ final kThemeData = ThemeData.light().copyWith(
       minimumSize: Size(double.infinity, 60.sp),
       maximumSize: Size(double.infinity, 60.sp),
       side: const BorderSide(
-        color: RegalColors.celticBlue,
+        color: RegalColors.vividRed,
       ),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(100.w),
@@ -118,7 +107,7 @@ final kThemeData = ThemeData.light().copyWith(
           if (states.contains(MaterialState.disabled)) {
             return BorderSide(color: RegalColors.grey.disabled);
           }
-          return const BorderSide(color: RegalColors.celticBlue);
+          return const BorderSide(color: RegalColors.vividRed);
         },
       ),
     ),
@@ -155,7 +144,7 @@ final kThemeData = ThemeData.light().copyWith(
 final kDarkThemData = kThemeData.copyWith(
   primaryColor: RegalColors.vividRed,
   primaryColorDark: RegalColors.vividRed,
-  scaffoldBackgroundColor: RegalColors.claretRed,
+  scaffoldBackgroundColor: RegalColors.licoriceBlack,
   brightness: Brightness.dark,
   colorScheme: ColorScheme.fromSeed(
     seedColor: RegalColors.vividRed,
@@ -167,14 +156,37 @@ final kDarkThemData = kThemeData.copyWith(
     displayColor: Colors.white,
   ),
   appBarTheme: const AppBarTheme(
-    backgroundColor: RegalColors.claretRed,
+    backgroundColor: RegalColors.licoriceBlack,
     actionsIconTheme: IconThemeData(
       color: RegalColors.darkGrey,
     ),
     centerTitle: true,
   ),
-
-  
+  textButtonTheme: TextButtonThemeData(
+    style: TextButton.styleFrom(
+      foregroundColor: RegalColors.darkGrey,
+      textStyle: _kTextTheme.labelSmall?.copyWith(
+        color: RegalColors.darkGrey,
+        fontWeight: FontWeight.w700,
+      ),
+    ),
+  ),
+  elevatedButtonTheme: ElevatedButtonThemeData(
+    style: ElevatedButton.styleFrom(
+      elevation: 0,
+      shape: const StadiumBorder(),
+      backgroundColor: RegalColors.vividRed,
+      disabledBackgroundColor: const Color.fromRGBO(95, 21, 34, 1),
+      foregroundColor: RegalColors.darkGrey,
+      fixedSize: Size.fromHeight(60.sp),
+      textStyle: _kTextTheme.labelSmall?.copyWith(
+        color: RegalColors.darkGrey,
+        fontWeight: FontWeight.w700,
+        height: 1.2,
+        letterSpacing: 1.12,
+      ),
+    ),
+  ),
 );
 
 final _kTextTheme = GoogleFonts.latoTextTheme(

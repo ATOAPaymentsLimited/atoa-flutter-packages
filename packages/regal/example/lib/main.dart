@@ -61,6 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
+          padding: Spacing.small.x,
           child: Column(
             children: [
               Builder(builder: (context) {
@@ -245,7 +246,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   padding: const EdgeInsets.all(8.0),
                   child: TextButton(
                     onPressed: () {},
-                    child: const Text("Pay"),
+                    child: const Text("Text Button"),
                   ),
                 ),
               ),
@@ -255,8 +256,24 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: TextButton.icon(
                     onPressed: () {},
                     icon: const Icon(Icons.call_split_rounded),
-                    label: const Text("Split Bills"),
+                    label: const Text("Text Button with Icon"),
                   ),
+                ),
+              ),
+              Spacing.medium.yBox,
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: () {},
+                  child: const Text("Elevated Button"),
+                ),
+              ),
+              Spacing.medium.yBox,
+              const SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: null,
+                  child: Text("Disabled Elevated Button"),
                 ),
               ),
               Spacing.large.yBox,
