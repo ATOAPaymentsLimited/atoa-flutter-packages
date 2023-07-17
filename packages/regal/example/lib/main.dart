@@ -254,9 +254,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextButton.icon(
-                    onPressed: () {},
+                    onPressed: null,
                     icon: const Icon(Icons.call_split_rounded),
-                    label: const Text("Text Button with Icon"),
+                    label: const Text("Disabled Text Button"),
                   ),
                 ),
               ),

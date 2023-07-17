@@ -62,6 +62,7 @@ final kThemeData = ThemeData.light().copyWith(
   textButtonTheme: TextButtonThemeData(
     style: TextButton.styleFrom(
       foregroundColor: RegalColors.vividRed,
+      disabledForegroundColor: RegalColors.disabledVividRed,
       textStyle: _kTextTheme.labelSmall?.copyWith(
         color: RegalColors.vividRed,
         fontWeight: FontWeight.w700,
@@ -166,6 +167,7 @@ final kDarkThemData = kThemeData.copyWith(
   textButtonTheme: TextButtonThemeData(
     style: TextButton.styleFrom(
       foregroundColor: RegalColors.darkGrey,
+      disabledForegroundColor: RegalColors.grey.shade40,
       textStyle: _kTextTheme.labelSmall?.copyWith(
         color: RegalColors.darkGrey,
         fontWeight: FontWeight.w700,
@@ -191,7 +193,7 @@ final kDarkThemData = kThemeData.copyWith(
   outlinedButtonTheme: OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
       foregroundColor: RegalColors.darkGrey,
-      disabledForegroundColor: RegalColors.disabledWhite,
+      disabledForegroundColor: RegalColors.grey.shade40,
       textStyle: _kTextTheme.labelSmall?.copyWith(
         color: RegalColors.vividRed,
         fontWeight: FontWeight.w700,
@@ -207,7 +209,7 @@ final kDarkThemData = kThemeData.copyWith(
       side: MaterialStateProperty.resolveWith(
         (states) {
           if (states.contains(MaterialState.disabled)) {
-            return const BorderSide(color: RegalColors.disabledWhite);
+            return BorderSide(color: RegalColors.grey.shade40);
           }
           return const BorderSide(color: RegalColors.darkGrey);
         },
