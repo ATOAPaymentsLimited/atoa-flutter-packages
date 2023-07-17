@@ -5,15 +5,17 @@ import 'package:regal/regal.dart';
 class RegalColors {
   RegalColors._();
 
-  static const yankeesBlue = Color(0xFF0F2649);
-  static const indigo = Color(0xFF15376A);
-  static const azureishWhite = Color(0xFFD2DDF1);
+  static const vividRed = VividRed();
+  static const darkVividRed = VividRed(true);
+  static const claretRed = Color(0xFF4C0105);
+  static const vividCyan = Color(0xFF27FFDB);
+  static const darkCyan = Color(0xFF188575);
+  static const liteBlue = Color(0xFF8CEFF4);
+  static const darkBlue = Color(0xFF3A76F7);
+  static const liteOrange = Color(0xFFFFD763);
+  static const darkOrange = Color(0xFFF0963B);
   static const celticBlue = Color(0xFF2767C6);
-  static const green = Green();
-  static const red = Red();
-  static const gold = Gold();
+  static const indigo = Color(0xFF15376A);
   static const grey = Grey();
-  static const orange = Color(0xFFF0873A);
-  static const aliceBlue = Color(0xFFF4F8FD);
-  static const lavender = Color(0xFFE9F0FB);
+  static const darkGrey = Grey(true);
 }

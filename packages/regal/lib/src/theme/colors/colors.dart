@@ -1,4 +1,4 @@
 export 'gold.dart';
 export 'green.dart';
 export 'grey.dart';
-export 'red.dart';
+export 'vivid_red.dart';

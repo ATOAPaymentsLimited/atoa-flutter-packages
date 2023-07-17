@@ -4,7 +4,7 @@ import 'package:regal/regal.dart';
 class Gold extends ColorSystem {
   const Gold() : super(0xFFFFDDA9);
   @override
-  Color get shade5 => throw UnimplementedError();
+  Color get shade05 => throw UnimplementedError();
 
   @override
   Color get shade10 => throw UnimplementedError();

@@ -1,27 +1,61 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_state_notifier/flutter_state_notifier.dart';
+import 'package:provider/provider.dart';
 import 'package:regal/regal.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
+late final SharedPreferences prefs;
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  prefs = await SharedPreferences.getInstance();
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      designSize: const Size(375, 812),
-      minTextAdapt: true,
-      builder: (context, _) {
-        return MaterialApp(
-          title: 'Custom Home Grid',
-          theme: kThemeData,
-          home: const MyHomePage(),
-        );
-      },
-    );
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  late ThemeModeNotifier stateNotifier;
+
+  @override
+  void initState() {
+    super.initState();
+    stateNotifier = ThemeModeNotifier(prefs: prefs);
+  }
+
+  @override
+  Widget build(BuildContext context) =>
+      StateNotifierProvider<ThemeModeNotifier, ThemeMode>.value(
+        value: stateNotifier,
+        child: ScreenUtilInit(
+          designSize: const Size(375, 812),
+          minTextAdapt: true,
+          builder: (context, _) {
+            return StateNotifierBuilder<ThemeMode>(
+              stateNotifier: stateNotifier,
+              builder: (context, state, child) => MaterialApp(
+                title: 'Custom Home Grid',
+                themeMode: state,
+                theme: kThemeData,
+                darkTheme: kDarkThemData,
+                home: const MyHomePage(),
+              ),
+            );
+          },
+        ),
+      );
+
+  @override
+  void dispose() {
+    stateNotifier.dispose();
+    super.dispose();
   }
 }
 
@@ -55,6 +89,19 @@ class _MyHomePageState extends State<MyHomePage> {
         child: SingleChildScrollView(
           child: Column(
             children: [
+              Builder(builder: (context) {
+                final state = context.select((ThemeMode mode) => mode);
+                return CupertinoSegmentedControl<ThemeMode>(
+                  children: Map.fromEntries(
+                    ThemeMode.values.map(
+                      (e) => MapEntry(e, Text(e.name)),
+                    ),
+                  ),
+                  groupValue: state,
+                  onValueChanged:
+                      context.read<ThemeModeNotifier>().onValueChanged,
+                );
+              }),
               const Text(
                 "Custom Navigation Card",
                 style: TextStyle(

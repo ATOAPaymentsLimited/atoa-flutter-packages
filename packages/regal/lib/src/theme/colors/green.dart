@@ -5,7 +5,7 @@ class Green extends ColorSystem {
   const Green() : super(0xFF25C348);
 
   @override
-  Color get shade5 => const Color(0xFFF4FCF6);
+  Color get shade05 => const Color(0xFFF4FCF6);
 
   @override
   Color get shade10 => const Color(0xFFE9F9ED);

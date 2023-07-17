@@ -7,8 +7,8 @@ import 'package:regal/regal.dart';
 
 /// The theme of the application.
 final kThemeData = ThemeData.light().copyWith(
-  primaryColor: RegalColors.indigo,
-  primaryColorDark: RegalColors.indigo,
+  primaryColor: RegalColors.claretRed,
+  primaryColorDark: RegalColors.claretRed,
   scaffoldBackgroundColor: const Color(0xffffffff),
   textTheme: _kTextTheme,
   appBarTheme: AppBarTheme(
@@ -16,7 +16,7 @@ final kThemeData = ThemeData.light().copyWith(
     color: Colors.transparent,
     elevation: 0,
     iconTheme: const IconThemeData(
-      color: RegalColors.indigo,
+      color: RegalColors.claretRed,
     ),
     titleTextStyle: _kTextTheme.labelLarge!.copyWith(
       fontWeight: FontWeight.bold,
@@ -40,25 +40,25 @@ final kThemeData = ThemeData.light().copyWith(
       borderRadius: BorderRadius.circular(12.r),
       borderSide: BorderSide(color: RegalColors.grey.shade40),
     ),
-    iconColor: RegalColors.indigo,
+    iconColor: RegalColors.claretRed,
     errorBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(12.r),
       borderSide: const BorderSide(color: Colors.redAccent),
     ),
     errorMaxLines: 2,
     hintStyle: _kTextTheme.labelMedium?.copyWith(
-      color: RegalColors.indigo.withOpacity(0.6),
+      color: RegalColors.claretRed.withOpacity(0.6),
       height: 1.3,
     ),
     errorStyle: _kTextTheme.bodyMedium?.copyWith(
-      color: RegalColors.red,
+      color: RegalColors.vividRed,
     ),
     isCollapsed: true,
-    prefixIconColor: RegalColors.indigo,
-    suffixIconColor: RegalColors.indigo,
+    prefixIconColor: RegalColors.claretRed,
+    suffixIconColor: RegalColors.claretRed,
   ),
   textSelectionTheme:
-      const TextSelectionThemeData(cursorColor: RegalColors.indigo),
+      const TextSelectionThemeData(cursorColor: RegalColors.claretRed),
   textButtonTheme: TextButtonThemeData(
     style: TextButton.styleFrom(
       foregroundColor: Colors.white,
@@ -124,13 +124,13 @@ final kThemeData = ThemeData.light().copyWith(
     ),
   ),
   iconTheme: const IconThemeData(
-    color: RegalColors.indigo,
+    color: RegalColors.claretRed,
   ),
   checkboxTheme: CheckboxThemeData(
     checkColor: MaterialStateProperty.all(Colors.white),
-    fillColor: MaterialStateProperty.all(RegalColors.indigo),
+    fillColor: MaterialStateProperty.all(RegalColors.claretRed),
     shape: RoundedRectangleBorder(
-      side: const BorderSide(color: RegalColors.indigo),
+      side: const BorderSide(color: RegalColors.claretRed),
       borderRadius: BorderRadius.circular(4.r),
     ),
     visualDensity: VisualDensity.compact,
@@ -150,6 +150,31 @@ final kThemeData = ThemeData.light().copyWith(
     ),
     contentTextStyle: _kTextTheme.bodyLarge,
   ),
+);
+
+final kDarkThemData = kThemeData.copyWith(
+  primaryColor: RegalColors.vividRed,
+  primaryColorDark: RegalColors.vividRed,
+  scaffoldBackgroundColor: RegalColors.claretRed,
+  brightness: Brightness.dark,
+  colorScheme: ColorScheme.fromSeed(
+    seedColor: RegalColors.vividRed,
+    brightness: Brightness.dark,
+    error: Colors.red,
+  ),
+  textTheme: _kTextTheme.apply(
+    bodyColor: RegalColors.darkGrey,
+    displayColor: Colors.white,
+  ),
+  appBarTheme: const AppBarTheme(
+    backgroundColor: RegalColors.claretRed,
+    actionsIconTheme: IconThemeData(
+      color: RegalColors.darkGrey,
+    ),
+    centerTitle: true,
+  ),
+
+  
 );
 
 final _kTextTheme = GoogleFonts.latoTextTheme(
@@ -210,7 +235,7 @@ final _kTextTheme = GoogleFonts.latoTextTheme(
       fontWeight: FontWeight.w400,
     ),
   ).apply(
-    bodyColor: RegalColors.indigo,
-    displayColor: RegalColors.indigo,
+    bodyColor: RegalColors.claretRed,
+    displayColor: RegalColors.claretRed,
   ),
 );
