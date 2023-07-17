@@ -6,6 +6,9 @@ class RegalColors {
   RegalColors._();
 
   static const vividRed = VividRed();
+  static const disabledVividRed = Color.fromRGBO(246, 186, 195, 1);
+  static const disabledWhite = Color.fromRGBO(104, 92, 94, 1);
+  static const disabledDarkVividRed = Color.fromRGBO(95, 21, 34, 1);
   static const darkVividRed = VividRed(true);
   static const claretRed = Color(0xFF4C0105);
   static const vividCyan = Color(0xFF27FFDB);

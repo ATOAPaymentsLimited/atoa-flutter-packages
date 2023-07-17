@@ -276,6 +276,22 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: Text("Disabled Elevated Button"),
                 ),
               ),
+              Spacing.medium.yBox,
+              SizedBox(
+                width: double.infinity,
+                child: OutlinedButton(
+                  onPressed: () {},
+                  child: const Text("Outlined Button"),
+                ),
+              ),
+              Spacing.medium.yBox,
+              const SizedBox(
+                width: double.infinity,
+                child: OutlinedButton(
+                  onPressed: null,
+                  child: Text("Disabled Outlined Button"),
+                ),
+              ),
               Spacing.large.yBox,
               SupportedBankSlider(bankIconUrlList: _bankIconUrls),
               Spacing.large.yBox,

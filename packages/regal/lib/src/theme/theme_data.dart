@@ -73,7 +73,8 @@ final kThemeData = ThemeData.light().copyWith(
       elevation: 0,
       shape: const StadiumBorder(),
       backgroundColor: RegalColors.vividRed,
-      disabledBackgroundColor: const Color.fromRGBO(246, 186, 195, 1),
+      disabledBackgroundColor: RegalColors.disabledVividRed,
+      disabledForegroundColor: Colors.white,
       fixedSize: Size.fromHeight(60.sp),
       textStyle: _kTextTheme.labelSmall?.copyWith(
         color: Colors.white,
@@ -86,7 +87,7 @@ final kThemeData = ThemeData.light().copyWith(
   outlinedButtonTheme: OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
       foregroundColor: RegalColors.vividRed,
-      backgroundColor: Colors.white,
+      disabledForegroundColor: RegalColors.disabledVividRed,
       textStyle: _kTextTheme.labelSmall?.copyWith(
         color: RegalColors.vividRed,
         fontWeight: FontWeight.w700,
@@ -105,7 +106,7 @@ final kThemeData = ThemeData.light().copyWith(
       side: MaterialStateProperty.resolveWith(
         (states) {
           if (states.contains(MaterialState.disabled)) {
-            return BorderSide(color: RegalColors.grey.disabled);
+            return const BorderSide(color: RegalColors.disabledVividRed);
           }
           return const BorderSide(color: RegalColors.vividRed);
         },
@@ -176,7 +177,7 @@ final kDarkThemData = kThemeData.copyWith(
       elevation: 0,
       shape: const StadiumBorder(),
       backgroundColor: RegalColors.vividRed,
-      disabledBackgroundColor: const Color.fromRGBO(95, 21, 34, 1),
+      disabledBackgroundColor: RegalColors.disabledDarkVividRed,
       foregroundColor: RegalColors.darkGrey,
       fixedSize: Size.fromHeight(60.sp),
       textStyle: _kTextTheme.labelSmall?.copyWith(
@@ -184,6 +185,32 @@ final kDarkThemData = kThemeData.copyWith(
         fontWeight: FontWeight.w700,
         height: 1.2,
         letterSpacing: 1.12,
+      ),
+    ),
+  ),
+  outlinedButtonTheme: OutlinedButtonThemeData(
+    style: OutlinedButton.styleFrom(
+      foregroundColor: RegalColors.darkGrey,
+      disabledForegroundColor: RegalColors.disabledWhite,
+      textStyle: _kTextTheme.labelSmall?.copyWith(
+        color: RegalColors.vividRed,
+        fontWeight: FontWeight.w700,
+        height: 1.2,
+        letterSpacing: 1.12,
+      ),
+      maximumSize: Size.fromHeight(60.sp),
+      minimumSize: Size.fromHeight(60.sp),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(100.w),
+      ),
+    ).copyWith(
+      side: MaterialStateProperty.resolveWith(
+        (states) {
+          if (states.contains(MaterialState.disabled)) {
+            return const BorderSide(color: RegalColors.disabledWhite);
+          }
+          return const BorderSide(color: RegalColors.darkGrey);
+        },
       ),
     ),
   ),
