@@ -12,7 +12,6 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_screenutil:
-  flutter_state_notifier: ^0.7.3
   provider: ^6.0.5
   regal:
     path: ../

@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_state_notifier/flutter_state_notifier.dart';
 import 'package:provider/provider.dart';
 import 'package:regal/regal.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -14,49 +13,24 @@ void main() async {
   runApp(const MyApp());
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  late ThemeModeNotifier stateNotifier;
-
-  @override
-  void initState() {
-    super.initState();
-    stateNotifier = ThemeModeNotifier(prefs: prefs);
-  }
-
-  @override
-  Widget build(BuildContext context) =>
-      StateNotifierProvider<ThemeModeNotifier, ThemeMode>.value(
-        value: stateNotifier,
-        child: ScreenUtilInit(
-          designSize: const Size(375, 812),
-          minTextAdapt: true,
-          builder: (context, _) {
-            return StateNotifierBuilder<ThemeMode>(
-              stateNotifier: stateNotifier,
-              builder: (context, state, child) => MaterialApp(
-                title: 'Custom Home Grid',
-                themeMode: state,
-                theme: kThemeData,
-                darkTheme: kDarkThemData,
-                home: const MyHomePage(),
-              ),
-            );
-          },
+  Widget build(BuildContext context) => ScreenUtilInit(
+        designSize: const Size(375, 812),
+        minTextAdapt: true,
+        builder: (context, _) => RegalThemeProvider(
+          prefs: prefs,
+          builder: (context, themeMode, child) => MaterialApp(
+            title: 'Custom Home Grid',
+            themeMode: themeMode,
+            theme: kThemeData,
+            darkTheme: kDarkThemData,
+            home: const MyHomePage(),
+          ),
         ),
       );
-
-  @override
-  void dispose() {
-    stateNotifier.dispose();
-    super.dispose();
-  }
 }
 
 class MyHomePage extends StatefulWidget {
@@ -98,8 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ),
                   groupValue: state,
-                  onValueChanged:
-                      context.read<ThemeModeNotifier>().onValueChanged,
+                  onValueChanged: context.themeModeNotifier.onValueChanged,
                 );
               }),
               const Text(

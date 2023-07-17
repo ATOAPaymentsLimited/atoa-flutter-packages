@@ -7,4 +7,5 @@ export 'custom_outline_button.dart';
 export 'custom_text_button.dart';
 export 'focus_lines_shape_animation.dart';
 export 'progress_timeline.dart';
+export 'regal_theme_provider.dart';
 export 'supported_bank_sliders.dart';

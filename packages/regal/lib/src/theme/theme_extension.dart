@@ -1,5 +1,8 @@
 // coverage:ignore-file
+
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:regal/regal.dart';
 
 /// Theme Extension
 extension ThemeX on BuildContext {
@@ -122,4 +125,6 @@ extension ThemeX on BuildContext {
   /// bodySmall            11.0  FontWeight.w400
   /// ```
   TextStyle? get bodySmall => textTheme.bodySmall;
+
+  ThemeModeNotifier get themeModeNotifier => read<ThemeModeNotifier>();
 }
