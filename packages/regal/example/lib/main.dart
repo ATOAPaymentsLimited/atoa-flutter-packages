@@ -59,23 +59,28 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: Builder(builder: (context) {
+        final state = context.select((ThemeMode mode) => mode);
+        return CupertinoSegmentedControl<ThemeMode>(
+          children: Map.fromEntries(
+            ThemeMode.values.map(
+              (e) => MapEntry(
+                  e,
+                  Padding(
+                    padding: Spacing.tiny.all,
+                    child: Text(e.name),
+                  )),
+            ),
+          ),
+          groupValue: state,
+          onValueChanged: context.themeModeNotifier.onValueChanged,
+        );
+      }),
       body: SafeArea(
         child: SingleChildScrollView(
           padding: Spacing.small.x,
           child: Column(
             children: [
-              Builder(builder: (context) {
-                final state = context.select((ThemeMode mode) => mode);
-                return CupertinoSegmentedControl<ThemeMode>(
-                  children: Map.fromEntries(
-                    ThemeMode.values.map(
-                      (e) => MapEntry(e, Text(e.name)),
-                    ),
-                  ),
-                  groupValue: state,
-                  onValueChanged: context.themeModeNotifier.onValueChanged,
-                );
-              }),
               const Text(
                 "Custom Navigation Card",
                 style: TextStyle(

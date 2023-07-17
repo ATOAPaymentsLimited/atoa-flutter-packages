@@ -7,9 +7,14 @@ import 'package:regal/regal.dart';
 
 /// The theme of the application.
 final kThemeData = ThemeData.light().copyWith(
-  primaryColor: RegalColors.claretRed,
+  primaryColor: RegalColors.vividRed,
   primaryColorDark: RegalColors.claretRed,
   scaffoldBackgroundColor: const Color(0xffffffff),
+  colorScheme: ColorScheme.fromSeed(
+    seedColor: RegalColors.vividRed,
+    onPrimary: RegalColors.darkGrey,
+    error: Colors.red,
+  ),
   textTheme: _kTextTheme,
   appBarTheme: AppBarTheme(
     systemOverlayStyle: SystemUiOverlayStyle.dark,
@@ -150,6 +155,8 @@ final kDarkThemData = kThemeData.copyWith(
   brightness: Brightness.dark,
   colorScheme: ColorScheme.fromSeed(
     seedColor: RegalColors.vividRed,
+    primary: RegalColors.claretRed,
+    onPrimary: RegalColors.darkGrey,
     brightness: Brightness.dark,
     error: Colors.red,
   ),
@@ -230,6 +237,11 @@ final _kTextTheme = GoogleFonts.latoTextTheme(
       fontSize: 36.sp,
       fontWeight: FontWeight.bold,
     ),
+    displaySmall: TextStyle(
+      letterSpacing: 0,
+      fontSize: 32.sp,
+      fontWeight: FontWeight.bold,
+    ),
     headlineLarge: TextStyle(
       letterSpacing: 0,
       fontSize: 32.sp,
@@ -240,9 +252,24 @@ final _kTextTheme = GoogleFonts.latoTextTheme(
       fontSize: 28.sp,
       fontWeight: FontWeight.bold,
     ),
+    headlineSmall: TextStyle(
+      letterSpacing: 0,
+      fontSize: 24.sp,
+      fontWeight: FontWeight.bold,
+    ),
     titleLarge: TextStyle(
       letterSpacing: 0,
       fontSize: 24.sp,
+      fontWeight: FontWeight.w400,
+    ),
+    titleMedium: TextStyle(
+      letterSpacing: 0,
+      fontSize: 20.sp,
+      fontWeight: FontWeight.w400,
+    ),
+    titleSmall: TextStyle(
+      letterSpacing: 0,
+      fontSize: 16.sp,
       fontWeight: FontWeight.w400,
     ),
     labelLarge: TextStyle(
