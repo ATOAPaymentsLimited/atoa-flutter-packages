@@ -66,6 +66,7 @@ final kThemeData = ThemeData.light().copyWith(
       const TextSelectionThemeData(cursorColor: RegalColors.claretRed),
   textButtonTheme: TextButtonThemeData(
     style: TextButton.styleFrom(
+      shape: const StadiumBorder(),
       foregroundColor: RegalColors.vividRed,
       disabledForegroundColor: RegalColors.disabledVividRed,
       textStyle: _kTextTheme.labelSmall?.copyWith(
@@ -174,6 +175,7 @@ final kDarkThemData = kThemeData.copyWith(
   textButtonTheme: TextButtonThemeData(
     style: TextButton.styleFrom(
       foregroundColor: RegalColors.darkGrey,
+      shape: const StadiumBorder(),
       disabledForegroundColor: RegalColors.grey.shade40,
       textStyle: _kTextTheme.labelSmall?.copyWith(
         color: RegalColors.darkGrey,
@@ -225,7 +227,7 @@ final kDarkThemData = kThemeData.copyWith(
   ),
 );
 
-final _kTextTheme = GoogleFonts.latoTextTheme(
+final _kTextTheme = GoogleFonts.montserratTextTheme(
   TextTheme(
     displayLarge: TextStyle(
       letterSpacing: 0,
