@@ -26,6 +26,12 @@ final kThemeData = ThemeData.light().copyWith(
       shade60: Color(0xFF666666),
       shade80: Color(0xFF333333),
     ),
+    const RegalColorsX(
+      claretRed: RegalColors.claretRed,
+      vividRed: RegalColors.vividRed,
+      snowWhite: RegalColors.darkGrey,
+      licoriceBlack: RegalColors.licoriceBlack,
+    ),
   ],
   colorScheme: ColorScheme.fromSeed(
     seedColor: RegalColors.vividRed,
@@ -188,6 +194,12 @@ final kDarkThemData = kThemeData.copyWith(
       shade40: Color(0xFFCCCCCC),
       shade60: Color(0xFFE5E5E5),
       shade80: Color(0xFFF2F2F2),
+    ),
+    const RegalColorsX(
+      claretRed: RegalColors.claretRed,
+      vividRed: RegalColors.vividRed,
+      snowWhite: RegalColors.licoriceBlack,
+      licoriceBlack: RegalColors.darkGrey,
     ),
   ],
   colorScheme: ColorScheme.fromSeed(

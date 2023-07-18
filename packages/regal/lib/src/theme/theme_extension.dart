@@ -129,5 +129,8 @@ extension ThemeX on BuildContext {
   ThemeModeNotifier get themeModeNotifier => read<ThemeModeNotifier>();
 
   VividRedX get vividRed => Theme.of(this).extension<VividRedX>()!;
+
   GreyX get grey => Theme.of(this).extension<GreyX>()!;
+
+  RegalColors get regalColor => Theme.of(this).extension<RegalColors>()!;
 }
