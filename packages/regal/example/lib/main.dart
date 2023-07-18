@@ -5,6 +5,8 @@ import 'package:provider/provider.dart';
 import 'package:regal/regal.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'screens/typography_screen.dart';
+
 late final SharedPreferences prefs;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -81,6 +83,17 @@ class _MyHomePageState extends State<MyHomePage> {
           padding: Spacing.small.x,
           child: Column(
             children: [
+              Spacing.medium.yBox,
+              RegalButton.primary(
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const TypographyScreen(),
+                  ));
+                },
+                label: ('Typography'),
+                trackLabel: 'Go to typography',
+              ),
+              Spacing.medium.yBox,
               const Text(
                 "Custom Navigation Card",
                 style: TextStyle(
