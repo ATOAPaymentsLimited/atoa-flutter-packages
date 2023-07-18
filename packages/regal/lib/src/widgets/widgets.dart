@@ -10,6 +10,7 @@ export 'gradient_circular_progress_indicator.dart';
 export 'progress_timeline.dart';
 export 'regal_bottom_sheet.dart';
 export 'regal_button.dart';
+export 'regal_checkbox.dart';
 export 'regal_icon_button.dart';
 export 'regal_theme_provider.dart';
 export 'supported_bank_sliders.dart';
