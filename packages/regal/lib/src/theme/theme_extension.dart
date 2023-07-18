@@ -132,5 +132,5 @@ extension ThemeX on BuildContext {
 
   GreyX get grey => Theme.of(this).extension<GreyX>()!;
 
-  RegalColors get regalColor => Theme.of(this).extension<RegalColors>()!;
+  RegalColorsX get regalColor => Theme.of(this).extension<RegalColorsX>()!;
 }
