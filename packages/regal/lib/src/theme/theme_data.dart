@@ -101,8 +101,6 @@ final kThemeData = ThemeData.light().copyWith(
         height: 1.2,
         letterSpacing: 1.12,
       ),
-      minimumSize: Size(double.infinity, 60.sp),
-      maximumSize: Size(double.infinity, 60.sp),
       side: const BorderSide(
         color: RegalColors.vividRed,
       ),
