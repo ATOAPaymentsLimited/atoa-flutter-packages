@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:regal/regal.dart';
+import 'package:regal/src/theme/theme.dart';
 
 /// Theme Extension
 extension ThemeX on BuildContext {
@@ -128,9 +128,11 @@ extension ThemeX on BuildContext {
 
   ThemeModeNotifier get themeModeNotifier => read<ThemeModeNotifier>();
 
-  VividRedX get vividRed => Theme.of(this).extension<VividRedX>()!;
+  VividRedX get vividRed => theme.extension<VividRedX>()!;
 
-  GreyX get grey => Theme.of(this).extension<GreyX>()!;
+  GreyX get grey => theme.extension<GreyX>()!;
 
-  RegalColorsX get regalColor => Theme.of(this).extension<RegalColorsX>()!;
+  RegalColorsX get regalColor => theme.extension<RegalColorsX>()!;
+
+  TextTheme get montserrat => theme.extension<MontserratX>()!.textTheme;
 }

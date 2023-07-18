@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:regal/regal.dart';
+import 'package:regal/src/theme/theme.dart';
 
 /// The theme of the application.
 final kThemeData = ThemeData.light().copyWith(
@@ -29,13 +29,19 @@ final kThemeData = ThemeData.light().copyWith(
     const RegalColorsX(
       claretRed: RegalColors.claretRed,
       vividRed: RegalColors.vividRed,
-      snowWhite: RegalColors.darkGrey,
+      snowWhite: RegalColors.snowWhite,
       licoriceBlack: RegalColors.licoriceBlack,
+    ),
+    MontserratX(
+      textTheme: kMontserratTextTheme.apply(
+        bodyColor: RegalColors.licoriceBlack,
+        displayColor: RegalColors.licoriceBlack,
+      ),
     ),
   ],
   colorScheme: ColorScheme.fromSeed(
     seedColor: RegalColors.vividRed,
-    onPrimary: RegalColors.darkGrey,
+    onPrimary: RegalColors.snowWhite,
     error: RegalColors.darkOrange,
     primaryContainer: RegalColors.vividRed,
     onPrimaryContainer: RegalColors.claretRed,
@@ -199,36 +205,42 @@ final kDarkThemData = kThemeData.copyWith(
       claretRed: RegalColors.claretRed,
       vividRed: RegalColors.vividRed,
       snowWhite: RegalColors.licoriceBlack,
-      licoriceBlack: RegalColors.darkGrey,
+      licoriceBlack: RegalColors.snowWhite,
+    ),
+    MontserratX(
+      textTheme: kMontserratTextTheme.apply(
+        bodyColor: RegalColors.snowWhite,
+        displayColor: RegalColors.snowWhite,
+      ),
     ),
   ],
   colorScheme: ColorScheme.fromSeed(
     seedColor: RegalColors.vividRed,
     primary: RegalColors.claretRed,
-    onPrimary: RegalColors.darkGrey,
+    onPrimary: RegalColors.snowWhite,
     brightness: Brightness.dark,
     error: RegalColors.darkOrange,
     primaryContainer: RegalColors.claretRed,
-    onPrimaryContainer: RegalColors.darkGrey,
+    onPrimaryContainer: RegalColors.snowWhite,
   ),
   textTheme: kInterTextTheme.apply(
-    bodyColor: RegalColors.darkGrey,
+    bodyColor: RegalColors.snowWhite,
     displayColor: Colors.white,
   ),
   appBarTheme: const AppBarTheme(
     backgroundColor: RegalColors.licoriceBlack,
     actionsIconTheme: IconThemeData(
-      color: RegalColors.darkGrey,
+      color: RegalColors.snowWhite,
     ),
     centerTitle: true,
   ),
   textButtonTheme: TextButtonThemeData(
     style: TextButton.styleFrom(
-      foregroundColor: RegalColors.darkGrey,
+      foregroundColor: RegalColors.snowWhite,
       shape: const StadiumBorder(),
       disabledForegroundColor: RegalColors.grey.shade40,
       textStyle: kInterTextTheme.labelSmall?.copyWith(
-        color: RegalColors.darkGrey,
+        color: RegalColors.snowWhite,
         fontWeight: FontWeight.w700,
       ),
     ),
@@ -239,9 +251,9 @@ final kDarkThemData = kThemeData.copyWith(
       shape: const StadiumBorder(),
       backgroundColor: RegalColors.vividRed,
       disabledBackgroundColor: RegalColors.disabledDarkVividRed,
-      foregroundColor: RegalColors.darkGrey,
+      foregroundColor: RegalColors.snowWhite,
       textStyle: kInterTextTheme.labelSmall?.copyWith(
-        color: RegalColors.darkGrey,
+        color: RegalColors.snowWhite,
         fontWeight: FontWeight.w700,
         height: 1.2,
         letterSpacing: 1.12,
@@ -250,7 +262,7 @@ final kDarkThemData = kThemeData.copyWith(
   ),
   outlinedButtonTheme: OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
-      foregroundColor: RegalColors.darkGrey,
+      foregroundColor: RegalColors.snowWhite,
       disabledForegroundColor: RegalColors.grey.shade40,
       textStyle: kInterTextTheme.labelSmall?.copyWith(
         color: RegalColors.vividRed,
@@ -267,7 +279,7 @@ final kDarkThemData = kThemeData.copyWith(
           if (states.contains(MaterialState.disabled)) {
             return BorderSide(color: RegalColors.grey.shade40);
           }
-          return const BorderSide(color: RegalColors.darkGrey);
+          return const BorderSide(color: RegalColors.snowWhite);
         },
       ),
     ),
