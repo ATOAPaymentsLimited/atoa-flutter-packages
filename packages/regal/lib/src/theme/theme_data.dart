@@ -133,6 +133,7 @@ final kThemeData = ThemeData.light().copyWith(
     visualDensity: VisualDensity.compact,
   ),
   bottomSheetTheme: BottomSheetThemeData(
+    backgroundColor: Colors.white,
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.only(
         topLeft: Radius.circular(32.w),
@@ -225,9 +226,18 @@ final kDarkThemData = kThemeData.copyWith(
       ),
     ),
   ),
+  bottomSheetTheme: BottomSheetThemeData(
+    backgroundColor: RegalColors.licoriceBlack,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.only(
+        topLeft: Radius.circular(32.w),
+        topRight: Radius.circular(32.w),
+      ),
+    ),
+  ),
 );
 
-final _kTextTheme = GoogleFonts.montserratTextTheme(
+final _kTextTheme = GoogleFonts.interTextTheme(
   TextTheme(
     displayLarge: TextStyle(
       letterSpacing: 0,
@@ -305,7 +315,7 @@ final _kTextTheme = GoogleFonts.montserratTextTheme(
       fontWeight: FontWeight.w400,
     ),
   ).apply(
-    bodyColor: RegalColors.claretRed,
-    displayColor: RegalColors.claretRed,
+    bodyColor: RegalColors.licoriceBlack,
+    displayColor: RegalColors.licoriceBlack,
   ),
 );
