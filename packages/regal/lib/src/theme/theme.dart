@@ -1,3 +1,4 @@
+export 'brightness_extension.dart';
 export 'color_system.dart';
 export 'colors/colors.dart';
 export 'regal_colors.dart';

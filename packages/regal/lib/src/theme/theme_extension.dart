@@ -135,4 +135,6 @@ extension ThemeX on BuildContext {
   RegalColorsX get regalColor => theme.extension<RegalColorsX>()!;
 
   TextTheme get montserrat => theme.extension<MontserratX>()!.textTheme;
+
+  Brightness get brightness => theme.brightness;
 }
