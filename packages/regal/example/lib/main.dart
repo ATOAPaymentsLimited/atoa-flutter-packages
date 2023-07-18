@@ -1,3 +1,4 @@
+import 'package:example/widgets/regal_buttons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -246,57 +247,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: () {},
               ),
               Spacing.large.yBox,
-              SizedBox(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: TextButton(
-                    onPressed: () {},
-                    child: const Text("Text Button"),
-                  ),
-                ),
-              ),
-              SizedBox(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: TextButton.icon(
-                    onPressed: null,
-                    icon: const Icon(Icons.call_split_rounded),
-                    label: const Text("Disabled Text Button"),
-                  ),
-                ),
-              ),
-              Spacing.medium.yBox,
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: () {},
-                  child: const Text("Elevated Button"),
-                ),
-              ),
-              Spacing.medium.yBox,
-              const SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: null,
-                  child: Text("Disabled Elevated Button"),
-                ),
-              ),
-              Spacing.medium.yBox,
-              SizedBox(
-                width: double.infinity,
-                child: OutlinedButton(
-                  onPressed: () {},
-                  child: const Text("Outlined Button"),
-                ),
-              ),
-              Spacing.medium.yBox,
-              const SizedBox(
-                width: double.infinity,
-                child: OutlinedButton(
-                  onPressed: null,
-                  child: Text("Disabled Outlined Button"),
-                ),
-              ),
+              Spacing.large.yBox,
+              const RegalButtons(),
               Spacing.large.yBox,
               SupportedBankSlider(bankIconUrlList: _bankIconUrls),
               Spacing.large.yBox,
