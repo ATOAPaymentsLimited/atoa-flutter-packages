@@ -188,7 +188,6 @@ final kDarkThemData = kThemeData.copyWith(
       backgroundColor: RegalColors.vividRed,
       disabledBackgroundColor: RegalColors.disabledDarkVividRed,
       foregroundColor: RegalColors.darkGrey,
-      fixedSize: Size.fromHeight(60.sp),
       textStyle: kInterTextTheme.labelSmall?.copyWith(
         color: RegalColors.darkGrey,
         fontWeight: FontWeight.w700,
@@ -207,8 +206,6 @@ final kDarkThemData = kThemeData.copyWith(
         height: 1.2,
         letterSpacing: 1.12,
       ),
-      maximumSize: Size.fromHeight(60.sp),
-      minimumSize: Size.fromHeight(60.sp),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(100.w),
       ),
