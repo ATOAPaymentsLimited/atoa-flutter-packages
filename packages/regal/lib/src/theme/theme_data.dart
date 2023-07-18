@@ -9,10 +9,22 @@ final kThemeData = ThemeData.light().copyWith(
   primaryColor: RegalColors.vividRed,
   primaryColorDark: RegalColors.claretRed,
   scaffoldBackgroundColor: const Color(0xffffffff),
+  extensions: [
+    const VividRedX(
+      tint05: Color(0xFFFEF4F6),
+      tint10: Color(0xFFFCE9EC),
+      tint20: Color(0xFFFAD4DA),
+      shade40: Color(0xFF5B0F1C),
+      shade60: Color(0xFF89172A),
+      shade80: Color(0xFFB61E38),
+    ),
+  ],
   colorScheme: ColorScheme.fromSeed(
     seedColor: RegalColors.vividRed,
     onPrimary: RegalColors.darkGrey,
     error: RegalColors.darkOrange,
+    primaryContainer: RegalColors.vividRed,
+    onPrimaryContainer: RegalColors.claretRed,
   ),
   textTheme: kInterTextTheme,
   appBarTheme: AppBarTheme(
@@ -152,12 +164,24 @@ final kDarkThemData = kThemeData.copyWith(
   primaryColorDark: RegalColors.vividRed,
   scaffoldBackgroundColor: RegalColors.licoriceBlack,
   brightness: Brightness.dark,
+  extensions: [
+    const VividRedX(
+      tint05: Color(0xFF5B0F1C),
+      tint10: Color(0xFF89172A),
+      tint20: Color(0xFFB61E38),
+      shade40: Color(0xFFFEF4F6),
+      shade60: Color(0xFFFCE9EC),
+      shade80: Color(0xFFFAD4DA),
+    ),
+  ],
   colorScheme: ColorScheme.fromSeed(
     seedColor: RegalColors.vividRed,
     primary: RegalColors.claretRed,
     onPrimary: RegalColors.darkGrey,
     brightness: Brightness.dark,
     error: RegalColors.darkOrange,
+    primaryContainer: RegalColors.claretRed,
+    onPrimaryContainer: RegalColors.darkGrey,
   ),
   textTheme: kInterTextTheme.apply(
     bodyColor: RegalColors.darkGrey,

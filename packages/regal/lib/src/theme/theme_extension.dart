@@ -127,4 +127,6 @@ extension ThemeX on BuildContext {
   TextStyle? get bodySmall => textTheme.bodySmall;
 
   ThemeModeNotifier get themeModeNotifier => read<ThemeModeNotifier>();
+
+  VividRedX get vividRed => Theme.of(this).extension<VividRedX>()!;
 }
