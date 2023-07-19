@@ -236,9 +236,9 @@ final kDarkThemData = kThemeData.copyWith(
   ),
   textButtonTheme: TextButtonThemeData(
     style: TextButton.styleFrom(
-      foregroundColor: RegalColors.snowWhite,
+      foregroundColor: RegalColors.vividRed,
       shape: const StadiumBorder(),
-      disabledForegroundColor: RegalColors.grey.shade40,
+      disabledForegroundColor: RegalColors.disabledVividRed,
       textStyle: kInterTextTheme.labelSmall?.copyWith(
         color: RegalColors.vividRed,
         fontWeight: FontWeight.w700,
