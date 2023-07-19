@@ -77,12 +77,10 @@ class _BuildIcon extends StatelessWidget {
     if (type == _RegalIconButtonType.asset) {
       return SvgPicture.asset(
         assetPath,
-        colorFilter: iconColor != null
-            ? ColorFilter.mode(
-                iconColor!,
-                BlendMode.srcIn,
-              )
-            : null,
+        colorFilter: ColorFilter.mode(
+          iconColor ?? context.regalColor.licoriceBlack,
+          BlendMode.srcIn,
+        ),
         height: iconSize,
         width: iconSize,
         fit: BoxFit.scaleDown,
@@ -91,7 +89,7 @@ class _BuildIcon extends StatelessWidget {
     if (type == _RegalIconButtonType.icon) {
       return Icon(
         iconData,
-        color: iconColor,
+        color: iconColor ?? context.regalColor.licoriceBlack,
         size: iconSize,
       );
     }
