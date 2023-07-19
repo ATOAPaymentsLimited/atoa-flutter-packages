@@ -240,7 +240,7 @@ final kDarkThemData = kThemeData.copyWith(
       shape: const StadiumBorder(),
       disabledForegroundColor: RegalColors.grey.shade40,
       textStyle: kInterTextTheme.labelSmall?.copyWith(
-        color: RegalColors.snowWhite,
+        color: RegalColors.vividRed,
         fontWeight: FontWeight.w700,
       ),
     ),
