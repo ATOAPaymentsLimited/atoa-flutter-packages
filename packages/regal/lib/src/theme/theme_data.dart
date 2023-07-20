@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:regal/src/theme/theme.dart';
 
 /// The theme of the application.
@@ -33,9 +34,80 @@ final kThemeData = ThemeData.light().copyWith(
       licoriceBlack: RegalColors.licoriceBlack,
     ),
     MontserratX(
-      textTheme: kMontserratTextTheme.apply(
-        bodyColor: RegalColors.licoriceBlack,
-        displayColor: RegalColors.licoriceBlack,
+      displayLarge: GoogleFonts.montserrat(
+        color: RegalColors.licoriceBlack,
+        fontSize: 48.sp,
+        fontWeight: FontWeight.bold,
+      ),
+      displayMedium: GoogleFonts.montserrat(
+        color: RegalColors.licoriceBlack,
+        fontSize: 36.sp,
+        fontWeight: FontWeight.bold,
+      ),
+      displaySmall: GoogleFonts.montserrat(
+        color: RegalColors.licoriceBlack,
+        fontSize: 32.sp,
+        fontWeight: FontWeight.bold,
+      ),
+      headlineLarge: GoogleFonts.montserrat(
+        color: RegalColors.licoriceBlack,
+        fontSize: 32.sp,
+        fontWeight: FontWeight.bold,
+      ),
+      headlineMedium: GoogleFonts.montserrat(
+        color: RegalColors.licoriceBlack,
+        fontSize: 28.sp,
+        fontWeight: FontWeight.bold,
+      ),
+      headlineSmall: GoogleFonts.montserrat(
+        color: RegalColors.licoriceBlack,
+        fontSize: 24.sp,
+        fontWeight: FontWeight.bold,
+      ),
+      titleLarge: GoogleFonts.montserrat(
+        color: RegalColors.licoriceBlack,
+        fontSize: 24.sp,
+        fontWeight: FontWeight.w400,
+      ),
+      titleMedium: GoogleFonts.montserrat(
+        color: RegalColors.licoriceBlack,
+        fontSize: 20.sp,
+        fontWeight: FontWeight.w400,
+      ),
+      titleSmall: GoogleFonts.montserrat(
+        color: RegalColors.licoriceBlack,
+        fontSize: 16.sp,
+        fontWeight: FontWeight.w400,
+      ),
+      labelLarge: GoogleFonts.montserrat(
+        color: RegalColors.licoriceBlack,
+        fontSize: 20.sp,
+        fontWeight: FontWeight.w400,
+      ),
+      labelMedium: GoogleFonts.montserrat(
+        color: RegalColors.licoriceBlack,
+        fontSize: 18.sp,
+        fontWeight: FontWeight.w400,
+      ),
+      labelSmall: GoogleFonts.montserrat(
+        color: RegalColors.licoriceBlack,
+        fontSize: 16.sp,
+        fontWeight: FontWeight.w400,
+      ),
+      bodyLarge: GoogleFonts.montserrat(
+        color: RegalColors.licoriceBlack,
+        fontSize: 14.sp,
+        fontWeight: FontWeight.w400,
+      ),
+      bodyMedium: GoogleFonts.montserrat(
+        color: RegalColors.licoriceBlack,
+        fontSize: 12.sp,
+        fontWeight: FontWeight.w400,
+      ),
+      bodySmall: GoogleFonts.montserrat(
+        color: RegalColors.licoriceBlack,
+        fontSize: 11.sp,
+        fontWeight: FontWeight.w400,
       ),
     ),
   ],
@@ -208,9 +280,80 @@ final kDarkThemData = kThemeData.copyWith(
       licoriceBlack: RegalColors.snowWhite,
     ),
     MontserratX(
-      textTheme: kMontserratTextTheme.apply(
-        bodyColor: RegalColors.snowWhite,
-        displayColor: RegalColors.snowWhite,
+      displayLarge: GoogleFonts.montserrat(
+        color: RegalColors.snowWhite,
+        fontSize: 48.sp,
+        fontWeight: FontWeight.bold,
+      ),
+      displayMedium: GoogleFonts.montserrat(
+        color: RegalColors.snowWhite,
+        fontSize: 36.sp,
+        fontWeight: FontWeight.bold,
+      ),
+      displaySmall: GoogleFonts.montserrat(
+        color: RegalColors.snowWhite,
+        fontSize: 32.sp,
+        fontWeight: FontWeight.bold,
+      ),
+      headlineLarge: GoogleFonts.montserrat(
+        color: RegalColors.snowWhite,
+        fontSize: 32.sp,
+        fontWeight: FontWeight.bold,
+      ),
+      headlineMedium: GoogleFonts.montserrat(
+        color: RegalColors.snowWhite,
+        fontSize: 28.sp,
+        fontWeight: FontWeight.bold,
+      ),
+      headlineSmall: GoogleFonts.montserrat(
+        color: RegalColors.snowWhite,
+        fontSize: 24.sp,
+        fontWeight: FontWeight.bold,
+      ),
+      titleLarge: GoogleFonts.montserrat(
+        color: RegalColors.snowWhite,
+        fontSize: 24.sp,
+        fontWeight: FontWeight.w400,
+      ),
+      titleMedium: GoogleFonts.montserrat(
+        color: RegalColors.snowWhite,
+        fontSize: 20.sp,
+        fontWeight: FontWeight.w400,
+      ),
+      titleSmall: GoogleFonts.montserrat(
+        color: RegalColors.snowWhite,
+        fontSize: 16.sp,
+        fontWeight: FontWeight.w400,
+      ),
+      labelLarge: GoogleFonts.montserrat(
+        color: RegalColors.snowWhite,
+        fontSize: 20.sp,
+        fontWeight: FontWeight.w400,
+      ),
+      labelMedium: GoogleFonts.montserrat(
+        color: RegalColors.snowWhite,
+        fontSize: 18.sp,
+        fontWeight: FontWeight.w400,
+      ),
+      labelSmall: GoogleFonts.montserrat(
+        color: RegalColors.snowWhite,
+        fontSize: 16.sp,
+        fontWeight: FontWeight.w400,
+      ),
+      bodyLarge: GoogleFonts.montserrat(
+        color: RegalColors.snowWhite,
+        fontSize: 14.sp,
+        fontWeight: FontWeight.w400,
+      ),
+      bodyMedium: GoogleFonts.montserrat(
+        color: RegalColors.snowWhite,
+        fontSize: 12.sp,
+        fontWeight: FontWeight.w400,
+      ),
+      bodySmall: GoogleFonts.montserrat(
+        color: RegalColors.snowWhite,
+        fontSize: 11.sp,
+        fontWeight: FontWeight.w400,
       ),
     ),
   ],
