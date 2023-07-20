@@ -126,7 +126,9 @@ final kThemeData = ThemeData.light().copyWith(
     iconTheme: const IconThemeData(
       color: RegalColors.claretRed,
     ),
-    titleTextStyle: kInterTextTheme.labelLarge!.copyWith(
+    titleTextStyle: GoogleFonts.montserrat(
+      color: RegalColors.licoriceBlack,
+      fontSize: 20.sp,
       fontWeight: FontWeight.bold,
     ),
   ),
@@ -370,12 +372,17 @@ final kDarkThemData = kThemeData.copyWith(
     bodyColor: RegalColors.snowWhite,
     displayColor: Colors.white,
   ),
-  appBarTheme: const AppBarTheme(
+  appBarTheme: AppBarTheme(
     backgroundColor: RegalColors.licoriceBlack,
-    actionsIconTheme: IconThemeData(
+    actionsIconTheme: const IconThemeData(
       color: RegalColors.snowWhite,
     ),
     centerTitle: true,
+    titleTextStyle: GoogleFonts.montserrat(
+      color: RegalColors.snowWhite,
+      fontSize: 20.sp,
+      fontWeight: FontWeight.bold,
+    ),
   ),
   textButtonTheme: TextButtonThemeData(
     style: TextButton.styleFrom(
