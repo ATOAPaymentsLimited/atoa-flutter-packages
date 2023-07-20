@@ -20,20 +20,94 @@ class MontserratX extends ThemeExtension<MontserratX> {
     required this.bodySmall,
   });
 
+  /// performs a simple [Theme.of(context).displayLarge] action and returns given [displayLarge]
+  /// ```
+  /// displayLarge        48.0  FontWeight.w700
+  /// ```
   final TextStyle displayLarge;
+
+  /// performs a simple [Theme.of(context).displayMedium] action and returns given [displayMedium]
+  /// ```
+  /// displayMedium       36.0  FontWeight.w700
+  /// ```
   final TextStyle displayMedium;
+
+  /// performs a simple [Theme.of(context).displaySmall] action and returns given [displaySmall]
+  /// ```
+  /// displayMedium       32.0  FontWeight.w700
+  /// ```
   final TextStyle displaySmall;
+
+  /// performs a simple [Theme.of(context).headlineLarge] action and returns given [headlineLarge]
+  /// ```
+  /// headlineLarge        32.0  FontWeight.w700
+  /// ```
   final TextStyle headlineLarge;
+
+  /// performs a simple [Theme.of(context).headlineMedium] action and returns given [headlineMedium]
+  /// ```
+  /// headlineMedium       28.0  FontWeight.w700
+  /// ```
   final TextStyle headlineMedium;
+
+  /// performs a simple [Theme.of(context).headlineSmall] action and returns given [headlineSmall]
+  /// ```
+  /// headlineMedium       24.0  FontWeight.w700
+  /// ```
   final TextStyle headlineSmall;
+
+  /// performs a simple [Theme.of(context).titleLarge] action and returns given [titleLarge]
+  /// ```
+  /// titleLarge           24.0  FontWeight.w400
+  /// ```
   final TextStyle titleLarge;
+
+  /// performs a simple [Theme.of(context).titleMedium] action and returns given [titleMedium]
+  /// ```
+  /// titleLarge           20.0  FontWeight.w400
+  /// ```
   final TextStyle titleMedium;
+
+  /// performs a simple [Theme.of(context).titleSmall] action and returns given [titleSmall]
+  /// ```
+  /// titleLarge           16.0  FontWeight.w400
+  /// ```
   final TextStyle titleSmall;
+
+  /// performs a simple [Theme.of(context).labelLarge] action and returns given [labelLarge]
+  /// ```
+  /// labelLarge           20.0  FontWeight.w400
+  /// ```
   final TextStyle labelLarge;
+
+  /// performs a simple [Theme.of(context).labelMedium] action and returns given [labelMedium]
+  /// ```
+  /// labelMedium          18.0  FontWeight.w400
+  /// ```
   final TextStyle labelMedium;
+
+  /// performs a simple [Theme.of(context).labelSmall] action and returns given [labelSmall]
+  /// ```
+  /// labelSmall           16.0  FontWeight.w400
+  /// ```
   final TextStyle labelSmall;
+
+  /// performs a simple [Theme.of(context).bodyLarge] action and returns given [bodyLarge]
+  /// ```
+  /// bodyLarge            14.0  FontWeight.w400
+  /// ```
   final TextStyle bodyLarge;
+
+  /// performs a simple [Theme.of(context).bodyMedium] action and returns given [bodyMedium]
+  /// ```
+  /// bodyMedium           12.0  FontWeight.w400
+  /// ```
   final TextStyle bodyMedium;
+
+  /// performs a simple [Theme.of(context).bodySmall] action and returns given [bodySmall]
+  /// ```
+  /// bodySmall            11.0  FontWeight.w400
+  /// ```
   final TextStyle bodySmall;
 
   @override
