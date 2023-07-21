@@ -174,9 +174,10 @@ final kThemeData = ThemeData.light().copyWith(
       shape: const StadiumBorder(),
       foregroundColor: RegalColors.vividRed,
       disabledForegroundColor: RegalColors.disabledVividRed,
-      textStyle: kInterTextTheme.labelSmall?.copyWith(
+      textStyle: GoogleFonts.montserrat(
         color: RegalColors.vividRed,
-        fontWeight: FontWeight.w700,
+        fontSize: 16.sp,
+        fontWeight: FontWeight.bold,
       ),
     ),
   ),
@@ -188,11 +189,10 @@ final kThemeData = ThemeData.light().copyWith(
       disabledBackgroundColor: RegalColors.disabledVividRed,
       disabledForegroundColor: Colors.white,
       fixedSize: Size.fromHeight(60.sp),
-      textStyle: kInterTextTheme.labelSmall?.copyWith(
-        color: Colors.white,
-        fontWeight: FontWeight.w700,
-        height: 1.2,
-        letterSpacing: 1.12,
+      textStyle: GoogleFonts.montserrat(
+        color: RegalColors.snowWhite,
+        fontSize: 16.sp,
+        fontWeight: FontWeight.bold,
       ),
     ),
   ),
@@ -200,11 +200,10 @@ final kThemeData = ThemeData.light().copyWith(
     style: OutlinedButton.styleFrom(
       foregroundColor: RegalColors.vividRed,
       disabledForegroundColor: RegalColors.disabledVividRed,
-      textStyle: kInterTextTheme.labelSmall?.copyWith(
+      textStyle: GoogleFonts.montserrat(
         color: RegalColors.vividRed,
-        fontWeight: FontWeight.w700,
-        height: 1.2,
-        letterSpacing: 1.12,
+        fontSize: 16.sp,
+        fontWeight: FontWeight.bold,
       ),
       side: const BorderSide(
         color: RegalColors.vividRed,
@@ -389,9 +388,10 @@ final kDarkThemData = kThemeData.copyWith(
       foregroundColor: RegalColors.vividRed,
       shape: const StadiumBorder(),
       disabledForegroundColor: RegalColors.disabledVividRed,
-      textStyle: kInterTextTheme.labelSmall?.copyWith(
+      textStyle: GoogleFonts.montserrat(
         color: RegalColors.vividRed,
-        fontWeight: FontWeight.w700,
+        fontSize: 16.sp,
+        fontWeight: FontWeight.bold,
       ),
     ),
   ),
@@ -402,11 +402,10 @@ final kDarkThemData = kThemeData.copyWith(
       backgroundColor: RegalColors.vividRed,
       disabledBackgroundColor: RegalColors.disabledDarkVividRed,
       foregroundColor: RegalColors.snowWhite,
-      textStyle: kInterTextTheme.labelSmall?.copyWith(
+      textStyle: GoogleFonts.montserrat(
         color: RegalColors.snowWhite,
-        fontWeight: FontWeight.w700,
-        height: 1.2,
-        letterSpacing: 1.12,
+        fontSize: 16.sp,
+        fontWeight: FontWeight.bold,
       ),
     ),
   ),
@@ -414,11 +413,10 @@ final kDarkThemData = kThemeData.copyWith(
     style: OutlinedButton.styleFrom(
       foregroundColor: RegalColors.snowWhite,
       disabledForegroundColor: RegalColors.grey.shade40,
-      textStyle: kInterTextTheme.labelSmall?.copyWith(
+      textStyle: GoogleFonts.montserrat(
         color: RegalColors.vividRed,
-        fontWeight: FontWeight.w700,
-        height: 1.2,
-        letterSpacing: 1.12,
+        fontSize: 16.sp,
+        fontWeight: FontWeight.bold,
       ),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(100.w),
