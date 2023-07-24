@@ -9,23 +9,23 @@ import 'package:regal/src/theme/theme.dart';
 final kThemeData = ThemeData.light().copyWith(
   primaryColor: RegalColors.vividRed,
   primaryColorDark: RegalColors.claretRed,
-  scaffoldBackgroundColor: const Color(0xffffffff),
+  scaffoldBackgroundColor: RegalColors.snowWhite,
   extensions: [
-    const VividRedX(
-      tint05: Color(0xFFFEF4F6),
-      tint10: Color(0xFFFCE9EC),
-      tint20: Color(0xFFFAD4DA),
-      shade40: Color(0xFF5B0F1C),
-      shade60: Color(0xFF89172A),
-      shade80: Color(0xFFB61E38),
+    VividRedX(
+      tint05: RegalColors.vividRed.tint05,
+      tint10: RegalColors.vividRed.tint10,
+      tint20: RegalColors.vividRed.tint20,
+      shade40: RegalColors.vividRed.shade40,
+      shade60: RegalColors.vividRed.shade60,
+      shade80: RegalColors.vividRed.shade80,
     ),
-    const GreyX(
-      shade05: Color(0xFFF2F2F2),
-      shade10: Color(0xFFE5E5E5),
-      shade20: Color(0xFFCCCCCC),
-      shade40: Color(0xFF999999),
-      shade60: Color(0xFF666666),
-      shade80: Color(0xFF333333),
+    GreyX(
+      shade05: RegalColors.grey.shade05,
+      shade10: RegalColors.grey.shade10,
+      shade20: RegalColors.grey.shade20,
+      shade40: RegalColors.grey.shade40,
+      shade60: RegalColors.grey.shade60,
+      shade80: RegalColors.grey.shade80,
     ),
     const RegalColorsX(
       claretRed: RegalColors.claretRed,
@@ -258,21 +258,21 @@ final kDarkThemData = kThemeData.copyWith(
   scaffoldBackgroundColor: RegalColors.licoriceBlack,
   brightness: Brightness.dark,
   extensions: [
-    const VividRedX(
-      tint05: Color(0xFF5B0F1C),
-      tint10: Color(0xFF89172A),
-      tint20: Color(0xFFB61E38),
-      shade40: Color(0xFFFEF4F6),
-      shade60: Color(0xFFFCE9EC),
-      shade80: Color(0xFFFAD4DA),
+    VividRedX(
+      tint05: RegalColors.darkVividRed.tint05,
+      tint10: RegalColors.darkVividRed.tint10,
+      tint20: RegalColors.darkVividRed.tint20,
+      shade40: RegalColors.darkVividRed.shade40,
+      shade60: RegalColors.darkVividRed.shade60,
+      shade80: RegalColors.darkVividRed.shade80,
     ),
-    const GreyX(
-      shade05: Color(0xFF333333),
-      shade10: Color(0xFF666666),
-      shade20: Color(0xFF999999),
-      shade40: Color(0xFFCCCCCC),
-      shade60: Color(0xFFE5E5E5),
-      shade80: Color(0xFFF2F2F2),
+    GreyX(
+      shade05: RegalColors.darkGrey.shade05,
+      shade10: RegalColors.darkGrey.shade10,
+      shade20: RegalColors.darkGrey.shade20,
+      shade40: RegalColors.darkGrey.shade40,
+      shade60: RegalColors.darkGrey.shade60,
+      shade80: RegalColors.darkGrey.shade80,
     ),
     const RegalColorsX(
       claretRed: RegalColors.claretRed,
