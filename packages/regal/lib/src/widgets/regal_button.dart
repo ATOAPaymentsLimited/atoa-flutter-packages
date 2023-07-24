@@ -111,7 +111,7 @@ class RegalButton extends StatelessWidget with EventTrackMixin {
     switch (_type) {
       case _RegalButtonType.primary:
         return ElevatedButton(
-          onPressed: onClick(context),
+          onPressed: onPressed != null ? onClick(context) : null,
           style:
               (style ?? Theme.of(context).elevatedButtonTheme.style)?.copyWith(
             fixedSize: MaterialStatePropertyAll(buttonSize),
@@ -120,7 +120,7 @@ class RegalButton extends StatelessWidget with EventTrackMixin {
         );
       case _RegalButtonType.secondary:
         return OutlinedButton(
-          onPressed: onClick(context),
+          onPressed: onPressed != null ? onClick(context) : null,
           style:
               (style ?? Theme.of(context).outlinedButtonTheme.style)?.copyWith(
             fixedSize: MaterialStatePropertyAll(buttonSize),
@@ -129,7 +129,7 @@ class RegalButton extends StatelessWidget with EventTrackMixin {
         );
       case _RegalButtonType.tertiary:
         return TextButton(
-          onPressed: onClick(context),
+          onPressed: onPressed != null ? onClick(context) : null,
           style: (style ?? Theme.of(context).textButtonTheme.style)?.copyWith(
             fixedSize: MaterialStatePropertyAll(buttonSize),
           ),
@@ -138,12 +138,12 @@ class RegalButton extends StatelessWidget with EventTrackMixin {
     }
   }
 
-  VoidCallback? onClick(BuildContext context) => onPressed != null && !loading
-      ? () {
+  VoidCallback? onClick(BuildContext context) => loading
+      ? () {}
+      : () {
           onPressed?.call();
           logClickEvent(context, trackLabel, enableTracking: enableTracking);
-        }
-      : null;
+        };
 }
 
 enum _RegalButtonType { primary, secondary, tertiary }
