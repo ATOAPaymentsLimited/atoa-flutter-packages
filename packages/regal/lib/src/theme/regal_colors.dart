@@ -22,4 +22,5 @@ class RegalColors {
   static const darkGrey = Grey(true);
   static const licoriceBlack = Color(0xFF200E11);
   static const snowWhite = Color(0xFFFFFFFF);
+  static const goldTint40 = Color(0xFFFFF1DD);
 }
