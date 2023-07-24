@@ -376,6 +376,7 @@ final kDarkThemData = kThemeData.copyWith(
     actionsIconTheme: const IconThemeData(
       color: RegalColors.snowWhite,
     ),
+    elevation: 0,
     centerTitle: true,
     titleTextStyle: GoogleFonts.montserrat(
       color: RegalColors.snowWhite,
