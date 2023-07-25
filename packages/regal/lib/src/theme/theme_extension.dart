@@ -76,7 +76,7 @@ extension ThemeX on BuildContext {
   /// ```
   /// displayMedium       32.0  FontWeight.w700
   /// ```
-  TextStyle? get v => textTheme.displaySmall;
+  TextStyle? get displaySmall => textTheme.displaySmall;
 
   /// performs a simple [Theme.of(context).headlineLarge] action and returns given [headlineLarge]
   /// ```
