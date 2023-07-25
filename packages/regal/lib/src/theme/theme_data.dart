@@ -32,6 +32,8 @@ final kThemeData = ThemeData.light().copyWith(
       vividRed: RegalColors.vividRed,
       snowWhite: RegalColors.snowWhite,
       licoriceBlack: RegalColors.licoriceBlack,
+      grey: RegalColors.grey,
+      pink: RegalColors.vividRed,
     ),
     MontserratX(
       displayLarge: GoogleFonts.montserrat(
@@ -279,6 +281,8 @@ final kDarkThemData = kThemeData.copyWith(
       vividRed: RegalColors.vividRed,
       snowWhite: RegalColors.licoriceBlack,
       licoriceBlack: RegalColors.snowWhite,
+      grey: RegalColors.darkGrey,
+      pink: RegalColors.snowWhite,
     ),
     MontserratX(
       displayLarge: GoogleFonts.montserrat(
