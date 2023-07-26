@@ -78,10 +78,6 @@ class RegalButton extends StatelessWidget with EventTrackMixin {
 
   @override
   Widget build(BuildContext context) {
-    final buttonSize = (size == RegalButtonSize.small)
-        ? Size.fromHeight(44.sp)
-        : Size.fromHeight(60.sp);
-
     final child = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -114,7 +110,7 @@ class RegalButton extends StatelessWidget with EventTrackMixin {
           onPressed: onPressed != null ? onClick(context) : null,
           style:
               (style ?? Theme.of(context).elevatedButtonTheme.style)?.copyWith(
-            fixedSize: MaterialStatePropertyAll(buttonSize),
+            fixedSize: MaterialStatePropertyAll(Size.fromHeight(size.value.sp)),
           ),
           child: child,
         );
@@ -123,7 +119,7 @@ class RegalButton extends StatelessWidget with EventTrackMixin {
           onPressed: onPressed != null ? onClick(context) : null,
           style:
               (style ?? Theme.of(context).outlinedButtonTheme.style)?.copyWith(
-            fixedSize: MaterialStatePropertyAll(buttonSize),
+            fixedSize: MaterialStatePropertyAll(Size.fromHeight(size.value.sp)),
           ),
           child: child,
         );
@@ -131,7 +127,7 @@ class RegalButton extends StatelessWidget with EventTrackMixin {
         return TextButton(
           onPressed: onPressed != null ? onClick(context) : null,
           style: (style ?? Theme.of(context).textButtonTheme.style)?.copyWith(
-            fixedSize: MaterialStatePropertyAll(buttonSize),
+            fixedSize: MaterialStatePropertyAll(Size.fromHeight(size.value.sp)),
           ),
           child: child,
         );
@@ -148,4 +144,12 @@ class RegalButton extends StatelessWidget with EventTrackMixin {
 
 enum _RegalButtonType { primary, secondary, tertiary }
 
-enum RegalButtonSize { large, small }
+enum RegalButtonSize {
+  large(60),
+  small(44),
+  mini(36);
+
+  const RegalButtonSize(this.value);
+
+  final double value;
+}
