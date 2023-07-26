@@ -10,6 +10,7 @@ final kThemeData = ThemeData.light().copyWith(
   primaryColor: RegalColors.vividRed,
   primaryColorDark: RegalColors.claretRed,
   scaffoldBackgroundColor: RegalColors.snowWhite,
+  cardColor: RegalColors.snowWhite,
   extensions: [
     VividRedX(
       tint05: RegalColors.vividRed.tint05,
@@ -258,6 +259,7 @@ final kDarkThemData = kThemeData.copyWith(
   primaryColor: RegalColors.vividRed,
   primaryColorDark: RegalColors.vividRed,
   scaffoldBackgroundColor: RegalColors.licoriceBlack,
+  cardColor: RegalColors.licoriceBlack,
   brightness: Brightness.dark,
   extensions: [
     VividRedX(
