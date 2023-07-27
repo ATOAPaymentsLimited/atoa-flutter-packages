@@ -16,7 +16,9 @@ class RegalColors {
   static const darkBlue = Color(0xFF3A76F7);
   static const liteOrange = Color(0xFFFFD763);
   static const darkOrange = Color(0xFFF0963B);
+  @Deprecated('Use RegalColors.vividRed')
   static const celticBlue = Color(0xFF2767C6);
+  @Deprecated('Use RegalColors.licoriceBlack')
   static const indigo = Color(0xFF15376A);
   static const grey = Grey();
   static const darkGrey = Grey(true);
