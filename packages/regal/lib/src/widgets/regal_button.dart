@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:regal/regal.dart';
@@ -94,7 +95,7 @@ class RegalButton extends StatelessWidget with EventTrackMixin {
           if (prefixIcon != null) prefixIcon!,
           if (prefixIcon != null && label != null) Spacing.small.xBox,
           if (label != null)
-            Text(
+            AutoSizeText(
               label!,
               textAlign: TextAlign.center,
             ),
