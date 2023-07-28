@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:regal/regal.dart';
 import 'package:regal/src/theme/theme.dart';
 
 /// The theme of the application.
@@ -137,38 +138,44 @@ final kThemeData = ThemeData.light().copyWith(
   ),
   progressIndicatorTheme: const ProgressIndicatorThemeData(color: Colors.white),
   inputDecorationTheme: InputDecorationTheme(
-    floatingLabelBehavior: FloatingLabelBehavior.never,
-    alignLabelWithHint: true,
     isDense: true,
-    contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 14.0.h),
+    contentPadding: Spacing.large.all,
     border: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(12.r),
-      borderSide: BorderSide(color: RegalColors.grey.shade40),
+      borderRadius: BorderRadius.circular(4.sp),
+      borderSide: BorderSide(color: RegalColors.grey.shade10),
     ),
     enabledBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(12.r),
-      borderSide: BorderSide(color: RegalColors.grey.shade40),
+      borderRadius: BorderRadius.circular(4.sp),
+      borderSide: BorderSide(color: RegalColors.grey.shade10),
     ),
     focusedBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(12.r),
-      borderSide: BorderSide(color: RegalColors.grey.shade40),
+      borderRadius: BorderRadius.circular(4.sp),
+      borderSide: const BorderSide(color: RegalColors.licoriceBlack),
     ),
-    iconColor: RegalColors.claretRed,
+    disabledBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(4.sp),
+      borderSide: BorderSide(color: RegalColors.grey.shade10),
+    ),
     errorBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(12.r),
-      borderSide: const BorderSide(color: Colors.redAccent),
+      borderRadius: BorderRadius.circular(4.sp),
+      borderSide: const BorderSide(
+        color: RegalColors.darkOrange,
+      ),
     ),
     errorMaxLines: 2,
-    hintStyle: kInterTextTheme.labelMedium?.copyWith(
-      color: RegalColors.claretRed.withOpacity(0.6),
+    hintStyle: kInterTextTheme.labelSmall?.copyWith(
+      color: RegalColors.grey.shade40,
       height: 1.3,
     ),
     errorStyle: kInterTextTheme.bodyMedium?.copyWith(
-      color: RegalColors.vividRed,
+      color: RegalColors.darkOrange,
     ),
     isCollapsed: true,
-    prefixIconColor: RegalColors.claretRed,
-    suffixIconColor: RegalColors.claretRed,
+    labelStyle:
+        kInterTextTheme.bodyLarge?.copyWith(color: RegalColors.licoriceBlack),
+    floatingLabelStyle:
+        kInterTextTheme.bodyLarge?.copyWith(color: RegalColors.licoriceBlack),
+    floatingLabelBehavior: FloatingLabelBehavior.always,
   ),
   textSelectionTheme:
       const TextSelectionThemeData(cursorColor: RegalColors.claretRed),
@@ -447,5 +454,45 @@ final kDarkThemData = kThemeData.copyWith(
         topRight: Radius.circular(32.w),
       ),
     ),
+  ),
+  inputDecorationTheme: InputDecorationTheme(
+    isDense: true,
+    contentPadding: Spacing.large.all,
+    border: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(4.sp),
+      borderSide: BorderSide(color: RegalColors.darkGrey.shade10),
+    ),
+    enabledBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(4.sp),
+      borderSide: BorderSide(color: RegalColors.darkGrey.shade10),
+    ),
+    focusedBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(4.sp),
+      borderSide: const BorderSide(color: RegalColors.snowWhite),
+    ),
+    disabledBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(4.sp),
+      borderSide: BorderSide(color: RegalColors.darkGrey.shade10),
+    ),
+    errorBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(4.sp),
+      borderSide: const BorderSide(
+        color: RegalColors.darkOrange,
+      ),
+    ),
+    errorMaxLines: 2,
+    hintStyle: kInterTextTheme.labelSmall?.copyWith(
+      color: RegalColors.darkGrey.shade40,
+      height: 1.3,
+    ),
+    errorStyle: kInterTextTheme.bodyMedium?.copyWith(
+      color: RegalColors.darkOrange,
+    ),
+    isCollapsed: true,
+    labelStyle:
+        kInterTextTheme.bodyLarge?.copyWith(color: RegalColors.snowWhite),
+    floatingLabelStyle:
+        kInterTextTheme.bodyLarge?.copyWith(color: RegalColors.snowWhite),
+    floatingLabelBehavior: FloatingLabelBehavior.always,
   ),
 );
