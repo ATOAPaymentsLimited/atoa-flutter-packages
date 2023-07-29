@@ -7,7 +7,7 @@ class RegalSearchBar extends StatefulWidget {
     super.key,
     this.onChanged,
     this.hintText,
-    this.onTapClose,
+    this.onClear,
     this.autofocus = false,
     this.showClose = true,
     required this.searchController,
@@ -15,7 +15,7 @@ class RegalSearchBar extends StatefulWidget {
   final TextEditingController searchController;
   final String? hintText;
   final ValueChanged<String>? onChanged;
-  final VoidCallback? onTapClose;
+  final VoidCallback? onClear;
   final bool autofocus;
   final bool showClose;
 
@@ -81,7 +81,7 @@ class _RegalSearchBarState extends State<RegalSearchBar> {
                   trackLabel: 'Clear Icon Search Bar',
                   onTap: () {
                     widget.searchController.clear();
-                    widget.onTapClose?.call();
+                    widget.onClear?.call();
                   },
                   child: Icon(
                     Icons.clear_sharp,
