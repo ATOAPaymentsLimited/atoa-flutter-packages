@@ -17,4 +17,5 @@ export 'regal_icon_button.dart';
 export 'regal_search_bar.dart';
 export 'regal_switch.dart';
 export 'regal_theme_provider.dart';
+export 'snack_bar.dart';
 export 'supported_bank_sliders.dart';

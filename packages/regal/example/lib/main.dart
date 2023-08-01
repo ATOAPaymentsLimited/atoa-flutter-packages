@@ -1,3 +1,5 @@
+import 'package:bot_toast/bot_toast.dart';
+import 'package:example/screens/snackbar_screen.dart';
 import 'package:example/widgets/regal_buttons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -20,20 +22,23 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) => ScreenUtilInit(
-        designSize: const Size(375, 812),
-        minTextAdapt: true,
-        builder: (context, _) => RegalThemeProvider(
-          prefs: prefs,
-          builder: (context, themeMode, child) => MaterialApp(
-            title: 'Custom Home Grid',
-            themeMode: themeMode,
-            theme: kThemeData,
-            darkTheme: kDarkThemData,
-            home: const MyHomePage(),
-          ),
+  Widget build(BuildContext context) {
+    return ScreenUtilInit(
+      designSize: const Size(375, 812),
+      minTextAdapt: true,
+      builder: (context, _) => RegalThemeProvider(
+        prefs: prefs,
+        builder: (context, themeMode, child) => MaterialApp(
+          title: 'Custom Home Grid',
+          themeMode: themeMode,
+          theme: kThemeData,
+          darkTheme: kDarkThemData,
+          builder: BotToastInit(),
+          home: const MyHomePage(),
         ),
-      );
+      ),
+    );
+  }
 }
 
 class MyHomePage extends StatefulWidget {
@@ -93,6 +98,16 @@ class _MyHomePageState extends State<MyHomePage> {
                 },
                 label: ('Typography'),
                 trackLabel: 'Go to typography',
+              ),
+              Spacing.medium.yBox,
+              RegalButton.primary(
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const SnackbarScreen(),
+                  ));
+                },
+                label: ('Snackbar'),
+                trackLabel: 'Go to snackbar',
               ),
               Spacing.medium.yBox,
               const Text(
