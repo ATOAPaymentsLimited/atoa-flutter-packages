@@ -5,10 +5,11 @@ publish_to: none
 
 environment:
   sdk: ">=3.0.0 <4.0.0"
-  flutter: ^3.10.6
+  flutter: 3.10.6
 
 dependencies:
   auto_size_text: ^3.0.0
+  bot_toast: ^4.0.4
   cached_network_image: ^3.2.2
   carousel_slider: ^4.1.1
   flutter:

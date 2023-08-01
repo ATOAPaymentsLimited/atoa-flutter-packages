@@ -8,4 +8,4 @@
 /// ATOA Design System
 library regal;
 
-export 'src/regal.dart';
+export 'src/regal.dart' hide SnackbarTypeEnum;
