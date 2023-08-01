@@ -69,7 +69,7 @@ class _CustomFocusLinesShapeAnimationState
                         size: Size.square(widget.width),
                         painter: _FocusLinesShapePainter(
                           gradientColor:
-                              widget.gradientColor ?? RegalColors.gold.shade60,
+                              widget.gradientColor ?? RegalColors.vividRed.shade60,
                         ),
                       ),
                     ),

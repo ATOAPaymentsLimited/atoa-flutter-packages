@@ -27,8 +27,8 @@ class CarouselItemWidget extends StatelessWidget {
               imageUrl: imageUrl,
               errorWidget: (_, __, ___) => Shimmer.fromColors(
                 enabled: !disableAnimationsForTest,
-                baseColor: RegalColors.grey.shade20,
-                highlightColor: RegalColors.grey.shade20.withOpacity(0.05),
+                baseColor: context.grey.shade20,
+                highlightColor: context.grey.shade20.withOpacity(0.05),
                 child: Container(
                   width: double.infinity,
                   color: Colors.white,
@@ -38,8 +38,8 @@ class CarouselItemWidget extends StatelessWidget {
                 borderRadius: BorderRadius.circular(24),
                 child: Shimmer.fromColors(
                   enabled: !disableAnimationsForTest,
-                  baseColor: RegalColors.grey.shade20,
-                  highlightColor: RegalColors.grey.shade20.withOpacity(0.05),
+                  baseColor: context.grey.shade20,
+                  highlightColor: context.grey.shade20.withOpacity(0.05),
                   child: Container(
                     width: double.infinity,
                     color: Colors.white,
@@ -52,7 +52,7 @@ class CarouselItemWidget extends StatelessWidget {
             InkWell(
               borderRadius: BorderRadius.circular(24),
               onTap: onTap,
-              splashColor: RegalColors.celticBlue.withOpacity(0.22),
+              splashColor: RegalColors.vividRed.withOpacity(0.22),
             ),
           ],
         ),

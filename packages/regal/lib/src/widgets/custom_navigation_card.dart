@@ -27,13 +27,13 @@ class CustomNavigationCard extends StatelessWidget {
     this.titleFontWeight = FontWeight.w400,
     this.borderColor,
     this.backgroundColor = Colors.white,
-    this.foregroundColor = RegalColors.yankeesBlue,
+    this.foregroundColor = RegalColors.vividRed,
     this.splashColor,
     this.chipBackgroundColor,
     this.chipBorderColor,
     this.chipTextColor,
     this.focusLinesDuration = const Duration(milliseconds: 24000),
-    this.focusLinesgradientColor = RegalColors.gold,
+    this.focusLinesgradientColor = RegalColors.claretRed,
     this.enableTracking = true,
   })  : assert(
           !(chipTitle == null &&
@@ -65,7 +65,7 @@ class CustomNavigationCard extends StatelessWidget {
     required this.onPressed,
     this.titleFontWeight = FontWeight.w600,
     this.backgroundColor = Colors.white,
-    this.foregroundColor = RegalColors.yankeesBlue,
+    this.foregroundColor = RegalColors.vividRed,
     this.splashColor,
     this.enableTracking = true,
   })  : assert(
@@ -183,7 +183,7 @@ class CustomNavigationCard extends StatelessWidget {
                       width: 48.sp,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(16.r),
-                        color: RegalColors.grey.shade5,
+                        color: RegalColors.grey.shade05,
                       ),
                       child: Padding(
                         padding: EdgeInsets.all(12.sp),
@@ -191,7 +191,7 @@ class CustomNavigationCard extends StatelessWidget {
                           svgAsset!,
                           theme: SvgTheme(
                             currentColor:
-                                foregroundColor ?? RegalColors.yankeesBlue,
+                                foregroundColor ?? RegalColors.vividRed,
                           ),
                         ),
                       ),
@@ -280,8 +280,8 @@ class CustomNavigationCard extends StatelessWidget {
                               child: SvgPicture.asset(
                                 svgAsset!,
                                 theme: SvgTheme(
-                                  currentColor: foregroundColor ??
-                                      RegalColors.yankeesBlue,
+                                  currentColor:
+                                      foregroundColor ?? RegalColors.vividRed,
                                 ),
                               ),
                             ),
@@ -318,10 +318,10 @@ class CustomNavigationCard extends StatelessWidget {
             right: -6.sp,
             child: DecoratedBox(
               decoration: BoxDecoration(
-                color: chipBackgroundColor ?? RegalColors.gold.shade80,
+                color: chipBackgroundColor ?? RegalColors.claretRed,
                 border: Border.all(
                   width: 1.sp,
-                  color: chipBorderColor ?? RegalColors.gold,
+                  color: chipBorderColor ?? RegalColors.claretRed,
                 ),
                 borderRadius: BorderRadius.circular(
                   24.r,

@@ -38,7 +38,7 @@ class ProgressTimeline extends StatelessWidget {
                 if (index < currentIndex) {
                   return Icon(
                     Icons.circle,
-                    color: RegalColors.indigo,
+                    color: RegalColors.claretRed,
                     size: _dotSize,
                   );
                 } else if (index == currentIndex) {
@@ -51,7 +51,7 @@ class ProgressTimeline extends StatelessWidget {
                       ),
                       Icon(
                         Icons.circle_outlined,
-                        color: RegalColors.indigo,
+                        color: RegalColors.claretRed,
                         size: _dotSize,
                       ),
                     ],
@@ -68,7 +68,7 @@ class ProgressTimeline extends StatelessWidget {
                 if (index <= currentIndex) {
                   return const DecoratedLineConnector(
                     decoration: BoxDecoration(
-                      color: RegalColors.indigo,
+                      color: RegalColors.claretRed,
                     ),
                   );
                 }
