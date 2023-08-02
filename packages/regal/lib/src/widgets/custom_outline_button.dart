@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:regal/src/mixin/event_track_mixin.dart';
 
 class CustomOutlinedButton extends OutlinedButton with EventTrackMixin {
+  @Deprecated('Use RegalButton.secondary')
   const CustomOutlinedButton({
     super.key,
     required this.context,
@@ -22,6 +23,7 @@ class CustomOutlinedButton extends OutlinedButton with EventTrackMixin {
     this.enableTracking = true,
   });
 
+  @Deprecated('Use RegalButton.secondary with prefixIcon')
   factory CustomOutlinedButton.icon({
     Key? key,
     required BuildContext context,

@@ -1,8 +1,20 @@
+import 'package:bot_toast/bot_toast.dart';
+import 'package:example/screens/snackbar_screen.dart';
+import 'package:example/widgets/regal_buttons.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 import 'package:regal/regal.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
+import 'screens/typography_screen.dart';
+
+late final SharedPreferences prefs;
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  prefs = await SharedPreferences.getInstance();
   runApp(const MyApp());
 }
 
@@ -14,13 +26,17 @@ class MyApp extends StatelessWidget {
     return ScreenUtilInit(
       designSize: const Size(375, 812),
       minTextAdapt: true,
-      builder: (context, _) {
-        return MaterialApp(
+      builder: (context, _) => RegalThemeProvider(
+        prefs: prefs,
+        builder: (context, themeMode, child) => MaterialApp(
           title: 'Custom Home Grid',
+          themeMode: themeMode,
           theme: kThemeData,
+          darkTheme: kDarkThemData,
+          builder: BotToastInit(),
           home: const MyHomePage(),
-        );
-      },
+        ),
+      ),
     );
   }
 }
@@ -51,10 +67,49 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: Builder(builder: (context) {
+        final state = context.select((ThemeMode mode) => mode);
+        return CupertinoSegmentedControl<ThemeMode>(
+          children: Map.fromEntries(
+            ThemeMode.values.map(
+              (e) => MapEntry(
+                  e,
+                  Padding(
+                    padding: Spacing.tiny.all,
+                    child: Text(e.name),
+                  )),
+            ),
+          ),
+          groupValue: state,
+          onValueChanged: context.themeModeNotifier.onValueChanged,
+        );
+      }),
       body: SafeArea(
         child: SingleChildScrollView(
+          padding: Spacing.small.x,
           child: Column(
             children: [
+              Spacing.medium.yBox,
+              RegalButton.primary(
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const TypographyScreen(),
+                  ));
+                },
+                label: ('Typography'),
+                trackLabel: 'Go to typography',
+              ),
+              Spacing.medium.yBox,
+              RegalButton.primary(
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const SnackbarScreen(),
+                  ));
+                },
+                label: ('Snackbar'),
+                trackLabel: 'Go to snackbar',
+              ),
+              Spacing.medium.yBox,
               const Text(
                 "Custom Navigation Card",
                 style: TextStyle(
@@ -220,25 +275,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: () {},
               ),
               Spacing.large.yBox,
-              SizedBox(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: TextButton(
-                    onPressed: () {},
-                    child: const Text("Pay"),
-                  ),
-                ),
-              ),
-              SizedBox(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: TextButton.icon(
-                    onPressed: () {},
-                    icon: const Icon(Icons.call_split_rounded),
-                    label: const Text("Split Bills"),
-                  ),
-                ),
-              ),
+              RegalSwitch(value: true, onChanged: (t) {}),
+              Spacing.large.yBox,
+              const RegalButtons(),
               Spacing.large.yBox,
               SupportedBankSlider(bankIconUrlList: _bankIconUrls),
               Spacing.large.yBox,

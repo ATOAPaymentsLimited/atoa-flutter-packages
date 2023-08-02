@@ -14,13 +14,13 @@ class PlaceHolderCarousel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 4),
+        padding: Spacing.small.y + Spacing.xtraLarge.left + Spacing.small.right,
         child: ClipRRect(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(24),
           child: Shimmer.fromColors(
             enabled: !disableAnimationsForTest,
-            baseColor: RegalColors.grey.shade20,
-            highlightColor: RegalColors.grey.shade20.withOpacity(0.05),
+            baseColor: context.grey.shade20,
+            highlightColor: context.grey.shade20.withOpacity(0.05),
             child: AspectRatio(
               aspectRatio: aspectRatio,
               child: Container(

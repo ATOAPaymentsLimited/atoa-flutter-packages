@@ -9,5 +9,5 @@ abstract class ColorSystem extends Color {
   Color get shade40;
   Color get shade20;
   Color get shade10;
-  Color get shade5;
+  Color get shade05;
 }

@@ -9,11 +9,14 @@ environment:
   sdk: ">=2.18.0 <3.0.0"
 
 dependencies:
+  bot_toast: ^4.0.4
   flutter:
     sdk: flutter
   flutter_screenutil:
+  provider: ^6.0.5
   regal:
     path: ../
+  shared_preferences: ^2.2.0
 
 dev_dependencies:
   flutter_test:

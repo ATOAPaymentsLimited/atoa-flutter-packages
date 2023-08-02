@@ -5,7 +5,7 @@ class IndicatorOptions {
   const IndicatorOptions({
     this.activeSize = 6.0,
     this.inactiveSize = 4.0,
-    this.activeColor = RegalColors.celticBlue,
+    this.activeColor = RegalColors.vividRed,
     this.inactiveColor = RegalColors.grey,
     this.margin = const EdgeInsets.symmetric(vertical: 8, horizontal: 4),
     this.animationDuration = const Duration(milliseconds: 300),

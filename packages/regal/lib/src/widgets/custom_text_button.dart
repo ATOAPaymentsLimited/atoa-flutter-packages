@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:regal/src/mixin/event_track_mixin.dart';
 
 class CustomTextButton extends TextButton with EventTrackMixin {
+  @Deprecated('Use RegalButton.tertiary')
   const CustomTextButton({
     super.key,
     required this.context,
@@ -22,6 +23,7 @@ class CustomTextButton extends TextButton with EventTrackMixin {
     this.enableTracking = true,
   });
 
+  @Deprecated('Use RegalButton.tertiary with prefixIcon')
   factory CustomTextButton.icon({
     Key? key,
     required BuildContext context,

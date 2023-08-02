@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:regal/src/mixin/event_track_mixin.dart';
 
 class CustomElevatedButton extends ElevatedButton with EventTrackMixin {
+  @Deprecated('Use RegalButton.primary')
   const CustomElevatedButton({
     super.key,
     required this.context,
@@ -22,6 +23,7 @@ class CustomElevatedButton extends ElevatedButton with EventTrackMixin {
     this.enableTracking = true,
   });
 
+  @Deprecated('Use RegalButton.primary with prefixIcon')
   factory CustomElevatedButton.icon({
     Key? key,
     required BuildContext context,

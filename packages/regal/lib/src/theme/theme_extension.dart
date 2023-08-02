@@ -1,5 +1,8 @@
 // coverage:ignore-file
+
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:regal/src/theme/theme.dart';
 
 /// Theme Extension
 extension ThemeX on BuildContext {
@@ -68,6 +71,12 @@ extension ThemeX on BuildContext {
   /// displayMedium       36.0  FontWeight.w700
   /// ```
   TextStyle? get displayMedium => textTheme.displayMedium;
+  
+  /// performs a simple [Theme.of(context).displaySmall] action and returns given [displaySmall]
+  /// ```
+  /// displayMedium       32.0  FontWeight.w700
+  /// ```
+  TextStyle? get displaySmall => textTheme.displaySmall;
 
   /// performs a simple [Theme.of(context).headlineLarge] action and returns given [headlineLarge]
   /// ```
@@ -80,12 +89,30 @@ extension ThemeX on BuildContext {
   /// headlineMedium       28.0  FontWeight.w700
   /// ```
   TextStyle? get headlineMedium => textTheme.headlineMedium;
+  
+  /// performs a simple [Theme.of(context).headlineSmall] action and returns given [headlineSmall]
+  /// ```
+  /// headlineMedium       24.0  FontWeight.w700
+  /// ```
+  TextStyle? get headlineSmall => textTheme.headlineSmall;
 
   /// performs a simple [Theme.of(context).titleLarge] action and returns given [titleLarge]
   /// ```
   /// titleLarge           24.0  FontWeight.w400
   /// ```
   TextStyle? get titleLarge => textTheme.titleLarge;
+
+  /// performs a simple [Theme.of(context).titleMedium] action and returns given [titleMedium]
+  /// ```
+  /// titleLarge           20.0  FontWeight.w400
+  /// ```
+  TextStyle? get titleMedium => textTheme.titleMedium;
+
+  /// performs a simple [Theme.of(context).titleSmall] action and returns given [titleSmall]
+  /// ```
+  /// titleLarge           16.0  FontWeight.w400
+  /// ```
+  TextStyle? get titleSmall => textTheme.titleSmall;
 
   /// performs a simple [Theme.of(context).labelLarge] action and returns given [labelLarge]
   /// ```
@@ -122,4 +149,16 @@ extension ThemeX on BuildContext {
   /// bodySmall            11.0  FontWeight.w400
   /// ```
   TextStyle? get bodySmall => textTheme.bodySmall;
+
+  ThemeModeNotifier get themeModeNotifier => read<ThemeModeNotifier>();
+
+  VividRedX get vividRed => theme.extension<VividRedX>()!;
+
+  GreyX get grey => theme.extension<GreyX>()!;
+
+  RegalColorsX get regalColor => theme.extension<RegalColorsX>()!;
+
+  MontserratX get montserrat => theme.extension<MontserratX>()!;
+
+  Brightness get brightness => theme.brightness;
 }
