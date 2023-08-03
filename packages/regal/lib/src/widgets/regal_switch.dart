@@ -7,6 +7,7 @@ class RegalSwitch extends StatefulWidget {
     super.key,
     this.value = false,
     required this.onChanged,
+    required this.semanticsLabel,
     this.activeColor,
     this.inActiveColor,
   });
@@ -14,6 +15,7 @@ class RegalSwitch extends StatefulWidget {
   final ValueChanged<bool> onChanged;
   final Color? activeColor;
   final Color? inActiveColor;
+  final String semanticsLabel;
 
   @override
   State<RegalSwitch> createState() => _RegalSwitchState();
@@ -30,6 +32,7 @@ class _RegalSwitchState extends State<RegalSwitch> {
           'updated_value': !widget.value,
         },
         splashColor: Colors.transparent,
+        semanticsLabel: widget.semanticsLabel,
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 300),
           curve: Curves.decelerate,

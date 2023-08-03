@@ -6,6 +6,7 @@ class CustomInkWell extends InkWell with EventTrackMixin {
     super.key,
     required this.context,
     required this.trackLabel,
+    this.semanticsLabel,
     super.child,
     super.onTap,
     super.onDoubleTap,
@@ -44,6 +45,8 @@ class CustomInkWell extends InkWell with EventTrackMixin {
 
   final bool enableTracking;
 
+  final String? semanticsLabel;
+
   @override
   VoidCallback? get onTap => super.onTap != null
       ? () {
@@ -55,5 +58,17 @@ class CustomInkWell extends InkWell with EventTrackMixin {
             enableTracking: enableTracking,
           );
         }
+      : null;
+
+  @override
+  Widget? get child => super.child != null
+      ? Semantics(
+          label: semanticsLabel,
+          button: true,
+          container: true,
+          enabled: true,
+          explicitChildNodes: true,
+          child: super.child,
+        )
       : null;
 }

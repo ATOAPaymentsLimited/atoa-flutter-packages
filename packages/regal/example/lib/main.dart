@@ -275,7 +275,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: () {},
               ),
               Spacing.large.yBox,
-              RegalSwitch(value: true, onChanged: (t) {}),
+              RegalSwitch(value: true, onChanged: (t) {}, semanticsLabel: 'Switch',),
               Spacing.large.yBox,
               const RegalButtons(),
               Spacing.large.yBox,

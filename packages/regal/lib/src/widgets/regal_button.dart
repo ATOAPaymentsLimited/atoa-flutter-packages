@@ -146,7 +146,7 @@ class RegalButton extends StatelessWidget with EventTrackMixin {
             container: true,
             enabled: true,
             explicitChildNodes: true,
-            label: semanticsLabel ?? '${label} Button',
+            label: semanticsLabel ?? '$label Button',
             child: child,
           ),
         );
