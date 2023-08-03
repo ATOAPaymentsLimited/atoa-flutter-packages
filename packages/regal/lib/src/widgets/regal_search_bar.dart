@@ -46,6 +46,7 @@ class _RegalSearchBarState extends State<RegalSearchBar> {
         enabled: true,
         explicitChildNodes: true,
         label: widget.semanticsLabel,
+        textField: true,
         child: TextField(
           autofocus: widget.autofocus,
           controller: widget.searchController,

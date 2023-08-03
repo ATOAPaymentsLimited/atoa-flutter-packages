@@ -63,7 +63,7 @@ class CustomInkWell extends InkWell with EventTrackMixin {
   @override
   Widget? get child => super.child != null
       ? Semantics(
-          label: semanticsLabel ?? trackLabel,
+          label: semanticsLabel,
           button: true,
           container: true,
           enabled: true,

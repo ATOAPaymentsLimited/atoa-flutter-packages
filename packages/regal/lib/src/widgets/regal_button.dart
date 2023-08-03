@@ -108,6 +108,7 @@ class RegalButton extends StatelessWidget with EventTrackMixin {
             AutoSizeText(
               label!,
               textAlign: TextAlign.center,
+              semanticsLabel: label,
             ),
           if (suffixIcon != null && label != null) Spacing.small.xBox,
           if (suffixIcon != null) suffixIcon!,
@@ -123,15 +124,7 @@ class RegalButton extends StatelessWidget with EventTrackMixin {
               (style ?? Theme.of(context).elevatedButtonTheme.style)?.copyWith(
             fixedSize: MaterialStatePropertyAll(Size.fromHeight(size.value.sp)),
           ),
-          child: Semantics(
-            button: true,
-            container: true,
-            enabled: true,
-            explicitChildNodes: true,
-            label: semanticsLabel ??
-                (label != null ? '$label Button' : trackLabel),
-            child: child,
-          ),
+          child: child,
         );
       case _RegalButtonType.secondary:
         return OutlinedButton(
@@ -140,15 +133,7 @@ class RegalButton extends StatelessWidget with EventTrackMixin {
               (style ?? Theme.of(context).outlinedButtonTheme.style)?.copyWith(
             fixedSize: MaterialStatePropertyAll(Size.fromHeight(size.value.sp)),
           ),
-          child: Semantics(
-            button: true,
-            container: true,
-            enabled: true,
-            explicitChildNodes: true,
-            label: semanticsLabel ??
-                (label != null ? '$label Button' : trackLabel),
-            child: child,
-          ),
+          child: child,
         );
       case _RegalButtonType.tertiary:
         return TextButton(
@@ -161,8 +146,7 @@ class RegalButton extends StatelessWidget with EventTrackMixin {
             container: true,
             enabled: true,
             explicitChildNodes: true,
-            label: semanticsLabel ??
-                (label != null ? '$label Button' : trackLabel),
+            label: semanticsLabel ?? '$label Button',
             child: child,
           ),
         );
