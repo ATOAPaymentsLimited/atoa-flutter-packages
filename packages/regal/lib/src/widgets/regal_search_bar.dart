@@ -42,7 +42,6 @@ class _RegalSearchBarState extends State<RegalSearchBar> {
 
   @override
   Widget build(BuildContext context) => Semantics(
-        button: true,
         container: true,
         enabled: true,
         explicitChildNodes: true,
