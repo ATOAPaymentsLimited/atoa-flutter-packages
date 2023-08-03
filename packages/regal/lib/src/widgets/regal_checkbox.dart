@@ -6,6 +6,7 @@ class RegalCheckbox extends StatefulWidget {
   const RegalCheckbox({
     super.key,
     required this.checked,
+    required this.semanticsLabel,
     this.size = 20.0,
     this.activeColor,
     this.borderColor,
@@ -24,6 +25,7 @@ class RegalCheckbox extends StatefulWidget {
   final TextStyle? labelStyle;
   final bool circular;
   final ValueChanged<bool>? onChanged;
+  final String semanticsLabel;
 
   @override
   State<RegalCheckbox> createState() => _RegalCheckboxState();
@@ -46,6 +48,7 @@ class _RegalCheckboxState extends State<RegalCheckbox> {
 
   @override
   Widget build(BuildContext context) => CustomGestureDetector(
+        semanticsLabel: widget.semanticsLabel,
         context: context,
         trackLabel: 'Checkbox',
         onTap: () {

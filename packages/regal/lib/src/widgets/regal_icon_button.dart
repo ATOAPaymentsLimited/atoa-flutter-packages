@@ -10,6 +10,7 @@ class RegalIconButton extends StatelessWidget {
     this.size = RegalIconButtonSize.large,
     this.onPressed,
     this.iconColor,
+    this.semanticsLabel,
     required this.trackLabel,
   })  : _type = _RegalIconButtonType.asset,
         _assetPath = assetPath,
@@ -22,6 +23,7 @@ class RegalIconButton extends StatelessWidget {
     this.onPressed,
     this.iconColor,
     required this.trackLabel,
+    this.semanticsLabel,
   })  : _type = _RegalIconButtonType.icon,
         _assetPath = '',
         _iconData = iconData;
@@ -32,9 +34,11 @@ class RegalIconButton extends StatelessWidget {
   final String _assetPath;
   final IconData? _iconData;
   final String trackLabel;
+  final String? semanticsLabel;
 
   @override
   Widget build(BuildContext context) => CustomGestureDetector(
+        semanticsLabel: semanticsLabel ?? trackLabel,
         context: context,
         trackLabel: trackLabel,
         onTap: () => onPressed?.call(context),
