@@ -124,26 +124,19 @@ class RegalStatusCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         if (title.isNotEmpty)
-                          Semantics(
-                            container: true,
-                            child: Text(
-                              title,
-                              semanticsLabel: title,
-                              style: context.montserrat.headlineLarge.copyWith(
-                                fontSize: 16.sp,
-                                color: _type.foregroundColor(context),
-                                height: 1.3,
-                              ),
+                          CustomText.semantics(
+                            title,
+                            style: context.montserrat.headlineLarge.copyWith(
+                              fontSize: 16.sp,
+                              color: _type.foregroundColor(context),
+                              height: 1.3,
                             ),
                           ),
-                        Semantics(
-                          container: true,
-                          child: Text(
-                            description,
-                            style: context.bodyLarge?.copyWith(
-                              height: 1.5,
-                              color: _type.foregroundColor(context),
-                            ),
+                        CustomText.semantics(
+                          description,
+                          style: context.bodyLarge?.copyWith(
+                            height: 1.5,
+                            color: _type.foregroundColor(context),
                           ),
                         ),
                       ],
