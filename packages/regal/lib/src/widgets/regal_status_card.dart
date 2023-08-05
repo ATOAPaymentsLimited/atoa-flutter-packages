@@ -144,14 +144,13 @@ class RegalStatusCard extends StatelessWidget {
                   ),
                   if (onClose != null)
                     Transform.translate(
-                      offset: Offset(14.sp, -10.sp),
+                      offset: Offset(6.sp, 0.sp),
                       child: Semantics(
                         button: true,
                         enabled: true,
                         label: 'Close Button',
                         child: RegalIconButton.iconData(
                           iconData: Icons.close,
-                          size: RegalIconButtonSize.extraLarge,
                           trackLabel: 'Close Button',
                           iconColor: _type.foregroundColor(context),
                           onPressed: onClose,
