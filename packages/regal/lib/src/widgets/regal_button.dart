@@ -116,41 +116,48 @@ class RegalButton extends StatelessWidget with EventTrackMixin {
       ],
     );
 
-    switch (_type) {
-      case _RegalButtonType.primary:
-        return ElevatedButton(
-          onPressed: onPressed != null ? onClick(context) : null,
-          style:
-              (style ?? Theme.of(context).elevatedButtonTheme.style)?.copyWith(
-            fixedSize: MaterialStatePropertyAll(Size.fromHeight(size.value.sp)),
-          ),
-          child: child,
-        );
-      case _RegalButtonType.secondary:
-        return OutlinedButton(
-          onPressed: onPressed != null ? onClick(context) : null,
-          style:
-              (style ?? Theme.of(context).outlinedButtonTheme.style)?.copyWith(
-            fixedSize: MaterialStatePropertyAll(Size.fromHeight(size.value.sp)),
-          ),
-          child: child,
-        );
-      case _RegalButtonType.tertiary:
-        return TextButton(
-          onPressed: onPressed != null ? onClick(context) : null,
-          style: (style ?? Theme.of(context).textButtonTheme.style)?.copyWith(
-            fixedSize: MaterialStatePropertyAll(Size.fromHeight(size.value.sp)),
-          ),
-          child: Semantics(
-            button: true,
-            container: true,
-            enabled: true,
-            explicitChildNodes: true,
-            label: semanticsLabel ?? '$label Button',
+    Widget buttonType() {
+      switch (_type) {
+        case _RegalButtonType.primary:
+          return ElevatedButton(
+            onPressed: onPressed != null ? onClick(context) : null,
+            style: (style ?? Theme.of(context).elevatedButtonTheme.style)
+                ?.copyWith(
+              fixedSize:
+                  MaterialStatePropertyAll(Size.fromHeight(size.value.sp)),
+            ),
             child: child,
-          ),
-        );
+          );
+        case _RegalButtonType.secondary:
+          return OutlinedButton(
+            onPressed: onPressed != null ? onClick(context) : null,
+            style: (style ?? Theme.of(context).outlinedButtonTheme.style)
+                ?.copyWith(
+              fixedSize:
+                  MaterialStatePropertyAll(Size.fromHeight(size.value.sp)),
+            ),
+            child: child,
+          );
+        case _RegalButtonType.tertiary:
+          return TextButton(
+            onPressed: onPressed != null ? onClick(context) : null,
+            style: (style ?? Theme.of(context).textButtonTheme.style)?.copyWith(
+              fixedSize:
+                  MaterialStatePropertyAll(Size.fromHeight(size.value.sp)),
+            ),
+            child: child,
+          );
+      }
     }
+
+    return Semantics(
+      button: true,
+      container: true,
+      enabled: true,
+      explicitChildNodes: true,
+      label: semanticsLabel ?? '$label Button',
+      child: buttonType(),
+    );
   }
 
   VoidCallback? onClick(BuildContext context) => loading
