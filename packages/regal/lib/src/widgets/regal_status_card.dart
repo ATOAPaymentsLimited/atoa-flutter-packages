@@ -150,6 +150,7 @@ class RegalStatusCard extends StatelessWidget {
                         enabled: true,
                         label: 'Close Button',
                         child: RegalIconButton.iconData(
+                          semanticsLabel: 'Close Button',
                           iconData: Icons.close,
                           trackLabel: 'Close Button',
                           iconColor: _type.foregroundColor(context),

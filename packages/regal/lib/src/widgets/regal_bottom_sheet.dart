@@ -43,6 +43,7 @@ Future<T?> showRegalBottomSheet<T>({
                   ),
                 ),
                 CustomInkWell(
+                  semanticsLabel: 'Close Dialog Sheet Icon',
                   context: context,
                   trackLabel: 'Close Dialog Sheet Icon',
                   onTap: () {
