@@ -86,6 +86,7 @@ class _RegalSearchBarState extends State<RegalSearchBar> {
             suffixIcon: _showClear && widget.showClose
                 ? CustomGestureDetector(
                     context: context,
+                    semanticsLabel: 'Clear Search Bar Icon',
                     trackLabel: 'Clear Icon Search Bar',
                     onTap: () {
                       widget.searchController.clear();

@@ -16,6 +16,7 @@ class Snackbar extends StatelessWidget with EventTrackMixin {
 
   Widget? trailing(BuildContext context) {
     final close = RegalIconButton.iconData(
+      semanticsLabel: 'Close Snackbar Button',
       onPressed: (context) => onClose?.call(),
       iconData: Icons.close,
       trackLabel: 'Close Snackbar',
