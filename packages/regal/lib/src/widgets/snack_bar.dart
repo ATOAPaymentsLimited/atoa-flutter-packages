@@ -125,10 +125,7 @@ class Snackbar extends StatelessWidget with EventTrackMixin {
     return Align(
       alignment: Alignment.bottomCenter,
       child: Padding(
-        padding: Spacing.large.x +
-            Spacing.huge.bottom +
-            Spacing.mini.bottom +
-            Spacing.tiny.bottom,
+        padding: Spacing.large.x,
         child: wrap(listTile, context),
       ),
     );
