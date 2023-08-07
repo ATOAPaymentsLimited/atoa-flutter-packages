@@ -43,11 +43,10 @@ class Snackbar extends StatelessWidget with EventTrackMixin {
           )
         : null;
 
-    if (onClose != null && cta != null) {
+    if (cta != null) {
       return Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          cta,
           Container(
             width: 1.sp,
             height: 24.sp,
@@ -62,7 +61,8 @@ class Snackbar extends StatelessWidget with EventTrackMixin {
               ),
             ),
           ),
-          close,
+          Spacing.tiny.xBox,
+          cta,
         ],
       );
     }
