@@ -134,11 +134,16 @@ class _RegalTextFieldState extends State<RegalTextField> {
   void initState() {
     _textEditingController = widget.controller ?? TextEditingController();
     _errorListenable = ValueNotifier<TextValidationState?>(null);
+
+    _errorListenable.addListener(_updateLabelColor);
     super.initState();
   }
 
   @override
   void dispose() {
+    _errorListenable
+      ..removeListener(_updateLabelColor)
+      ..dispose();
     _textEditingController.dispose();
     super.dispose();
   }
@@ -157,12 +162,15 @@ class _RegalTextFieldState extends State<RegalTextField> {
             focusNode: widget.focusNode,
             decoration: (widget.decoration ?? const InputDecoration()).copyWith(
               label: CustomText.semantics(widget.label),
+              floatingLabelStyle:
+                  context.theme.inputDecorationTheme.labelStyle?.copyWith(
+                color: _errorListenable.value?.color,
+              ),
               suffixIcon: _buildSuffixIcon,
             ),
             validator: (value) {
               final result = widget.validator?.call(value);
-              print(value);
-              print(result);
+
               if (result is String) {
                 _errorListenable.value = TextValidationState.invalid;
               }
@@ -263,6 +271,10 @@ class _RegalTextFieldState extends State<RegalTextField> {
           );
         },
       );
+
+  void _updateLabelColor() {
+    if (mounted) setState(() {});
+  }
 }
 
 enum TextValidationState {
