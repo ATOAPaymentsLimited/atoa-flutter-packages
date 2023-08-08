@@ -252,7 +252,7 @@ class _RegalTextFieldState extends State<RegalTextField> {
           if (value == null || value.isNone) return const SizedBox.shrink();
 
           return RegalIconButton.iconData(
-            iconData: Icons.cancel_outlined,
+            iconData: value.iconData,
             iconColor: value.color,
             trackLabel: 'Clear ${widget.label}',
             semanticsLabel: 'Clear ${widget.label}',
@@ -277,4 +277,7 @@ enum TextValidationState {
       : this == invalid
           ? RegalColors.brightOrange
           : RegalColors.grey.shade40;
+
+  IconData get iconData =>
+      this == invalid ? Icons.error_outline : Icons.cancel_outlined;
 }
