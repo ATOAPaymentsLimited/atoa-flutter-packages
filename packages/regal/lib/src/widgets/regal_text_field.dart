@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:regal/regal.dart';
-import 'package:regal/regal.dart';
 
 class RegalTextField extends StatefulWidget {
   const RegalTextField({
     super.key,
     this.margin,
+    this.suffix,
     required this.label,
     this.controller,
     this.onChanged,
@@ -65,6 +65,7 @@ class RegalTextField extends StatefulWidget {
   });
 
   final String label;
+  final Widget? suffix;
   final EdgeInsets? margin;
   final TextEditingController? controller;
   final ValueChanged<String>? onChanged;
@@ -127,10 +128,12 @@ class RegalTextField extends StatefulWidget {
 
 class _RegalTextFieldState extends State<RegalTextField> {
   late final TextEditingController _textEditingController;
+  late final ValueNotifier<TextValidationState?> _errorListenable;
 
   @override
   void initState() {
     _textEditingController = widget.controller ?? TextEditingController();
+    _errorListenable = ValueNotifier<TextValidationState?>(null);
     super.initState();
   }
 
@@ -154,8 +157,18 @@ class _RegalTextFieldState extends State<RegalTextField> {
             focusNode: widget.focusNode,
             decoration: (widget.decoration ?? const InputDecoration()).copyWith(
               label: CustomText.semantics(widget.label),
+              suffixIcon: _buildSuffixIcon,
             ),
-            validator: widget.validator,
+            validator: (value) {
+              final result = widget.validator?.call(value);
+              print(value);
+              print(result);
+              if (result is String) {
+                _errorListenable.value = TextValidationState.invalid;
+              }
+
+              return result;
+            },
             autovalidateMode: widget.autovalidateMode,
             initialValue: widget.initialValue,
             onSaved: widget.onSaved,
@@ -190,7 +203,19 @@ class _RegalTextFieldState extends State<RegalTextField> {
             minLines: widget.minLines,
             expands: widget.expands,
             maxLength: widget.maxLength,
-            onChanged: widget.onChanged,
+            onChanged: (String value) {
+              widget.onChanged?.call(value);
+
+              if (widget.autovalidateMode == AutovalidateMode.disabled) return;
+
+              if (value.isNotEmpty) {
+                _errorListenable.value = TextValidationState.typing;
+              }
+
+              if (value.isEmpty) {
+                _errorListenable.value = TextValidationState.none;
+              }
+            },
             onTap: widget.onTap,
             onTapOutside: widget.onTapOutside,
             onEditingComplete: widget.onEditingComplete,
@@ -218,4 +243,38 @@ class _RegalTextFieldState extends State<RegalTextField> {
           ),
         ),
       );
+
+  Widget get _buildSuffixIcon =>
+      widget.suffix ??
+      ValueListenableBuilder<TextValidationState?>(
+        valueListenable: _errorListenable,
+        builder: (context, value, child) {
+          if (value == null || value.isNone) return const SizedBox.shrink();
+
+          return RegalIconButton.iconData(
+            iconData: Icons.cancel_outlined,
+            iconColor: value.color,
+            trackLabel: 'Clear ${widget.label}',
+            semanticsLabel: 'Clear ${widget.label}',
+            onPressed: (context) {
+              _textEditingController.clear();
+              _errorListenable.value = TextValidationState.none;
+            },
+          );
+        },
+      );
+}
+
+enum TextValidationState {
+  none,
+  typing,
+  invalid;
+
+  bool get isNone => this == none;
+
+  Color get color => this == none
+      ? Colors.transparent
+      : this == invalid
+          ? RegalColors.brightOrange
+          : RegalColors.grey.shade40;
 }
