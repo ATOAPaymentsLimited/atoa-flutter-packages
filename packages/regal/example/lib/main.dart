@@ -102,7 +102,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   controller: TextEditingController(),
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   validator: (value) {
-                    return 'error';
+                    return null;
                   },
                 ),
               ),

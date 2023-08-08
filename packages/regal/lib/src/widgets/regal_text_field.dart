@@ -99,7 +99,7 @@ class RegalTextField extends StatefulWidget {
   final VoidCallback? onEditingComplete;
   final ValueChanged<String>? onFieldSubmitted;
   final ValueChanged<String?>? onSaved;
-  final String Function(String? value)? validator;
+  final String? Function(String? value)? validator;
   final List<TextInputFormatter>? inputFormatters;
   final bool? enabled;
   final double cursorWidth;
