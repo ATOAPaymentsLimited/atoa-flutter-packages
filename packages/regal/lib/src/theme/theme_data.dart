@@ -490,7 +490,7 @@ final kDarkThemData = kThemeData.copyWith(
     ),
     isCollapsed: true,
     labelStyle:
-        kInterTextTheme.bodyLarge?.copyWith(color: RegalColors.snowWhite),
+        kInterTextTheme.labelSmall?.copyWith(color: RegalColors.snowWhite),
     floatingLabelStyle:
         kInterTextTheme.bodyLarge?.copyWith(color: RegalColors.snowWhite),
     floatingLabelBehavior: FloatingLabelBehavior.always,
