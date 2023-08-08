@@ -24,4 +24,5 @@ export 'regal_switch.dart';
 export 'regal_text_field.dart';
 export 'regal_theme_provider.dart';
 export 'snack_bar.dart';
+export 'status_widget.dart';
 export 'supported_bank_sliders.dart';
