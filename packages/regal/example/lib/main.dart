@@ -90,6 +90,20 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
             children: [
               Spacing.medium.yBox,
+              RegalTextField(
+                label: 'Test label',
+                controller: TextEditingController(),
+              ),
+              Form(
+                child: RegalTextField(
+                  label: 'Test label',
+                  controller: TextEditingController(),
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  validator: (value) {
+                    return 'error';
+                  },
+                ),
+              ),
               RegalButton.primary(
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(
