@@ -141,23 +141,23 @@ final kThemeData = ThemeData.light().copyWith(
     isDense: true,
     contentPadding: Spacing.large.all,
     border: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(4.sp),
+      borderRadius: BorderRadius.circular(14.sp),
       borderSide: BorderSide(color: RegalColors.grey.shade10),
     ),
     enabledBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(4.sp),
+      borderRadius: BorderRadius.circular(14.sp),
       borderSide: BorderSide(color: RegalColors.grey.shade10),
     ),
     focusedBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(4.sp),
+      borderRadius: BorderRadius.circular(14.sp),
       borderSide: const BorderSide(color: RegalColors.licoriceBlack),
     ),
     disabledBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(4.sp),
+      borderRadius: BorderRadius.circular(14.sp),
       borderSide: BorderSide(color: RegalColors.grey.shade10),
     ),
     errorBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(4.sp),
+      borderRadius: BorderRadius.circular(14.sp),
       borderSide: const BorderSide(
         color: RegalColors.darkOrange,
       ),
@@ -175,7 +175,6 @@ final kThemeData = ThemeData.light().copyWith(
         kInterTextTheme.labelSmall?.copyWith(color: RegalColors.licoriceBlack),
     floatingLabelStyle:
         kInterTextTheme.bodyLarge?.copyWith(color: RegalColors.licoriceBlack),
-    floatingLabelBehavior: FloatingLabelBehavior.always,
   ),
   textSelectionTheme:
       const TextSelectionThemeData(cursorColor: RegalColors.claretRed),
@@ -459,23 +458,23 @@ final kDarkThemData = kThemeData.copyWith(
     isDense: true,
     contentPadding: Spacing.large.all,
     border: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(4.sp),
+      borderRadius: BorderRadius.circular(14.sp),
       borderSide: BorderSide(color: RegalColors.darkGrey.shade10),
     ),
     enabledBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(4.sp),
+      borderRadius: BorderRadius.circular(14.sp),
       borderSide: BorderSide(color: RegalColors.darkGrey.shade10),
     ),
     focusedBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(4.sp),
+      borderRadius: BorderRadius.circular(14.sp),
       borderSide: const BorderSide(color: RegalColors.snowWhite),
     ),
     disabledBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(4.sp),
+      borderRadius: BorderRadius.circular(14.sp),
       borderSide: BorderSide(color: RegalColors.darkGrey.shade10),
     ),
     errorBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(4.sp),
+      borderRadius: BorderRadius.circular(14.sp),
       borderSide: const BorderSide(
         color: RegalColors.darkOrange,
       ),
@@ -493,6 +492,5 @@ final kDarkThemData = kThemeData.copyWith(
         kInterTextTheme.labelSmall?.copyWith(color: RegalColors.snowWhite),
     floatingLabelStyle:
         kInterTextTheme.bodyLarge?.copyWith(color: RegalColors.snowWhite),
-    floatingLabelBehavior: FloatingLabelBehavior.always,
   ),
 );

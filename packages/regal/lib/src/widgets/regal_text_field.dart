@@ -1,28 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:regal/regal.dart';
+import 'package:regal/regal.dart';
 
 class RegalTextField extends StatefulWidget {
   const RegalTextField({
     super.key,
     this.margin,
     required this.label,
-    required this.controller,
+    this.controller,
     this.onChanged,
     this.initialValue,
     this.focusNode,
     this.decoration,
     this.keyboardType,
-    required this.textCapitalization,
+    this.textCapitalization = TextCapitalization.none,
     this.textInputAction,
     this.style,
     this.strutStyle,
     this.textDirection,
-    required this.textAlign,
+    this.textAlign = TextAlign.start,
     this.textAlignVertical,
     this.autofocus = false,
     this.readOnly = false,
-    this.obscuringCharacter = '',
+    this.obscuringCharacter = '•',
     this.obscureText = false,
     this.autocorrect = false,
     this.smartDashesType,
@@ -31,7 +32,7 @@ class RegalTextField extends StatefulWidget {
     this.maxLengthEnforcement,
     this.maxLines,
     this.minLines,
-    required this.expands,
+    this.expands = false,
     this.maxLength,
     this.onTap,
     this.onTapOutside,
@@ -41,7 +42,7 @@ class RegalTextField extends StatefulWidget {
     this.validator,
     this.inputFormatters,
     this.enabled,
-    required this.cursorWidth,
+    this.cursorWidth = 2.0,
     this.cursorHeight,
     this.cursorRadius,
     this.cursorColor,
@@ -65,7 +66,7 @@ class RegalTextField extends StatefulWidget {
 
   final String label;
   final EdgeInsets? margin;
-  final TextEditingController controller;
+  final TextEditingController? controller;
   final ValueChanged<String>? onChanged;
   final String? initialValue;
   final FocusNode? focusNode;
@@ -96,8 +97,8 @@ class RegalTextField extends StatefulWidget {
   final TapRegionCallback? onTapOutside;
   final VoidCallback? onEditingComplete;
   final ValueChanged<String>? onFieldSubmitted;
-  final VoidCallback? onSaved;
-  final ValueChanged<String?>? validator;
+  final ValueChanged<String?>? onSaved;
+  final String Function(String? value)? validator;
   final List<TextInputFormatter>? inputFormatters;
   final bool? enabled;
   final double cursorWidth;
@@ -125,6 +126,20 @@ class RegalTextField extends StatefulWidget {
 }
 
 class _RegalTextFieldState extends State<RegalTextField> {
+  late final TextEditingController _textEditingController;
+
+  @override
+  void initState() {
+    _textEditingController = widget.controller ?? TextEditingController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _textEditingController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) => Semantics(
         textField: true,
@@ -135,14 +150,21 @@ class _RegalTextFieldState extends State<RegalTextField> {
           margin: Spacing.large.y,
           child: TextFormField(
             restorationId: widget.restorationId,
-            controller: widget.controller,
+            controller: _textEditingController,
             focusNode: widget.focusNode,
-            decoration: widget.decoration?.copyWith(
+            decoration: (widget.decoration ?? const InputDecoration()).copyWith(
               label: CustomText.semantics(widget.label),
             ),
+            validator: widget.validator,
+            autovalidateMode: widget.autovalidateMode,
+            initialValue: widget.initialValue,
+            onSaved: widget.onSaved,
             keyboardType: widget.keyboardType,
             textInputAction: widget.textInputAction,
-            style: widget.style,
+            style: widget.style ??
+                context.textTheme.titleSmall?.copyWith(
+                  fontWeight: FontWeight.w600,
+                ),
             strutStyle: widget.strutStyle,
             textAlign: widget.textAlign,
             textAlignVertical: widget.textAlignVertical,
