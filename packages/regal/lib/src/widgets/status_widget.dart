@@ -24,6 +24,7 @@ class StatusWidget extends StatelessWidget {
           Spacing.huge.yBox,
           CustomText.semantics(
             title,
+            textAlign: TextAlign.center,
             style: context.labelMedium!.copyWith(
               fontWeight: FontWeight.bold,
             ),
@@ -32,6 +33,7 @@ class StatusWidget extends StatelessWidget {
           CustomText.semantics(
             description,
             style: context.bodyLarge,
+            textAlign: TextAlign.center,
           ),
           if (cta != null) ...[
             Spacing.huge.yBox,
@@ -56,6 +58,7 @@ class StatusWidget extends StatelessWidget {
           semanticsLabel: 'success check',
           circular: true,
           size: 100.sp,
+          activeColor: RegalColors.darkCyan,
         );
     }
   }
