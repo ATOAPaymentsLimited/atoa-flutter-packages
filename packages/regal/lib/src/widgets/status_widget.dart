@@ -33,7 +33,9 @@ class StatusWidget extends StatelessWidget {
           Spacing.huge.yBox,
           CustomText.semantics(
             description,
-            style: context.bodyLarge,
+            style: context.bodyLarge?.copyWith(
+              height: 1.5,
+            ),
             textAlign: TextAlign.center,
           ),
           if (cta != null) ...[
