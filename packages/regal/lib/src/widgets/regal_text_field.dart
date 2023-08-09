@@ -146,7 +146,7 @@ class _RegalTextFieldState extends State<RegalTextField> {
     _errorListenable
       ..removeListener(_updateLabelColor)
       ..dispose();
-    _textEditingController.dispose();
+    if (widget.controller == null) _textEditingController.dispose();
     super.dispose();
   }
 
