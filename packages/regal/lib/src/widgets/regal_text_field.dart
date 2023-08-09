@@ -8,6 +8,7 @@ class RegalTextField extends StatefulWidget {
     this.margin,
     this.suffix,
     required this.label,
+    this.showLabel = true,
     this.controller,
     this.onChanged,
     this.initialValue,
@@ -65,6 +66,7 @@ class RegalTextField extends StatefulWidget {
   });
 
   final String label;
+  final bool showLabel;
   final Widget? suffix;
   final EdgeInsets? margin;
   final TextEditingController? controller;
@@ -158,10 +160,12 @@ class _RegalTextFieldState extends State<RegalTextField> {
           margin: Spacing.large.y,
           child: TextFormField(
             restorationId: widget.restorationId,
-            controller: _textEditingController,
+            controller:
+                widget.initialValue == null ? _textEditingController : null,
             focusNode: widget.focusNode,
             decoration: (widget.decoration ?? const InputDecoration()).copyWith(
-              label: CustomText.semantics(widget.label),
+              label:
+                  widget.showLabel ? CustomText.semantics(widget.label) : null,
               floatingLabelStyle:
                   context.theme.inputDecorationTheme.labelStyle?.copyWith(
                 color: _errorListenable.value?.color,
