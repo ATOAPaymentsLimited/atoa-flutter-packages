@@ -9,6 +9,7 @@ class RegalTextField extends StatefulWidget {
     this.suffix,
     required this.label,
     this.showLabel = true,
+    this.showClear = true,
     this.controller,
     this.onChanged,
     this.initialValue,
@@ -67,6 +68,7 @@ class RegalTextField extends StatefulWidget {
 
   final String label;
   final bool showLabel;
+  final bool showClear;
   final Widget? suffix;
   final EdgeInsets? margin;
   final TextEditingController? controller;
@@ -170,7 +172,7 @@ class _RegalTextFieldState extends State<RegalTextField> {
                   context.theme.inputDecorationTheme.labelStyle?.copyWith(
                 color: _errorListenable.value?.color,
               ),
-              suffixIcon: _buildSuffixIcon,
+              suffixIcon: widget.suffix ?? _buildSuffixIcon,
             ),
             validator: (value) {
               final result = widget.validator?.call(value);
@@ -256,25 +258,25 @@ class _RegalTextFieldState extends State<RegalTextField> {
         ),
       );
 
-  Widget get _buildSuffixIcon =>
-      widget.suffix ??
-      ValueListenableBuilder<TextValidationState?>(
-        valueListenable: _errorListenable,
-        builder: (context, value, child) {
-          if (value == null || value.isNone) return const SizedBox.shrink();
+  Widget? get _buildSuffixIcon => !widget.showClear
+      ? null
+      : ValueListenableBuilder<TextValidationState?>(
+          valueListenable: _errorListenable,
+          builder: (context, value, child) {
+            if (value == null || value.isNone) return const SizedBox.shrink();
 
-          return RegalIconButton.iconData(
-            iconData: value.iconData,
-            iconColor: value.color,
-            trackLabel: 'Clear ${widget.label}',
-            semanticsLabel: 'Clear ${widget.label}',
-            onPressed: (context) {
-              _textEditingController.clear();
-              _errorListenable.value = TextValidationState.none;
-            },
-          );
-        },
-      );
+            return RegalIconButton.iconData(
+              iconData: value.iconData,
+              iconColor: value.color,
+              trackLabel: 'Clear ${widget.label}',
+              semanticsLabel: 'Clear ${widget.label}',
+              onPressed: (context) {
+                _textEditingController.clear();
+                _errorListenable.value = TextValidationState.none;
+              },
+            );
+          },
+        );
 
   void _updateLabelColor() {
     if (mounted) setState(() {});

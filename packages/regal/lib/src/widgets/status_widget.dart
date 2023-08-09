@@ -19,19 +19,24 @@ class StatusWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           _buildIcon(),
           Spacing.huge.yBox,
-          Text(
+          CustomText.semantics(
             title,
+            textAlign: TextAlign.center,
             style: context.labelMedium!.copyWith(
               fontWeight: FontWeight.bold,
             ),
           ),
           Spacing.huge.yBox,
-          Text(
+          CustomText.semantics(
             description,
-            style: context.bodyLarge,
+            style: context.bodyLarge?.copyWith(
+              height: 1.5,
+            ),
+            textAlign: TextAlign.center,
           ),
           if (cta != null) ...[
             Spacing.huge.yBox,
@@ -56,6 +61,7 @@ class StatusWidget extends StatelessWidget {
           semanticsLabel: 'success check',
           circular: true,
           size: 100.sp,
+          activeColor: RegalColors.darkCyan,
         );
     }
   }
