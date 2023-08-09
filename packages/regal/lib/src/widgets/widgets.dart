@@ -5,7 +5,6 @@ export 'custom_gesture_detector.dart';
 export 'custom_ink_well.dart';
 export 'custom_navigation_card.dart';
 export 'custom_outline_button.dart';
-export 'custom_tab_bar.dart';
 export 'custom_text.dart';
 export 'custom_text_button.dart';
 export 'custom_text_span.dart';
