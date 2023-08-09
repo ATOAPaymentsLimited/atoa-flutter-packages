@@ -22,14 +22,14 @@ class StatusWidget extends StatelessWidget {
         children: [
           _buildIcon(),
           Spacing.huge.yBox,
-          Text(
+          CustomText.semantics(
             title,
             style: context.labelMedium!.copyWith(
               fontWeight: FontWeight.bold,
             ),
           ),
           Spacing.huge.yBox,
-          Text(
+          CustomText.semantics(
             description,
             style: context.bodyLarge,
           ),
