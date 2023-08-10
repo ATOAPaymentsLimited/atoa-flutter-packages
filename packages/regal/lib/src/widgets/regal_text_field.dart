@@ -170,7 +170,7 @@ class _RegalTextFieldState extends State<RegalTextField> {
                   widget.showLabel ? CustomText.semantics(widget.label) : null,
               floatingLabelStyle:
                   context.theme.inputDecorationTheme.labelStyle?.copyWith(
-                color: _errorListenable.value?.color,
+                color: _errorListenable.value?.labelColor,
               ),
               suffixIcon: widget.suffix ?? _buildSuffixIcon,
             ),
@@ -267,7 +267,7 @@ class _RegalTextFieldState extends State<RegalTextField> {
 
             return RegalIconButton.iconData(
               iconData: value.iconData,
-              iconColor: value.color,
+              iconColor: value.suffixColor,
               trackLabel: 'Clear ${widget.label}',
               semanticsLabel: 'Clear ${widget.label}',
               onPressed: (context) {
@@ -290,7 +290,10 @@ enum TextValidationState {
 
   bool get isNone => this == none;
 
-  Color get color => this == none
+  Color get labelColor =>
+      this == invalid ? RegalColors.brightOrange : RegalColors.grey.shade40;
+
+  Color get suffixColor => this == none
       ? Colors.transparent
       : this == invalid
           ? RegalColors.brightOrange
