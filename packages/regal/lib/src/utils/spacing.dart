@@ -72,4 +72,16 @@ extension SpacingX on Spacing {
   SizedBox get xBox => SizedBox(width: value.sp);
 
   SizedBox get yBox => SizedBox(height: value.sp);
+
+  Radius get circular => Radius.circular(value.r);
+
+  BorderRadius get brAll => BorderRadius.all(circular);
+
+  BorderRadius get topCorners => BorderRadius.vertical(
+        top: circular,
+      );
+
+  BorderRadius get bottomCorners => BorderRadius.vertical(
+        bottom: circular,
+      );
 }
