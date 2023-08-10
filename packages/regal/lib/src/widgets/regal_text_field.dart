@@ -32,7 +32,7 @@ class RegalTextField extends StatefulWidget {
     this.smartQuotesType,
     this.enableSuggestions = false,
     this.maxLengthEnforcement,
-    this.maxLines,
+    this.maxLines = 1,
     this.minLines,
     this.expands = false,
     this.maxLength,
@@ -94,7 +94,7 @@ class RegalTextField extends StatefulWidget {
   final SmartQuotesType? smartQuotesType;
   final bool enableSuggestions;
   final MaxLengthEnforcement? maxLengthEnforcement;
-  final int? maxLines;
+  final int maxLines;
   final int? minLines;
   final bool expands;
   final int? maxLength;
@@ -213,7 +213,7 @@ class _RegalTextFieldState extends State<RegalTextField> {
                     : SmartQuotesType.enabled),
             enableSuggestions: widget.enableSuggestions,
             maxLengthEnforcement: widget.maxLengthEnforcement,
-            maxLines: widget.obscureText ? 1 : widget.maxLines,
+            maxLines: widget.maxLines,
             minLines: widget.minLines,
             expands: widget.expands,
             maxLength: widget.maxLength,
