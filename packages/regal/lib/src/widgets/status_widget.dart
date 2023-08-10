@@ -82,8 +82,8 @@ class _Icon extends StatelessWidget {
       assetPath,
       colorFilter: filter,
       package: 'regal',
-      height: 100.sp,
-      width: 100.sp,
+      height: 80.sp,
+      width: 80.sp,
     );
   }
 }

@@ -85,7 +85,7 @@ class _RegalCheckboxState extends State<RegalCheckbox> {
                       opacity: _checked ? 1.0 : 0.0,
                       child: Icon(
                         Icons.done,
-                        size: widget.size * 0.65,
+                        size: widget.size * 0.8,
                         color: widget.checkColor,
                       ),
                     ),
