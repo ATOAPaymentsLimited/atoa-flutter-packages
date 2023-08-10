@@ -385,6 +385,7 @@ final kDarkThemData = kThemeData.copyWith(
   ),
   appBarTheme: AppBarTheme(
     backgroundColor: RegalColors.licoriceBlack,
+    systemOverlayStyle: SystemUiOverlayStyle.light,
     actionsIconTheme: const IconThemeData(
       color: RegalColors.snowWhite,
     ),
