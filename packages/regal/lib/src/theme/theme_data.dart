@@ -408,11 +408,12 @@ final kDarkThemData = kThemeData.copyWith(
         fontSize: 16.sp,
         fontWeight: FontWeight.bold,
       ),
+    ).copyWith(
+      elevation: const MaterialStatePropertyAll(0),
     ),
   ),
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
-      elevation: 0,
       shape: const StadiumBorder(),
       backgroundColor: RegalColors.vividRed,
       disabledBackgroundColor: RegalColors.disabledDarkVividRed,
@@ -422,6 +423,8 @@ final kDarkThemData = kThemeData.copyWith(
         fontSize: 16.sp,
         fontWeight: FontWeight.bold,
       ),
+    ).copyWith(
+      elevation: const MaterialStatePropertyAll(0),
     ),
   ),
   outlinedButtonTheme: OutlinedButtonThemeData(
@@ -437,6 +440,7 @@ final kDarkThemData = kThemeData.copyWith(
         borderRadius: BorderRadius.circular(100.w),
       ),
     ).copyWith(
+      elevation: const MaterialStatePropertyAll(0),
       side: MaterialStateProperty.resolveWith(
         (states) {
           if (states.contains(MaterialState.disabled)) {
