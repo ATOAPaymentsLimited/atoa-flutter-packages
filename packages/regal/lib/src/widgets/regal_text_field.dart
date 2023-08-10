@@ -213,7 +213,7 @@ class _RegalTextFieldState extends State<RegalTextField> {
                     : SmartQuotesType.enabled),
             enableSuggestions: widget.enableSuggestions,
             maxLengthEnforcement: widget.maxLengthEnforcement,
-            maxLines: widget.maxLines,
+            maxLines: widget.obscureText ? 1 : widget.maxLines,
             minLines: widget.minLines,
             expands: widget.expands,
             maxLength: widget.maxLength,
