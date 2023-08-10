@@ -126,7 +126,6 @@ final kThemeData = ThemeData.light().copyWith(
   appBarTheme: AppBarTheme(
     systemOverlayStyle: SystemUiOverlayStyle.dark,
     backgroundColor: RegalColors.snowWhite,
-    color: Colors.transparent,
     centerTitle: true,
     elevation: 0,
     iconTheme: const IconThemeData(
@@ -391,7 +390,6 @@ final kDarkThemData = kThemeData.copyWith(
     actionsIconTheme: const IconThemeData(
       color: RegalColors.snowWhite,
     ),
-    color: Colors.transparent,
     elevation: 0,
     centerTitle: true,
     titleTextStyle: GoogleFonts.montserrat(
