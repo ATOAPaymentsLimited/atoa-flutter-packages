@@ -6,8 +6,8 @@ import 'package:regal/regal.dart';
 class RegalStatusCard extends StatelessWidget {
   const RegalStatusCard.info({
     super.key,
-    required this.title,
-    required this.description,
+    this.title,
+    this.description,
     this.prefixIcon,
     this.body,
     this.ctaText,
@@ -15,6 +15,8 @@ class RegalStatusCard extends StatelessWidget {
     this.onClose,
     this.ctaButtonKey,
     this.bgColor,
+    this.titleStyle,
+    this.descriptionStyle,
   })  : _type = RegalStatusCardTypeEnum.info,
         assert(
           prefixIcon is Icon || prefixIcon is SvgPicture,
@@ -23,8 +25,8 @@ class RegalStatusCard extends StatelessWidget {
 
   const RegalStatusCard.pending({
     super.key,
-    required this.description,
-    required this.title,
+    this.description,
+    this.title,
     this.prefixIcon,
     this.body,
     this.ctaText,
@@ -32,6 +34,8 @@ class RegalStatusCard extends StatelessWidget {
     this.onClose,
     this.ctaButtonKey,
     this.bgColor,
+    this.titleStyle,
+    this.descriptionStyle,
   })  : _type = RegalStatusCardTypeEnum.pending,
         assert(
           prefixIcon is Icon || prefixIcon is SvgPicture,
@@ -40,12 +44,14 @@ class RegalStatusCard extends StatelessWidget {
 
   const RegalStatusCard.success({
     super.key,
-    required this.title,
-    required this.description,
+    this.title,
+    this.description,
     this.prefixIcon,
     this.body,
     this.onClose,
     this.bgColor,
+    this.titleStyle,
+    this.descriptionStyle,
   })  : _type = RegalStatusCardTypeEnum.success,
         ctaText = null,
         onTapCta = null,
@@ -53,13 +59,21 @@ class RegalStatusCard extends StatelessWidget {
         assert(
           prefixIcon is Icon || prefixIcon is SvgPicture,
           'Prefix icon can be icon or svg',
-        );
+        ),
+        assert(title == null && description == null,
+            'Both title & description cannot be null');
 
   /// [title] specifies the heading of the card.
-  final String title;
+  final String? title;
 
   /// [title] specifies the heading of the card.
-  final String description;
+  final String? description;
+
+  /// [titleStyle] specifies the style of heading of the card.
+  final TextStyle? titleStyle;
+
+  /// [descriptionStyle] specifies the style of the description of the card.
+  final TextStyle? descriptionStyle;
 
   /// [prefixIcon] defines the icon to show before
   /// title, and description in a row
@@ -123,22 +137,25 @@ class RegalStatusCard extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        if (title.isNotEmpty)
+                        if (title != null && title!.isNotEmpty)
                           CustomText.semantics(
-                            title,
-                            style: context.montserrat.headlineLarge.copyWith(
-                              fontSize: 16.sp,
-                              color: _type.foregroundColor(context),
-                              height: 1.3,
-                            ),
+                            title!,
+                            style: titleStyle ??
+                                context.montserrat.headlineLarge.copyWith(
+                                  fontSize: 16.sp,
+                                  color: _type.foregroundColor(context),
+                                  height: 1.3,
+                                ),
                           ),
-                        CustomText.semantics(
-                          description,
-                          style: context.bodyLarge?.copyWith(
-                            height: 1.5,
-                            color: _type.foregroundColor(context),
+                        if (description != null && description!.isNotEmpty)
+                          CustomText.semantics(
+                            description!,
+                            style: descriptionStyle ??
+                                context.bodyLarge?.copyWith(
+                                  height: 1.5,
+                                  color: _type.foregroundColor(context),
+                                ),
                           ),
-                        ),
                       ],
                     ),
                   ),
