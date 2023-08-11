@@ -101,7 +101,6 @@ class CustomGestureDetector extends GestureDetector with EventTrackMixin {
   Widget? get child => super.child != null
       ? Semantics(
           label: semanticsLabel,
-          button: true,
           container: true,
           enabled: true,
           explicitChildNodes: true,
