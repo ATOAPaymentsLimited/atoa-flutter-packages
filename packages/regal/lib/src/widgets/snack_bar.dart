@@ -146,7 +146,7 @@ extension on SnackbarTypeEnum {
             size: 20.sp,
           ),
         SnackbarTypeEnum.info => Icon(
-            Icons.error_outline,
+            Icons.info_outline,
             color: context.grey.shade40,
           ),
       };
