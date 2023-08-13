@@ -7,40 +7,46 @@ class StatusWidget extends StatelessWidget {
   const StatusWidget({
     super.key,
     required this.type,
-    required this.title,
-    required this.description,
+    this.title,
+    this.description,
     this.cta,
+    this.placeholder,
   });
 
   final StatusType type;
-  final String title;
-  final String description;
+  final String? title;
+  final String? description;
   final RegalButton? cta;
+  final Widget? placeholder;
 
   @override
   Widget build(BuildContext context) => Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          _buildIcon(),
-          Spacing.huge.yBox,
-          CustomText.semantics(
-            title,
-            textAlign: TextAlign.center,
-            style: context.labelMedium!.copyWith(
-              fontWeight: FontWeight.bold,
+          if (placeholder != null) placeholder! else _buildIcon(),
+          if (title != null && title!.trim().isNotEmpty) ...[
+            Spacing.huge.yBox,
+            CustomText.semantics(
+              title!,
+              textAlign: TextAlign.center,
+              style: context.labelMedium!.copyWith(
+                fontWeight: FontWeight.bold,
+              ),
             ),
-          ),
-          Spacing.huge.yBox,
-          CustomText.semantics(
-            description,
-            style: context.bodyLarge?.copyWith(
-              height: 1.5,
+          ],
+          if (description != null && description!.trim().isNotEmpty) ...[
+            Spacing.huge.yBox,
+            CustomText.semantics(
+              description!,
+              style: context.bodyLarge?.copyWith(
+                height: 1.5,
+              ),
+              textAlign: TextAlign.center,
             ),
-            textAlign: TextAlign.center,
-          ),
+          ],
           if (cta != null) ...[
             Spacing.huge.yBox,
-            cta!,
+            Center(child: cta!),
           ],
         ],
       );
@@ -63,6 +69,8 @@ class StatusWidget extends StatelessWidget {
           size: 100.sp,
           activeColor: RegalColors.darkCyan,
         );
+      case StatusType.empty:
+        return const SizedBox.shrink();
     }
   }
 }
@@ -88,4 +96,4 @@ class _Icon extends StatelessWidget {
   }
 }
 
-enum StatusType { failed, success, processing }
+enum StatusType { failed, success, processing, empty }
