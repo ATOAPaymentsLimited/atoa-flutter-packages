@@ -18,6 +18,7 @@ class RegalButton extends StatelessWidget with EventTrackMixin {
     this.loading = false,
     this.trackProperties,
     this.semanticsLabel,
+    this.shrink = false,
   })  : _type = _RegalButtonType.primary,
         assert(
           label != null || prefixIcon != null || suffixIcon != null,
@@ -37,6 +38,7 @@ class RegalButton extends StatelessWidget with EventTrackMixin {
     this.loading = false,
     this.trackProperties,
     this.semanticsLabel,
+    this.shrink = false,
   })  : _type = _RegalButtonType.secondary,
         assert(
           label != null || prefixIcon != null || suffixIcon != null,
@@ -56,6 +58,7 @@ class RegalButton extends StatelessWidget with EventTrackMixin {
     this.loading = false,
     this.trackProperties,
     this.semanticsLabel,
+    this.shrink = false,
   })  : _type = _RegalButtonType.tertiary,
         assert(
           label != null || prefixIcon != null || suffixIcon != null,
@@ -87,11 +90,16 @@ class RegalButton extends StatelessWidget with EventTrackMixin {
 
   final String? semanticsLabel;
 
+  /// [shrink] will minimize the button width to hug its contents
+  final bool shrink;
+
   @override
   Widget build(BuildContext context) {
     final child = Row(
+      mainAxisSize: shrink ? MainAxisSize.min : MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
+        if (shrink) Spacing.medium.xBox,
         if (loading)
           GradientCircularProgressIndicator(
             radius: 18.sp,
@@ -112,6 +120,7 @@ class RegalButton extends StatelessWidget with EventTrackMixin {
             ),
           if (suffixIcon != null && label != null) Spacing.small.xBox,
           if (suffixIcon != null) suffixIcon!,
+          if (shrink) Spacing.medium.xBox,
         ]
       ],
     );
@@ -133,8 +142,9 @@ class RegalButton extends StatelessWidget with EventTrackMixin {
             onPressed: onPressed != null ? onClick(context) : null,
             style: (style ?? Theme.of(context).outlinedButtonTheme.style)
                 ?.copyWith(
-              fixedSize:
-                  MaterialStatePropertyAll(Size.fromHeight(size.value.sp)),
+              fixedSize: MaterialStatePropertyAll(
+                Size.fromHeight(size.value.sp),
+              ),
             ),
             child: child,
           );
