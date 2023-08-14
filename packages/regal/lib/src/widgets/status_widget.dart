@@ -46,7 +46,7 @@ class StatusWidget extends StatelessWidget {
           ],
           if (cta != null) ...[
             Spacing.huge.yBox,
-            Center(child: cta!),
+            Center(child: cta),
           ],
         ],
       );

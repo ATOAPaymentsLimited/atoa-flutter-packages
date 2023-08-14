@@ -60,8 +60,10 @@ class RegalStatusCard extends StatelessWidget {
           prefixIcon is Icon || prefixIcon is SvgPicture,
           'Prefix icon can be icon or svg',
         ),
-        assert(title == null && description == null,
-            'Both title & description cannot be null');
+        assert(
+          title == null && description == null,
+          'Both title & description cannot be null',
+        );
 
   /// [title] specifies the heading of the card.
   final String? title;
