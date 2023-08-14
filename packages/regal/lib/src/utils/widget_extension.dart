@@ -7,5 +7,6 @@ extension WidgetExtension on Widget {
   Widget expanded({int flex = 1, bool condition = true}) =>
       condition ? Expanded(flex: flex, child: this) : this;
 
-  
+  Widget safeArea({bool condition = true}) =>
+      condition ? SafeArea(child: this) : this;
 }
