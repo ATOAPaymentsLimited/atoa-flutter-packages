@@ -12,6 +12,8 @@ class RegalIconButton extends StatelessWidget {
     this.iconColor,
     required this.semanticsLabel,
     required this.trackLabel,
+    this.borderRadius,
+    this.color,
   })  : _type = _RegalIconButtonType.asset,
         _assetPath = assetPath,
         _iconData = null;
@@ -24,6 +26,8 @@ class RegalIconButton extends StatelessWidget {
     this.iconColor,
     required this.trackLabel,
     required this.semanticsLabel,
+    this.borderRadius,
+    this.color,
   })  : _type = _RegalIconButtonType.icon,
         _assetPath = '',
         _iconData = iconData;
@@ -35,6 +39,8 @@ class RegalIconButton extends StatelessWidget {
   final IconData? _iconData;
   final String trackLabel;
   final String semanticsLabel;
+  final BorderRadius? borderRadius;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) => CustomGestureDetector(
@@ -44,10 +50,10 @@ class RegalIconButton extends StatelessWidget {
         onTap: () => onPressed?.call(context),
         behavior: HitTestBehavior.translucent,
         child: Container(
-          height: size.value,
           width: size.value,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16.r),
+            color: color,
+            borderRadius: borderRadius ?? BorderRadius.circular(16.r),
           ),
           child: Center(
             child: _BuildIcon(
