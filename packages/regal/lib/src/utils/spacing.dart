@@ -69,9 +69,9 @@ extension SpacingX on Spacing {
 
   EdgeInsets get bottom => EdgeInsets.only(bottom: value.sp);
 
-  SizedBox get xBox => SizedBox(width: value.sp);
+  OperatorSizedBox get xBox => OperatorSizedBox.width(value.sp);
 
-  SizedBox get yBox => SizedBox(height: value.sp);
+  OperatorSizedBox get yBox => OperatorSizedBox.height(value.sp);
 
   Radius get circular => Radius.circular(value.r);
 
@@ -84,4 +84,29 @@ extension SpacingX on Spacing {
   BorderRadius get bottomCorners => BorderRadius.vertical(
         bottom: circular,
       );
+}
+
+class OperatorSizedBox extends SizedBox {
+  const OperatorSizedBox.height(double height, {super.key})
+      : super(height: height);
+
+  const OperatorSizedBox.width(double width, {super.key}) : super(width: width);
+
+  const OperatorSizedBox.shrink({super.key}) : super.shrink();
+
+  OperatorSizedBox operator *(double other) {
+    if (height != null) return OperatorSizedBox.height(height! * other);
+
+    if (width != null) return OperatorSizedBox.width(width! * other);
+
+    return const OperatorSizedBox.shrink();
+  }
+
+  OperatorSizedBox operator +(SizedBox other) {
+    if (height != null) return OperatorSizedBox.height(height! + other.height!);
+
+    if (width != null) return OperatorSizedBox.width(width! + other.width!);
+
+    return const OperatorSizedBox.shrink();
+  }
 }
