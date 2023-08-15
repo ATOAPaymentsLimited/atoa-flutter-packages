@@ -9,4 +9,5 @@ extension TextStyleExtension on TextStyle {
   TextStyle get w700 => copyWith(fontWeight: FontWeight.w700);
 
   TextStyle size(double value) => copyWith(fontSize: value);
+  TextStyle textColor(Color value) => copyWith(color: value);
 }

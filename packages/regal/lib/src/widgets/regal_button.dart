@@ -16,6 +16,7 @@ class RegalButton extends StatelessWidget with EventTrackMixin {
     this.style,
     this.size = RegalButtonSize.large,
     this.loading = false,
+    this.enable = false,
     this.trackProperties,
     this.semanticsLabel,
     this.shrink = false,
@@ -36,6 +37,7 @@ class RegalButton extends StatelessWidget with EventTrackMixin {
     this.style,
     this.size = RegalButtonSize.large,
     this.loading = false,
+    this.enable = false,
     this.trackProperties,
     this.semanticsLabel,
     this.shrink = false,
@@ -56,6 +58,7 @@ class RegalButton extends StatelessWidget with EventTrackMixin {
     this.style,
     this.size = RegalButtonSize.large,
     this.loading = false,
+    this.enable = false,
     this.trackProperties,
     this.semanticsLabel,
     this.shrink = false,
@@ -85,6 +88,8 @@ class RegalButton extends StatelessWidget with EventTrackMixin {
   final bool enableTracking;
 
   final bool loading;
+
+  final bool enable;
 
   final Map<String, dynamic>? trackProperties;
 
@@ -132,8 +137,9 @@ class RegalButton extends StatelessWidget with EventTrackMixin {
             onPressed: onPressed != null ? onClick(context) : null,
             style: (style ?? Theme.of(context).elevatedButtonTheme.style)
                 ?.copyWith(
-              fixedSize:
-                  MaterialStatePropertyAll(Size.fromHeight(size.value.sp)),
+              fixedSize: MaterialStatePropertyAll(
+                Size.fromHeight(size.value.sp),
+              ),
             ),
             child: child,
           );
@@ -152,8 +158,9 @@ class RegalButton extends StatelessWidget with EventTrackMixin {
           return TextButton(
             onPressed: onPressed != null ? onClick(context) : null,
             style: (style ?? Theme.of(context).textButtonTheme.style)?.copyWith(
-              fixedSize:
-                  MaterialStatePropertyAll(Size.fromHeight(size.value.sp)),
+              fixedSize: MaterialStatePropertyAll(
+                Size.fromHeight(size.value.sp),
+              ),
             ),
             child: child,
           );
@@ -166,7 +173,7 @@ class RegalButton extends StatelessWidget with EventTrackMixin {
       enabled: true,
       explicitChildNodes: true,
       label: semanticsLabel ?? '$label Button',
-      child: buttonType(),
+      child: buttonType().disable(ignoring: !enable),
     );
   }
 
