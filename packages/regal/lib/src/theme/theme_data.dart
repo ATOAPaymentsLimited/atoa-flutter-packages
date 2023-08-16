@@ -38,77 +38,77 @@ final kThemeData = ThemeData.light().copyWith(
       pink: RegalColors.vividRed,
     ),
     MontserratX(
-      displayLarge: GoogleFonts.montserrat(
+      displayLarge: kMontserratTextTheme.displayLarge!.copyWith(
         color: RegalColors.licoriceBlack,
         fontSize: 48.sp,
         fontWeight: FontWeight.bold,
       ),
-      displayMedium: GoogleFonts.montserrat(
+      displayMedium: kMontserratTextTheme.displayMedium!.copyWith(
         color: RegalColors.licoriceBlack,
         fontSize: 36.sp,
         fontWeight: FontWeight.bold,
       ),
-      displaySmall: GoogleFonts.montserrat(
+      displaySmall: kMontserratTextTheme.displaySmall!.copyWith(
         color: RegalColors.licoriceBlack,
         fontSize: 32.sp,
         fontWeight: FontWeight.bold,
       ),
-      headlineLarge: GoogleFonts.montserrat(
+      headlineLarge: kMontserratTextTheme.headlineLarge!.copyWith(
         color: RegalColors.licoriceBlack,
         fontSize: 32.sp,
         fontWeight: FontWeight.bold,
       ),
-      headlineMedium: GoogleFonts.montserrat(
+      headlineMedium: kMontserratTextTheme.headlineMedium!.copyWith(
         color: RegalColors.licoriceBlack,
         fontSize: 28.sp,
         fontWeight: FontWeight.bold,
       ),
-      headlineSmall: GoogleFonts.montserrat(
+      headlineSmall: kMontserratTextTheme.headlineSmall!.copyWith(
         color: RegalColors.licoriceBlack,
         fontSize: 24.sp,
         fontWeight: FontWeight.bold,
       ),
-      titleLarge: GoogleFonts.montserrat(
+      titleLarge: kMontserratTextTheme.titleLarge!.copyWith(
         color: RegalColors.licoriceBlack,
         fontSize: 24.sp,
         fontWeight: FontWeight.w400,
       ),
-      titleMedium: GoogleFonts.montserrat(
+      titleMedium: kMontserratTextTheme.titleMedium!.copyWith(
         color: RegalColors.licoriceBlack,
         fontSize: 20.sp,
         fontWeight: FontWeight.w400,
       ),
-      titleSmall: GoogleFonts.montserrat(
+      titleSmall: kMontserratTextTheme.titleSmall!.copyWith(
         color: RegalColors.licoriceBlack,
         fontSize: 16.sp,
         fontWeight: FontWeight.w400,
       ),
-      labelLarge: GoogleFonts.montserrat(
+      labelLarge: kMontserratTextTheme.labelLarge!.copyWith(
         color: RegalColors.licoriceBlack,
         fontSize: 20.sp,
         fontWeight: FontWeight.w400,
       ),
-      labelMedium: GoogleFonts.montserrat(
+      labelMedium: kMontserratTextTheme.labelMedium!.copyWith(
         color: RegalColors.licoriceBlack,
         fontSize: 18.sp,
         fontWeight: FontWeight.w400,
       ),
-      labelSmall: GoogleFonts.montserrat(
+      labelSmall: kMontserratTextTheme.labelSmall!.copyWith(
         color: RegalColors.licoriceBlack,
         fontSize: 16.sp,
         fontWeight: FontWeight.w400,
       ),
-      bodyLarge: GoogleFonts.montserrat(
+      bodyLarge: kMontserratTextTheme.bodyLarge!.copyWith(
         color: RegalColors.licoriceBlack,
         fontSize: 14.sp,
         fontWeight: FontWeight.w400,
       ),
-      bodyMedium: GoogleFonts.montserrat(
+      bodyMedium: kMontserratTextTheme.bodyMedium!.copyWith(
         color: RegalColors.licoriceBlack,
         fontSize: 12.sp,
         fontWeight: FontWeight.w400,
       ),
-      bodySmall: GoogleFonts.montserrat(
+      bodySmall: kMontserratTextTheme.bodySmall!.copyWith(
         color: RegalColors.licoriceBlack,
         fontSize: 11.sp,
         fontWeight: FontWeight.w400,
@@ -131,8 +131,10 @@ final kThemeData = ThemeData.light().copyWith(
     iconTheme: const IconThemeData(
       color: RegalColors.claretRed,
     ),
-    titleTextStyle: GoogleFonts.montserrat(
+    titleTextStyle: TextStyle(
       color: RegalColors.licoriceBlack,
+      fontFamily: 'Montserrat',
+      package: 'regal',
       fontSize: 20.sp,
       fontWeight: FontWeight.bold,
     ),
@@ -184,7 +186,9 @@ final kThemeData = ThemeData.light().copyWith(
       shape: const StadiumBorder(),
       foregroundColor: RegalColors.vividRed,
       disabledForegroundColor: RegalColors.disabledVividRed,
-      textStyle: GoogleFonts.montserrat(
+      textStyle: TextStyle(
+        fontFamily: 'Montserrat',
+        package: 'regal',
         color: RegalColors.vividRed,
         fontSize: 16.sp,
         fontWeight: FontWeight.bold,
@@ -199,7 +203,9 @@ final kThemeData = ThemeData.light().copyWith(
       disabledBackgroundColor: RegalColors.disabledVividRed,
       disabledForegroundColor: Colors.white,
       fixedSize: Size.fromHeight(60.sp),
-      textStyle: GoogleFonts.montserrat(
+      textStyle: TextStyle(
+        fontFamily: 'Montserrat',
+        package: 'regal',
         color: RegalColors.snowWhite,
         fontSize: 16.sp,
         fontWeight: FontWeight.bold,
@@ -210,7 +216,9 @@ final kThemeData = ThemeData.light().copyWith(
     style: OutlinedButton.styleFrom(
       foregroundColor: RegalColors.vividRed,
       disabledForegroundColor: RegalColors.disabledVividRed,
-      textStyle: GoogleFonts.montserrat(
+      textStyle: TextStyle(
+        fontFamily: 'Montserrat',
+        package: 'regal',
         color: RegalColors.vividRed,
         fontSize: 16.sp,
         fontWeight: FontWeight.bold,
@@ -294,77 +302,76 @@ final kDarkThemData = kThemeData.copyWith(
       pink: RegalColors.snowWhite,
     ),
     MontserratX(
-      displayLarge: GoogleFonts.montserrat(
+      displayLarge: kMontserratTextTheme.displayLarge!.copyWith(
         color: RegalColors.snowWhite,
         fontSize: 48.sp,
         fontWeight: FontWeight.bold,
       ),
-      displayMedium: GoogleFonts.montserrat(
+      displayMedium: kMontserratTextTheme.displayMedium!.copyWith(
         color: RegalColors.snowWhite,
         fontSize: 36.sp,
         fontWeight: FontWeight.bold,
       ),
-      displaySmall: GoogleFonts.montserrat(
+      displaySmall: kMontserratTextTheme.displaySmall!.copyWith(
         color: RegalColors.snowWhite,
         fontSize: 32.sp,
         fontWeight: FontWeight.bold,
       ),
-      headlineLarge: GoogleFonts.montserrat(
+      headlineLarge: kMontserratTextTheme.headlineLarge!.copyWith(
         color: RegalColors.snowWhite,
         fontSize: 32.sp,
         fontWeight: FontWeight.bold,
       ),
-      headlineMedium: GoogleFonts.montserrat(
+      headlineMedium: kMontserratTextTheme.headlineMedium!.copyWith(
         color: RegalColors.snowWhite,
         fontSize: 28.sp,
         fontWeight: FontWeight.bold,
       ),
-      headlineSmall: GoogleFonts.montserrat(
+      headlineSmall: kMontserratTextTheme.headlineSmall!.copyWith(
         color: RegalColors.snowWhite,
         fontSize: 24.sp,
         fontWeight: FontWeight.bold,
       ),
-      titleLarge: GoogleFonts.montserrat(
+      titleLarge: kMontserratTextTheme.titleLarge!.copyWith(
         color: RegalColors.snowWhite,
         fontSize: 24.sp,
         fontWeight: FontWeight.w400,
       ),
-      titleMedium: GoogleFonts.montserrat(
+      titleMedium: kMontserratTextTheme.titleMedium!.copyWith(
         color: RegalColors.snowWhite,
-        fontSize: 20.sp,
-        fontWeight: FontWeight.w400,
+        fontFamily: 'Montserrat',
       ),
-      titleSmall: GoogleFonts.montserrat(
+      titleSmall: kMontserratTextTheme.titleSmall!.copyWith(
         color: RegalColors.snowWhite,
         fontSize: 16.sp,
         fontWeight: FontWeight.w400,
       ),
-      labelLarge: GoogleFonts.montserrat(
+      labelLarge: kMontserratTextTheme.labelLarge!.copyWith(
         color: RegalColors.snowWhite,
         fontSize: 20.sp,
         fontWeight: FontWeight.w400,
       ),
-      labelMedium: GoogleFonts.montserrat(
+      labelMedium: kMontserratTextTheme.labelMedium!.copyWith(
         color: RegalColors.snowWhite,
         fontSize: 18.sp,
         fontWeight: FontWeight.w400,
       ),
-      labelSmall: GoogleFonts.montserrat(
+      labelSmall: kMontserratTextTheme.labelSmall!.copyWith(
         color: RegalColors.snowWhite,
         fontSize: 16.sp,
         fontWeight: FontWeight.w400,
       ),
-      bodyLarge: GoogleFonts.montserrat(
+      bodyLarge: kMontserratTextTheme.bodyLarge!.copyWith(
         color: RegalColors.snowWhite,
         fontSize: 14.sp,
         fontWeight: FontWeight.w400,
       ),
-      bodyMedium: GoogleFonts.montserrat(
+      bodyMedium: kMontserratTextTheme.bodyMedium!.copyWith(
         color: RegalColors.snowWhite,
         fontSize: 12.sp,
         fontWeight: FontWeight.w400,
       ),
-      bodySmall: GoogleFonts.montserrat(
+      bodySmall: kMontserratTextTheme.bodySmall!.copyWith(
         color: RegalColors.snowWhite,
         fontSize: 11.sp,
         fontWeight: FontWeight.w400,
@@ -392,7 +399,9 @@ final kDarkThemData = kThemeData.copyWith(
     ),
     elevation: 0,
     centerTitle: true,
-    titleTextStyle: GoogleFonts.montserrat(
+    titleTextStyle: TextStyle(
+      fontFamily: 'Montserrat',
+      package: 'regal',
       color: RegalColors.snowWhite,
       fontSize: 20.sp,
       fontWeight: FontWeight.bold,
@@ -403,7 +412,9 @@ final kDarkThemData = kThemeData.copyWith(
       foregroundColor: RegalColors.vividRed,
       shape: const StadiumBorder(),
       disabledForegroundColor: RegalColors.disabledVividRed,
-      textStyle: GoogleFonts.montserrat(
+      textStyle: TextStyle(
+        fontFamily: 'Montserrat',
+        package: 'regal',
         color: RegalColors.vividRed,
         fontSize: 16.sp,
         fontWeight: FontWeight.bold,
@@ -418,7 +429,9 @@ final kDarkThemData = kThemeData.copyWith(
       backgroundColor: RegalColors.vividRed,
       disabledBackgroundColor: RegalColors.disabledDarkVividRed,
       foregroundColor: RegalColors.snowWhite,
-      textStyle: GoogleFonts.montserrat(
+      textStyle: TextStyle(
+        fontFamily: 'Montserrat',
+        package: 'regal',
         color: RegalColors.snowWhite,
         fontSize: 16.sp,
         fontWeight: FontWeight.bold,
@@ -431,7 +444,9 @@ final kDarkThemData = kThemeData.copyWith(
     style: OutlinedButton.styleFrom(
       foregroundColor: RegalColors.snowWhite,
       disabledForegroundColor: RegalColors.grey.shade40,
-      textStyle: GoogleFonts.montserrat(
+      textStyle: TextStyle(
+        fontFamily: 'Montserrat',
+        package: 'regal',
         color: RegalColors.vividRed,
         fontSize: 16.sp,
         fontWeight: FontWeight.bold,
