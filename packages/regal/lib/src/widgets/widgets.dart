@@ -15,6 +15,8 @@ export 'progress_timeline.dart';
 export 'regal_bottom_sheet.dart';
 export 'regal_button.dart';
 export 'regal_checkbox.dart';
+export 'regal_chip.dart';
+export 'regal_date_picker.dart';
 export 'regal_divider.dart';
 export 'regal_icon_button.dart';
 export 'regal_search_bar.dart';
