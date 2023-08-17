@@ -27,9 +27,8 @@ class RegalChip extends StatelessWidget {
             padding:
                 Spacing.medium.x + (Spacing.tiny.y * (isSelected ? 2 : 1.5)),
             decoration: BoxDecoration(
-              color: isSelected
-                  ? RegalColors.vividRed
-                  : RegalColors.vividRed.tint05,
+              color:
+                  isSelected ? RegalColors.vividRed : context.vividRed.tint05,
               borderRadius: Spacing.small.brAll,
             ),
             child: Row(
@@ -37,7 +36,7 @@ class RegalChip extends StatelessWidget {
               children: [
                 CustomText.semantics(
                   label,
-                  style: context.bodyLarge!.w600.height150.copyWith(
+                  style: context.bodyLarge!.w600.copyWith(
                     color: context.brightness.map(
                       (l) => isSelected
                           ? RegalColors.snowWhite

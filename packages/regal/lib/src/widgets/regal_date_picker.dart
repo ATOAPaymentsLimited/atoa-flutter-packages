@@ -3,8 +3,8 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:regal/regal.dart';
 import 'package:intl/intl.dart';
+import 'package:regal/regal.dart';
 
 class CustomDatePicker extends StatefulWidget {
   const CustomDatePicker({
@@ -266,14 +266,14 @@ class DatePickerButton extends StatelessWidget {
                     (l) => RegalColors.licoriceBlack,
                     (d) => RegalColors.snowWhite,
                   ),
-            textStyle: context.titleSmall!.height150.copyWith(
+            textStyle: context.titleSmall!.copyWith(
               fontWeight: dateTime == null ? null : FontWeight.bold,
             ),
-            side: BorderSide(color: borderColor ?? _color),
+            side: BorderSide(color: borderColor ?? context.grey.shade10),
             minimumSize: Size.fromHeight(56.sp),
             padding: EdgeInsets.zero,
             shape: RoundedRectangleBorder(
-              side: BorderSide(color: RegalColors.grey.shade10),
+              side: BorderSide(color: context.grey.shade10),
               borderRadius: BorderRadius.circular(borderRadius.sp),
             ),
           ),
@@ -285,13 +285,11 @@ class DatePickerButton extends StatelessWidget {
                   (l) => RegalColors.licoriceBlack,
                   (d) => RegalColors.snowWhite,
                 ),
-            size: 24.sp,
+            size: Spacing.xtraLarge.value,
           ),
           label: dateTime == null
               ? placeHolderText
               : DateFormat(dateDisplayFormat).format(dateTime!),
         ),
       );
-
-  Color get _color => RegalColors.grey.shade10;
 }
