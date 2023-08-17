@@ -159,7 +159,7 @@ class _RegalTextFieldState extends State<RegalTextField> {
         explicitChildNodes: true,
         label: '${widget.label} TextFormField',
         child: Container(
-          margin: Spacing.large.y,
+          margin: widget.margin ?? Spacing.large.y,
           child: TextFormField(
             restorationId: widget.restorationId,
             controller:
