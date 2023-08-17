@@ -460,6 +460,14 @@ final kDarkThemData = kThemeData.copyWith(
       ),
     ),
   ),
+  datePickerTheme: DatePickerThemeData(
+    dayForegroundColor: MaterialStateProperty.resolveWith((states) {
+      if (states.contains(MaterialState.disabled)) {
+        return RegalColors.grey.shade10;
+      }
+      return RegalColors.licoriceBlack;
+    }),
+  ),
   inputDecorationTheme: InputDecorationTheme(
     isDense: true,
     contentPadding: Spacing.large.all,

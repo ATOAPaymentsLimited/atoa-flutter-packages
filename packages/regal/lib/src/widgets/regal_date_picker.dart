@@ -271,7 +271,7 @@ class _DatePickerButtonState extends State<DatePickerButton> {
         decoration: InputDecoration(
           hintText: widget.hintText,
           focusedBorder: context.theme.inputDecorationTheme.enabledBorder,
-          prefixIcon: widget.dateTime == null
+          prefixIcon: widget.dateTime != null
               ? null
               : Transform.translate(
                   offset: Offset(0, -Spacing.tiny.value),
