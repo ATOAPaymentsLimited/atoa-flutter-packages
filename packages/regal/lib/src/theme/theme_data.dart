@@ -461,12 +461,44 @@ final kDarkThemData = kThemeData.copyWith(
     ),
   ),
   datePickerTheme: DatePickerThemeData(
+    weekdayStyle: const TextStyle(color: RegalColors.vividRed),
+    yearStyle: const TextStyle(color: RegalColors.licoriceBlack),
     dayForegroundColor: MaterialStateProperty.resolveWith((states) {
       if (states.contains(MaterialState.disabled)) {
         return RegalColors.grey.shade10;
       }
+      if (states.contains(MaterialState.selected)) {
+        return RegalColors.snowWhite;
+      }
       return RegalColors.licoriceBlack;
     }),
+    yearForegroundColor: MaterialStateProperty.resolveWith((states) {
+      if (states.contains(MaterialState.disabled)) {
+        return RegalColors.grey.shade10;
+      }
+      if (states.contains(MaterialState.selected)) {
+        return RegalColors.snowWhite;
+      }
+      return RegalColors.licoriceBlack;
+    }),
+    yearBackgroundColor: MaterialStateProperty.resolveWith((states) {
+      if (states.contains(MaterialState.selected)) {
+        return RegalColors.licoriceBlack;
+      }
+      return Colors.transparent;
+    }),
+    yearOverlayColor: MaterialStateProperty.resolveWith((states) {
+      if (states.contains(MaterialState.disabled)) {
+        return RegalColors.grey.shade60;
+      }
+      return RegalColors.licoriceBlack;
+    }),
+    // dayForegroundColor: MaterialStateProperty.resolveWith((states) {
+    //   if (states.contains(MaterialState.disabled)) {
+    //     return RegalColors.grey.shade10;
+    //   }
+    //   return RegalColors.licoriceBlack;
+    // },
   ),
   inputDecorationTheme: InputDecorationTheme(
     isDense: true,
