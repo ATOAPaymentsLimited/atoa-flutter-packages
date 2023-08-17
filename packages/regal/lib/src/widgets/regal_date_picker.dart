@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:regal/regal.dart';
 
@@ -14,17 +13,12 @@ class CustomDatePicker extends StatefulWidget {
     this.minDate,
     this.maxDate,
     this.placeHolder,
-    this.bgColor = RegalColors.grey,
-    this.iconColor,
     this.placeholderText = '',
     this.onSelected,
     this.dateDisplayFormat = 'dd-MM-yyyy',
-    this.textStyle,
-    this.borderColor,
-    this.borderRadius = 14.0,
-    this.placeholderTextStyle,
     this.readOnly = false,
     this.showIcon = true,
+    required this.label,
   });
   final DateTime? selectedDate;
   final DateTime? minDate;
@@ -32,16 +26,11 @@ class CustomDatePicker extends StatefulWidget {
   final DateTime? initialDate;
   final Widget? placeHolder;
   final String placeholderText;
-  final TextStyle? textStyle;
-  final TextStyle? placeholderTextStyle;
-  final Color bgColor;
   final bool showIcon;
-  final Color? borderColor;
-  final Color? iconColor;
-  final double borderRadius;
   final Function(DateTime)? onSelected;
   final String dateDisplayFormat;
   final bool readOnly;
+  final String label;
 
   @override
   State<CustomDatePicker> createState() => _CustomDatePickerState();
@@ -77,14 +66,11 @@ class _CustomDatePickerState extends State<CustomDatePicker> {
               enabled: true,
               label: 'Date picker button',
               child: DatePickerButton(
+                labelText: widget.label,
                 dateTime: widget.selectedDate,
                 dateDisplayFormat: widget.dateDisplayFormat,
-                placeHolderText: widget.placeholderText,
+                hintText: widget.placeholderText,
                 showIcon: widget.showIcon,
-                iconColor: widget.iconColor,
-                placeHolderTextStyle: widget.placeholderTextStyle,
-                borderColor: widget.borderColor,
-                borderRadius: widget.borderRadius,
                 onTap: widget.readOnly ? null : _showDatePicker,
               ),
             ),
@@ -226,70 +212,80 @@ class _CustomDatePickerState extends State<CustomDatePicker> {
       widget.selectedDate ?? widget.initialDate ?? _getLastDate();
 }
 
-class DatePickerButton extends StatelessWidget {
+class DatePickerButton extends StatefulWidget {
   const DatePickerButton({
     super.key,
     this.dateTime,
     required this.dateDisplayFormat,
-    required this.placeHolderText,
-    this.placeHolderTextStyle,
+    required this.hintText,
+    required this.labelText,
     this.showIcon = true,
-    this.iconColor,
-    this.borderColor,
-    this.borderRadius = 4.0,
     required this.onTap,
   });
   final DateTime? dateTime;
   final String dateDisplayFormat;
-  final String placeHolderText;
-  final TextStyle? placeHolderTextStyle;
+  final String hintText;
+  final String labelText;
   final bool showIcon;
-  final Color? borderColor;
-  final Color? iconColor;
-  final double borderRadius;
   final VoidCallback? onTap;
 
   @override
-  Widget build(BuildContext context) => Semantics(
-        button: true,
-        enabled: true,
-        label: dateTime == null
-            ? placeHolderText
-            : DateFormat(dateDisplayFormat).format(dateTime!),
-        child: RegalButton.secondary(
-          trackLabel: 'Date Picker Button',
-          onPressed: onTap,
-          style: OutlinedButton.styleFrom(
-            foregroundColor: dateTime == null
-                ? RegalColors.grey.shade40
-                : context.brightness.map(
-                    (l) => RegalColors.licoriceBlack,
-                    (d) => RegalColors.snowWhite,
+  State<DatePickerButton> createState() => _DatePickerButtonState();
+}
+
+class _DatePickerButtonState extends State<DatePickerButton> {
+  late TextEditingController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = TextEditingController(text: formattedDate);
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  void didUpdateWidget(covariant DatePickerButton oldWidget) {
+    if (oldWidget.dateTime != widget.dateTime) {
+      if (formattedDate != null) {
+        _controller.text = formattedDate!;
+      }
+    }
+    super.didUpdateWidget(oldWidget);
+  }
+
+  String? get formattedDate => widget.dateTime != null
+      ? DateFormat(widget.dateDisplayFormat).format(widget.dateTime!)
+      : null;
+
+  @override
+  Widget build(BuildContext context) => RegalTextField(
+        controller: _controller,
+        label: widget.labelText,
+        readOnly: true,
+        onTap: widget.onTap,
+        decoration: InputDecoration(
+          hintText: widget.hintText,
+          focusedBorder: context.theme.inputDecorationTheme.enabledBorder,
+          prefixIcon: widget.dateTime == null
+              ? null
+              : Transform.translate(
+                  offset: Offset(0, -Spacing.tiny.value),
+                  child: SizedBox(
+                    child: Center(
+                      widthFactor: 0,
+                      child: Icon(
+                        Icons.calendar_today_outlined,
+                        color: context.regalColor.licoriceBlack,
+                      ),
+                    ),
                   ),
-            textStyle: context.titleSmall!.copyWith(
-              fontWeight: dateTime == null ? null : FontWeight.bold,
-            ),
-            side: BorderSide(color: borderColor ?? context.grey.shade10),
-            minimumSize: Size.fromHeight(56.sp),
-            padding: EdgeInsets.zero,
-            shape: RoundedRectangleBorder(
-              side: BorderSide(color: context.grey.shade10),
-              borderRadius: BorderRadius.circular(borderRadius.sp),
-            ),
-          ),
-          size: RegalButtonSize.small,
-          prefixIcon: Icon(
-            Icons.calendar_today_outlined,
-            color: iconColor ??
-                context.brightness.map(
-                  (l) => RegalColors.licoriceBlack,
-                  (d) => RegalColors.snowWhite,
                 ),
-            size: Spacing.xtraLarge.value,
-          ),
-          label: dateTime == null
-              ? placeHolderText
-              : DateFormat(dateDisplayFormat).format(dateTime!),
         ),
+        textAlign: TextAlign.left,
       );
 }
