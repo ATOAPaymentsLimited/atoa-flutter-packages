@@ -18,6 +18,7 @@ class RegalChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Center(
+        widthFactor: 1,
         child: CustomGestureDetector(
           context: context,
           trackLabel: 'OnTap chip $label',
