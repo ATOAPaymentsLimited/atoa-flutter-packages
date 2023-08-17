@@ -132,22 +132,17 @@ class RegalTextField extends StatefulWidget {
 
 class _RegalTextFieldState extends State<RegalTextField> {
   late final TextEditingController _textEditingController;
-  late final ValueNotifier<TextValidationState?> _errorListenable;
+  TextValidationState? _errorListenable;
 
   @override
   void initState() {
     _textEditingController = widget.controller ?? TextEditingController();
-    _errorListenable = ValueNotifier<TextValidationState?>(null);
-
-    _errorListenable.addListener(_updateLabelColor);
+    _errorListenable = null;
     super.initState();
   }
 
   @override
   void dispose() {
-    _errorListenable
-      ..removeListener(_updateLabelColor)
-      ..dispose();
     if (widget.controller == null) _textEditingController.dispose();
     super.dispose();
   }
@@ -170,7 +165,7 @@ class _RegalTextFieldState extends State<RegalTextField> {
                   widget.showLabel ? CustomText.semantics(widget.label) : null,
               floatingLabelStyle:
                   context.theme.inputDecorationTheme.labelStyle?.copyWith(
-                color: _errorListenable.value?.labelColor,
+                color: _errorListenable?.labelColor,
               ),
               suffixIcon: widget.suffix ?? _buildSuffixIcon,
             ),
@@ -178,7 +173,7 @@ class _RegalTextFieldState extends State<RegalTextField> {
               final result = widget.validator?.call(value);
 
               if (result is String) {
-                _errorListenable.value = TextValidationState.invalid;
+                _updateLabelColor(TextValidationState.invalid);
               }
 
               return result;
@@ -223,11 +218,9 @@ class _RegalTextFieldState extends State<RegalTextField> {
               if (widget.autovalidateMode == AutovalidateMode.disabled) return;
 
               if (value.isNotEmpty) {
-                _errorListenable.value = TextValidationState.typing;
-              }
-
-              if (value.isEmpty) {
-                _errorListenable.value = TextValidationState.none;
+                _updateLabelColor(TextValidationState.typing);
+              } else if (value.isEmpty) {
+                _updateLabelColor(TextValidationState.none);
               }
             },
             onTap: widget.onTap,
@@ -260,9 +253,9 @@ class _RegalTextFieldState extends State<RegalTextField> {
 
   Widget? get _buildSuffixIcon => !widget.showClear
       ? null
-      : ValueListenableBuilder<TextValidationState?>(
-          valueListenable: _errorListenable,
-          builder: (context, value, child) {
+      : Builder(
+          builder: (context) {
+            final value = _errorListenable;
             if (value == null || value.isNone) return const SizedBox.shrink();
 
             return RegalIconButton.iconData(
@@ -272,14 +265,17 @@ class _RegalTextFieldState extends State<RegalTextField> {
               semanticsLabel: 'Clear ${widget.label}',
               onPressed: (context) {
                 _textEditingController.clear();
-                _errorListenable.value = TextValidationState.none;
+                _updateLabelColor(TextValidationState.none);
               },
             );
           },
         );
 
-  void _updateLabelColor() {
-    if (mounted) setState(() {});
+  void _updateLabelColor(TextValidationState state) {
+    _errorListenable = state;
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      if (mounted) setState(() {});
+    });
   }
 }
 

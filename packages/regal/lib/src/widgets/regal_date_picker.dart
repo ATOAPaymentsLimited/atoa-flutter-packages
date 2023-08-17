@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
@@ -27,7 +28,7 @@ class CustomDatePicker extends StatefulWidget {
   final Widget? placeHolder;
   final String placeholderText;
   final bool showIcon;
-  final Function(DateTime)? onSelected;
+  final ValueChanged<DateTime>? onSelected;
   final String dateDisplayFormat;
   final bool readOnly;
   final String label;
@@ -80,105 +81,110 @@ class _CustomDatePickerState extends State<CustomDatePicker> {
 
   Future<void> _showDatePicker() async {
     if (Platform.isIOS) {
-      showModalBottomSheet<void>(
-        context: context,
-        isDismissible: false,
-        builder: (context) => ClipRRect(
-          borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(36),
-            topRight: Radius.circular(36),
-          ),
-          child: Container(
-            padding: Spacing.large.y,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                Container(
-                  decoration: BoxDecoration(
-                    border: Border(
-                      top: BorderSide(
-                        color: RegalColors.grey.shade10,
-                      ),
-                      bottom: BorderSide(
-                        color: RegalColors.grey.shade10,
+      unawaited(
+        showModalBottomSheet<void>(
+          context: context,
+          isDismissible: false,
+          builder: (context) => ClipRRect(
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(36),
+              topRight: Radius.circular(36),
+            ),
+            child: Container(
+              padding: Spacing.large.y,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  DecoratedBox(
+                    decoration: BoxDecoration(
+                      border: Border(
+                        top: BorderSide(
+                          color: RegalColors.grey.shade10,
+                        ),
+                        bottom: BorderSide(
+                          color: RegalColors.grey.shade10,
+                        ),
                       ),
                     ),
-                  ),
-                  child: Padding(
-                    padding: Spacing.huge.x + Spacing.tiny.y,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        RegalButton.tertiary(
-                          size: RegalButtonSize.mini,
-                          semanticsLabel: 'Cancel',
-                          trackLabel: 'Cancel Text',
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          label: 'Cancel',
-                          style:
-                              Theme.of(context).textButtonTheme.style!.copyWith(
-                                    foregroundColor: MaterialStateProperty.all(
-                                      context.brightness.map(
-                                        (l) => RegalColors.licoriceBlack,
-                                        (d) => RegalColors.snowWhite,
-                                      ),
+                    child: Padding(
+                      padding: Spacing.huge.x + Spacing.tiny.y,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          RegalButton.tertiary(
+                            size: RegalButtonSize.mini,
+                            semanticsLabel: 'Cancel',
+                            trackLabel: 'Cancel Text',
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            label: 'Cancel',
+                            style: Theme.of(context)
+                                .textButtonTheme
+                                .style!
+                                .copyWith(
+                                  foregroundColor: MaterialStateProperty.all(
+                                    context.brightness.map(
+                                      (l) => RegalColors.licoriceBlack,
+                                      (d) => RegalColors.snowWhite,
                                     ),
                                   ),
-                        ),
-                        RegalButton.tertiary(
-                          size: RegalButtonSize.mini,
-                          semanticsLabel: 'Set',
-                          trackLabel: 'Set Text',
-                          onPressed: () {
-                            if (widget.onSelected != null) {
-                              final dateTime = _tempSelected ?? _selected;
+                                ),
+                          ),
+                          RegalButton.tertiary(
+                            size: RegalButtonSize.mini,
+                            semanticsLabel: 'Set',
+                            trackLabel: 'Set Text',
+                            onPressed: () {
+                              if (widget.onSelected != null) {
+                                final dateTime = _tempSelected ?? _selected;
 
-                              if (dateTime == null) {
-                                return;
+                                if (dateTime == null) {
+                                  return;
+                                }
+                                if (dateTime.isAfter(
+                                      _getFirstDate()
+                                          .subtract(const Duration(days: 1)),
+                                    ) &&
+                                    dateTime.isBefore(
+                                      _getLastDate()
+                                          .add(const Duration(days: 1)),
+                                    )) {
+                                  widget.onSelected?.call(dateTime);
+                                  _selected = dateTime;
+                                  _tempSelected = null;
+                                }
                               }
-                              if (dateTime.isAfter(
-                                    _getFirstDate()
-                                        .subtract(const Duration(days: 1)),
-                                  ) &&
-                                  dateTime.isBefore(
-                                    _getLastDate().add(const Duration(days: 1)),
-                                  )) {
-                                widget.onSelected?.call(dateTime);
-                                _selected = dateTime;
-                                _tempSelected = null;
-                              }
-                            }
-                            Navigator.pop(context);
-                          },
-                          label: 'Set',
-                        ),
-                      ],
+                              Navigator.pop(context);
+                            },
+                            label: 'Set',
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-                SizedBox(
-                  height: 200,
-                  child: CupertinoDatePicker(
-                    initialDateTime: _selected,
-                    minimumDate: _getFirstDate(),
-                    maximumDate: _getLastDate(),
-                    onDateTimeChanged: (DateTime dateTime) {
-                      setState(() {
-                        _tempSelected = dateTime;
-                      });
-                    },
-                    mode: CupertinoDatePickerMode.date,
+                  SizedBox(
+                    height: 200,
+                    child: CupertinoDatePicker(
+                      initialDateTime: _selected,
+                      minimumDate: _getFirstDate(),
+                      maximumDate: _getLastDate(),
+                      onDateTimeChanged: (DateTime dateTime) {
+                        setState(() {
+                          _tempSelected = dateTime;
+                        });
+                      },
+                      mode: CupertinoDatePickerMode.date,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
       );
     } else {
-      final DateTime? dateTime = await showDatePicker(
+      final dateTime = await showDatePicker(
         context: context,
         initialDate: _selected!,
         firstDate: _getFirstDate(),
