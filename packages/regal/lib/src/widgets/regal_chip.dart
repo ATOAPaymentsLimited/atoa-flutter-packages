@@ -24,8 +24,7 @@ class RegalChip extends StatelessWidget {
           semanticsLabel: 'OnTap chip $label',
           onTap: onTap,
           child: Container(
-            padding:
-                Spacing.medium.x + (Spacing.tiny.y * (isSelected ? 2 : 1.5)),
+            padding: Spacing.medium.x + (Spacing.tiny.y * 2),
             decoration: BoxDecoration(
               color:
                   isSelected ? RegalColors.vividRed : context.vividRed.tint05,
