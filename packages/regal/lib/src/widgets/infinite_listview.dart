@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../utils/spacing.dart';
 import 'gradient_circular_progress_indicator.dart';
 
 class InfiniteListView extends StatefulWidget {
@@ -93,10 +94,10 @@ class _InfiniteListViewState extends State<InfiniteListView> {
     Widget itemBuilder(BuildContext context, int index) {
       if (index == widget.itemCount) {
         return widget.loadingWidget ??
-            const Center(
+            Center(
               child: Padding(
-                padding: EdgeInsets.all(8),
-                child: GradientCircularProgressIndicator(),
+                padding: Spacing.small.all,
+                child: const GradientCircularProgressIndicator(),
               ),
             );
       }
