@@ -337,6 +337,7 @@ final kDarkThemData = kThemeData.copyWith(
         fontWeight: FontWeight.w400,
       ),
       titleMedium: kMontserratTextTheme.titleMedium!.copyWith(
+        fontSize: 20.sp,
         color: RegalColors.snowWhite,
         fontFamily: 'Montserrat',
       ),
