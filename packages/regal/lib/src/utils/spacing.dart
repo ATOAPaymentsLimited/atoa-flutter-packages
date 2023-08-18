@@ -85,7 +85,6 @@ extension SpacingX on Spacing {
   BorderRadius get brTopLeft => BorderRadius.only(topLeft: circular);
   BorderRadius get brTopRight => BorderRadius.only(topRight: circular);
   BorderRadius get brBottomRight => BorderRadius.only(bottomRight: circular);
-  BorderRadius get brBottomRight => BorderRadius.only(bottomRight: circular);
 
   BorderRadius get topCorners => BorderRadius.vertical(
         top: circular,
