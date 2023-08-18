@@ -120,7 +120,13 @@ class Snackbar extends StatelessWidget with EventTrackMixin {
               ),
             )
           : null,
-      trailing: trailing(context),
+      trailing: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          if(trailing(context)!=null)
+          trailing(context)!,
+        ],
+      ),
     );
 
     return Align(
