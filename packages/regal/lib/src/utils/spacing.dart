@@ -31,9 +31,9 @@ enum Spacing {
   /// 24
   huge;
 
-  Spacing operator *(double other) => value * other;
+  double operator *(double other) => value * other;
 
-  Spacing operator +(Spacing other) => value + other;
+  double operator +(Spacing other) => value + other.value;
 }
 
 extension SpacingX on Spacing {
