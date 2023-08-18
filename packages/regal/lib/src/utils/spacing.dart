@@ -29,7 +29,11 @@ enum Spacing {
   xtraLarge,
 
   /// 24
-  huge,
+  huge;
+
+  Spacing operator *(double other) => value * other;
+
+  Spacing operator +(Spacing other) => value + other;
 }
 
 extension SpacingX on Spacing {
@@ -51,6 +55,8 @@ extension SpacingX on Spacing {
         return kHuge;
     }
   }
+
+  double get r => value.r;
 
   EdgeInsets get x => EdgeInsets.symmetric(horizontal: value.sp);
 
@@ -76,6 +82,10 @@ extension SpacingX on Spacing {
   Radius get circular => Radius.circular(value.r);
 
   BorderRadius get brAll => BorderRadius.all(circular);
+  BorderRadius get brTopLeft => BorderRadius.only(topLeft: circular);
+  BorderRadius get brTopRight => BorderRadius.only(topRight: circular);
+  BorderRadius get brBottomRight => BorderRadius.only(bottomRight: circular);
+  BorderRadius get brBottomRight => BorderRadius.only(bottomRight: circular);
 
   BorderRadius get topCorners => BorderRadius.vertical(
         top: circular,
