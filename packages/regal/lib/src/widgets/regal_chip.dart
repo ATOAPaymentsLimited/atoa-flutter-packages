@@ -9,30 +9,34 @@ class RegalChip extends StatelessWidget {
     required this.label,
     this.onRemove,
     this.onTap,
+    this.expand = false,
   });
 
   final bool isSelected;
   final String label;
   final VoidCallback? onRemove;
   final VoidCallback? onTap;
+  final bool expand;
 
   @override
   Widget build(BuildContext context) => Center(
-        widthFactor: 1,
+        widthFactor: expand ? null : 1,
         child: CustomGestureDetector(
           context: context,
           trackLabel: 'OnTap chip $label',
           semanticsLabel: 'OnTap chip $label',
           onTap: onTap,
           child: Container(
-            padding: Spacing.medium.x + (Spacing.tiny.y * 2),
+            padding: Spacing.medium.x + (Spacing.tiny.y * 2.5),
             decoration: BoxDecoration(
               color:
                   isSelected ? RegalColors.vividRed : context.vividRed.tint05,
               borderRadius: Spacing.small.brAll,
             ),
             child: Row(
-              mainAxisSize: MainAxisSize.min,
+              mainAxisSize: expand ? MainAxisSize.max : MainAxisSize.min,
+              mainAxisAlignment:
+                  expand ? MainAxisAlignment.center : MainAxisAlignment.start,
               children: [
                 CustomText.semantics(
                   label,
