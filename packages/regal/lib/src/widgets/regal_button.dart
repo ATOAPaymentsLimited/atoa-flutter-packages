@@ -20,6 +20,7 @@ class RegalButton extends StatelessWidget with EventTrackMixin {
     this.trackProperties,
     this.semanticsLabel,
     this.shrink = false,
+    this.loadingIndicatorColor,
   })  : _type = _RegalButtonType.primary,
         assert(
           label != null || prefixIcon != null || suffixIcon != null,
@@ -41,6 +42,7 @@ class RegalButton extends StatelessWidget with EventTrackMixin {
     this.trackProperties,
     this.semanticsLabel,
     this.shrink = false,
+    this.loadingIndicatorColor,
   })  : _type = _RegalButtonType.secondary,
         assert(
           label != null || prefixIcon != null || suffixIcon != null,
@@ -62,6 +64,7 @@ class RegalButton extends StatelessWidget with EventTrackMixin {
     this.trackProperties,
     this.semanticsLabel,
     this.shrink = false,
+    this.loadingIndicatorColor,
   })  : _type = _RegalButtonType.tertiary,
         assert(
           label != null || prefixIcon != null || suffixIcon != null,
@@ -95,6 +98,8 @@ class RegalButton extends StatelessWidget with EventTrackMixin {
 
   final String? semanticsLabel;
 
+  final Color? loadingIndicatorColor;
+
   /// [shrink] will minimize the button width to hug its contents
   final bool shrink;
 
@@ -112,7 +117,7 @@ class RegalButton extends StatelessWidget with EventTrackMixin {
                     (_type == _RegalButtonType.secondary ||
                         _type == _RegalButtonType.tertiary)
                 ? context.theme.primaryColor
-                : Colors.white,
+                : loadingIndicatorColor ?? Colors.white,
           )
         else ...[
           if (prefixIcon != null) prefixIcon!,
