@@ -7,7 +7,7 @@ class RegalTextField extends StatefulWidget {
     super.key,
     this.margin,
     this.suffix,
-    required this.label,
+    this.label,
     this.showLabel = true,
     this.showClear = true,
     this.controller,
@@ -64,9 +64,12 @@ class RegalTextField extends StatefulWidget {
     this.spellCheckConfiguration,
     this.magnifierConfiguration,
     this.showCursor,
-  });
+  }) : assert(
+          showLabel && label != null || !showLabel && label == null,
+          'Please provide label or make showLabel false',
+        );
 
-  final String label;
+  final String? label;
   final bool showLabel;
   final bool showClear;
   final Widget? suffix;
@@ -161,8 +164,9 @@ class _RegalTextFieldState extends State<RegalTextField> {
                 widget.initialValue == null ? _textEditingController : null,
             focusNode: widget.focusNode,
             decoration: (widget.decoration ?? const InputDecoration()).copyWith(
-              label:
-                  widget.showLabel ? CustomText.semantics(widget.label) : null,
+              label: widget.showLabel && widget.label is String
+                  ? CustomText.semantics(widget.label!)
+                  : null,
               floatingLabelStyle:
                   context.theme.inputDecorationTheme.labelStyle?.copyWith(
                 color: _errorListenable?.labelColor,
@@ -183,10 +187,7 @@ class _RegalTextFieldState extends State<RegalTextField> {
             onSaved: widget.onSaved,
             keyboardType: widget.keyboardType,
             textInputAction: widget.textInputAction,
-            style: widget.style ??
-                context.textTheme.titleSmall?.copyWith(
-                  fontWeight: FontWeight.w600,
-                ),
+            style: widget.style ?? context.titleSmall?.w600,
             strutStyle: widget.strutStyle,
             textAlign: widget.textAlign,
             textAlignVertical: widget.textAlignVertical,
