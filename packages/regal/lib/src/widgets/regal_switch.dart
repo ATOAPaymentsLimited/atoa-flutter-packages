@@ -41,7 +41,7 @@ class _RegalSwitchState extends State<RegalSwitch> {
             borderRadius: BorderRadius.circular(150),
             color: widget.value
                 ? (widget.activeColor ?? context.theme.primaryColor)
-                : (widget.inActiveColor ?? RegalColors.grey.shade20),
+                : (widget.inActiveColor ?? context.grey.shade20),
           ),
           child: AnimatedAlign(
             duration: const Duration(milliseconds: 300),
