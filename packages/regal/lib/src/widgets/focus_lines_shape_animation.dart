@@ -13,6 +13,7 @@ class CustomFocusLinesShapeAnimation extends StatefulWidget {
     this.borderRadius = BorderRadius.zero,
     this.gradientColor,
     this.animationDuration = const Duration(milliseconds: 24000),
+    this.centerOffset,
   });
   final double height;
   final double width;
@@ -20,6 +21,7 @@ class CustomFocusLinesShapeAnimation extends StatefulWidget {
   final BorderRadius borderRadius;
   final Color? gradientColor;
   final Duration animationDuration;
+  final Offset? centerOffset;
 
   @override
   State<CustomFocusLinesShapeAnimation> createState() =>
@@ -58,18 +60,21 @@ class _CustomFocusLinesShapeAnimationState
           height: widget.height,
           child: Stack(
             children: [
-              Center(
-                child: Transform.scale(
-                  scale: widget.scaleLines,
-                  child: AnimatedBuilder(
-                    animation: _rotationAnimationController,
-                    builder: (context, child) => Transform.rotate(
-                      angle: _rotationAnimationController.value,
-                      child: CustomPaint(
-                        size: Size.square(widget.width),
-                        painter: _FocusLinesShapePainter(
-                          gradientColor: widget.gradientColor ??
-                              RegalColors.vividRed.shade60,
+              Transform.translate(
+                offset: widget.centerOffset ?? Offset.zero,
+                child: Center(
+                  child: Transform.scale(
+                    scale: widget.scaleLines,
+                    child: AnimatedBuilder(
+                      animation: _rotationAnimationController,
+                      builder: (context, child) => Transform.rotate(
+                        angle: _rotationAnimationController.value,
+                        child: CustomPaint(
+                          size: Size(widget.width, widget.height),
+                          painter: _FocusLinesShapePainter(
+                            gradientColor: widget.gradientColor ??
+                                RegalColors.vividRed.shade60,
+                          ),
                         ),
                       ),
                     ),

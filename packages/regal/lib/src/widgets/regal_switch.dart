@@ -38,7 +38,7 @@ class _RegalSwitchState extends State<RegalSwitch> {
           curve: Curves.decelerate,
           width: 40.sp,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(150),
             color: widget.value
                 ? (widget.activeColor ?? context.theme.primaryColor)
                 : (widget.inActiveColor ?? RegalColors.grey.shade20),
@@ -49,7 +49,7 @@ class _RegalSwitchState extends State<RegalSwitch> {
                 widget.value ? Alignment.centerRight : Alignment.centerLeft,
             curve: Curves.decelerate,
             child: Padding(
-              padding: EdgeInsets.all(4.sp),
+              padding: EdgeInsets.all(3.sp),
               child: Container(
                 width: 16.sp,
                 height: 16.sp,
