@@ -55,28 +55,13 @@ class _CustomDatePickerState extends State<CustomDatePicker> {
   }
 
   @override
-  Widget build(BuildContext context) => CustomInkWell(
-        context: context,
-        semanticsLabel: 'Date Picker',
-        trackLabel: 'Date Picker',
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Semantics(
-              button: true,
-              enabled: true,
-              label: 'Date picker button',
-              child: DatePickerButton(
-                labelText: widget.label,
-                dateTime: widget.selectedDate,
-                dateDisplayFormat: widget.dateDisplayFormat,
-                hintText: widget.placeholderText,
-                showIcon: widget.showIcon,
-                onTap: widget.readOnly ? null : _showDatePicker,
-              ),
-            ),
-          ],
-        ),
+  Widget build(BuildContext context) => DatePickerButton(
+        labelText: widget.label,
+        dateTime: widget.selectedDate,
+        dateDisplayFormat: widget.dateDisplayFormat,
+        hintText: widget.placeholderText,
+        showIcon: widget.showIcon,
+        onTap: widget.readOnly ? null : _showDatePicker,
       );
 
   Future<void> _showDatePicker() async {
@@ -273,6 +258,7 @@ class _DatePickerButtonState extends State<DatePickerButton> {
         controller: _controller,
         label: widget.labelText,
         readOnly: true,
+        showClear: false,
         onTap: widget.onTap,
         decoration: InputDecoration(
           hintText: widget.hintText,
