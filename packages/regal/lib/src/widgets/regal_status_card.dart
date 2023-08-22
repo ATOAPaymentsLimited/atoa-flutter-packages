@@ -15,6 +15,7 @@ class RegalStatusCard extends StatelessWidget {
     this.onClose,
     this.ctaButtonKey,
     this.bgColor,
+    this.textColor,
     this.titleStyle,
     this.descriptionStyle,
   })  : _type = RegalStatusCardTypeEnum.info,
@@ -34,6 +35,7 @@ class RegalStatusCard extends StatelessWidget {
     this.onClose,
     this.ctaButtonKey,
     this.bgColor,
+    this.textColor,
     this.titleStyle,
     this.descriptionStyle,
   })  : _type = RegalStatusCardTypeEnum.pending,
@@ -52,6 +54,7 @@ class RegalStatusCard extends StatelessWidget {
     this.bgColor,
     this.titleStyle,
     this.descriptionStyle,
+    this.textColor,
   })  : _type = RegalStatusCardTypeEnum.success,
         ctaText = null,
         onTapCta = null,
@@ -106,6 +109,12 @@ class RegalStatusCard extends StatelessWidget {
   /// their corresponding background colors
   final Color? bgColor;
 
+  /// [textColor] Can be used to change text color
+  ///
+  /// Should be used specifically, as by default all cards have
+  /// their corresponding text colors
+  final Color? textColor;
+
   /// [RegalStatusCardTypeEnum] used internally inside widget for
   /// speciying named constructor
   final RegalStatusCardTypeEnum _type;
@@ -145,7 +154,8 @@ class RegalStatusCard extends StatelessWidget {
                             style: titleStyle ??
                                 context.montserrat.headlineLarge.copyWith(
                                   fontSize: 16.sp,
-                                  color: _type.foregroundColor(context),
+                                  color: textColor ??
+                                      _type.foregroundColor(context),
                                   height: 1.3,
                                 ),
                           ),
@@ -155,7 +165,8 @@ class RegalStatusCard extends StatelessWidget {
                             style: descriptionStyle ??
                                 context.bodyLarge?.copyWith(
                                   height: 1.5,
-                                  color: _type.foregroundColor(context),
+                                  color: textColor ??
+                                      _type.foregroundColor(context),
                                 ),
                           ),
                       ],
@@ -172,7 +183,8 @@ class RegalStatusCard extends StatelessWidget {
                           semanticsLabel: 'Close Button',
                           iconData: Icons.close,
                           trackLabel: 'Close Button',
-                          iconColor: _type.foregroundColor(context),
+                          iconColor:
+                              textColor ?? _type.foregroundColor(context),
                           onPressed: onClose,
                         ),
                       ),
