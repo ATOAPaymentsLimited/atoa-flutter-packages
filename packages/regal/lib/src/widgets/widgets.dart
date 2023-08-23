@@ -8,6 +8,7 @@ export 'custom_outline_button.dart';
 export 'custom_text.dart';
 export 'custom_text_button.dart';
 export 'custom_text_span.dart';
+export 'disable_widget.dart';
 export 'focus_lines_shape_animation.dart';
 export 'gradient_circular_progress_indicator.dart';
 export 'infinite_listview.dart';

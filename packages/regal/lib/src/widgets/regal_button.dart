@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:regal/regal.dart';
 import 'package:regal/src/mixin/event_track_mixin.dart';
+import 'package:regal/src/widgets/disable_widget.dart';
 
 class RegalButton extends StatelessWidget with EventTrackMixin {
   const RegalButton.primary({
@@ -178,7 +179,10 @@ class RegalButton extends StatelessWidget with EventTrackMixin {
       enabled: true,
       explicitChildNodes: true,
       label: semanticsLabel ?? '$label Button',
-      child: buttonType().disable(ignoring: !enable),
+      child: DisableWidget(
+        ignoring: !enable,
+        child: buttonType(),
+      ),
     );
   }
 
