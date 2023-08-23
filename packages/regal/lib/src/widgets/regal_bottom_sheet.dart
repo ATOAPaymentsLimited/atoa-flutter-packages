@@ -19,7 +19,7 @@ Future<T?> showRegalBottomSheet<T>({
   AnimationController? transitionAnimationController,
   Alignment confettiAlignment = Alignment.center,
 }) =>
-    showModalBottomSheet(
+    showModalBottomSheet<T>(
       context: context,
       builder: (dialogContext) => Container(
         padding: const EdgeInsets.all(20),
@@ -69,7 +69,7 @@ Future<T?> showRegalBottomSheet<T>({
                       ),
                     ),
                   ),
-                )
+                ),
               ],
             ),
             Spacing.huge.yBox,
