@@ -8,14 +8,18 @@ class StatusWidget extends StatelessWidget {
     super.key,
     required this.type,
     this.title,
+    this.titleStyle,
     this.description,
+    this.descriptionStyle,
     this.cta,
     this.placeholder,
   });
 
   final StatusType type;
   final String? title;
+  final TextStyle? titleStyle;
   final String? description;
+  final TextStyle? descriptionStyle;
   final RegalButton? cta;
   final Widget? placeholder;
 
@@ -29,18 +33,20 @@ class StatusWidget extends StatelessWidget {
             CustomText.semantics(
               title!,
               textAlign: TextAlign.center,
-              style: context.labelMedium!.copyWith(
-                fontWeight: FontWeight.bold,
-              ),
+              style: titleStyle ??
+                  context.labelMedium!.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
             ),
           ],
           if (description != null && description!.trim().isNotEmpty) ...[
             Spacing.huge.yBox,
             CustomText.semantics(
               description!,
-              style: context.bodyLarge?.copyWith(
-                height: 1.5,
-              ),
+              style: descriptionStyle ??
+                  context.bodyLarge?.copyWith(
+                    height: 1.5,
+                  ),
               textAlign: TextAlign.center,
             ),
           ],
