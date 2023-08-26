@@ -266,6 +266,7 @@ class _RegalTextFieldState extends State<RegalTextField> {
               semanticsLabel: 'Clear ${widget.label}',
               onPressed: (context) {
                 _textEditingController.clear();
+                widget.onChanged?.call(_textEditingController.text);
                 _updateLabelColor(TextValidationState.none);
               },
             );
