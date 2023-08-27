@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:regal/regal.dart';
 import 'package:regal/src/mixin/event_track_mixin.dart';
-import 'package:regal/src/widgets/disable_widget.dart';
 
 class RegalButton extends StatelessWidget with EventTrackMixin {
   const RegalButton.primary({
@@ -22,6 +21,7 @@ class RegalButton extends StatelessWidget with EventTrackMixin {
     this.semanticsLabel,
     this.shrink = false,
     this.loadingIndicatorColor,
+    this.labelWidget,
   })  : _type = _RegalButtonType.primary,
         assert(
           label != null || prefixIcon != null || suffixIcon != null,
@@ -44,6 +44,7 @@ class RegalButton extends StatelessWidget with EventTrackMixin {
     this.semanticsLabel,
     this.shrink = false,
     this.loadingIndicatorColor,
+    this.labelWidget,
   })  : _type = _RegalButtonType.secondary,
         assert(
           label != null || prefixIcon != null || suffixIcon != null,
@@ -66,6 +67,7 @@ class RegalButton extends StatelessWidget with EventTrackMixin {
     this.semanticsLabel,
     this.shrink = false,
     this.loadingIndicatorColor,
+    this.labelWidget,
   })  : _type = _RegalButtonType.tertiary,
         assert(
           label != null || prefixIcon != null || suffixIcon != null,
@@ -73,6 +75,8 @@ class RegalButton extends StatelessWidget with EventTrackMixin {
         );
 
   final String? label;
+
+  final Widget? labelWidget;
 
   final Widget? prefixIcon;
 
@@ -124,11 +128,12 @@ class RegalButton extends StatelessWidget with EventTrackMixin {
           if (prefixIcon != null) prefixIcon!,
           if (prefixIcon != null && label != null) Spacing.small.xBox,
           if (label != null)
-            AutoSizeText(
-              label!,
-              textAlign: TextAlign.center,
-              semanticsLabel: label,
-            ),
+            labelWidget ??
+                AutoSizeText(
+                  label!,
+                  textAlign: TextAlign.center,
+                  semanticsLabel: label,
+                ),
           if (suffixIcon != null && label != null) Spacing.small.xBox,
           if (suffixIcon != null) suffixIcon!,
           if (shrink) Spacing.medium.xBox,
