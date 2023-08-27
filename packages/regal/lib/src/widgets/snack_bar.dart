@@ -9,10 +9,15 @@ class Snackbar extends StatelessWidget with EventTrackMixin {
     this.snackbar, {
     super.key,
     this.onClose,
+    this.alignment,
+    this.leading,
   });
 
   final SnackbarType snackbar;
   final VoidCallback? onClose;
+  final Alignment? alignment;
+  final Widget? leading;
+
 
   Widget? trailing(BuildContext context) {
     final close = RegalIconButton.iconData(
@@ -105,7 +110,7 @@ class Snackbar extends StatelessWidget with EventTrackMixin {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20.sp),
       ),
-      leading: snackbar.type.leading(context),
+      leading: leading ?? snackbar.type.leading(context),
       title: Text(snackbar.title),
       titleTextStyle: context.montserrat.headlineSmall.copyWith(
         color: snackbar.type.textColor(context),
@@ -130,7 +135,7 @@ class Snackbar extends StatelessWidget with EventTrackMixin {
     );
 
     return Align(
-      alignment: Alignment.bottomCenter,
+      alignment: alignment ?? Alignment.bottomCenter,
       child: Padding(
         padding: Spacing.large.x,
         child: wrap(listTile, context),
