@@ -16,6 +16,7 @@ class RegalIconButton extends StatelessWidget {
     this.color,
     this.padding,
     this.border,
+    this.bgOpacity,
   })  : _type = _RegalIconButtonType.asset,
         _assetPath = assetPath,
         _iconData = null;
@@ -32,6 +33,7 @@ class RegalIconButton extends StatelessWidget {
     this.color,
     this.padding,
     this.border,
+    this.bgOpacity,
   })  : _type = _RegalIconButtonType.icon,
         _assetPath = '',
         _iconData = iconData;
@@ -47,6 +49,7 @@ class RegalIconButton extends StatelessWidget {
   final Color? color;
   final EdgeInsets? padding;
   final BoxBorder? border;
+  final double? bgOpacity;
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +64,7 @@ class RegalIconButton extends StatelessWidget {
         width: size.value,
         padding: padding,
         decoration: BoxDecoration(
-          color: color?.withOpacity(disabled ? 0.3 : 1.0),
+          color: color?.withOpacity(disabled ? 0.3 : bgOpacity ?? 1.0),
           border: border,
           borderRadius: borderRadius ?? BorderRadius.circular(16.r),
         ),
