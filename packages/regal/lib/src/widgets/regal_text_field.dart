@@ -264,11 +264,13 @@ class _RegalTextFieldState extends State<RegalTextField> {
               iconColor: value.suffixColor,
               trackLabel: 'Clear ${widget.label}',
               semanticsLabel: 'Clear ${widget.label}',
-              onPressed: (context) {
-                _textEditingController.clear();
-                widget.onChanged?.call(_textEditingController.text);
-                _updateLabelColor(TextValidationState.none);
-              },
+              onPressed: value == TextValidationState.typing
+                  ? (context) {
+                      _textEditingController.clear();
+                      widget.onChanged?.call(_textEditingController.text);
+                      _updateLabelColor(TextValidationState.none);
+                    }
+                  : null,
             );
           },
         );
