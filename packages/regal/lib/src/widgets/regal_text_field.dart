@@ -178,6 +178,12 @@ class _RegalTextFieldState extends State<RegalTextField> {
 
               if (result is String) {
                 _updateLabelColor(TextValidationState.invalid);
+              } else {
+                _updateLabelColor(
+                  _textEditingController.text.isNotEmpty
+                      ? TextValidationState.typing
+                      : TextValidationState.none,
+                );
               }
 
               return result;
