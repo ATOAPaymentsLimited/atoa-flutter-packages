@@ -273,7 +273,7 @@ class _RegalTextFieldState extends State<RegalTextField> {
               onPressed: value == TextValidationState.typing
                   ? (context) {
                       _textEditingController.clear();
-                      widget.onChanged?.call(_textEditingController.text);
+                      widget.onChanged?.call('');
                       _updateLabelColor(TextValidationState.none);
                     }
                   : null,
