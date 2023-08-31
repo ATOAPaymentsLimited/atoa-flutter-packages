@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:regal/src/regal.dart';
 
 extension SnackbarExtension on BuildContext {
-  void showSnackbar(SnackbarType snackbar, {Duration? snackbarDuration}) {
+  void showSnackbar(SnackbarType snackbar, {bool infiniteDuration = false}) {
     BotToast.showAnimationWidget(
       onlyOne: true,
-      duration: snackbar.type.duration,
-      animationDuration: snackbarDuration ?? const Duration(milliseconds: 200),
+      duration: infiniteDuration ? null : snackbar.type.duration,
+      animationDuration: const Duration(milliseconds: 200),
       backButtonBehavior: BackButtonBehavior.close,
       wrapToastAnimation: (controller, cancel, child) => _CustomOffsetAnimation(
         controller: controller,
