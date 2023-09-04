@@ -17,7 +17,7 @@ class CustomFocusLinesShapeAnimation extends StatefulWidget {
   final double height;
   final double width;
   final double scaleLines;
-  final BorderRadius? borderRadius;
+  final BorderRadius borderRadius;
   final Color? gradientColor;
   final Duration animationDuration;
 
@@ -68,14 +68,14 @@ class _CustomFocusLinesShapeAnimationState
                       child: CustomPaint(
                         size: Size.square(widget.width),
                         painter: _FocusLinesShapePainter(
-                          gradientColor:
-                              widget.gradientColor ?? RegalColors.vividRed.shade60,
+                          gradientColor: widget.gradientColor ??
+                              RegalColors.vividRed.shade60,
                         ),
                       ),
                     ),
                   ),
                 ),
-              )
+              ),
             ],
           ),
         ),
