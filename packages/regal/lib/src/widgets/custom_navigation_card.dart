@@ -167,6 +167,7 @@ class CustomNavigationCard extends StatelessWidget {
       return Material(
         color: backgroundColor,
         child: CustomInkWell(
+          semanticsLabel: '$title Card',
           context: context,
           trackLabel: '$title Card',
           enableTracking: enableTracking,
@@ -253,6 +254,7 @@ class CustomNavigationCard extends StatelessWidget {
             color: backgroundColor,
             borderRadius: BorderRadius.circular(12.r),
             child: CustomInkWell(
+              semanticsLabel: '$title Card',
               context: context,
               trackLabel: '$title Card',
               enableTracking: enableTracking,
