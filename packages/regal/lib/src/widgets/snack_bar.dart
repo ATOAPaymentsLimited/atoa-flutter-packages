@@ -22,8 +22,7 @@ class Snackbar extends StatelessWidget with EventTrackMixin {
 
   Widget _verticalDivider(BuildContext context) => Container(
         width: 1.sp,
-        height: 24.sp,
-        margin: Spacing.mini.right,
+        margin: Spacing.mini.right + Spacing.mini.y,
         decoration: BoxDecoration(
           border: Border(
             left: Divider.createBorderSide(
@@ -60,27 +59,33 @@ class Snackbar extends StatelessWidget with EventTrackMixin {
               visualDensity: VisualDensity.compact,
               foregroundColor: snackbar.type.ctaColor(context),
             ),
-            child: Text(snackbar.ctaText!),
+            child: snackbar.loading
+                ? GradientCircularProgressIndicator(
+                    radius: Spacing.medium.r,
+                  )
+                : Text(snackbar.ctaText!),
           )
         : null;
 
     if (cta != null) {
-      return Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          if (showClose) ...[
-            Spacing.medium.xBox,
-            cta,
-            Spacing.medium.xBox,
-            _verticalDivider(context),
-            Spacing.tiny.xBox,
-            close,
-          ] else ...[
-            _verticalDivider(context),
-            Spacing.tiny.xBox,
-            cta,
+      return Expanded(
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            if (showClose) ...[
+              Spacing.medium.xBox,
+              cta,
+              Spacing.medium.xBox,
+              _verticalDivider(context),
+              Spacing.tiny.xBox,
+              close,
+            ] else ...[
+              _verticalDivider(context),
+              Spacing.tiny.xBox,
+              cta,
+            ],
           ],
-        ],
+        ),
       );
     }
 

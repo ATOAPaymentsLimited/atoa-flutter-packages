@@ -7,6 +7,7 @@ class SnackbarType {
     this.description,
     this.ctaText,
     this.onCTA,
+    this.loading = false,
   })  : type = SnackbarTypeEnum.error,
         assert(
           (ctaText == null && onCTA == null) ||
@@ -19,6 +20,7 @@ class SnackbarType {
     this.description,
     this.ctaText,
     this.onCTA,
+    this.loading = false,
   })  : type = SnackbarTypeEnum.success,
         assert(
           (ctaText == null && onCTA == null) ||
@@ -31,6 +33,7 @@ class SnackbarType {
     this.description,
     this.ctaText,
     this.onCTA,
+    this.loading = false,
   })  : type = SnackbarTypeEnum.info,
         assert(
           (ctaText == null && onCTA == null) ||
@@ -38,6 +41,7 @@ class SnackbarType {
           '`ctaText` and `onCTA` both should be provide or none at all',
         );
 
+  final bool loading;
   final String title;
   final String? description;
   final String? ctaText;
