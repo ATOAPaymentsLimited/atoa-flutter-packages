@@ -10,6 +10,8 @@ class RegalChip extends StatelessWidget {
     this.onRemove,
     this.onTap,
     this.expand = false,
+    this.bgColor,
+    this.labelColor,
   });
 
   final bool isSelected;
@@ -17,6 +19,8 @@ class RegalChip extends StatelessWidget {
   final VoidCallback? onRemove;
   final VoidCallback? onTap;
   final bool expand;
+  final Color? bgColor;
+  final Color? labelColor;
 
   @override
   Widget build(BuildContext context) => Center(
@@ -29,8 +33,8 @@ class RegalChip extends StatelessWidget {
           child: Container(
             padding: Spacing.medium.x + (Spacing.tiny.y * 2.5),
             decoration: BoxDecoration(
-              color:
-                  isSelected ? RegalColors.vividRed : context.vividRed.tint05,
+              color: bgColor ??
+                  (isSelected ? RegalColors.vividRed : context.vividRed.tint05),
               borderRadius: Spacing.small.brAll,
             ),
             child: Row(
@@ -41,12 +45,13 @@ class RegalChip extends StatelessWidget {
                 CustomText.semantics(
                   label,
                   style: context.bodyLarge!.w600.copyWith(
-                    color: context.brightness.map(
-                      (l) => isSelected
-                          ? RegalColors.snowWhite
-                          : RegalColors.licoriceBlack,
-                      (d) => RegalColors.snowWhite,
-                    ),
+                    color: labelColor ??
+                        context.brightness.map(
+                          (l) => isSelected
+                              ? RegalColors.snowWhite
+                              : RegalColors.licoriceBlack,
+                          (d) => RegalColors.snowWhite,
+                        ),
                   ),
                 ),
                 if (onRemove != null) ...[
