@@ -8,6 +8,7 @@ class RegalTextField extends StatefulWidget {
     this.margin,
     this.suffix,
     this.label,
+    this.onClear,
     this.showLabel = true,
     this.showClear = true,
     this.controller,
@@ -105,6 +106,7 @@ class RegalTextField extends StatefulWidget {
   final TapRegionCallback? onTapOutside;
   final VoidCallback? onEditingComplete;
   final ValueChanged<String>? onFieldSubmitted;
+  final ValueChanged<String>? onClear;
   final ValueChanged<String?>? onSaved;
   final String? Function(String? value)? validator;
   final List<TextInputFormatter>? inputFormatters;
@@ -270,13 +272,13 @@ class _RegalTextFieldState extends State<RegalTextField> {
               iconColor: value.suffixColor,
               trackLabel: 'Clear ${widget.label}',
               semanticsLabel: 'Clear ${widget.label}',
-              onPressed: value == TextValidationState.typing
-                  ? (context) {
+              onPressed:  (context) {
                       _textEditingController.clear();
+                      widget.onClear?.call('');
                       widget.onChanged?.call('');
                       _updateLabelColor(TextValidationState.none);
                     }
-                  : null,
+                  ,
             );
           },
         );
