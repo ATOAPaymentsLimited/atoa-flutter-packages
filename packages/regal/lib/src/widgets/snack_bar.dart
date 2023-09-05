@@ -11,13 +11,28 @@ class Snackbar extends StatelessWidget with EventTrackMixin {
     this.onClose,
     this.alignment,
     this.leading,
+    this.showClose = true,
   });
 
   final SnackbarType snackbar;
   final VoidCallback? onClose;
   final Alignment? alignment;
   final Widget? leading;
+  final bool showClose;
 
+  Widget _verticalDivider(BuildContext context) => Container(
+        width: 1.sp,
+        margin: Spacing.mini.right + Spacing.mini.y,
+        decoration: BoxDecoration(
+          border: Border(
+            left: Divider.createBorderSide(
+              context,
+              color: RegalColors.grey.shade20,
+              width: 1.sp,
+            ),
+          ),
+        ),
+      );
 
   Widget? trailing(BuildContext context) {
     final close = RegalIconButton.iconData(
@@ -35,7 +50,7 @@ class Snackbar extends StatelessWidget with EventTrackMixin {
               snackbar.onCTA!();
               logClickEvent(
                 context,
-                '$snackbar.ctaText CTA',
+                '${snackbar.ctaText} CTA',
                 enableTracking: true,
               );
             },
@@ -44,31 +59,33 @@ class Snackbar extends StatelessWidget with EventTrackMixin {
               visualDensity: VisualDensity.compact,
               foregroundColor: snackbar.type.ctaColor(context),
             ),
-            child: Text(snackbar.ctaText!),
+            child: snackbar.loading
+                ? GradientCircularProgressIndicator(
+                    radius: Spacing.medium.r,
+                  )
+                : Text(snackbar.ctaText!),
           )
         : null;
 
     if (cta != null) {
-      return Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Container(
-            width: 1.sp,
-            height: 24.sp,
-            margin: Spacing.mini.right,
-            decoration: BoxDecoration(
-              border: Border(
-                left: Divider.createBorderSide(
-                  context,
-                  color: RegalColors.grey.shade20,
-                  width: 1.sp,
-                ),
-              ),
-            ),
-          ),
-          Spacing.tiny.xBox,
-          cta,
-        ],
+      return Expanded(
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            if (showClose) ...[
+              Spacing.medium.xBox,
+              cta,
+              Spacing.medium.xBox,
+              _verticalDivider(context),
+              Spacing.tiny.xBox,
+              close,
+            ] else ...[
+              _verticalDivider(context),
+              Spacing.tiny.xBox,
+              cta,
+            ],
+          ],
+        ),
       );
     }
 
@@ -128,8 +145,9 @@ class Snackbar extends StatelessWidget with EventTrackMixin {
       trailing: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          if(trailing(context)!=null)
-          trailing(context)!,
+          if (trailing(context) != null) ...[
+            trailing(context)!,
+          ],
         ],
       ),
     );
