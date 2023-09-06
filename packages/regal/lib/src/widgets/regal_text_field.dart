@@ -241,7 +241,7 @@ class _RegalTextFieldState extends State<RegalTextField> {
             cursorWidth: widget.cursorWidth,
             cursorHeight: widget.cursorHeight,
             cursorRadius: widget.cursorRadius,
-            cursorColor: widget.cursorColor,
+            cursorColor: context.regalColor.licoriceBlack,
             scrollPadding: widget.scrollPadding,
             scrollPhysics: widget.scrollPhysics,
             keyboardAppearance: widget.keyboardAppearance,
@@ -272,13 +272,13 @@ class _RegalTextFieldState extends State<RegalTextField> {
               iconColor: value.suffixColor,
               trackLabel: 'Clear ${widget.label}',
               semanticsLabel: 'Clear ${widget.label}',
-              onPressed:  (context) {
+              onPressed: value == TextValidationState.typing
+                  ? (context) {
                       _textEditingController.clear();
-                      widget.onClear?.call('');
                       widget.onChanged?.call('');
                       _updateLabelColor(TextValidationState.none);
                     }
-                  ,
+                  : null,
             );
           },
         );
