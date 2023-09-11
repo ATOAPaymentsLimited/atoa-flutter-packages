@@ -100,56 +100,80 @@ class Snackbar extends StatelessWidget with EventTrackMixin {
     return null;
   }
 
-  Widget wrap(Widget widget, BuildContext context) {
-    if (snackbar.type == SnackbarTypeEnum.info) {
-      return Material(
-        color: Colors.transparent,
-        child: DecoratedBox(
-          decoration: BoxDecoration(
-            border: Border.all(color: context.grey.shade20),
-            borderRadius: BorderRadius.circular(20.sp),
+  Widget wrap(Widget widget, BuildContext context) => ClipRRect(
+        borderRadius: BorderRadius.circular(20.sp),
+        child: Material(
+          color: Colors.transparent,
+          child: DecoratedBox(
+            decoration: BoxDecoration(
+              border: Border.all(color: context.grey.shade20),
+              borderRadius: BorderRadius.circular(20.sp),
+            ),
+            child: widget,
           ),
-          child: widget,
         ),
       );
-    }
-
-    return Material(color: Colors.transparent, child: widget);
-  }
 
   @override
   Widget build(BuildContext context) {
-    final listTile = ListTile(
-      // default is 16 and design has 12
-      horizontalTitleGap: -4.sp,
-      contentPadding: Spacing.medium.x + Spacing.small.y,
-      tileColor: snackbar.type.bg(context),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20.sp),
-      ),
-      leading: leading ?? snackbar.type.leading(context),
-      title: Text(snackbar.title),
-      titleTextStyle: context.montserrat.headlineSmall.copyWith(
-        color: snackbar.type.textColor(context),
-        fontSize: 14.sp,
-      ),
-      subtitle: snackbar.description != null
-          ? Text(
-              snackbar.description!,
-              style: context.bodyLarge?.copyWith(
-                color: snackbar.type.textColor(context),
-                fontSize: 14.sp,
+    final listTile = Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        if (snackbar.headerIcon != null && snackbar.headerText != null)
+          Container(
+            padding: Spacing.medium.all,
+            decoration: BoxDecoration(
+              color: snackbar.type.bg(context),
+              border: Border.all(color: context.grey.shade20),
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(20.sp),
+                topRight: Radius.circular(20.sp),
               ),
-            )
-          : null,
-      trailing: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          if (trailing(context) != null) ...[
-            trailing(context)!,
-          ],
-        ],
-      ),
+            ),
+            child: Row(
+              children: [
+                snackbar.headerIcon!,
+                Spacing.medium.xBox,
+                Text(
+                  snackbar.headerText!,
+                  style: context.montserrat.headlineSmall.copyWith(
+                    color: snackbar.type.textColor(context),
+                    fontSize: 14.sp,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ListTile(
+          // default is 16 and design has 12
+          horizontalTitleGap: -4.sp,
+          contentPadding: Spacing.medium.x + Spacing.small.y,
+          tileColor: snackbar.type.bg(context),
+          leading: leading ?? snackbar.type.leading(context),
+          title: Text(snackbar.title),
+          titleTextStyle: context.montserrat.headlineSmall.copyWith(
+            color: snackbar.type.textColor(context),
+            fontSize: 14.sp,
+          ),
+          subtitle: snackbar.description != null
+              ? Text(
+                  snackbar.description!,
+                  style: context.bodyLarge?.copyWith(
+                    color: snackbar.type.textColor(context),
+                    fontSize: 14.sp,
+                  ),
+                )
+              : null,
+          trailing: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              if (trailing(context) != null) ...[
+                trailing(context)!,
+              ],
+            ],
+          ),
+        ),
+      ],
     );
 
     return Align(
