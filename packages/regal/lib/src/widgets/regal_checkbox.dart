@@ -48,6 +48,7 @@ class _RegalCheckboxState extends State<RegalCheckbox> {
 
   @override
   Widget build(BuildContext context) => CustomGestureDetector(
+        behavior: HitTestBehavior.translucent,
         semanticsLabel: widget.semanticsLabel,
         context: context,
         trackLabel: 'Checkbox',
