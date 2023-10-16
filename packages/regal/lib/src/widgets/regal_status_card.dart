@@ -158,7 +158,7 @@ class RegalStatusCard extends StatelessWidget {
                           onPressed: onClose,
                         ),
                       ),
-                    )
+                    ),
                 ],
               ),
               if (body != null) ...[
@@ -176,8 +176,8 @@ class RegalStatusCard extends StatelessWidget {
                   ),
                   trackLabel: ctaText!,
                   onPressed: onTapCta,
-                )
-              ]
+                ),
+              ],
             ],
           ),
         ),

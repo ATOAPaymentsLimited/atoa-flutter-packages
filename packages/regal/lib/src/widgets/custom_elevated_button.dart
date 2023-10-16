@@ -113,7 +113,7 @@ class _CustomElevatedButtonWithIconChild extends StatelessWidget {
       children: <Widget>[
         icon,
         SizedBox(width: gap.toDouble()),
-        Flexible(child: label)
+        Flexible(child: label),
       ],
     );
   }

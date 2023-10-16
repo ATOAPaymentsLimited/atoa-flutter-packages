@@ -71,7 +71,7 @@ extension ThemeX on BuildContext {
   /// displayMedium       36.0  FontWeight.w700
   /// ```
   TextStyle? get displayMedium => textTheme.displayMedium;
-  
+
   /// performs a simple [Theme.of(context).displaySmall] action and returns given [displaySmall]
   /// ```
   /// displayMedium       32.0  FontWeight.w700
@@ -89,7 +89,7 @@ extension ThemeX on BuildContext {
   /// headlineMedium       28.0  FontWeight.w700
   /// ```
   TextStyle? get headlineMedium => textTheme.headlineMedium;
-  
+
   /// performs a simple [Theme.of(context).headlineSmall] action and returns given [headlineSmall]
   /// ```
   /// headlineMedium       24.0  FontWeight.w700

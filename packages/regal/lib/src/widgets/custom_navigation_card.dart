@@ -297,7 +297,7 @@ class CustomNavigationCard extends StatelessWidget {
                                     fontWeight: titleFontWeight,
                                     color: foregroundColor,
                                   ),
-                        )
+                        ),
                       ],
                     ),
                   ),

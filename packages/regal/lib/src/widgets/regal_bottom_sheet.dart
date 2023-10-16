@@ -69,7 +69,7 @@ Future<T?> showRegalBottomSheet<T>({
                       ),
                     ),
                   ),
-                )
+                ),
               ],
             ),
             Spacing.huge.yBox,

@@ -60,7 +60,7 @@ class _RegalSwitchState extends State<RegalSwitch> {
                       offset: const Offset(2, 0),
                       blurRadius: 5.r,
                       color: Colors.black.withOpacity(0.2),
-                    )
+                    ),
                   ],
                   borderRadius: BorderRadius.circular(100),
                 ),

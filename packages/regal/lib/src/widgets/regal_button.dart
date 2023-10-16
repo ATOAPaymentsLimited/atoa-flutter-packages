@@ -112,7 +112,7 @@ class RegalButton extends StatelessWidget with EventTrackMixin {
             ),
           if (suffixIcon != null && label != null) Spacing.small.xBox,
           if (suffixIcon != null) suffixIcon!,
-        ]
+        ],
       ],
     );
 
