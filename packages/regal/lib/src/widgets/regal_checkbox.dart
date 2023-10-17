@@ -100,7 +100,7 @@ class _RegalCheckboxState extends State<RegalCheckbox> {
                 style: widget.labelStyle,
                 overflow: TextOverflow.ellipsis,
               ),
-            ]
+            ],
           ],
         ),
       );
