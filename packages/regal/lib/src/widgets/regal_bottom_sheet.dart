@@ -42,6 +42,7 @@ Future<T?> showRegalBottomSheet<T>({
                     ),
                   ),
                 ),
+                if(isDismissable)
                 CustomInkWell(
                   semanticsLabel: 'Close Dialog Sheet Icon',
                   context: context,
