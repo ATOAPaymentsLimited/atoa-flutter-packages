@@ -260,7 +260,7 @@ class _RegalTextFieldState extends State<RegalTextField> {
         ),
       );
 
-  Widget? get _buildSuffixIcon => !widget.readOnly && !widget.showClear
+  Widget? get _buildSuffixIcon => widget.readOnly || !widget.showClear
       ? null
       : Builder(
           builder: (context) {
