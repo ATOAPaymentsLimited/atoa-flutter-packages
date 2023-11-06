@@ -22,7 +22,8 @@ class RegalButton extends StatelessWidget with EventTrackMixin {
         assert(
           label != null || prefixIcon != null || suffixIcon != null,
           'Label or icon must be provided.',
-        );
+        ),
+        mainAxisAlignment = MainAxisAlignment.center;
 
   const RegalButton.secondary({
     super.key,
@@ -37,6 +38,7 @@ class RegalButton extends StatelessWidget with EventTrackMixin {
     this.loading = false,
     this.trackProperties,
     this.semanticsLabel,
+    this.mainAxisAlignment = MainAxisAlignment.center,
   })  : _type = _RegalButtonType.secondary,
         assert(
           label != null || prefixIcon != null || suffixIcon != null,
@@ -60,7 +62,8 @@ class RegalButton extends StatelessWidget with EventTrackMixin {
         assert(
           label != null || prefixIcon != null || suffixIcon != null,
           'Label or icon must be provided.',
-        );
+        ),
+        mainAxisAlignment = MainAxisAlignment.center;
 
   final String? label;
 
@@ -86,11 +89,12 @@ class RegalButton extends StatelessWidget with EventTrackMixin {
   final Map<String, dynamic>? trackProperties;
 
   final String? semanticsLabel;
+  final MainAxisAlignment mainAxisAlignment;
 
   @override
   Widget build(BuildContext context) {
     final child = Row(
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: mainAxisAlignment,
       children: [
         if (loading)
           GradientCircularProgressIndicator(
