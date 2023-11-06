@@ -71,10 +71,7 @@ class _CustomDatePickerState extends State<CustomDatePicker> {
           context: context,
           isDismissible: false,
           builder: (context) => ClipRRect(
-            borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(36),
-              topRight: Radius.circular(36),
-            ),
+            borderRadius: Spacing.huge.topCorners + Spacing.medium.topCorners,
             child: Container(
               padding: Spacing.large.y,
               child: Column(
@@ -149,7 +146,7 @@ class _CustomDatePickerState extends State<CustomDatePicker> {
                     ),
                   ),
                   SizedBox(
-                    height: 200,
+                    height: Spacing.xtraLarge.value * 10,
                     child: CupertinoDatePicker(
                       initialDateTime: _selected,
                       minimumDate: _getFirstDate(),
