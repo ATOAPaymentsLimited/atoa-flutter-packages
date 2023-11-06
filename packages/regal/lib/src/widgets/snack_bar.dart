@@ -9,10 +9,30 @@ class Snackbar extends StatelessWidget with EventTrackMixin {
     this.snackbar, {
     super.key,
     this.onClose,
+    this.alignment,
+    this.leading,
+    this.showClose = true,
   });
 
   final SnackbarType snackbar;
   final VoidCallback? onClose;
+  final Alignment? alignment;
+  final Widget? leading;
+  final bool showClose;
+
+  Widget _verticalDivider(BuildContext context) => Container(
+        width: 1.sp,
+        margin: Spacing.mini.right + Spacing.mini.y,
+        decoration: BoxDecoration(
+          border: Border(
+            left: Divider.createBorderSide(
+              context,
+              color: RegalColors.grey.shade20,
+              width: 1.sp,
+            ),
+          ),
+        ),
+      );
 
   Widget? trailing(BuildContext context) {
     final close = RegalIconButton.iconData(
@@ -30,7 +50,7 @@ class Snackbar extends StatelessWidget with EventTrackMixin {
               snackbar.onCTA!();
               logClickEvent(
                 context,
-                '$snackbar.ctaText CTA',
+                '${snackbar.ctaText} CTA',
                 enableTracking: true,
               );
             },
@@ -39,31 +59,33 @@ class Snackbar extends StatelessWidget with EventTrackMixin {
               visualDensity: VisualDensity.compact,
               foregroundColor: snackbar.type.ctaColor(context),
             ),
-            child: Text(snackbar.ctaText!),
+            child: snackbar.loading
+                ? GradientCircularProgressIndicator(
+                    radius: Spacing.medium.r,
+                  )
+                : Text(snackbar.ctaText!),
           )
         : null;
 
-    if (onClose != null && cta != null) {
-      return Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          cta,
-          Container(
-            width: 1.sp,
-            height: 24.sp,
-            margin: Spacing.mini.right,
-            decoration: BoxDecoration(
-              border: Border(
-                left: Divider.createBorderSide(
-                  context,
-                  color: RegalColors.grey.shade20,
-                  width: 1.sp,
-                ),
-              ),
-            ),
-          ),
-          close,
-        ],
+    if (cta != null) {
+      return Expanded(
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            if (showClose) ...[
+              Spacing.medium.xBox,
+              cta,
+              Spacing.medium.xBox,
+              _verticalDivider(context),
+              Spacing.tiny.xBox,
+              close,
+            ] else ...[
+              _verticalDivider(context),
+              Spacing.tiny.xBox,
+              cta,
+            ],
+          ],
+        ),
       );
     }
 
@@ -78,58 +100,86 @@ class Snackbar extends StatelessWidget with EventTrackMixin {
     return null;
   }
 
-  Widget wrap(Widget widget, BuildContext context) {
-    if (snackbar.type == SnackbarTypeEnum.info) {
-      return Material(
-        color: Colors.transparent,
-        child: DecoratedBox(
-          decoration: BoxDecoration(
-            border: Border.all(color: context.grey.shade20),
-            borderRadius: BorderRadius.circular(20.sp),
+  Widget wrap(Widget widget, BuildContext context) => ClipRRect(
+        borderRadius: BorderRadius.circular(20.sp),
+        child: Material(
+          color: Colors.transparent,
+          child: DecoratedBox(
+            decoration: BoxDecoration(
+              border: Border.all(color: context.grey.shade20),
+              borderRadius: BorderRadius.circular(20.sp),
+            ),
+            child: widget,
           ),
-          child: widget,
         ),
       );
-    }
-
-    return Material(color: Colors.transparent, child: widget);
-  }
 
   @override
   Widget build(BuildContext context) {
-    final listTile = ListTile(
-      // default is 16 and design has 12
-      horizontalTitleGap: -4.sp,
-      contentPadding: Spacing.medium.x + Spacing.small.y,
-      tileColor: snackbar.type.bg(context),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20.sp),
-      ),
-      leading: snackbar.type.leading(context),
-      title: Text(snackbar.title),
-      titleTextStyle: context.montserrat.headlineSmall.copyWith(
-        color: snackbar.type.textColor(context),
-        fontSize: 14.sp,
-      ),
-      subtitle: snackbar.description != null
-          ? Text(
-              snackbar.description!,
-              style: context.bodyLarge?.copyWith(
-                color: snackbar.type.textColor(context),
-                fontSize: 14.sp,
+    final listTile = Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        if (snackbar.headerIcon != null && snackbar.headerText != null)
+          Container(
+            padding: Spacing.medium.all,
+            decoration: BoxDecoration(
+              color: snackbar.type.bg(context),
+              border: Border.all(color: context.grey.shade20),
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(20.sp),
+                topRight: Radius.circular(20.sp),
               ),
-            )
-          : null,
-      trailing: trailing(context),
+            ),
+            child: Row(
+              children: [
+                snackbar.headerIcon!,
+                Spacing.medium.xBox,
+                Text(
+                  snackbar.headerText!,
+                  style: context.montserrat.headlineSmall.copyWith(
+                    color: snackbar.type.textColor(context),
+                    fontSize: 14.sp,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ListTile(
+          // default is 16 and design has 12
+          horizontalTitleGap: -4.sp,
+          contentPadding: Spacing.medium.x + Spacing.small.y,
+          tileColor: snackbar.type.bg(context),
+          leading: leading ?? snackbar.type.leading(context),
+          title: Text(snackbar.title),
+          titleTextStyle: context.montserrat.headlineSmall.copyWith(
+            color: snackbar.type.textColor(context),
+            fontSize: 14.sp,
+          ),
+          subtitle: snackbar.description != null
+              ? Text(
+                  snackbar.description!,
+                  style: context.bodyLarge?.copyWith(
+                    color: snackbar.type.textColor(context),
+                    fontSize: 14.sp,
+                  ),
+                )
+              : null,
+          trailing: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              if (trailing(context) != null) ...[
+                trailing(context)!,
+              ],
+            ],
+          ),
+        ),
+      ],
     );
 
     return Align(
-      alignment: Alignment.bottomCenter,
+      alignment: alignment ?? Alignment.bottomCenter,
       child: Padding(
-        padding: Spacing.large.x +
-            Spacing.huge.bottom +
-            Spacing.mini.bottom +
-            Spacing.tiny.bottom,
+        padding: Spacing.large.x,
         child: wrap(listTile, context),
       ),
     );
@@ -149,7 +199,7 @@ extension on SnackbarTypeEnum {
             size: 20.sp,
           ),
         SnackbarTypeEnum.info => Icon(
-            Icons.error_outline,
+            Icons.info_outline,
             color: context.grey.shade40,
           ),
       };

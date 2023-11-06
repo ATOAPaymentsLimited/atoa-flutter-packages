@@ -1,6 +1,6 @@
 name: face_detector_view
 description: Face Detector View for KYB face liveness check
-version: 1.0.3
+version: 1.0.4
 
 environment:
   sdk: ">=2.17.0 <3.0.0"
@@ -12,6 +12,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_svg: ^2.0.0
+  flutter_screenutil: ^5.5.4
   google_mlkit_face_detection: ^0.7.0
   image: ^4.0.17
   image_picker: ^0.8.8

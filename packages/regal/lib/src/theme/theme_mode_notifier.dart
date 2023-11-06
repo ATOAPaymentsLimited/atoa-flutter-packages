@@ -16,6 +16,8 @@ class ThemeModeNotifier extends StateNotifier<ThemeMode> {
   final SharedPreferences prefs;
   final String prefsKey;
 
+  ThemeMode get themeMode => state;
+
   void _getModeFromPrefs() {
     final name = prefs.getString(prefsKey);
 

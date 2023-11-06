@@ -29,7 +29,11 @@ enum Spacing {
   xtraLarge,
 
   /// 24
-  huge,
+  huge;
+
+  double operator *(double other) => value * other;
+
+  double operator +(Spacing other) => value + other.value;
 }
 
 extension SpacingX on Spacing {
@@ -52,6 +56,8 @@ extension SpacingX on Spacing {
     }
   }
 
+  double get r => value.r;
+
   EdgeInsets get x => EdgeInsets.symmetric(horizontal: value.sp);
 
   EdgeInsets get y => EdgeInsets.symmetric(vertical: value.sp);
@@ -69,7 +75,47 @@ extension SpacingX on Spacing {
 
   EdgeInsets get bottom => EdgeInsets.only(bottom: value.sp);
 
-  SizedBox get xBox => SizedBox(width: value.sp);
+  OperatorSizedBox get xBox => OperatorSizedBox.width(value.sp);
 
-  SizedBox get yBox => SizedBox(height: value.sp);
+  OperatorSizedBox get yBox => OperatorSizedBox.height(value.sp);
+
+  Radius get circular => Radius.circular(value.r);
+
+  BorderRadius get brAll => BorderRadius.all(circular);
+  BorderRadius get brTopLeft => BorderRadius.only(topLeft: circular);
+  BorderRadius get brTopRight => BorderRadius.only(topRight: circular);
+  BorderRadius get brBottomRight => BorderRadius.only(bottomRight: circular);
+
+  BorderRadius get topCorners => BorderRadius.vertical(
+        top: circular,
+      );
+
+  BorderRadius get bottomCorners => BorderRadius.vertical(
+        bottom: circular,
+      );
+}
+
+class OperatorSizedBox extends SizedBox {
+  const OperatorSizedBox.height(double height, {super.key})
+      : super(height: height);
+
+  const OperatorSizedBox.width(double width, {super.key}) : super(width: width);
+
+  const OperatorSizedBox.shrink({super.key}) : super.shrink();
+
+  OperatorSizedBox operator *(double other) {
+    if (height != null) return OperatorSizedBox.height(height! * other);
+
+    if (width != null) return OperatorSizedBox.width(width! * other);
+
+    return const OperatorSizedBox.shrink();
+  }
+
+  OperatorSizedBox operator +(SizedBox other) {
+    if (height != null) return OperatorSizedBox.height(height! + other.height!);
+
+    if (width != null) return OperatorSizedBox.width(width! + other.width!);
+
+    return const OperatorSizedBox.shrink();
+  }
 }

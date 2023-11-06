@@ -165,6 +165,11 @@ class _CustomOffersSliderWidgetState extends State<CarouselSlider>
                         aspectRatio: widget.options.aspectRatio,
                         disableAnimationsForTest:
                             widget.disableAnimationsForTest,
+                      ),
+                      PlaceHolderCarousel(
+                        aspectRatio: widget.options.aspectRatio,
+                        disableAnimationsForTest:
+                            widget.disableAnimationsForTest,
                       )
                     ]
                   : _offersItemList,

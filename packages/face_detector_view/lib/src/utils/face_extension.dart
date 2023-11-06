@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_mlkit_face_detection/google_mlkit_face_detection.dart';
 
 extension FaceCheck on Face {
-  bool isNotPannedLeftOrRight() {
-    const maxDeviation = 5.0;
-    const minDeviation = -5.0;
+  bool get isNotPannedLeftOrRight {
+    final maxDeviation = 30.sp;
+    final minDeviation = -30.sp;
 
     if (headEulerAngleY == null) return false;
 
@@ -12,9 +13,9 @@ extension FaceCheck on Face {
         (headEulerAngleY! < maxDeviation);
   }
 
-  bool isNotPannedTopOrBottom() {
-    const maxDeviation = 10.0;
-    const minDeviation = -10.0;
+  bool get isNotPannedTopOrBottom {
+    final maxDeviation = 30.sp;
+    final minDeviation = -30.sp;
 
     if (headEulerAngleX == null) return false;
 
@@ -22,9 +23,9 @@ extension FaceCheck on Face {
         (headEulerAngleX! < maxDeviation);
   }
 
-  bool isNotRotated() {
-    const maxDeviation = 15.0;
-    const minDeviation = -15.0;
+  bool get isNotRotated {
+    final maxDeviation = 15.sp;
+    final minDeviation = -15.sp;
 
     if (headEulerAngleZ == null) return false;
 
@@ -36,25 +37,23 @@ extension FaceCheck on Face {
     final boundingBox = this.boundingBox;
 
     final centerOffset = Offset(mediaSize.width / 2, mediaSize.height / 2);
-    final maxDeviation = Offset(centerOffset.dx + 250, centerOffset.dy + 300);
-    final minDeviation = Offset(centerOffset.dx + 50, centerOffset.dy + 100);
+    final minDeviation = Offset(centerOffset.dx, centerOffset.dy + 50.sp);
+    final maxDeviation =
+        Offset(centerOffset.dx + 300.sp, centerOffset.dy + 400.sp);
 
     if (isSmallerThan(minDeviation, boundingBox.center) &&
         isSmallerThan(boundingBox.center, maxDeviation) &&
-        isNotPannedLeftOrRight() &&
-        isNotPannedTopOrBottom() &&
-        isNotRotated()) {
+        isNotPannedLeftOrRight &&
+        isNotPannedTopOrBottom &&
+        isNotRotated) {
       return true;
     } else {
       return false;
     }
   }
 
-  bool isSmallerThan(Offset x, Offset y) {
-    if (x.dx > y.dx) {
-      return false;
-    }
-    if (x.dy > y.dy) {
+  bool isSmallerThan(Offset offsetA, Offset offsetB) {
+    if (offsetA.dx > offsetB.dx || offsetA.dy > offsetB.dy) {
       return false;
     }
 

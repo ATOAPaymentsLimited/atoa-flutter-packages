@@ -6,8 +6,8 @@ import 'package:regal/regal.dart';
 class RegalStatusCard extends StatelessWidget {
   const RegalStatusCard.info({
     super.key,
-    required this.title,
-    required this.description,
+    this.title,
+    this.description,
     this.prefixIcon,
     this.body,
     this.ctaText,
@@ -15,6 +15,9 @@ class RegalStatusCard extends StatelessWidget {
     this.onClose,
     this.ctaButtonKey,
     this.bgColor,
+    this.textColor,
+    this.titleStyle,
+    this.descriptionStyle,
   })  : _type = RegalStatusCardTypeEnum.info,
         assert(
           prefixIcon is Icon || prefixIcon is SvgPicture,
@@ -23,8 +26,8 @@ class RegalStatusCard extends StatelessWidget {
 
   const RegalStatusCard.pending({
     super.key,
-    required this.description,
-    required this.title,
+    this.description,
+    this.title,
     this.prefixIcon,
     this.body,
     this.ctaText,
@@ -32,6 +35,9 @@ class RegalStatusCard extends StatelessWidget {
     this.onClose,
     this.ctaButtonKey,
     this.bgColor,
+    this.textColor,
+    this.titleStyle,
+    this.descriptionStyle,
   })  : _type = RegalStatusCardTypeEnum.pending,
         assert(
           prefixIcon is Icon || prefixIcon is SvgPicture,
@@ -40,12 +46,15 @@ class RegalStatusCard extends StatelessWidget {
 
   const RegalStatusCard.success({
     super.key,
-    required this.title,
-    required this.description,
+    this.title,
+    this.description,
     this.prefixIcon,
     this.body,
     this.onClose,
     this.bgColor,
+    this.titleStyle,
+    this.descriptionStyle,
+    this.textColor,
   })  : _type = RegalStatusCardTypeEnum.success,
         ctaText = null,
         onTapCta = null,
@@ -56,10 +65,16 @@ class RegalStatusCard extends StatelessWidget {
         );
 
   /// [title] specifies the heading of the card.
-  final String title;
+  final String? title;
 
   /// [title] specifies the heading of the card.
-  final String description;
+  final String? description;
+
+  /// [titleStyle] specifies the style of heading of the card.
+  final TextStyle? titleStyle;
+
+  /// [descriptionStyle] specifies the style of the description of the card.
+  final TextStyle? descriptionStyle;
 
   /// [prefixIcon] defines the icon to show before
   /// title, and description in a row
@@ -89,6 +104,12 @@ class RegalStatusCard extends StatelessWidget {
   /// Should be used specifically, as by default all cards have
   /// their corresponding background colors
   final Color? bgColor;
+
+  /// [textColor] Can be used to change text color
+  ///
+  /// Should be used specifically, as by default all cards have
+  /// their corresponding text colors
+  final Color? textColor;
 
   /// [RegalStatusCardTypeEnum] used internally inside widget for
   /// speciying named constructor
@@ -123,28 +144,33 @@ class RegalStatusCard extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        if (title.isNotEmpty)
+                        if (title != null && title!.isNotEmpty)
                           CustomText.semantics(
-                            title,
-                            style: context.montserrat.headlineLarge.copyWith(
-                              fontSize: 16.sp,
-                              color: _type.foregroundColor(context),
-                              height: 1.3,
-                            ),
+                            title!,
+                            style: titleStyle ??
+                                context.montserrat.headlineLarge.copyWith(
+                                  fontSize: 16.sp,
+                                  color: textColor ??
+                                      _type.foregroundColor(context),
+                                  height: 1.3,
+                                ),
                           ),
-                        CustomText.semantics(
-                          description,
-                          style: context.bodyLarge?.copyWith(
-                            height: 1.5,
-                            color: _type.foregroundColor(context),
+                        if (description != null && description!.isNotEmpty)
+                          CustomText.semantics(
+                            description!,
+                            style: descriptionStyle ??
+                                context.bodyLarge?.copyWith(
+                                  height: 1.5,
+                                  color: textColor ??
+                                      _type.foregroundColor(context),
+                                ),
                           ),
-                        ),
                       ],
                     ),
                   ),
                   if (onClose != null)
                     Transform.translate(
-                      offset: Offset(14.sp, -10.sp),
+                      offset: Offset(6.sp, 0.sp),
                       child: Semantics(
                         button: true,
                         enabled: true,
@@ -152,9 +178,9 @@ class RegalStatusCard extends StatelessWidget {
                         child: RegalIconButton.iconData(
                           semanticsLabel: 'Close Button',
                           iconData: Icons.close,
-                          size: RegalIconButtonSize.extraLarge,
                           trackLabel: 'Close Button',
-                          iconColor: _type.foregroundColor(context),
+                          iconColor:
+                              textColor ?? _type.foregroundColor(context),
                           onPressed: onClose,
                         ),
                       ),

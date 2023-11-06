@@ -4,6 +4,7 @@ import 'package:camera/camera.dart';
 import 'package:face_detector_view/src/utils/face_extension.dart';
 import 'package:face_detector_view/src/views/default_floating_action_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_mlkit_face_detection/google_mlkit_face_detection.dart';
 
 import '../utils/face_custom_painter.dart';
@@ -119,8 +120,8 @@ class _CameraViewState extends State<CameraView> with WidgetsBindingObserver {
           Align(
             alignment: Alignment.center.add(const Alignment(0, -0.25)),
             child: Container(
-              width: 350,
-              height: 350,
+              width: 400.sp,
+              height: 400.sp,
               padding: const EdgeInsets.all(25.0),
               child: _customPaint,
             ),
