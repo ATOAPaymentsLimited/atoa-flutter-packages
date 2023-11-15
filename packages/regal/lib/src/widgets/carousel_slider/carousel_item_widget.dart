@@ -10,9 +10,24 @@ class CarouselItemWidget extends StatelessWidget {
     this.onTap,
     this.disableAnimationsForTest = false,
     this.padding,
-  });
+  })  : title = '',
+        desc = '',
+        prefixIcon = null;
+
+  const CarouselItemWidget.card({
+    super.key,
+    required this.title,
+    required this.desc,
+    required this.prefixIcon,
+    this.onTap,
+    this.disableAnimationsForTest = false,
+    this.padding,
+  }) : imageUrl = '';
 
   final String imageUrl;
+  final String title;
+  final String desc;
+  final Widget? prefixIcon;
   final VoidCallback? onTap;
   final bool disableAnimationsForTest;
   final EdgeInsets? padding;
@@ -23,20 +38,16 @@ class CarouselItemWidget extends StatelessWidget {
         child: Stack(
           fit: StackFit.expand,
           children: [
-            CachedNetworkImage(
-              imageUrl: imageUrl,
-              errorWidget: (_, __, ___) => Shimmer.fromColors(
-                enabled: !disableAnimationsForTest,
-                baseColor: context.grey.shade20,
-                highlightColor: context.grey.shade20.withOpacity(0.05),
-                child: Container(
-                  width: double.infinity,
-                  color: Colors.white,
-                ),
+            if (title.isNotEmpty && desc.isNotEmpty && prefixIcon is Widget)
+              RegalStatusCard.info(
+                prefixIcon: prefixIcon,
+                title: title,
+                description: desc,
               ),
-              placeholder: (_, __) => ClipRRect(
-                borderRadius: BorderRadius.circular(24),
-                child: Shimmer.fromColors(
+            if (imageUrl.isNotEmpty)
+              CachedNetworkImage(
+                imageUrl: imageUrl,
+                errorWidget: (_, __, ___) => Shimmer.fromColors(
                   enabled: !disableAnimationsForTest,
                   baseColor: context.grey.shade20,
                   highlightColor: context.grey.shade20.withOpacity(0.05),
@@ -45,10 +56,21 @@ class CarouselItemWidget extends StatelessWidget {
                     color: Colors.white,
                   ),
                 ),
+                placeholder: (_, __) => ClipRRect(
+                  borderRadius: BorderRadius.circular(24),
+                  child: Shimmer.fromColors(
+                    enabled: !disableAnimationsForTest,
+                    baseColor: context.grey.shade20,
+                    highlightColor: context.grey.shade20.withOpacity(0.05),
+                    child: Container(
+                      width: double.infinity,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+                fit: BoxFit.fill,
+                width: double.infinity,
               ),
-              fit: BoxFit.fill,
-              width: double.infinity,
-            ),
             InkWell(
               borderRadius: BorderRadius.circular(24),
               onTap: onTap,
