@@ -61,8 +61,6 @@ class RegalIconButton extends StatelessWidget {
       onTap: () => onPressed?.call(context),
       behavior: HitTestBehavior.translucent,
       child: Container(
-        height: size.value,
-        width: size.value,
         padding: padding,
         decoration: BoxDecoration(
           color: color?.withOpacity(disabled ? 0.3 : bgOpacity ?? 1.0),
