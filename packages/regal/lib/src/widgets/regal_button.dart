@@ -26,7 +26,8 @@ class RegalButton extends StatelessWidget with EventTrackMixin {
         assert(
           label != null || prefixIcon != null || suffixIcon != null,
           'Label or icon must be provided.',
-        );
+        ),
+        mainAxisAlignment = MainAxisAlignment.center;
 
   const RegalButton.secondary({
     super.key,
@@ -45,6 +46,7 @@ class RegalButton extends StatelessWidget with EventTrackMixin {
     this.shrink = false,
     this.loadingIndicatorColor,
     this.labelWidget,
+    this.mainAxisAlignment = MainAxisAlignment.center,
   })  : _type = _RegalButtonType.secondary,
         assert(
           label != null || prefixIcon != null || suffixIcon != null,
@@ -72,7 +74,8 @@ class RegalButton extends StatelessWidget with EventTrackMixin {
         assert(
           label != null || prefixIcon != null || suffixIcon != null,
           'Label or icon must be provided.',
-        );
+        ),
+        mainAxisAlignment = MainAxisAlignment.center;
 
   final String? label;
 
@@ -102,6 +105,7 @@ class RegalButton extends StatelessWidget with EventTrackMixin {
   final Map<String, dynamic>? trackProperties;
 
   final String? semanticsLabel;
+  final MainAxisAlignment mainAxisAlignment;
 
   final Color? loadingIndicatorColor;
 
@@ -112,7 +116,7 @@ class RegalButton extends StatelessWidget with EventTrackMixin {
   Widget build(BuildContext context) {
     final child = Row(
       mainAxisSize: shrink ? MainAxisSize.min : MainAxisSize.max,
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: mainAxisAlignment,
       children: [
         if (shrink) Spacing.medium.xBox,
         if (loading)
@@ -137,7 +141,7 @@ class RegalButton extends StatelessWidget with EventTrackMixin {
           if (suffixIcon != null && label != null) Spacing.small.xBox,
           if (suffixIcon != null) suffixIcon!,
           if (shrink) Spacing.medium.xBox,
-        ]
+        ],
       ],
     );
 

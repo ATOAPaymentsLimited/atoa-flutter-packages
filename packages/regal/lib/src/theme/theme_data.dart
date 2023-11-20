@@ -269,7 +269,7 @@ final kThemeData = ThemeData.light().copyWith(
   ),
 );
 
-final kDarkThemeData = kThemeData.copyWith(
+final kDarkThemData = kThemeData.copyWith(
   primaryColor: RegalColors.vividRed,
   primaryColorDark: RegalColors.vividRed,
   scaffoldBackgroundColor: RegalColors.licoriceBlack,
