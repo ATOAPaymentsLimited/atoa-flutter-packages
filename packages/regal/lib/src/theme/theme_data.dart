@@ -198,6 +198,7 @@ final kThemeData = ThemeData.light().copyWith(
     style: ElevatedButton.styleFrom(
       elevation: 0,
       shape: const StadiumBorder(),
+      foregroundColor: RegalColors.snowWhite,
       backgroundColor: RegalColors.vividRed,
       disabledBackgroundColor: RegalColors.disabledVividRed,
       disabledForegroundColor: Colors.white,
@@ -269,7 +270,7 @@ final kThemeData = ThemeData.light().copyWith(
   ),
 );
 
-final kDarkThemData = kThemeData.copyWith(
+final kDarkThemeData = kThemeData.copyWith(
   primaryColor: RegalColors.vividRed,
   primaryColorDark: RegalColors.vividRed,
   scaffoldBackgroundColor: RegalColors.licoriceBlack,
