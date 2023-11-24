@@ -130,10 +130,9 @@ final kThemeData = ThemeData.light().copyWith(
     iconTheme: const IconThemeData(
       color: RegalColors.claretRed,
     ),
-    titleTextStyle: GoogleFonts.montserrat(
+    titleTextStyle: kMontserratTextTheme.headlineSmall!.copyWith(
       color: RegalColors.licoriceBlack,
       fontSize: 20.sp,
-      fontWeight: FontWeight.bold,
     ),
   ),
   progressIndicatorTheme: const ProgressIndicatorThemeData(color: Colors.white),
@@ -184,10 +183,9 @@ final kThemeData = ThemeData.light().copyWith(
       shape: const StadiumBorder(),
       foregroundColor: RegalColors.vividRed,
       disabledForegroundColor: RegalColors.disabledVividRed,
-      textStyle: GoogleFonts.montserrat(
+      textStyle: kMontserratTextTheme.headlineSmall!.copyWith(
         color: RegalColors.vividRed,
         fontSize: 16.sp,
-        fontWeight: FontWeight.bold,
       ),
     ),
   ),
@@ -195,14 +193,13 @@ final kThemeData = ThemeData.light().copyWith(
     style: ElevatedButton.styleFrom(
       elevation: 0,
       shape: const StadiumBorder(),
+      foregroundColor: RegalColors.snowWhite,
       backgroundColor: RegalColors.vividRed,
       disabledBackgroundColor: RegalColors.disabledVividRed,
       disabledForegroundColor: Colors.white,
-      fixedSize: Size.fromHeight(60.sp),
-      textStyle: GoogleFonts.montserrat(
+      textStyle: kMontserratTextTheme.headlineSmall!.copyWith(
         color: RegalColors.snowWhite,
         fontSize: 16.sp,
-        fontWeight: FontWeight.bold,
       ),
     ),
   ),
@@ -210,10 +207,9 @@ final kThemeData = ThemeData.light().copyWith(
     style: OutlinedButton.styleFrom(
       foregroundColor: RegalColors.vividRed,
       disabledForegroundColor: RegalColors.disabledVividRed,
-      textStyle: GoogleFonts.montserrat(
+      textStyle: kMontserratTextTheme.headlineSmall!.copyWith(
         color: RegalColors.vividRed,
         fontSize: 16.sp,
-        fontWeight: FontWeight.bold,
       ),
       side: const BorderSide(
         color: RegalColors.vividRed,
@@ -262,7 +258,7 @@ final kThemeData = ThemeData.light().copyWith(
   ),
 );
 
-final kDarkThemData = kThemeData.copyWith(
+final kDarkThemeData = kThemeData.copyWith(
   primaryColor: RegalColors.vividRed,
   primaryColorDark: RegalColors.vividRed,
   scaffoldBackgroundColor: RegalColors.licoriceBlack,
@@ -391,10 +387,9 @@ final kDarkThemData = kThemeData.copyWith(
     ),
     elevation: 0,
     centerTitle: true,
-    titleTextStyle: GoogleFonts.montserrat(
+    titleTextStyle: kMontserratTextTheme.headlineSmall!.copyWith(
       color: RegalColors.snowWhite,
       fontSize: 20.sp,
-      fontWeight: FontWeight.bold,
     ),
   ),
   textButtonTheme: TextButtonThemeData(
@@ -402,10 +397,9 @@ final kDarkThemData = kThemeData.copyWith(
       foregroundColor: RegalColors.vividRed,
       shape: const StadiumBorder(),
       disabledForegroundColor: RegalColors.disabledVividRed,
-      textStyle: GoogleFonts.montserrat(
+      textStyle: kMontserratTextTheme.headlineSmall!.copyWith(
         color: RegalColors.vividRed,
         fontSize: 16.sp,
-        fontWeight: FontWeight.bold,
       ),
     ),
   ),
@@ -416,10 +410,9 @@ final kDarkThemData = kThemeData.copyWith(
       backgroundColor: RegalColors.vividRed,
       disabledBackgroundColor: RegalColors.disabledDarkVividRed,
       foregroundColor: RegalColors.snowWhite,
-      textStyle: GoogleFonts.montserrat(
+      textStyle: kMontserratTextTheme.headlineSmall!.copyWith(
         color: RegalColors.snowWhite,
         fontSize: 16.sp,
-        fontWeight: FontWeight.bold,
       ),
     ),
   ),
@@ -427,10 +420,9 @@ final kDarkThemData = kThemeData.copyWith(
     style: OutlinedButton.styleFrom(
       foregroundColor: RegalColors.snowWhite,
       disabledForegroundColor: RegalColors.grey.shade40,
-      textStyle: GoogleFonts.montserrat(
+      textStyle: kMontserratTextTheme.headlineSmall!.copyWith(
         color: RegalColors.vividRed,
         fontSize: 16.sp,
-        fontWeight: FontWeight.bold,
       ),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(100.w),
