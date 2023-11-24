@@ -130,9 +130,10 @@ final kThemeData = ThemeData.light().copyWith(
     iconTheme: const IconThemeData(
       color: RegalColors.claretRed,
     ),
-    titleTextStyle: kMontserratTextTheme.headlineSmall!.copyWith(
+    titleTextStyle: GoogleFonts.montserrat(
       color: RegalColors.licoriceBlack,
       fontSize: 20.sp,
+      fontWeight: FontWeight.bold,
     ),
   ),
   progressIndicatorTheme: const ProgressIndicatorThemeData(color: Colors.white),
@@ -183,9 +184,10 @@ final kThemeData = ThemeData.light().copyWith(
       shape: const StadiumBorder(),
       foregroundColor: RegalColors.vividRed,
       disabledForegroundColor: RegalColors.disabledVividRed,
-      textStyle: kMontserratTextTheme.headlineSmall!.copyWith(
+      textStyle: GoogleFonts.montserrat(
         color: RegalColors.vividRed,
         fontSize: 16.sp,
+        fontWeight: FontWeight.bold,
       ),
     ),
   ),
@@ -197,9 +199,11 @@ final kThemeData = ThemeData.light().copyWith(
       backgroundColor: RegalColors.vividRed,
       disabledBackgroundColor: RegalColors.disabledVividRed,
       disabledForegroundColor: Colors.white,
-      textStyle: kMontserratTextTheme.headlineSmall!.copyWith(
+      fixedSize: Size.fromHeight(60.sp),
+      textStyle: GoogleFonts.montserrat(
         color: RegalColors.snowWhite,
         fontSize: 16.sp,
+        fontWeight: FontWeight.bold,
       ),
     ),
   ),
@@ -207,9 +211,10 @@ final kThemeData = ThemeData.light().copyWith(
     style: OutlinedButton.styleFrom(
       foregroundColor: RegalColors.vividRed,
       disabledForegroundColor: RegalColors.disabledVividRed,
-      textStyle: kMontserratTextTheme.headlineSmall!.copyWith(
+      textStyle: GoogleFonts.montserrat(
         color: RegalColors.vividRed,
         fontSize: 16.sp,
+        fontWeight: FontWeight.bold,
       ),
       side: const BorderSide(
         color: RegalColors.vividRed,
@@ -387,9 +392,10 @@ final kDarkThemeData = kThemeData.copyWith(
     ),
     elevation: 0,
     centerTitle: true,
-    titleTextStyle: kMontserratTextTheme.headlineSmall!.copyWith(
+    titleTextStyle: GoogleFonts.montserrat(
       color: RegalColors.snowWhite,
       fontSize: 20.sp,
+      fontWeight: FontWeight.bold,
     ),
   ),
   textButtonTheme: TextButtonThemeData(
@@ -397,9 +403,10 @@ final kDarkThemeData = kThemeData.copyWith(
       foregroundColor: RegalColors.vividRed,
       shape: const StadiumBorder(),
       disabledForegroundColor: RegalColors.disabledVividRed,
-      textStyle: kMontserratTextTheme.headlineSmall!.copyWith(
+      textStyle: GoogleFonts.montserrat(
         color: RegalColors.vividRed,
         fontSize: 16.sp,
+        fontWeight: FontWeight.bold,
       ),
     ),
   ),
@@ -410,9 +417,10 @@ final kDarkThemeData = kThemeData.copyWith(
       backgroundColor: RegalColors.vividRed,
       disabledBackgroundColor: RegalColors.disabledDarkVividRed,
       foregroundColor: RegalColors.snowWhite,
-      textStyle: kMontserratTextTheme.headlineSmall!.copyWith(
+      textStyle: GoogleFonts.montserrat(
         color: RegalColors.snowWhite,
         fontSize: 16.sp,
+        fontWeight: FontWeight.bold,
       ),
     ),
   ),
@@ -420,9 +428,10 @@ final kDarkThemeData = kThemeData.copyWith(
     style: OutlinedButton.styleFrom(
       foregroundColor: RegalColors.snowWhite,
       disabledForegroundColor: RegalColors.grey.shade40,
-      textStyle: kMontserratTextTheme.headlineSmall!.copyWith(
+      textStyle: GoogleFonts.montserrat(
         color: RegalColors.vividRed,
         fontSize: 16.sp,
+        fontWeight: FontWeight.bold,
       ),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(100.w),
