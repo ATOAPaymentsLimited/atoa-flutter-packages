@@ -162,6 +162,12 @@ class _RegalTextFieldState extends State<RegalTextField> {
           margin: widget.margin ?? Spacing.large.y,
           child: TextFormField(
             restorationId: widget.restorationId,
+            contextMenuBuilder: widget.contextMenuBuilder ??
+                (context, editableTextState) =>
+                    AdaptiveTextSelectionToolbar.buttonItems(
+                      anchors: editableTextState.contextMenuAnchors,
+                      buttonItems: editableTextState.contextMenuButtonItems,
+                    ),
             controller:
                 widget.initialValue == null ? _textEditingController : null,
             focusNode: widget.focusNode,
@@ -253,7 +259,6 @@ class _RegalTextFieldState extends State<RegalTextField> {
             scrollController: widget.scrollController,
             enableIMEPersonalizedLearning: widget.enableIMEPersonalizedLearning,
             mouseCursor: widget.mouseCursor,
-            contextMenuBuilder: widget.contextMenuBuilder,
             spellCheckConfiguration: widget.spellCheckConfiguration,
             magnifierConfiguration: widget.magnifierConfiguration,
           ),
