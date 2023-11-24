@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
           title: 'Custom Home Grid',
           themeMode: themeMode,
           theme: kThemeData,
-          darkTheme: kDarkThemeData,
+          darkTheme: kDarkThemData,
           builder: BotToastInit(),
           home: const MyHomePage(),
         ),
