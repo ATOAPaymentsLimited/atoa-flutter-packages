@@ -3,6 +3,7 @@ import 'package:example/screens/snackbar_screen.dart';
 import 'package:example/widgets/regal_buttons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:regal/regal.dart';
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    debugPaintSizeEnabled = false;
     return ScreenUtilInit(
       designSize: const Size(375, 812),
       minTextAdapt: true,
@@ -90,6 +92,20 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
             children: [
               Spacing.medium.yBox,
+              RegalTextField(
+                label: 'Test label',
+                controller: TextEditingController(),
+              ),
+              Form(
+                child: RegalTextField(
+                  label: 'Test label',
+                  controller: TextEditingController(),
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  validator: (value) {
+                    return null;
+                  },
+                ),
+              ),
               RegalButton.primary(
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(
@@ -275,7 +291,11 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: () {},
               ),
               Spacing.large.yBox,
-              RegalSwitch(value: true, onChanged: (t) {}, semanticsLabel: 'Switch',),
+              RegalSwitch(
+                value: true,
+                onChanged: (t) {},
+                semanticsLabel: 'Switch',
+              ),
               Spacing.large.yBox,
               const RegalButtons(),
               Spacing.large.yBox,

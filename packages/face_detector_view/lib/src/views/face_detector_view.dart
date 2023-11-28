@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 import 'package:image/image.dart' as img;
@@ -60,16 +61,20 @@ class _FaceDetectorViewState extends State<FaceDetectorView>
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => _faceDetectorController,
-      child: Selector<FaceDetectorController, PermissionStatusEnum>(
-        selector: (_, state) => state.permissionStatus,
-        builder: (context, permissionStatus, child) {
-          return AnimatedSwitcher(
-            duration: const Duration(milliseconds: 200),
-            child: _getChild(permissionStatus),
-          );
-        },
+    return ScreenUtilInit(
+      designSize: const Size(375, 812),
+      minTextAdapt: true,
+      builder: (context, _) => ChangeNotifierProvider(
+        create: (context) => _faceDetectorController,
+        child: Selector<FaceDetectorController, PermissionStatusEnum>(
+          selector: (_, state) => state.permissionStatus,
+          builder: (context, permissionStatus, child) {
+            return AnimatedSwitcher(
+              duration: const Duration(milliseconds: 200),
+              child: _getChild(permissionStatus),
+            );
+          },
+        ),
       ),
     );
   }

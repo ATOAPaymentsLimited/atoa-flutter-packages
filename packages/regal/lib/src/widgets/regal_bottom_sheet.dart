@@ -19,7 +19,7 @@ Future<T?> showRegalBottomSheet<T>({
   AnimationController? transitionAnimationController,
   Alignment confettiAlignment = Alignment.center,
 }) =>
-    showModalBottomSheet(
+    showModalBottomSheet<T>(
       context: context,
       builder: (dialogContext) => Container(
         padding: const EdgeInsets.all(20),
@@ -37,7 +37,7 @@ Future<T?> showRegalBottomSheet<T>({
                     child: Text(
                       title,
                       textAlign: TextAlign.center,
-                      style: context.labelLarge
+                      style: dialogContext.labelLarge
                           ?.copyWith(fontWeight: FontWeight.w700),
                     ),
                   ),
@@ -45,10 +45,10 @@ Future<T?> showRegalBottomSheet<T>({
                 if(isDismissable)
                 CustomInkWell(
                   semanticsLabel: 'Close Dialog Sheet Icon',
-                  context: context,
+                  context: dialogContext,
                   trackLabel: 'Close Dialog Sheet Icon',
                   onTap: () {
-                    Navigator.pop(context);
+                    Navigator.pop(dialogContext);
                   },
                   child: Container(
                     width: Spacing.huge.value,

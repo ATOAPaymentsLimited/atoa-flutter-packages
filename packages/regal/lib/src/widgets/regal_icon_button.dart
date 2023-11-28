@@ -12,6 +12,11 @@ class RegalIconButton extends StatelessWidget {
     this.iconColor,
     required this.semanticsLabel,
     required this.trackLabel,
+    this.borderRadius,
+    this.color,
+    this.padding,
+    this.border,
+    this.bgOpacity,
   })  : _type = _RegalIconButtonType.asset,
         _assetPath = assetPath,
         _iconData = null;
@@ -24,6 +29,11 @@ class RegalIconButton extends StatelessWidget {
     this.iconColor,
     required this.trackLabel,
     required this.semanticsLabel,
+    this.borderRadius,
+    this.color,
+    this.padding,
+    this.border,
+    this.bgOpacity,
   })  : _type = _RegalIconButtonType.icon,
         _assetPath = '',
         _iconData = iconData;
@@ -35,31 +45,42 @@ class RegalIconButton extends StatelessWidget {
   final IconData? _iconData;
   final String trackLabel;
   final String semanticsLabel;
+  final BorderRadius? borderRadius;
+  final Color? color;
+  final EdgeInsets? padding;
+  final BoxBorder? border;
+  final double? bgOpacity;
 
   @override
-  Widget build(BuildContext context) => CustomGestureDetector(
-        semanticsLabel: '$semanticsLabel button',
-        context: context,
-        trackLabel: trackLabel,
-        onTap: () => onPressed?.call(context),
-        behavior: HitTestBehavior.translucent,
-        child: Container(
-          height: size.value,
-          width: size.value,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16.r),
-          ),
-          child: Center(
-            child: _BuildIcon(
-              type: _type,
-              assetPath: _assetPath,
-              iconData: _iconData,
-              iconColor: iconColor,
-              iconSize: size.value,
-            ),
+  Widget build(BuildContext context) {
+    final disabled = onPressed == null;
+    return CustomGestureDetector(
+      semanticsLabel: '$semanticsLabel button',
+      context: context,
+      trackLabel: trackLabel,
+      onTap: () => onPressed?.call(context),
+      behavior: HitTestBehavior.translucent,
+      child: Container(
+        width: size.value,
+        padding: padding,
+        decoration: BoxDecoration(
+          color: color?.withOpacity(disabled ? 0.3 : bgOpacity ?? 1.0),
+          border: border,
+          borderRadius: borderRadius ?? BorderRadius.circular(16.r),
+        ),
+        child: Center(
+          child: _BuildIcon(
+            type: _type,
+            assetPath: _assetPath,
+            iconData: _iconData,
+            iconColor: iconColor,
+            iconSize: size.value,
+            disabled: disabled,
           ),
         ),
-      );
+      ),
+    );
+  }
 }
 
 class _BuildIcon extends StatelessWidget {
@@ -69,12 +90,14 @@ class _BuildIcon extends StatelessWidget {
     this.iconData = Icons.close,
     this.iconColor,
     this.iconSize,
+    this.disabled = false,
   });
   final _RegalIconButtonType type;
   final String assetPath;
   final IconData? iconData;
   final Color? iconColor;
   final double? iconSize;
+  final bool disabled;
 
   @override
   Widget build(BuildContext context) {
@@ -82,7 +105,8 @@ class _BuildIcon extends StatelessWidget {
       return SvgPicture.asset(
         assetPath,
         colorFilter: ColorFilter.mode(
-          iconColor ?? context.regalColor.licoriceBlack,
+          (iconColor ?? context.regalColor.licoriceBlack)
+              .withOpacity(disabled ? 0.3 : 1.0),
           BlendMode.srcIn,
         ),
         height: iconSize,
@@ -93,7 +117,8 @@ class _BuildIcon extends StatelessWidget {
     if (type == _RegalIconButtonType.icon) {
       return Icon(
         iconData,
-        color: iconColor ?? context.regalColor.licoriceBlack,
+        color: (iconColor ?? context.regalColor.licoriceBlack)
+            .withOpacity(disabled ? 0.3 : 1.0),
         size: iconSize,
       );
     }

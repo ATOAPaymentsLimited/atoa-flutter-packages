@@ -103,6 +103,36 @@ class SnackbarScreen extends StatelessWidget {
         ),
         onClose: () {},
       ),
+      Snackbar(
+        SnackbarType.success(
+          'Toast Header',
+          ctaText: 'CTA',
+          onCTA: () {},
+          headerIcon: const Icon(Icons.abc),
+          headerText: 'Header Text',
+        ),
+        onClose: () {},
+      ),
+      Snackbar(
+        SnackbarType.info(
+          'Toast Header',
+          ctaText: 'CTA',
+          onCTA: () {},
+          headerIcon: const Icon(Icons.abc),
+          headerText: 'Header Text',
+        ),
+        onClose: () {},
+      ),
+      Snackbar(
+        SnackbarType.error(
+          'Toast Header',
+          ctaText: 'CTA',
+          onCTA: () {},
+          headerIcon: const Icon(Icons.abc),
+          headerText: 'Header Text',
+        ),
+        onClose: () {},
+      ),
     ];
     return Scaffold(
       appBar: AppBar(),

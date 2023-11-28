@@ -16,8 +16,12 @@ class RegalButton extends StatelessWidget with EventTrackMixin {
     this.style,
     this.size = RegalButtonSize.large,
     this.loading = false,
+    this.enable = true,
     this.trackProperties,
     this.semanticsLabel,
+    this.shrink = false,
+    this.loadingIndicatorColor,
+    this.labelWidget,
   })  : _type = _RegalButtonType.primary,
         assert(
           label != null || prefixIcon != null || suffixIcon != null,
@@ -36,8 +40,12 @@ class RegalButton extends StatelessWidget with EventTrackMixin {
     this.style,
     this.size = RegalButtonSize.large,
     this.loading = false,
+    this.enable = true,
     this.trackProperties,
     this.semanticsLabel,
+    this.shrink = false,
+    this.loadingIndicatorColor,
+    this.labelWidget,
     this.mainAxisAlignment = MainAxisAlignment.center,
   })  : _type = _RegalButtonType.secondary,
         assert(
@@ -56,8 +64,12 @@ class RegalButton extends StatelessWidget with EventTrackMixin {
     this.style,
     this.size = RegalButtonSize.large,
     this.loading = false,
+    this.enable = true,
     this.trackProperties,
     this.semanticsLabel,
+    this.shrink = false,
+    this.loadingIndicatorColor,
+    this.labelWidget,
   })  : _type = _RegalButtonType.tertiary,
         assert(
           label != null || prefixIcon != null || suffixIcon != null,
@@ -66,6 +78,8 @@ class RegalButton extends StatelessWidget with EventTrackMixin {
         mainAxisAlignment = MainAxisAlignment.center;
 
   final String? label;
+
+  final Widget? labelWidget;
 
   final Widget? prefixIcon;
 
@@ -86,16 +100,25 @@ class RegalButton extends StatelessWidget with EventTrackMixin {
 
   final bool loading;
 
+  final bool enable;
+
   final Map<String, dynamic>? trackProperties;
 
   final String? semanticsLabel;
   final MainAxisAlignment mainAxisAlignment;
 
+  final Color? loadingIndicatorColor;
+
+  /// [shrink] will minimize the button width to hug its contents
+  final bool shrink;
+
   @override
   Widget build(BuildContext context) {
     final child = Row(
+      mainAxisSize: shrink ? MainAxisSize.min : MainAxisSize.max,
       mainAxisAlignment: mainAxisAlignment,
       children: [
+        if (shrink) Spacing.medium.xBox,
         if (loading)
           GradientCircularProgressIndicator(
             radius: 18.sp,
@@ -103,19 +126,21 @@ class RegalButton extends StatelessWidget with EventTrackMixin {
                     (_type == _RegalButtonType.secondary ||
                         _type == _RegalButtonType.tertiary)
                 ? context.theme.primaryColor
-                : Colors.white,
+                : loadingIndicatorColor ?? Colors.white,
           )
         else ...[
           if (prefixIcon != null) prefixIcon!,
           if (prefixIcon != null && label != null) Spacing.small.xBox,
           if (label != null)
-            AutoSizeText(
-              label!,
-              textAlign: TextAlign.center,
-              semanticsLabel: label,
-            ),
+            labelWidget ??
+                AutoSizeText(
+                  label!,
+                  textAlign: TextAlign.center,
+                  semanticsLabel: label,
+                ),
           if (suffixIcon != null && label != null) Spacing.small.xBox,
           if (suffixIcon != null) suffixIcon!,
+          if (shrink) Spacing.medium.xBox,
         ],
       ],
     );
@@ -127,8 +152,9 @@ class RegalButton extends StatelessWidget with EventTrackMixin {
             onPressed: onPressed != null ? onClick(context) : null,
             style: (style ?? Theme.of(context).elevatedButtonTheme.style)
                 ?.copyWith(
-              fixedSize:
-                  MaterialStatePropertyAll(Size.fromHeight(size.value.sp)),
+              fixedSize: MaterialStatePropertyAll(
+                Size.fromHeight(size.value.sp),
+              ),
             ),
             child: child,
           );
@@ -137,8 +163,9 @@ class RegalButton extends StatelessWidget with EventTrackMixin {
             onPressed: onPressed != null ? onClick(context) : null,
             style: (style ?? Theme.of(context).outlinedButtonTheme.style)
                 ?.copyWith(
-              fixedSize:
-                  MaterialStatePropertyAll(Size.fromHeight(size.value.sp)),
+              fixedSize: MaterialStatePropertyAll(
+                Size.fromHeight(size.value.sp),
+              ),
             ),
             child: child,
           );
@@ -146,8 +173,9 @@ class RegalButton extends StatelessWidget with EventTrackMixin {
           return TextButton(
             onPressed: onPressed != null ? onClick(context) : null,
             style: (style ?? Theme.of(context).textButtonTheme.style)?.copyWith(
-              fixedSize:
-                  MaterialStatePropertyAll(Size.fromHeight(size.value.sp)),
+              fixedSize: MaterialStatePropertyAll(
+                Size.fromHeight(size.value.sp),
+              ),
             ),
             child: child,
           );
@@ -160,7 +188,10 @@ class RegalButton extends StatelessWidget with EventTrackMixin {
       enabled: true,
       explicitChildNodes: true,
       label: semanticsLabel ?? '$label Button',
-      child: buttonType(),
+      child: DisableWidget(
+        ignoring: !enable,
+        child: buttonType(),
+      ),
     );
   }
 
