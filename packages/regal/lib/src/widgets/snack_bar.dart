@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:regal/regal.dart';
 import 'package:regal/src/mixin/mixins.dart';
 import 'package:regal/src/models/snackbar_type.dart';
+import 'package:regal/src/widgets/regal_custom_spacer.dart';
 
 class Snackbar extends StatelessWidget with EventTrackMixin {
   const Snackbar(
@@ -100,18 +101,25 @@ class Snackbar extends StatelessWidget with EventTrackMixin {
     return null;
   }
 
-  Widget wrap(Widget widget, BuildContext context) => ClipRRect(
-        borderRadius: BorderRadius.circular(20.sp),
-        child: Material(
-          color: Colors.transparent,
-          child: DecoratedBox(
-            decoration: BoxDecoration(
-              border: Border.all(color: context.grey.shade20),
-              borderRadius: BorderRadius.circular(20.sp),
+  Widget wrap(Widget widget, BuildContext context) => Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(20.sp),
+            child: Material(
+              color: Colors.transparent,
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  border: Border.all(color: context.grey.shade20),
+                  borderRadius: BorderRadius.circular(20.sp),
+                ),
+                child: widget,
+              ),
             ),
-            child: widget,
           ),
-        ),
+          const RegalBottomSpacer(),
+        ],
       );
 
   @override
@@ -145,8 +153,7 @@ class Snackbar extends StatelessWidget with EventTrackMixin {
             ),
           ),
         ListTile(
-          // default is 16 and design has 12
-          horizontalTitleGap: -4.sp,
+          horizontalTitleGap: 12.sp,
           contentPadding: Spacing.medium.x + Spacing.small.y,
           tileColor: snackbar.type.bg(context),
           leading: leading ?? snackbar.type.leading(context),
