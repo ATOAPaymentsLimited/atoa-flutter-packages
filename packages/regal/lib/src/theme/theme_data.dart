@@ -254,6 +254,7 @@ final kThemeData = ThemeData.light().copyWith(
     visualDensity: VisualDensity.compact,
   ),
   bottomSheetTheme: BottomSheetThemeData(
+    surfaceTintColor: RegalColors.snowWhite,
     backgroundColor: Colors.white,
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.only(
@@ -470,6 +471,7 @@ final kDarkThemeData = kThemeData.copyWith(
     ),
   ),
   bottomSheetTheme: BottomSheetThemeData(
+    surfaceTintColor: RegalColors.licoriceBlack,
     backgroundColor: RegalColors.licoriceBlack,
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.only(
