@@ -137,6 +137,7 @@ final kThemeData = ThemeData.light().copyWith(
       fontSize: 20.sp,
       fontWeight: FontWeight.bold,
     ),
+    surfaceTintColor: RegalColors.snowWhite,
   ),
   progressIndicatorTheme: const ProgressIndicatorThemeData(color: Colors.white),
   inputDecorationTheme: InputDecorationTheme(
@@ -408,6 +409,7 @@ final kDarkThemeData = kThemeData.copyWith(
       fontSize: 20.sp,
       fontWeight: FontWeight.bold,
     ),
+    surfaceTintColor: RegalColors.licoriceBlack,
   ),
   textButtonTheme: TextButtonThemeData(
     style: TextButton.styleFrom(

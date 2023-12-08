@@ -1,6 +1,8 @@
 name: regal
 description: ATOA Design System
+
 version: 3.2.1
+
 publish_to: none
 
 environment:
