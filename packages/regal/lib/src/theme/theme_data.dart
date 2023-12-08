@@ -254,6 +254,7 @@ final kThemeData = ThemeData.light().copyWith(
   ),
   bottomSheetTheme: BottomSheetThemeData(
     backgroundColor: Colors.white,
+    surfaceTintColor: RegalColors.snowWhite,
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.only(
         topLeft: Radius.circular(32.w),
@@ -469,6 +470,7 @@ final kDarkThemeData = kThemeData.copyWith(
   ),
   bottomSheetTheme: BottomSheetThemeData(
     backgroundColor: RegalColors.licoriceBlack,
+    surfaceTintColor: RegalColors.licoriceBlack,
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.only(
         topLeft: Radius.circular(32.w),
