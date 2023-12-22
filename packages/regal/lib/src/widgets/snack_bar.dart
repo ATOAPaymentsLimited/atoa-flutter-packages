@@ -101,25 +101,27 @@ class Snackbar extends StatelessWidget with EventTrackMixin {
     return null;
   }
 
-  Widget wrap(Widget widget, BuildContext context) => Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(20.sp),
-            child: Material(
-              color: Colors.transparent,
-              child: DecoratedBox(
-                decoration: BoxDecoration(
-                  border: Border.all(color: context.grey.shade20),
-                  borderRadius: BorderRadius.circular(20.sp),
+  Widget wrap(Widget widget, BuildContext context) => SafeArea(
+        minimum: Spacing.huge.y,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(20.sp),
+              child: Material(
+                color: Colors.transparent,
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                    border: Border.all(color: context.grey.shade20),
+                    borderRadius: BorderRadius.circular(20.sp),
+                  ),
+                  child: widget,
                 ),
-                child: widget,
               ),
             ),
-          ),
-          const RegalBottomSpacer(),
-        ],
+          ],
+        ),
       );
 
   @override
