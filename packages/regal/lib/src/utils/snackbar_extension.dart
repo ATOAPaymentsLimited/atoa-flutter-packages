@@ -3,7 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:regal/src/regal.dart';
 
 extension SnackbarExtension on BuildContext {
-  void showSnackbar(SnackbarType snackbar, {bool infiniteDuration = false}) {
+  void showSnackbar(
+    SnackbarType snackbar, {
+    Widget? leading,
+    bool infiniteDuration = false,
+  }) {
     BotToast.showAnimationWidget(
       onlyOne: true,
       duration: infiniteDuration ? null : snackbar.type.duration,
@@ -15,6 +19,7 @@ extension SnackbarExtension on BuildContext {
       ),
       toastBuilder: (cancelFunc) => Snackbar(
         snackbar,
+        leading: leading,
         onClose: cancelFunc,
       ),
     );
