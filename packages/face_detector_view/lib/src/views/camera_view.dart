@@ -52,12 +52,12 @@ class _CameraViewState extends State<CameraView> with WidgetsBindingObserver {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
 
-    // for (var i = 0; i < widget.cameras.length; i++) {
-    //   if (widget.cameras[i].lensDirection == widget.initialDirection) {
-    //     _cameraIndex = i;
-    //     break;
-    //   }
-    // }
+    for (var i = 0; i < widget.cameras.length; i++) {
+      if (widget.cameras[i].lensDirection == widget.initialDirection) {
+        _cameraIndex = i;
+        break;
+      }
+    }
 
     _startLiveFeed();
   }

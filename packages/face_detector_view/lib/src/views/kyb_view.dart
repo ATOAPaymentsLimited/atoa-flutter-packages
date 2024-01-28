@@ -1,4 +1,6 @@
 import 'package:camera/camera.dart';
+import 'package:face_detector_view/src/views/web_camera_view.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'camera_view.dart';
@@ -38,6 +40,15 @@ class _KybViewState extends State<KybView> with WidgetsBindingObserver {
                 const Center(
                   child: Text('Error'),
                 );
+          }
+
+          if (kIsWeb) {
+            return WebCameraView(
+              cameras: snapshot.data!,
+              onValidatedImageCapture: widget.onValidatedImageCapture,
+              bottomSheet: widget.bottomSheet,
+              floatingActionButton: widget.floatingActionButton,
+            );
           }
 
           return CameraView(

@@ -1,4 +1,5 @@
 import 'package:camera/camera.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class DefaultFloatingActionButton extends StatefulWidget {
@@ -75,7 +76,7 @@ class _DefaultFloatingActionButtonState
     }
 
     //TODO: stopimageStream is a temporary fix
-    if (widget.cameraController.value.isStreamingImages) {
+    if (widget.cameraController.value.isStreamingImages && !kIsWeb) {
       await widget.cameraController.stopImageStream();
     }
     final faceImage = await widget.cameraController.takePicture();

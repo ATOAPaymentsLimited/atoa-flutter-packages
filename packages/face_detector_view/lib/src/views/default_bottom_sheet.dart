@@ -3,10 +3,7 @@ import 'package:flutter/material.dart';
 class DefaultBottomSheet extends StatelessWidget {
   final Widget? bottomSheet;
 
-  const DefaultBottomSheet({
-    Key? key,
-    this.bottomSheet,
-  }) : super(key: key);
+  const DefaultBottomSheet({super.key, this.bottomSheet});
 
   @override
   Widget build(BuildContext context) {

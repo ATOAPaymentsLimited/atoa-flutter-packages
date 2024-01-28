@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:camera/camera.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -39,12 +40,16 @@ class _FaceDetectorViewState extends State<FaceDetectorView>
     with WidgetsBindingObserver {
   late final FaceDetectorController _faceDetectorController;
 
+  void _checkPermission() async {
+    await _faceDetectorController.requestCameraPermission();
+  }
+
   @override
   void initState() {
     super.initState();
     _faceDetectorController = FaceDetectorController();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      _faceDetectorController.requestCameraPermission();
+      _checkPermission();
     });
   }
 
@@ -53,7 +58,7 @@ class _FaceDetectorViewState extends State<FaceDetectorView>
     if (state == AppLifecycleState.resumed) {
       if (_faceDetectorController.value != PermissionStatusEnum.granted &&
           _faceDetectorController.value != PermissionStatusEnum.checking) {
-        _faceDetectorController.requestCameraPermission();
+        _checkPermission();
       }
     }
   }
@@ -85,16 +90,20 @@ class _FaceDetectorViewState extends State<FaceDetectorView>
     if (permissionStatus != PermissionStatusEnum.granted) {
       return widget.cameraPermissionDeniedScreen ??
           const Center(
-            child: Text('Permission Denied'),
+            child: SingleChildScrollView(
+              child: Text('Permission Denied'),
+            ),
           );
     }
 
     return KybView(
       onValidatedImageCapture: (image) async {
-        final img.Image capturedImage =
-            img.decodeImage(await File(image.path).readAsBytes())!;
-        final img.Image orientedImage = img.bakeOrientation(capturedImage);
-        await File(image.path).writeAsBytes(img.encodeJpg(orientedImage));
+        if (!kIsWeb) {
+          final img.Image capturedImage =
+              img.decodeImage(await File(image.path).readAsBytes())!;
+          final img.Image orientedImage = img.bakeOrientation(capturedImage);
+          await File(image.path).writeAsBytes(img.encodeJpg(orientedImage));
+        }
         widget.onValidatedImageCapture.call(image);
       },
       errorScreen: widget.errorScreen,
