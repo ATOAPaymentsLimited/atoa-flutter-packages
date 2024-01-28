@@ -43,7 +43,7 @@ class _FaceDetectorViewState extends State<FaceDetectorView>
   void initState() {
     super.initState();
     _faceDetectorController = FaceDetectorController();
-    WidgetsBinding.instance.addPersistentFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       _faceDetectorController.requestCameraPermission();
     });
   }
@@ -51,7 +51,8 @@ class _FaceDetectorViewState extends State<FaceDetectorView>
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) async {
     if (state == AppLifecycleState.resumed) {
-      if (_faceDetectorController.value != PermissionStatusEnum.granted) {
+      if (_faceDetectorController.value != PermissionStatusEnum.granted &&
+          _faceDetectorController.value != PermissionStatusEnum.checking) {
         _faceDetectorController.requestCameraPermission();
       }
     }
