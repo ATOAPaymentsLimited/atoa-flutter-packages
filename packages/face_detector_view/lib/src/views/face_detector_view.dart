@@ -4,7 +4,6 @@ import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:provider/provider.dart';
 import 'package:image/image.dart' as img;
 
 import '../controllers/face_detector_controller.dart';
@@ -44,17 +43,16 @@ class _FaceDetectorViewState extends State<FaceDetectorView>
   void initState() {
     super.initState();
     _faceDetectorController = FaceDetectorController();
-    _checkPermission();
+    WidgetsBinding.instance.addPersistentFrameCallback((_) {
+      _faceDetectorController.requestCameraPermission();
+    });
   }
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) async {
     if (state == AppLifecycleState.resumed) {
-      if (await Permission.camera.isGranted) {
-        setState(() {
-          _faceDetectorController.permissionStatus =
-              PermissionStatusEnum.granted;
-        });
+      if (_faceDetectorController.value != PermissionStatusEnum.granted) {
+        _faceDetectorController.requestCameraPermission();
       }
     }
   }
@@ -64,68 +62,43 @@ class _FaceDetectorViewState extends State<FaceDetectorView>
     return ScreenUtilInit(
       designSize: const Size(375, 812),
       minTextAdapt: true,
-      builder: (context, _) => ChangeNotifierProvider(
-        create: (context) => _faceDetectorController,
-        child: Selector<FaceDetectorController, PermissionStatusEnum>(
-          selector: (_, state) => state.permissionStatus,
-          builder: (context, permissionStatus, child) {
-            return AnimatedSwitcher(
-              duration: const Duration(milliseconds: 200),
-              child: _getChild(permissionStatus),
-            );
-          },
-        ),
+      builder: (context, _) => ValueListenableBuilder(
+        valueListenable: _faceDetectorController,
+        builder: (context, permissionStatus, child) {
+          return AnimatedSwitcher(
+            duration: const Duration(milliseconds: 200),
+            child: _getChild(permissionStatus),
+          );
+        },
       ),
     );
   }
 
   Widget _getChild(PermissionStatusEnum permissionStatus) {
+    if (permissionStatus == PermissionStatusEnum.checking) {
+      return const Center(
+        child: CircularProgressIndicator(),
+      );
+    }
+
     if (permissionStatus != PermissionStatusEnum.granted) {
       return widget.cameraPermissionDeniedScreen ??
           const Center(
             child: Text('Permission Denied'),
           );
-    } else {
-      return KybView(
-        onValidatedImageCapture: (image) async {
-          final img.Image capturedImage =
-              img.decodeImage(await File(image.path).readAsBytes())!;
-          final img.Image orientedImage = img.bakeOrientation(capturedImage);
-          await File(image.path).writeAsBytes(img.encodeJpg(orientedImage));
-          widget.onValidatedImageCapture.call(image);
-        },
-        errorScreen: widget.errorScreen,
-        bottomSheet: widget.bottomSheet,
-        floatingActionButton: widget.floatingActionButton,
-      );
     }
-  }
 
-  Future<void> _checkPermission() async {
-    _faceDetectorController.permissionStatus = PermissionStatusEnum.checking;
-
-    final status = await Permission.camera.request();
-
-    switch (status) {
-      case PermissionStatus.granted:
-        _faceDetectorController.permissionStatus = PermissionStatusEnum.granted;
-        break;
-      case PermissionStatus.denied:
-        _faceDetectorController.permissionStatus =
-            PermissionStatusEnum.isDenied;
-        break;
-      case PermissionStatus.permanentlyDenied:
-        _faceDetectorController.permissionStatus =
-            PermissionStatusEnum.permanantlyDenied;
-        break;
-      case PermissionStatus.restricted:
-        _faceDetectorController.permissionStatus =
-            PermissionStatusEnum.restricted;
-        break;
-      default:
-        _faceDetectorController.permissionStatus =
-            PermissionStatusEnum.checking;
-        break;
-    }
+    return KybView(
+      onValidatedImageCapture: (image) async {
+        final img.Image capturedImage =
+            img.decodeImage(await File(image.path).readAsBytes())!;
+        final img.Image orientedImage = img.bakeOrientation(capturedImage);
+        await File(image.path).writeAsBytes(img.encodeJpg(orientedImage));
+        widget.onValidatedImageCapture.call(image);
+      },
+      errorScreen: widget.errorScreen,
+      bottomSheet: widget.bottomSheet,
+      floatingActionButton: widget.floatingActionButton,
+    );
   }
 }
