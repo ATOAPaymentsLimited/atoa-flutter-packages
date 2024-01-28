@@ -7,17 +7,17 @@ environment:
   flutter: ">=3.10.0"
 
 dependencies:
-  camera: ^0.10.5+2
+  camera: ^0.10.5+9
   flutter:
     sdk: flutter
   flutter_screenutil: ^5.5.4
-  google_mlkit_face_detection: ^0.7.0
+  google_mlkit_face_detection: ^0.9.0
   image: ^4.0.17
-  image_picker: ^0.8.8
-  permission_handler: ^10.3.0
+  image_picker: ^1.0.7
+  permission_handler: ^11.2.0
 
 dev_dependencies:
-  flutter_lints: ^2.0.0
+  flutter_lints: ^3.0.1
   flutter_test:
     sdk: flutter
 

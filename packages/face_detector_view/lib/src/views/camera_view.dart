@@ -12,13 +12,13 @@ import 'default_bottom_sheet.dart';
 
 class CameraView extends StatefulWidget {
   const CameraView({
-    Key? key,
+    super.key,
     required this.cameras,
     required this.onValidatedImageCapture,
     this.bottomSheet,
     this.floatingActionButton,
     this.initialDirection = CameraLensDirection.front,
-  }) : super(key: key);
+  });
 
   final Widget? bottomSheet;
   final Widget Function(BuildContext, bool, CameraController?)?
@@ -52,12 +52,12 @@ class _CameraViewState extends State<CameraView> with WidgetsBindingObserver {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
 
-    for (var i = 0; i < widget.cameras.length; i++) {
-      if (widget.cameras[i].lensDirection == widget.initialDirection) {
-        _cameraIndex = i;
-        break;
-      }
-    }
+    // for (var i = 0; i < widget.cameras.length; i++) {
+    //   if (widget.cameras[i].lensDirection == widget.initialDirection) {
+    //     _cameraIndex = i;
+    //     break;
+    //   }
+    // }
 
     _startLiveFeed();
   }

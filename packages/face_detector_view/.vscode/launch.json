@@ -16,11 +16,11 @@
             "type": "dart",
             "args": [
                 "-d",
-                "web-server",
-                "--web-hostname",
-                "192.168.0.108",
-                "--web-port",
-                "49403"
+                "chrome",
+                // "--web-hostname",
+                // "192.168.0.108",
+                // "--web-port",
+                // "49403"
             ]
         },
     ]
