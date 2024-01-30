@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:regal/regal.dart';
@@ -19,6 +20,7 @@ class CustomDatePicker extends StatefulWidget {
     this.dateDisplayFormat = 'dd-MM-yyyy',
     this.readOnly = false,
     this.showIcon = true,
+    this.initialEntryMode = DatePickerEntryMode.calendar,
     required this.label,
   });
   final DateTime? selectedDate;
@@ -32,6 +34,7 @@ class CustomDatePicker extends StatefulWidget {
   final String dateDisplayFormat;
   final bool readOnly;
   final String label;
+  final DatePickerEntryMode initialEntryMode;
 
   @override
   State<CustomDatePicker> createState() => _CustomDatePickerState();
@@ -65,7 +68,7 @@ class _CustomDatePickerState extends State<CustomDatePicker> {
       );
 
   Future<void> _showDatePicker() async {
-    if (Platform.isIOS) {
+    if (!kIsWeb && Platform.isIOS) {
       unawaited(
         showModalBottomSheet<void>(
           context: context,
@@ -168,21 +171,20 @@ class _CustomDatePickerState extends State<CustomDatePicker> {
     } else {
       final dateTime = await showDatePicker(
         context: context,
-        initialDate: _selected!,
+        initialDate: _selected,
         firstDate: _getFirstDate(),
         lastDate: _getLastDate(),
         locale: const Locale('en', 'IN'),
         fieldHintText: 'dd/mm/yyyy',
+        initialEntryMode: widget.initialEntryMode,
         builder: (context, child) => Theme(
           data: context.theme,
           child: child!,
         ),
       );
 
-      if (widget.onSelected != null) {
-        if (dateTime != null) {
-          widget.onSelected?.call(dateTime);
-        }
+      if (dateTime != null) {
+        widget.onSelected?.call(dateTime);
       }
     }
   }
