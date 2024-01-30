@@ -13,7 +13,7 @@ class WebBottomSheet extends StatelessWidget {
           top: Radius.circular(30),
         ),
       ),
-      backgroundColor: const Color(0xFFFAD4DA),
+      backgroundColor: const Color.fromRGBO(168, 177, 192, 1),
       onClosing: () {},
       builder: (context) => Container(
         padding: const EdgeInsets.all(16.0),
