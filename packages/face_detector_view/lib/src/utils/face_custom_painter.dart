@@ -95,12 +95,19 @@ class FaceCutoutPainter extends CustomPainter {
 
     double arcAngle = 2 * pi * percent;
 
+    // Calculate the center point
+    double centerX = size.width / 2;
+    double centerY = size.height / 2;
+
+    // Adjust the arc drawing to center
     for (var i = 0; i < 100; i++) {
       var init = (-pi / 15) * (i / 2);
 
       canvas.drawArc(
-          Rect.fromLTWH(size.width / 6.7, size.height * 0.045,
-              size.height / 1.4, size.height * 0.94),
+          Rect.fromCenter(
+              center: Offset(centerX, centerY),
+              width: size.height / 1.4,
+              height: size.height * 0.94),
           init,
           arcAngle,
           false,
