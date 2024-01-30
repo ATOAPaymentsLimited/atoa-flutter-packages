@@ -7,15 +7,14 @@ class WebBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BottomSheet(
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(
-          top: Radius.circular(30),
-        ),
+    return ClipRRect(
+      borderRadius: const BorderRadius.vertical(
+        top: Radius.circular(30),
       ),
-      backgroundColor: const Color.fromRGBO(168, 177, 192, 1),
-      onClosing: () {},
-      builder: (context) => Container(
+      child: Container(
+        decoration: const BoxDecoration(
+          color: Color.fromRGBO(168, 177, 192, 1),
+        ),
         padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisSize: MainAxisSize.min,
