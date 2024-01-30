@@ -81,6 +81,4 @@ final kInterTextTheme = TextTheme(
 ).apply(
   bodyColor: RegalColors.licoriceBlack,
   displayColor: RegalColors.licoriceBlack,
-  fontFamily: 'Inter',
-  package: 'regal',
 );

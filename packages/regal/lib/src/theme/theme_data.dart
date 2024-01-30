@@ -132,8 +132,6 @@ final kThemeData = ThemeData.light().copyWith(
     ),
     titleTextStyle: TextStyle(
       color: RegalColors.licoriceBlack,
-      fontFamily: 'Montserrat',
-      package: 'regal',
       fontSize: 20.sp,
       fontWeight: FontWeight.bold,
     ),
@@ -187,8 +185,6 @@ final kThemeData = ThemeData.light().copyWith(
       foregroundColor: RegalColors.vividRed,
       disabledForegroundColor: RegalColors.disabledVividRed,
       textStyle: TextStyle(
-        fontFamily: 'Montserrat',
-        package: 'regal',
         color: RegalColors.vividRed,
         fontSize: 16.sp,
         fontWeight: FontWeight.bold,
@@ -205,8 +201,6 @@ final kThemeData = ThemeData.light().copyWith(
       disabledForegroundColor: Colors.white,
       fixedSize: Size.fromHeight(60.sp),
       textStyle: TextStyle(
-        fontFamily: 'Montserrat',
-        package: 'regal',
         color: RegalColors.snowWhite,
         fontSize: 16.sp,
         fontWeight: FontWeight.bold,
@@ -218,8 +212,6 @@ final kThemeData = ThemeData.light().copyWith(
       foregroundColor: RegalColors.vividRed,
       disabledForegroundColor: RegalColors.disabledVividRed,
       textStyle: TextStyle(
-        fontFamily: 'Montserrat',
-        package: 'regal',
         color: RegalColors.vividRed,
         fontSize: 16.sp,
         fontWeight: FontWeight.bold,
@@ -342,7 +334,6 @@ final kDarkThemeData = kThemeData.copyWith(
       titleMedium: kMontserratTextTheme.titleMedium!.copyWith(
         fontSize: 20.sp,
         color: RegalColors.snowWhite,
-        fontFamily: 'Montserrat',
       ),
       titleSmall: kMontserratTextTheme.titleSmall!.copyWith(
         color: RegalColors.snowWhite,
@@ -403,8 +394,6 @@ final kDarkThemeData = kThemeData.copyWith(
     elevation: 0,
     centerTitle: true,
     titleTextStyle: TextStyle(
-      fontFamily: 'Montserrat',
-      package: 'regal',
       color: RegalColors.snowWhite,
       fontSize: 20.sp,
       fontWeight: FontWeight.bold,
@@ -417,8 +406,6 @@ final kDarkThemeData = kThemeData.copyWith(
       shape: const StadiumBorder(),
       disabledForegroundColor: RegalColors.disabledVividRed,
       textStyle: TextStyle(
-        fontFamily: 'Montserrat',
-        package: 'regal',
         color: RegalColors.vividRed,
         fontSize: 16.sp,
         fontWeight: FontWeight.bold,
@@ -434,8 +421,6 @@ final kDarkThemeData = kThemeData.copyWith(
       disabledBackgroundColor: RegalColors.disabledDarkVividRed,
       foregroundColor: RegalColors.snowWhite,
       textStyle: TextStyle(
-        fontFamily: 'Montserrat',
-        package: 'regal',
         color: RegalColors.snowWhite,
         fontSize: 16.sp,
         fontWeight: FontWeight.bold,
@@ -449,8 +434,6 @@ final kDarkThemeData = kThemeData.copyWith(
       foregroundColor: RegalColors.snowWhite,
       disabledForegroundColor: RegalColors.grey.shade40,
       textStyle: TextStyle(
-        fontFamily: 'Montserrat',
-        package: 'regal',
         color: RegalColors.vividRed,
         fontSize: 16.sp,
         fontWeight: FontWeight.bold,

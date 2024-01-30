@@ -1,7 +1,7 @@
 name: regal
 description: ATOA Design System
 
-version: 3.2.4
+version: 3.2.5+lite
 
 publish_to: none
 
@@ -19,7 +19,6 @@ dependencies:
   flutter_screenutil: ^5.8.4
   flutter_state_notifier: ^1.0.0
   flutter_svg: ^2.0.7
-  google_fonts: 4.0.4
   intl: 0.18.1
   meta: ^1.9.1
   provider: ^6.0.5
@@ -37,20 +36,3 @@ dev_dependencies:
 flutter:
   assets:
     - assets/icons/
-  fonts:
-    - family: Montserrat
-      fonts:
-        - asset: assets/fonts/Montserrat/Montserrat-Regular.ttf
-          weight: 400
-        - asset: assets/fonts/Montserrat/Montserrat-SemiBold.ttf
-          weight: 600
-        - asset: assets/fonts/Montserrat/Montserrat-Bold.ttf
-          weight: 700
-    - family: Inter
-      fonts:
-        - asset: assets/fonts/Inter/Inter-Regular.ttf
-          weight: 400
-        - asset: assets/fonts/Inter/Inter-SemiBold.ttf
-          weight: 600
-        - asset: assets/fonts/Inter/Inter-Bold.ttf
-          weight: 700

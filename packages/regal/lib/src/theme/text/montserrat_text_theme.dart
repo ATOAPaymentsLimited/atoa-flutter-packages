@@ -81,6 +81,4 @@ final kMontserratTextTheme = TextTheme(
 ).apply(
   bodyColor: RegalColors.licoriceBlack,
   displayColor: RegalColors.licoriceBlack,
-  fontFamily: 'Montserrat',
-  package: 'regal',
 );
