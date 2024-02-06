@@ -1,0 +1,35 @@
+name: Publish Regal Package
+
+concurrency:
+  group: $-$
+  cancel-in-progress: true
+
+on:
+  release:
+    branches:
+      - main
+    paths:
+      - packages/regal
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+      - name: Install dependencies
+        run: flutter pub get
+      - name: Analyze
+        run: flutter analyze
+      - name: Format code
+        run: dart format --fix .
+      - name: Check Publish Warnings
+        run: dart pub publish --dry-run
+      - name: Publish
+        uses: k-paxian/dart-package-publisher@v1.5.1
+        with:
+          credentialJson: ${{ secrets.PUB_CREDENTIALS_JSON }}
+          flutter: true
+          skipTests: true

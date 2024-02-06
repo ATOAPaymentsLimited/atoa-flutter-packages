@@ -2,7 +2,10 @@
 
 - feat: initial commit 🎉
 
-
 # 3.2.2
 
 - leading parameter in snackbar
+
+# 3.2.3
+
+- release workflow
