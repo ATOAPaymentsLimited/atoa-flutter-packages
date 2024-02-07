@@ -17,4 +17,4 @@ jobs:
     with:
       flutter_channel: 'stable'
       working_directory: 'packages/regal'
-      pub_credentials: secrets.PUB_CREDENTIALS_JSON
+      pub_credentials: secrets.PUB_CREDENTIALS
