@@ -6,7 +6,7 @@
 
 ATOA Design System  
 
-## Installation 💻
+## Installation 💻 
 
 **❗ In order to start using Regal you must have the [Flutter SDK][flutter_install_link] installed on your machine.**
 
