@@ -12,4 +12,4 @@
 
 # 3.2.4
 
-- downgrade [intl](https://pub.dev/packages/intl) to 0.18.0
+- downgrade [intl](https://pub.dev/packages/intl) to 0.18.0 
