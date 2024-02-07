@@ -12,9 +12,34 @@ on:
     paths:
       - packages/regal/**
 jobs:
-  build:
-    uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/flutter_pub_publish.yml@v1
-    with:
-      flutter_channel: 'stable'
-      working_directory: 'packages/regal'
-      pub_credentials: secrets.PUB_CREDENTIALS
+  publish:
+    defaults:
+      run:
+        working-directory: 'packages/regal'
+
+    runs-on: macos-latest
+
+    timeout-minutes: 5
+    
+    steps:
+      - name: 📚 Git Checkout
+        uses: actions/checkout@v4
+
+      - name: 🐦 Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          cache: true
+
+      - name: 📦 Install Dependencies
+        run: flutter pub get
+
+      - name: 🔐 Setup Pub Credentials
+        run: |
+          echo '${{secrets.PUB_CREDENTIALS}}' > "~/Library/Application Support/dart/pub-credentials.json"
+
+      - name: 🌵 Dry Run
+        run: flutter pub publish --dry-run
+
+      - name: 📢 Publish
+        run: flutter pub publish -f

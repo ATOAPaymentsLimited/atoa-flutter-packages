@@ -10,7 +10,7 @@ ATOA Design System
 
 **❗ In order to start using Regal you must have the [Flutter SDK][flutter_install_link] installed on your machine.**
 
-Add `regal` to your `pubspec.yaml`:
+Add `regal` to your `pubspec.yaml`
 
 ```yaml
 dependencies:
