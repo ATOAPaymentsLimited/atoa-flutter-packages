@@ -36,7 +36,7 @@ jobs:
 
       - name: 🔐 Setup Pub Credentials
         run: |
-          echo '${{secrets.PUB_CREDENTIALS}}' > "~/Library/Application Support/dart/pub-credentials.json"
+          echo '${{secrets.PUB_CREDENTIALS}}' > "/Users/runner/Library/Application Support/dart/pub-credentials.json"
 
       - name: 🌵 Dry Run
         run: flutter pub publish --dry-run
