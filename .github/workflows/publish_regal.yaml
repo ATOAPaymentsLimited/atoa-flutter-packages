@@ -1,0 +1,45 @@
+name: Publish Regal Package
+
+concurrency:
+  group: $-$
+  cancel-in-progress: true
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - packages/regal/**
+jobs:
+  publish:
+    defaults:
+      run:
+        working-directory: 'packages/regal'
+
+    runs-on: ubuntu-latest
+
+    timeout-minutes: 5
+    
+    steps:
+      - name: 📚 Git Checkout
+        uses: actions/checkout@v4
+
+      - name: 🐦 Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          cache: true
+
+      - name: 📦 Install Dependencies
+        run: flutter pub get
+
+      - name: 🔐 Setup Pub Credentials
+        run: |
+          mkdir -p $XDG_CONFIG_HOME/dart
+          echo '${{secrets.PUB_CREDENTIALS}}' > "$XDG_CONFIG_HOME/dart/pub-credentials.json"
+
+      - name: 🌵 Dry Run
+        run: flutter pub publish --dry-run
+
+      - name: 📢 Publish
+        run: flutter pub publish -f
