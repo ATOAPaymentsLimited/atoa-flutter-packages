@@ -42,35 +42,35 @@ Future<T?> showRegalBottomSheet<T>({
                     ),
                   ),
                 ),
-                if(isDismissable)
-                CustomInkWell(
-                  semanticsLabel: 'Close Dialog Sheet Icon',
-                  context: dialogContext,
-                  trackLabel: 'Close Dialog Sheet Icon',
-                  onTap: () {
-                    Navigator.pop(dialogContext);
-                  },
-                  child: Container(
-                    width: Spacing.huge.value,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      border: Border.all(
-                        width: 1.33,
-                        color: RegalColors.grey.shade40,
-                      ),
-                    ),
-                    child: Center(
-                      child: Padding(
-                        padding: Spacing.tiny.all,
-                        child: Icon(
-                          Icons.close,
-                          size: Spacing.medium.value,
+                if (isDismissable)
+                  CustomInkWell(
+                    semanticsLabel: 'Close Dialog Sheet Icon',
+                    context: dialogContext,
+                    trackLabel: 'Close Dialog Sheet Icon',
+                    onTap: () {
+                      Navigator.pop(dialogContext);
+                    },
+                    child: Container(
+                      width: Spacing.huge.value,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                          width: 1.33,
                           color: RegalColors.grey.shade40,
+                        ),
+                      ),
+                      child: Center(
+                        child: Padding(
+                          padding: Spacing.tiny.all,
+                          child: Icon(
+                            Icons.close,
+                            size: Spacing.medium.value,
+                            color: RegalColors.grey.shade40,
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
               ],
             ),
             Spacing.huge.yBox,

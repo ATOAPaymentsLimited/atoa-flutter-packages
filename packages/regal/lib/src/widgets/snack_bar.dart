@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:regal/regal.dart';
 import 'package:regal/src/mixin/mixins.dart';
 import 'package:regal/src/models/snackbar_type.dart';
-import 'package:regal/src/widgets/regal_custom_spacer.dart';
 
 class Snackbar extends StatelessWidget with EventTrackMixin {
   const Snackbar(
