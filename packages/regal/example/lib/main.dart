@@ -292,6 +292,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               Spacing.large.yBox,
               RegalSwitch(
+                trackLabel: 'Switch',
                 value: true,
                 onChanged: (t) {},
                 semanticsLabel: 'Switch',

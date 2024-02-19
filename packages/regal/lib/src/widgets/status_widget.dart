@@ -69,6 +69,7 @@ class StatusWidget extends StatelessWidget {
         );
       case StatusType.success:
         return RegalCheckbox(
+          trackLabel: 'Success check',
           checked: true,
           semanticsLabel: 'success check',
           circular: true,
