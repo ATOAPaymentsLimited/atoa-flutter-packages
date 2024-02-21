@@ -1,7 +1,7 @@
 name: regal
 description: ATOA Design System which is used in all the Flutter Atoa products. It makes the theming and tracking events easy.
 
-version: 3.2.5
+version: 3.2.6
 
 homepage: https://github.com/ATOAPaymentsLimited/atoa-flutter-packages/tree/main/packages/regal
 repository: https://github.com/ATOAPaymentsLimited/atoa-flutter-packages/tree/main/packages/regal
