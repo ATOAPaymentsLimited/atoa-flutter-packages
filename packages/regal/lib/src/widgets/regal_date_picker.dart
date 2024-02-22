@@ -38,7 +38,7 @@ class CustomDatePicker extends StatefulWidget {
 }
 
 class _CustomDatePickerState extends State<CustomDatePicker> {
-  late DateTime? _selected;
+  late DateTime _selected;
   late DateTime? _tempSelected;
 
   @override
