@@ -38,7 +38,7 @@ class CustomDatePicker extends StatefulWidget {
 }
 
 class _CustomDatePickerState extends State<CustomDatePicker> {
-  late DateTime? _selected;
+  late DateTime _selected;
   late DateTime? _tempSelected;
 
   @override
@@ -168,7 +168,7 @@ class _CustomDatePickerState extends State<CustomDatePicker> {
     } else {
       final dateTime = await showDatePicker(
         context: context,
-        initialDate: _selected!,
+        initialDate: _selected,
         firstDate: _getFirstDate(),
         lastDate: _getLastDate(),
         locale: const Locale('en', 'IN'),
