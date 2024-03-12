@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:regal/src/callbacks/callbacks.dart';
+import 'package:regal/regal.dart';
 
 mixin EventTrackMixin<T extends Widget> {
   void logClickEvent(
@@ -8,7 +8,7 @@ mixin EventTrackMixin<T extends Widget> {
     Map<String, dynamic>? trackProperties,
     required bool enableTracking,
   }) {
-    if (!enableTracking) {
+    if (!(enableTracking || Regal.enableTracking)) {
       return;
     }
     try {
