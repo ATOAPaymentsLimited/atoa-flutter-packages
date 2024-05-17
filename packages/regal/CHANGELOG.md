@@ -1,3 +1,5 @@
-# 3.2.6
+# 3.2.8
 
-- update: sdk version in pubspec
+## 🚀 Updates:
+  - Regal as a singleton
+  - Semantics for regal status card & carousel item widget
