@@ -55,7 +55,7 @@ class RegalIconButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final disabled = onPressed == null;
     return CustomGestureDetector(
-      semanticsLabel: '$semanticsLabel button',
+      semanticsLabel: semanticsLabel,
       context: context,
       trackLabel: trackLabel,
       onTap: () => onPressed?.call(context),

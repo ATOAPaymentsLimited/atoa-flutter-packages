@@ -7,4 +7,7 @@
 .flutter-plugins-dependencies
 
 ## Flutter Version Management
-.fvm/flutter_sdk
+
+# FVM Version Cache
+.fvm/
+.vscode/settings.json
