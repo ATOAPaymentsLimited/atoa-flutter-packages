@@ -5,7 +5,7 @@ Future<T?> showRegalBottomSheet<T>({
   required BuildContext context,
   required String title,
   required WidgetBuilder body,
-  VoidCallback? onClose,
+  void Function(BuildContext)? onClose,
   TextStyle? titleStyle,
   BoxConstraints? constraints,
   Color? barrierColor,
@@ -50,10 +50,11 @@ Future<T?> showRegalBottomSheet<T>({
                     semanticsLabel: 'Close Dialog Sheet Icon',
                     context: dialogContext,
                     trackLabel: 'Close Dialog Sheet Icon',
-                    onTap: onClose ??
-                        () {
-                          Navigator.pop(dialogContext);
-                        },
+                    onTap: onClose != null
+                        ? () => onClose.call(dialogContext)
+                        : () {
+                            Navigator.pop(dialogContext);
+                          },
                     child: Container(
                       width: Spacing.huge.value,
                       decoration: BoxDecoration(
