@@ -79,7 +79,10 @@ class CarouselItemWidget extends StatelessWidget {
                 fit: BoxFit.fill,
                 width: double.infinity,
               ),
-            InkWell(
+            CustomInkWell(
+              context: context,
+              trackLabel: 'Carousel Item',
+              semanticsLabel: 'Carousel Item',
               borderRadius: BorderRadius.circular(24),
               onTap: onTap,
               splashColor: RegalColors.vividRed.withOpacity(0.22),
