@@ -122,89 +122,93 @@ class RegalStatusCard extends StatelessWidget {
   final Key? ctaButtonKey;
 
   @override
-  Widget build(BuildContext context) => Container(
-        clipBehavior: Clip.hardEdge,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(Spacing.xtraLarge.value),
-          color: bgColor ?? _type.bgColor(context),
-        ),
-        width: double.infinity,
-        child: Padding(
-          padding: Spacing.large.all,
-          child: Column(
-            children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  if (prefixIcon != null) ...[
-                    prefixIcon!,
-                    Spacing.medium.xBox,
-                  ],
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        if (title != null && title!.isNotEmpty)
-                          CustomText.semantics(
-                            title!,
-                            style: titleStyle ??
-                                context.montserrat.headlineLarge.copyWith(
-                                  fontSize: 16.sp,
-                                  color: textColor ??
-                                      _type.foregroundColor(context),
-                                  height: 1.3,
-                                ),
-                          ),
-                        if (description != null && description!.isNotEmpty)
-                          CustomText.semantics(
-                            description!,
-                            style: descriptionStyle ??
-                                context.bodyLarge?.copyWith(
-                                  height: 1.5,
-                                  color: textColor ??
-                                      _type.foregroundColor(context),
-                                ),
-                          ),
-                      ],
-                    ),
-                  ),
-                  if (onClose != null)
-                    Transform.translate(
-                      offset: Offset(6.sp, 0.sp),
-                      child: Semantics(
-                        button: true,
-                        enabled: true,
-                        label: 'Close Button',
-                        child: RegalIconButton.iconData(
-                          semanticsLabel: 'Close Button',
-                          iconData: Icons.close,
-                          trackLabel: 'Close Button',
-                          iconColor:
-                              textColor ?? _type.foregroundColor(context),
-                          onPressed: onClose,
-                        ),
+  Widget build(BuildContext context) => Semantics(
+        container: true,
+        label: 'Regal Status Card',
+        child: Container(
+          clipBehavior: Clip.hardEdge,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(Spacing.xtraLarge.value),
+            color: bgColor ?? _type.bgColor(context),
+          ),
+          width: double.infinity,
+          child: Padding(
+            padding: Spacing.large.all,
+            child: Column(
+              children: [
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    if (prefixIcon != null) ...[
+                      prefixIcon!,
+                      Spacing.medium.xBox,
+                    ],
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          if (title != null && title!.isNotEmpty)
+                            CustomText.semantics(
+                              title!,
+                              style: titleStyle ??
+                                  context.montserrat.headlineLarge.copyWith(
+                                    fontSize: 16.sp,
+                                    color: textColor ??
+                                        _type.foregroundColor(context),
+                                    height: 1.3,
+                                  ),
+                            ),
+                          if (description != null && description!.isNotEmpty)
+                            CustomText.semantics(
+                              description!,
+                              style: descriptionStyle ??
+                                  context.bodyLarge?.copyWith(
+                                    height: 1.5,
+                                    color: textColor ??
+                                        _type.foregroundColor(context),
+                                  ),
+                            ),
+                        ],
                       ),
                     ),
-                ],
-              ),
-              if (body != null) ...[
-                Spacing.medium.yBox,
-                body!,
-              ],
-              if (onTapCta != null && ctaText != null) ...[
-                Spacing.medium.yBox,
-                RegalButton.primary(
-                  label: ctaText,
-                  size: RegalButtonSize.small,
-                  style: ElevatedButton.styleFrom(
-                    foregroundColor: RegalColors.vividRed,
-                    backgroundColor: RegalColors.snowWhite,
-                  ),
-                  trackLabel: ctaText!,
-                  onPressed: onTapCta,
+                    if (onClose != null)
+                      Transform.translate(
+                        offset: Offset(6.sp, 0.sp),
+                        child: Semantics(
+                          button: true,
+                          enabled: true,
+                          label: 'Close Button',
+                          child: RegalIconButton.iconData(
+                            semanticsLabel: 'Close Button',
+                            iconData: Icons.close,
+                            trackLabel: 'Close Button',
+                            iconColor:
+                                textColor ?? _type.foregroundColor(context),
+                            onPressed: onClose,
+                          ),
+                        ),
+                      ),
+                  ],
                 ),
+                if (body != null) ...[
+                  Spacing.medium.yBox,
+                  body!,
+                ],
+                if (onTapCta != null && ctaText != null) ...[
+                  Spacing.medium.yBox,
+                  RegalButton.primary(
+                    label: ctaText,
+                    size: RegalButtonSize.small,
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: RegalColors.vividRed,
+                      backgroundColor: RegalColors.snowWhite,
+                    ),
+                    trackLabel: ctaText!,
+                    onPressed: onTapCta,
+                  ),
+                ],
               ],
-            ],
+            ),
           ),
         ),
       );
