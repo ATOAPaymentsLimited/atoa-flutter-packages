@@ -5,6 +5,8 @@ Future<T?> showRegalBottomSheet<T>({
   required BuildContext context,
   required String title,
   required WidgetBuilder body,
+  void Function(BuildContext)? onClose,
+  TextStyle? titleStyle,
   BoxConstraints? constraints,
   Color? barrierColor,
   bool useRootNavigator = false,
@@ -37,8 +39,9 @@ Future<T?> showRegalBottomSheet<T>({
                     child: Text(
                       title,
                       textAlign: TextAlign.center,
-                      style: dialogContext.labelLarge
-                          ?.copyWith(fontWeight: FontWeight.w700),
+                      style: titleStyle ??
+                          dialogContext.labelLarge
+                              ?.copyWith(fontWeight: FontWeight.w700),
                     ),
                   ),
                 ),
@@ -47,9 +50,11 @@ Future<T?> showRegalBottomSheet<T>({
                     semanticsLabel: 'Close Dialog Sheet Icon',
                     context: dialogContext,
                     trackLabel: 'Close Dialog Sheet Icon',
-                    onTap: () {
-                      Navigator.pop(dialogContext);
-                    },
+                    onTap: onClose != null
+                        ? () => onClose.call(dialogContext)
+                        : () {
+                            Navigator.pop(dialogContext);
+                          },
                     child: Container(
                       width: Spacing.huge.value,
                       decoration: BoxDecoration(
