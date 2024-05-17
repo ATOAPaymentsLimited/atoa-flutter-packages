@@ -36,7 +36,7 @@ class Snackbar extends StatelessWidget with EventTrackMixin {
 
   Widget? trailing(BuildContext context) {
     final close = RegalIconButton.iconData(
-      semanticsLabel: 'Close Snackbar Button',
+      semanticsLabel: 'Close Snackbar',
       onPressed: (context) => onClose?.call(),
       iconData: Icons.close,
       trackLabel: 'Close Snackbar',
@@ -100,17 +100,26 @@ class Snackbar extends StatelessWidget with EventTrackMixin {
     return null;
   }
 
-  Widget wrap(Widget widget, BuildContext context) => ClipRRect(
-        borderRadius: BorderRadius.circular(20.sp),
-        child: Material(
-          color: Colors.transparent,
-          child: DecoratedBox(
-            decoration: BoxDecoration(
-              border: Border.all(color: context.grey.shade20),
+  Widget wrap(Widget widget, BuildContext context) => SafeArea(
+        minimum: Spacing.huge.y,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ClipRRect(
               borderRadius: BorderRadius.circular(20.sp),
+              child: Material(
+                color: Colors.transparent,
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                    border: Border.all(color: context.grey.shade20),
+                    borderRadius: BorderRadius.circular(20.sp),
+                  ),
+                  child: widget,
+                ),
+              ),
             ),
-            child: widget,
-          ),
+          ],
         ),
       );
 
@@ -145,8 +154,7 @@ class Snackbar extends StatelessWidget with EventTrackMixin {
             ),
           ),
         ListTile(
-          // default is 16 and design has 12
-          horizontalTitleGap: -4.sp,
+          horizontalTitleGap: 12.sp,
           contentPadding: Spacing.medium.x + Spacing.small.y,
           tileColor: snackbar.type.bg(context),
           leading: leading ?? snackbar.type.leading(context),

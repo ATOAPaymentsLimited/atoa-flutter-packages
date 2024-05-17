@@ -5,6 +5,8 @@ Future<T?> showRegalBottomSheet<T>({
   required BuildContext context,
   required String title,
   required WidgetBuilder body,
+  void Function(BuildContext)? onClose,
+  TextStyle? titleStyle,
   BoxConstraints? constraints,
   Color? barrierColor,
   bool useRootNavigator = false,
@@ -37,39 +39,43 @@ Future<T?> showRegalBottomSheet<T>({
                     child: Text(
                       title,
                       textAlign: TextAlign.center,
-                      style: dialogContext.labelLarge
-                          ?.copyWith(fontWeight: FontWeight.w700),
+                      style: titleStyle ??
+                          dialogContext.labelLarge
+                              ?.copyWith(fontWeight: FontWeight.w700),
                     ),
                   ),
                 ),
-                CustomInkWell(
-                  semanticsLabel: 'Close Dialog Sheet Icon',
-                  context: dialogContext,
-                  trackLabel: 'Close Dialog Sheet Icon',
-                  onTap: () {
-                    Navigator.pop(dialogContext);
-                  },
-                  child: Container(
-                    width: Spacing.huge.value,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      border: Border.all(
-                        width: 1.33,
-                        color: RegalColors.grey.shade40,
-                      ),
-                    ),
-                    child: Center(
-                      child: Padding(
-                        padding: Spacing.tiny.all,
-                        child: Icon(
-                          Icons.close,
-                          size: Spacing.medium.value,
+                if (isDismissable)
+                  CustomInkWell(
+                    semanticsLabel: 'Close Dialog Sheet Icon',
+                    context: dialogContext,
+                    trackLabel: 'Close Dialog Sheet Icon',
+                    onTap: onClose != null
+                        ? () => onClose.call(dialogContext)
+                        : () {
+                            Navigator.pop(dialogContext);
+                          },
+                    child: Container(
+                      width: Spacing.huge.value,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                          width: 1.33,
                           color: RegalColors.grey.shade40,
+                        ),
+                      ),
+                      child: Center(
+                        child: Padding(
+                          padding: Spacing.tiny.all,
+                          child: Icon(
+                            Icons.close,
+                            size: Spacing.medium.value,
+                            color: RegalColors.grey.shade40,
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
               ],
             ),
             Spacing.huge.yBox,

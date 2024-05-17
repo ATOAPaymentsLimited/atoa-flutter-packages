@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../utils/spacing.dart';
-import 'gradient_circular_progress_indicator.dart';
+import 'package:regal/src/utils/spacing.dart';
+import 'package:regal/src/widgets/gradient_circular_progress_indicator.dart';
 
 class InfiniteListView extends StatefulWidget {
   const InfiniteListView({

@@ -137,6 +137,7 @@ final kThemeData = ThemeData.light().copyWith(
       fontSize: 20.sp,
       fontWeight: FontWeight.bold,
     ),
+    surfaceTintColor: RegalColors.snowWhite,
   ),
   progressIndicatorTheme: const ProgressIndicatorThemeData(color: Colors.white),
   inputDecorationTheme: InputDecorationTheme(
@@ -198,6 +199,7 @@ final kThemeData = ThemeData.light().copyWith(
     style: ElevatedButton.styleFrom(
       elevation: 0,
       shape: const StadiumBorder(),
+      foregroundColor: RegalColors.snowWhite,
       backgroundColor: RegalColors.vividRed,
       disabledBackgroundColor: RegalColors.disabledVividRed,
       disabledForegroundColor: Colors.white,
@@ -253,6 +255,7 @@ final kThemeData = ThemeData.light().copyWith(
   ),
   bottomSheetTheme: BottomSheetThemeData(
     backgroundColor: Colors.white,
+    surfaceTintColor: RegalColors.snowWhite,
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.only(
         topLeft: Radius.circular(32.w),
@@ -406,6 +409,7 @@ final kDarkThemeData = kThemeData.copyWith(
       fontSize: 20.sp,
       fontWeight: FontWeight.bold,
     ),
+    surfaceTintColor: RegalColors.licoriceBlack,
   ),
   textButtonTheme: TextButtonThemeData(
     style: TextButton.styleFrom(
@@ -468,6 +472,7 @@ final kDarkThemeData = kThemeData.copyWith(
   ),
   bottomSheetTheme: BottomSheetThemeData(
     backgroundColor: RegalColors.licoriceBlack,
+    surfaceTintColor: RegalColors.licoriceBlack,
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.only(
         topLeft: Radius.circular(32.w),

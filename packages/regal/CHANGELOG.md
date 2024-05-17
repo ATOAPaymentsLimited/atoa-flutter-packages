@@ -1,3 +1,3 @@
-# 0.1.0+1
+# 3.2.6
 
-- feat: initial commit 🎉
+- update: sdk version in pubspec

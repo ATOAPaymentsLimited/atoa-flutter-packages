@@ -6,6 +6,7 @@ class RegalSwitch extends StatefulWidget {
   const RegalSwitch({
     super.key,
     this.value = false,
+    required this.trackLabel,
     required this.onChanged,
     required this.semanticsLabel,
     this.activeColor,
@@ -16,6 +17,7 @@ class RegalSwitch extends StatefulWidget {
   final Color? activeColor;
   final Color? inActiveColor;
   final String semanticsLabel;
+  final String trackLabel;
 
   @override
   State<RegalSwitch> createState() => _RegalSwitchState();
@@ -33,7 +35,7 @@ class _RegalSwitchState extends State<RegalSwitch> {
         label: widget.semanticsLabel,
         child: CustomInkWell(
           context: context,
-          trackLabel: 'Switch',
+          trackLabel: widget.trackLabel,
           trackProperties: <String, dynamic>{
             'updated_value': !widget.value,
           },
@@ -66,7 +68,7 @@ class _RegalSwitchState extends State<RegalSwitch> {
                         offset: const Offset(2, 0),
                         blurRadius: 5.r,
                         color: Colors.black.withOpacity(0.2),
-                      )
+                      ),
                     ],
                     borderRadius: BorderRadius.circular(100),
                   ),

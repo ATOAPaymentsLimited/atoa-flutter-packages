@@ -67,7 +67,7 @@ class RegalChip extends StatelessWidget {
                       color: context.grey.shade60,
                     ),
                   ),
-                ]
+                ],
               ],
             ),
           ),
