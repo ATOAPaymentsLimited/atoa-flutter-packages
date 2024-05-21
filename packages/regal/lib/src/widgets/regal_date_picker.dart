@@ -121,9 +121,6 @@ class _CustomDatePickerState extends State<CustomDatePicker> {
                               if (widget.onSelected != null) {
                                 final dateTime = _tempSelected ?? _selected;
 
-                                if (dateTime == null) {
-                                  return;
-                                }
                                 if (dateTime.isAfter(
                                       _getFirstDate()
                                           .subtract(const Duration(days: 1)),
