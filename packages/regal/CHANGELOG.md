@@ -1,10 +1,5 @@
 # v3.3.0
 ## 🚀 Updates:
-  - Regal as a singleton
-  - Semantics for regal status card & carousel item widget
-
-# v3.2.8
-## 🚀 Updates:
   - textAlign for title in regal bottom sheet
 
 # v3.2.9
