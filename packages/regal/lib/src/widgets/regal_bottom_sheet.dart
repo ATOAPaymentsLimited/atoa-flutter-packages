@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:regal/regal.dart';
 
 Future<T?> showRegalBottomSheet<T>({
