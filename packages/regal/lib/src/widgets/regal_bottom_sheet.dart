@@ -7,6 +7,7 @@ Future<T?> showRegalBottomSheet<T>({
   required WidgetBuilder body,
   void Function(BuildContext)? onClose,
   TextStyle? titleStyle,
+  TextAlign? titleAlign,
   BoxConstraints? constraints,
   Color? barrierColor,
   bool useRootNavigator = false,
@@ -32,13 +33,18 @@ Future<T?> showRegalBottomSheet<T>({
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Spacing.huge.xBox,
+                if (titleAlign == null)
+                  Spacing.huge.xBox
+                else
+                  const SizedBox.shrink(),
                 Expanded(
                   child: Padding(
-                    padding: Spacing.small.x,
+                    padding: titleAlign == null
+                        ? Spacing.small.x
+                        : Spacing.small.right,
                     child: Text(
                       title,
-                      textAlign: TextAlign.center,
+                      textAlign: titleAlign ?? TextAlign.center,
                       style: titleStyle ??
                           dialogContext.labelLarge
                               ?.copyWith(fontWeight: FontWeight.w700),

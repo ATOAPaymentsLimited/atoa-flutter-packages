@@ -1,3 +1,7 @@
+# v3.3.1
+## 🚀 Updates:
+  - textAlign for title in regal bottom sheet
+
 # v3.3.0
 ## 🚀 Updates:
   - Regal as a singleton
