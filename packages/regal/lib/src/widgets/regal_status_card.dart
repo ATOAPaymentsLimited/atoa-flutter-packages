@@ -18,6 +18,8 @@ class RegalStatusCard extends StatelessWidget {
     this.textColor,
     this.titleStyle,
     this.descriptionStyle,
+    this.trailingAssetPath,
+    this.onTrailingPressed,
   })  : _type = RegalStatusCardTypeEnum.info,
         assert(
           prefixIcon is Icon || prefixIcon is SvgPicture,
@@ -38,6 +40,8 @@ class RegalStatusCard extends StatelessWidget {
     this.textColor,
     this.titleStyle,
     this.descriptionStyle,
+    this.trailingAssetPath,
+    this.onTrailingPressed,
   })  : _type = RegalStatusCardTypeEnum.pending,
         assert(
           prefixIcon is Icon || prefixIcon is SvgPicture,
@@ -55,6 +59,8 @@ class RegalStatusCard extends StatelessWidget {
     this.titleStyle,
     this.descriptionStyle,
     this.textColor,
+    this.trailingAssetPath,
+    this.onTrailingPressed,
   })  : _type = RegalStatusCardTypeEnum.success,
         ctaText = null,
         onTapCta = null,
@@ -120,6 +126,16 @@ class RegalStatusCard extends StatelessWidget {
 
   /// [ctaButtonKey] takes the Key parameter of the cta button
   final Key? ctaButtonKey;
+
+  /// [trailingAssetPath] sets the icon data for trailing cta, when not null
+  ///
+  /// [onTrailingPressed] and [trailingAssetPath] should be not null for trailing icon to render
+  final String? trailingAssetPath;
+
+  /// [onTrailingPressed] adds a trailing icon on right, when not null
+  ///
+  /// [onTrailingPressed] and [trailingAssetPath] should be not null for trailing icon to render
+  final void Function(BuildContext context)? onTrailingPressed;
 
   @override
   Widget build(BuildContext context) => Semantics(
@@ -187,6 +203,13 @@ class RegalStatusCard extends StatelessWidget {
                             onPressed: onClose,
                           ),
                         ),
+                      ),
+                    if (trailingAssetPath != null && onTrailingPressed != null)
+                      RegalIconButton.asset(
+                        assetPath: trailingAssetPath!,
+                        trackLabel: 'Trailing Icon Button',
+                        semanticsLabel: 'Trailing Icon Button',
+                        onPressed: onTrailingPressed,
                       ),
                   ],
                 ),
