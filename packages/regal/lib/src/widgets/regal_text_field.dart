@@ -8,6 +8,7 @@ class RegalTextField extends StatefulWidget {
     this.margin,
     this.suffix,
     this.label,
+    this.hintText,
     this.onClear,
     this.showLabel = true,
     this.showClear = true,
@@ -20,6 +21,7 @@ class RegalTextField extends StatefulWidget {
     this.textCapitalization = TextCapitalization.none,
     this.textInputAction,
     this.style,
+    this.hintStyle,
     this.strutStyle,
     this.textDirection,
     this.textAlign = TextAlign.start,
@@ -49,6 +51,7 @@ class RegalTextField extends StatefulWidget {
     this.cursorHeight,
     this.cursorRadius,
     this.cursorColor,
+    this.fillColor,
     this.keyboardAppearance,
     this.scrollPadding = const EdgeInsets.all(20),
     this.enableInteractiveSelection,
@@ -71,6 +74,7 @@ class RegalTextField extends StatefulWidget {
         );
 
   final String? label;
+  final String? hintText;
   final bool showLabel;
   final bool showClear;
   final Widget? suffix;
@@ -84,6 +88,7 @@ class RegalTextField extends StatefulWidget {
   final TextCapitalization textCapitalization;
   final TextInputAction? textInputAction;
   final TextStyle? style;
+  final TextStyle? hintStyle;
   final StrutStyle? strutStyle;
   final TextDirection? textDirection;
   final TextAlign textAlign;
@@ -115,6 +120,7 @@ class RegalTextField extends StatefulWidget {
   final double? cursorHeight;
   final Radius? cursorRadius;
   final Color? cursorColor;
+  final Color? fillColor;
   final Brightness? keyboardAppearance;
   final EdgeInsets scrollPadding;
   final bool? enableInteractiveSelection;
@@ -180,6 +186,10 @@ class _RegalTextFieldState extends State<RegalTextField> {
                 color: _errorListenable?.labelColor,
               ),
               suffixIcon: widget.suffix ?? _buildSuffixIcon,
+              filled: widget.fillColor != null,
+              fillColor: widget.fillColor,
+              hintText: widget.hintText,
+              hintStyle: widget.hintStyle,
             ),
             validator: (value) {
               final result = widget.validator?.call(value);

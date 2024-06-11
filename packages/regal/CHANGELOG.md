@@ -1,3 +1,8 @@
+# v3.3.2
+## 🚀 Updates:
+  - fillColor, hintText & hintStyle in regal text field
+  - trailingAssetPath & onTrailingPressed in regal status card
+
 # v3.3.1
 ## 🚀 Updates:
   - textAlign for title in regal bottom sheet
