@@ -1,3 +1,7 @@
+# v3.3.3
+## 🐛 Bug Fixes:
+  - input decoration properties expanded from constructor
+
 # v3.3.2
 ## 🚀 Updates:
   - fillColor, hintText & hintStyle in regal text field

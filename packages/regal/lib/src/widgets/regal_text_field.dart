@@ -51,6 +51,7 @@ class RegalTextField extends StatefulWidget {
     this.cursorHeight,
     this.cursorRadius,
     this.cursorColor,
+    this.filled,
     this.fillColor,
     this.keyboardAppearance,
     this.scrollPadding = const EdgeInsets.all(20),
@@ -120,6 +121,7 @@ class RegalTextField extends StatefulWidget {
   final double? cursorHeight;
   final Radius? cursorRadius;
   final Color? cursorColor;
+  final bool? filled;
   final Color? fillColor;
   final Brightness? keyboardAppearance;
   final EdgeInsets scrollPadding;
@@ -186,10 +188,10 @@ class _RegalTextFieldState extends State<RegalTextField> {
                 color: _errorListenable?.labelColor,
               ),
               suffixIcon: widget.suffix ?? _buildSuffixIcon,
-              filled: widget.fillColor != null,
-              fillColor: widget.fillColor,
-              hintText: widget.hintText,
-              hintStyle: widget.hintStyle,
+              filled: widget.filled ?? widget.decoration?.filled ?? context.theme.inputDecorationTheme.filled,
+              fillColor: widget.fillColor ?? widget.decoration?.fillColor ?? context.theme.inputDecorationTheme.fillColor,
+              hintText: widget.hintText ?? widget.decoration?.hintText,
+              hintStyle: widget.hintStyle ?? widget.decoration?.hintStyle ??  context.theme.inputDecorationTheme.hintStyle,
             ),
             validator: (value) {
               final result = widget.validator?.call(value);
