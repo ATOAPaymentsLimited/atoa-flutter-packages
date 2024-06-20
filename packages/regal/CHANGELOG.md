@@ -1,3 +1,7 @@
+# v3.343
+## 🚀 Update:
+  - Flutter environment sdk update to 3.19.5
+
 # v3.3.3
 ## 🐛 Bug Fixes:
   - input decoration properties expanded from constructor
