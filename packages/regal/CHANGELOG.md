@@ -1,4 +1,4 @@
-# v3.343
+# v3.4.0
 ## 🚀 Update:
   - Flutter environment sdk update to 3.19.5
 
