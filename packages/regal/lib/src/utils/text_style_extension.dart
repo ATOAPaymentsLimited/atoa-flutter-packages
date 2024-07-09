@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 extension TextStyleExtension on TextStyle {
+  TextStyle get height011 => copyWith(height: 0.11);
+  TextStyle get height012 => copyWith(height: 0.12);
   TextStyle get height130 => copyWith(height: 1.3);
   TextStyle get height150 => copyWith(height: 1.5);
 

@@ -6,6 +6,7 @@ const double kMini = 4;
 const double ksmall = 8;
 const double kmedium = 12;
 const double klarge = 16;
+const double kMediumLarge = 18;
 const double kxtraLarge = 20;
 const double kHuge = 24;
 
@@ -24,6 +25,9 @@ enum Spacing {
 
   /// 16
   large,
+  
+  /// 18
+  mediumlarge,
 
   /// 20
   xtraLarge,
@@ -36,7 +40,7 @@ enum Spacing {
   double operator +(Spacing other) => value + other.value;
 }
 
-extension SpacingX on Spacing {
+extension`` SpacingX on Spacing {
   double get value {
     switch (this) {
       case Spacing.tiny:
@@ -49,6 +53,8 @@ extension SpacingX on Spacing {
         return kmedium;
       case Spacing.large:
         return klarge;
+      case Spacing.mediumlarge:
+        return kMediumLarge;
       case Spacing.xtraLarge:
         return kxtraLarge;
       case Spacing.huge:
