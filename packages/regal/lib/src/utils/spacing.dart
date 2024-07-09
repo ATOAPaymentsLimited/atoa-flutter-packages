@@ -40,7 +40,7 @@ enum Spacing {
   double operator +(Spacing other) => value + other.value;
 }
 
-extension`` SpacingX on Spacing {
+extension SpacingX on Spacing {
   double get value {
     switch (this) {
       case Spacing.tiny:
