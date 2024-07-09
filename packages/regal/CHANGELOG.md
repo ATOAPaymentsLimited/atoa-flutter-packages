@@ -1,3 +1,7 @@
+# v3.4.1
+## 🚀 Update:
+  - Added Spacing & style utils
+
 # v3.4.0
 ## 🚀 Update:
   - Flutter environment sdk update to 3.19.5
