@@ -1,3 +1,7 @@
+# 3.4.2
+## 🚀 Update:
+  - Added carousel slider for Widget type
+
 # v3.4.1
 ## 🚀 Update:
   - Added Spacing & style utils
