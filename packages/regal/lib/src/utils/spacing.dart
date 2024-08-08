@@ -25,7 +25,7 @@ enum Spacing {
 
   /// 16
   large,
-  
+
   /// 18
   mediumlarge,
 

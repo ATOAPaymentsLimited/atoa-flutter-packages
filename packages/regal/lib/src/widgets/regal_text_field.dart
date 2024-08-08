@@ -188,10 +188,16 @@ class _RegalTextFieldState extends State<RegalTextField> {
                 color: _errorListenable?.labelColor,
               ),
               suffixIcon: widget.suffix ?? _buildSuffixIcon,
-              filled: widget.filled ?? widget.decoration?.filled ?? context.theme.inputDecorationTheme.filled,
-              fillColor: widget.fillColor ?? widget.decoration?.fillColor ?? context.theme.inputDecorationTheme.fillColor,
+              filled: widget.filled ??
+                  widget.decoration?.filled ??
+                  context.theme.inputDecorationTheme.filled,
+              fillColor: widget.fillColor ??
+                  widget.decoration?.fillColor ??
+                  context.theme.inputDecorationTheme.fillColor,
               hintText: widget.hintText ?? widget.decoration?.hintText,
-              hintStyle: widget.hintStyle ?? widget.decoration?.hintStyle ??  context.theme.inputDecorationTheme.hintStyle,
+              hintStyle: widget.hintStyle ??
+                  widget.decoration?.hintStyle ??
+                  context.theme.inputDecorationTheme.hintStyle,
             ),
             validator: (value) {
               final result = widget.validator?.call(value);
