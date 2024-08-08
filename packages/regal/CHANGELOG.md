@@ -1,3 +1,6 @@
+# 3.5.0 [Breaking Changes]
+  - [chore] upgrade dependencies
+
 # 3.4.2
 ## 🚀 Update:
   - Added carousel slider for Widget type
