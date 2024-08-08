@@ -1,4 +1,5 @@
 export 'carousel_slider/carousel_slider.dart';
+export 'carousel_slider/carousel_widget_slider.dart';
 export 'custom_auto_size_text.dart';
 export 'custom_gesture_detector.dart';
 export 'custom_ink_well.dart';
