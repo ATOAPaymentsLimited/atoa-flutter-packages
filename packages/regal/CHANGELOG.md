@@ -1,4 +1,4 @@
-# 3.5.0 [Breaking Changes]
+# 4.0.0 [Breaking Changes]
   - [chore] upgrade dependencies
 
 # 3.4.2
