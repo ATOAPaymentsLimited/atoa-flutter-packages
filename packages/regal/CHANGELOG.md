@@ -1,3 +1,7 @@
+# 3.4.3
+## 🧹 Chore:
+  - upgrade to latest flutter version
+
 # 3.4.2
 ## 🚀 Update:
   - Added carousel slider for Widget type
