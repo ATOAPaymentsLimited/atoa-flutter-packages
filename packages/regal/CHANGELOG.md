@@ -1,4 +1,4 @@
-# 3.4.3
+# 3.5.0 [Breaking Changes]
 ## 🧹 Chore:
   - upgrade to latest flutter version
 
