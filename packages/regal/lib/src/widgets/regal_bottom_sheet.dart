@@ -18,6 +18,8 @@ Future<T?> showRegalBottomSheet<T>({
   double? elevation,
   bool enableDrag = true,
   bool isDismissable = true,
+  bool showCloseButton = true,
+  Widget? iconWidget,
   ShapeBorder? shape,
   AnimationController? transitionAnimationController,
   Alignment confettiAlignment = Alignment.center,
@@ -29,6 +31,7 @@ Future<T?> showRegalBottomSheet<T>({
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
+            if(iconWidget != null) iconWidget,
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -51,7 +54,7 @@ Future<T?> showRegalBottomSheet<T>({
                     ),
                   ),
                 ),
-                if (isDismissable)
+                if (showCloseButton)
                   CustomInkWell(
                     semanticsLabel: 'Close Dialog Sheet Icon',
                     context: dialogContext,
