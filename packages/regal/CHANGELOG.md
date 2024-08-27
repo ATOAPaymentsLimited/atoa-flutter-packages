@@ -1,3 +1,8 @@
+# 3.4.3
+## 🚀 Update:
+  - Added Illustration widget for bottom sheet to support illustrations on top of title
+  - Added `showCloseButton` for more control over dismissible UI
+
 # 3.4.2
 ## 🚀 Update:
   - Added carousel slider for Widget type

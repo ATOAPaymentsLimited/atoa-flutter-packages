@@ -19,7 +19,7 @@ Future<T?> showRegalBottomSheet<T>({
   bool enableDrag = true,
   bool isDismissable = true,
   bool showCloseButton = true,
-  Widget? iconWidget,
+  Widget? illustrationWidget,
   ShapeBorder? shape,
   AnimationController? transitionAnimationController,
   Alignment confettiAlignment = Alignment.center,
@@ -31,7 +31,7 @@ Future<T?> showRegalBottomSheet<T>({
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            if(iconWidget != null) iconWidget,
+            if(illustrationWidget != null) illustrationWidget,
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
