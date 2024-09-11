@@ -16,7 +16,7 @@ Future<T?> showRegalBottomSheet<T>({
   Color? backgroundColor,
   Clip? clipBehavior,
   double? elevation,
-  Widget? titleBottomSpacingWidget,
+  double? titleBottomSpacing,
   bool enableDrag = true,
   bool isDismissable = true,
   bool showCloseButton = true,
@@ -88,7 +88,12 @@ Future<T?> showRegalBottomSheet<T>({
                   ),
               ],
             ),
-            titleBottomSpacingWidget ?? Spacing.huge.yBox,
+            if (titleBottomSpacing != null)
+              OperatorSizedBox.height(
+                titleBottomSpacing,
+              )
+            else
+              Spacing.huge.yBox,
             Builder(
               builder: body,
             ),
