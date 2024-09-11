@@ -16,6 +16,7 @@ Future<T?> showRegalBottomSheet<T>({
   Color? backgroundColor,
   Clip? clipBehavior,
   double? elevation,
+  Widget? titleBottomSpacingWidget,
   bool enableDrag = true,
   bool isDismissable = true,
   bool showCloseButton = true,
@@ -31,7 +32,7 @@ Future<T?> showRegalBottomSheet<T>({
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            if(illustrationWidget != null) illustrationWidget,
+            if (illustrationWidget != null) illustrationWidget,
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -87,7 +88,7 @@ Future<T?> showRegalBottomSheet<T>({
                   ),
               ],
             ),
-            Spacing.huge.yBox,
+            titleBottomSpacingWidget ?? Spacing.huge.yBox,
             Builder(
               builder: body,
             ),
