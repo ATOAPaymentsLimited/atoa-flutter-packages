@@ -27,8 +27,8 @@ Future<T?> showRegalBottomSheet<T>({
 }) =>
     showModalBottomSheet<T>(
       context: context,
-      builder: (dialogContext) => Container(
-        padding: const EdgeInsets.all(20),
+      builder: (dialogContext) => Padding(
+        padding: Spacing.xtraLarge.all,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -99,6 +99,80 @@ Future<T?> showRegalBottomSheet<T>({
             ),
           ],
         ),
+      ),
+      isScrollControlled: isScrollControlled,
+      barrierColor: barrierColor,
+      constraints: constraints,
+      useRootNavigator: useRootNavigator,
+      routeSettings: routeSettings,
+      backgroundColor: backgroundColor,
+      clipBehavior: clipBehavior,
+      elevation: elevation,
+      enableDrag: enableDrag,
+      isDismissible: isDismissable,
+      shape: shape,
+      transitionAnimationController: transitionAnimationController,
+    );
+
+Future<T?> showRegalBottomSheetStacked<T>({
+  required BuildContext context,
+  required WidgetBuilder body,
+  required Widget illustrationWidget,
+  void Function(BuildContext)? onClose,
+  BoxConstraints? constraints,
+  Color? barrierColor,
+  bool useRootNavigator = false,
+  bool isScrollControlled = true,
+  RouteSettings? routeSettings,
+  Color? backgroundColor,
+  Clip? clipBehavior,
+  double? elevation,
+  bool enableDrag = true,
+  bool isDismissable = true,
+  bool showCloseButton = true,
+  ShapeBorder? shape,
+  EdgeInsets? bodyPadding,
+  AnimationController? transitionAnimationController,
+}) =>
+    showModalBottomSheet<T>(
+      context: context,
+      builder: (dialogContext) => Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Stack(
+            children: [
+              illustrationWidget,
+              if (showCloseButton)
+                Align(
+                  alignment: Alignment.topRight,
+                  child: Padding(
+                    padding: Spacing.xtraLarge.all,
+                    child: CustomInkWell(
+                      semanticsLabel: 'Close Dialog Sheet Icon',
+                      context: dialogContext,
+                      trackLabel: 'Close Dialog Sheet Icon',
+                      onTap: onClose != null
+                          ? () => onClose.call(dialogContext)
+                          : () {
+                              Navigator.pop(dialogContext);
+                            },
+                      child: Icon(
+                        Icons.close,
+                        size: Spacing.huge.value,
+                        color: RegalColors.snowWhite,
+                      ),
+                    ),
+                  ),
+                ),
+            ],
+          ),
+          Padding(
+            padding: bodyPadding ?? Spacing.xtraLarge.all,
+            child: Builder(
+              builder: body,
+            ),
+          ),
+        ],
       ),
       isScrollControlled: isScrollControlled,
       barrierColor: barrierColor,
