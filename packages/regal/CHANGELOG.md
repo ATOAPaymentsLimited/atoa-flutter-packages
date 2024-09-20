@@ -1,3 +1,12 @@
+# 3.4.5
+
+## 🐕‍🦺 Accessability:
+- Semantics for check box
+
+## 💅 Polish:
+- Gradient support for custom text
+- Stackable bottom sheet with image header support
+
 # 3.4.4
 
 ## 🚀 Update:

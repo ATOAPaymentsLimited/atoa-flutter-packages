@@ -49,62 +49,65 @@ class _RegalCheckboxState extends State<RegalCheckbox> {
   }
 
   @override
-  Widget build(BuildContext context) => CustomGestureDetector(
-        behavior: HitTestBehavior.translucent,
-        semanticsLabel: widget.semanticsLabel,
-        context: context,
-        trackLabel: widget.trackLabel,
-        onTap: () {
-          widget.onChanged?.call(!_checked);
-        },
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                SizedBox(height: 4.sp),
-                AnimatedContainer(
-                  duration: const Duration(milliseconds: 250),
-                  height: widget.size,
-                  width: widget.size,
-                  decoration: BoxDecoration(
-                    color: _checked
-                        ? (widget.activeColor ?? context.theme.primaryColor)
-                        : Colors.transparent,
-                    borderRadius: widget.circular
-                        ? BorderRadius.circular(widget.size)
-                        : BorderRadius.circular(4),
-                    border: Border.all(
-                      color: (_checked
-                              ? widget.activeColor
-                              : widget.borderColor) ??
-                          context.theme.primaryColor,
+  Widget build(BuildContext context) => Semantics(
+        checked: widget.checked,
+        child: CustomGestureDetector(
+          behavior: HitTestBehavior.translucent,
+          semanticsLabel: widget.semanticsLabel,
+          context: context,
+          trackLabel: widget.trackLabel,
+          onTap: () {
+            widget.onChanged?.call(!_checked);
+          },
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  SizedBox(height: 4.sp),
+                  AnimatedContainer(
+                    duration: const Duration(milliseconds: 250),
+                    height: widget.size,
+                    width: widget.size,
+                    decoration: BoxDecoration(
+                      color: _checked
+                          ? (widget.activeColor ?? context.theme.primaryColor)
+                          : Colors.transparent,
+                      borderRadius: widget.circular
+                          ? BorderRadius.circular(widget.size)
+                          : BorderRadius.circular(4),
+                      border: Border.all(
+                        color: (_checked
+                                ? widget.activeColor
+                                : widget.borderColor) ??
+                            context.theme.primaryColor,
+                      ),
                     ),
-                  ),
-                  child: Center(
-                    child: AnimatedOpacity(
-                      duration: const Duration(milliseconds: 250),
-                      opacity: _checked ? 1.0 : 0.0,
-                      child: Icon(
-                        Icons.done,
-                        size: widget.size * 0.8,
-                        color: widget.checkColor,
+                    child: Center(
+                      child: AnimatedOpacity(
+                        duration: const Duration(milliseconds: 250),
+                        opacity: _checked ? 1.0 : 0.0,
+                        child: Icon(
+                          Icons.done,
+                          size: widget.size * 0.8,
+                          color: widget.checkColor,
+                        ),
                       ),
                     ),
                   ),
+                ],
+              ),
+              if (widget.label.isNotEmpty) ...[
+                const SizedBox(width: 12),
+                Text(
+                  widget.label,
+                  style: widget.labelStyle,
+                  overflow: TextOverflow.ellipsis,
                 ),
               ],
-            ),
-            if (widget.label.isNotEmpty) ...[
-              const SizedBox(width: 12),
-              Text(
-                widget.label,
-                style: widget.labelStyle,
-                overflow: TextOverflow.ellipsis,
-              ),
             ],
-          ],
+          ),
         ),
       );
 }
