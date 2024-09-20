@@ -17,11 +17,24 @@ class CustomText extends Text {
     super.textWidthBasis,
     super.textHeightBehavior,
     super.selectionColor,
+    this.gradient,
   }) : super(semanticsLabel: data);
+
+  final Gradient? gradient;
 
   @override
   Widget build(BuildContext context) => Semantics(
         container: true,
-        child: super.build(context),
+        child: Builder(
+          builder: (context) => gradient != null
+              ? ShaderMask(
+                  blendMode: BlendMode.srcIn,
+                  shaderCallback: (Rect bounds) => gradient!.createShader(
+                    Rect.fromLTWH(0, 0, bounds.width, bounds.height),
+                  ),
+                  child: super.build(context),
+                )
+              : super.build(context),
+        ),
       );
 }
