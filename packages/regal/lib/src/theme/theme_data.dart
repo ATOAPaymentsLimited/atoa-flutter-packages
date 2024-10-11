@@ -231,9 +231,9 @@ final kThemeData = ThemeData.light().copyWith(
         borderRadius: BorderRadius.circular(100.w),
       ),
     ).copyWith(
-      side: MaterialStateProperty.resolveWith(
+      side: WidgetStateProperty.resolveWith(
         (states) {
-          if (states.contains(MaterialState.disabled)) {
+          if (states.contains(WidgetState.disabled)) {
             return const BorderSide(color: RegalColors.disabledVividRed);
           }
           return const BorderSide(color: RegalColors.vividRed);
@@ -245,8 +245,8 @@ final kThemeData = ThemeData.light().copyWith(
     color: RegalColors.claretRed,
   ),
   checkboxTheme: CheckboxThemeData(
-    checkColor: MaterialStateProperty.all(Colors.white),
-    fillColor: MaterialStateProperty.all(RegalColors.claretRed),
+    checkColor: WidgetStateProperty.all(Colors.white),
+    fillColor: WidgetStateProperty.all(RegalColors.claretRed),
     shape: RoundedRectangleBorder(
       side: const BorderSide(color: RegalColors.claretRed),
       borderRadius: BorderRadius.circular(4.r),
@@ -424,7 +424,7 @@ final kDarkThemeData = kThemeData.copyWith(
         fontWeight: FontWeight.bold,
       ),
     ).copyWith(
-      elevation: const MaterialStatePropertyAll(0),
+      elevation: const WidgetStatePropertyAll(0),
     ),
   ),
   elevatedButtonTheme: ElevatedButtonThemeData(
@@ -441,7 +441,7 @@ final kDarkThemeData = kThemeData.copyWith(
         fontWeight: FontWeight.bold,
       ),
     ).copyWith(
-      elevation: const MaterialStatePropertyAll(0),
+      elevation: const WidgetStatePropertyAll(0),
     ),
   ),
   outlinedButtonTheme: OutlinedButtonThemeData(
@@ -459,10 +459,10 @@ final kDarkThemeData = kThemeData.copyWith(
         borderRadius: BorderRadius.circular(100.w),
       ),
     ).copyWith(
-      elevation: const MaterialStatePropertyAll(0),
-      side: MaterialStateProperty.resolveWith(
+      elevation: const WidgetStatePropertyAll(0),
+      side: WidgetStateProperty.resolveWith(
         (states) {
-          if (states.contains(MaterialState.disabled)) {
+          if (states.contains(WidgetState.disabled)) {
             return BorderSide(color: RegalColors.grey.shade40);
           }
           return const BorderSide(color: RegalColors.snowWhite);
@@ -483,38 +483,38 @@ final kDarkThemeData = kThemeData.copyWith(
   datePickerTheme: DatePickerThemeData(
     weekdayStyle: const TextStyle(color: RegalColors.vividRed),
     yearStyle: const TextStyle(color: RegalColors.licoriceBlack),
-    dayForegroundColor: MaterialStateProperty.resolveWith((states) {
-      if (states.contains(MaterialState.disabled)) {
+    dayForegroundColor: WidgetStateProperty.resolveWith((states) {
+      if (states.contains(WidgetState.disabled)) {
         return RegalColors.grey.shade10;
       }
-      if (states.contains(MaterialState.selected)) {
+      if (states.contains(WidgetState.selected)) {
         return RegalColors.snowWhite;
       }
       return RegalColors.licoriceBlack;
     }),
-    yearForegroundColor: MaterialStateProperty.resolveWith((states) {
-      if (states.contains(MaterialState.disabled)) {
+    yearForegroundColor: WidgetStateProperty.resolveWith((states) {
+      if (states.contains(WidgetState.disabled)) {
         return RegalColors.grey.shade10;
       }
-      if (states.contains(MaterialState.selected)) {
+      if (states.contains(WidgetState.selected)) {
         return RegalColors.snowWhite;
       }
       return RegalColors.licoriceBlack;
     }),
-    yearBackgroundColor: MaterialStateProperty.resolveWith((states) {
-      if (states.contains(MaterialState.selected)) {
+    yearBackgroundColor: WidgetStateProperty.resolveWith((states) {
+      if (states.contains(WidgetState.selected)) {
         return RegalColors.licoriceBlack;
       }
       return Colors.transparent;
     }),
-    yearOverlayColor: MaterialStateProperty.resolveWith((states) {
-      if (states.contains(MaterialState.disabled)) {
+    yearOverlayColor: WidgetStateProperty.resolveWith((states) {
+      if (states.contains(WidgetState.disabled)) {
         return RegalColors.grey.shade60;
       }
       return RegalColors.licoriceBlack;
     }),
-    // dayForegroundColor: MaterialStateProperty.resolveWith((states) {
-    //   if (states.contains(MaterialState.disabled)) {
+    // dayForegroundColor: WidgetStateProperty.resolveWith((states) {
+    //   if (states.contains(WidgetState.disabled)) {
     //     return RegalColors.grey.shade10;
     //   }
     //   return RegalColors.licoriceBlack;

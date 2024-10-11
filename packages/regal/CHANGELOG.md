@@ -1,9 +1,17 @@
+# 3.5.0 [Breaking Changes]
+
+## 🧹 Chore:
+
+- Upgrade to latest flutter version
+
 # 3.4.5
 
 ## 🐕‍🦺 Accessability:
+
 - Semantics for check box
 
 ## 💅 Polish:
+
 - Gradient support for custom text
 - Stackable bottom sheet with image header support
 
