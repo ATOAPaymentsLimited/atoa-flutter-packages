@@ -1,8 +1,10 @@
 # 3.5.0 [Breaking Changes]
 
-## 🧹 Chore:
+## 🧹 Updates:
 
 - Upgrade to latest flutter version
+- Added Date Picker Theme
+- Added text Selection Theme
 
 # 3.4.5
 
