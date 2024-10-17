@@ -152,7 +152,7 @@ class RegalButton extends StatelessWidget with EventTrackMixin {
             onPressed: onPressed != null ? onClick(context) : null,
             style: (style ?? Theme.of(context).elevatedButtonTheme.style)
                 ?.copyWith(
-              fixedSize: MaterialStatePropertyAll(
+              fixedSize: WidgetStatePropertyAll(
                 Size.fromHeight(size.value.sp),
               ),
             ),
@@ -163,7 +163,7 @@ class RegalButton extends StatelessWidget with EventTrackMixin {
             onPressed: onPressed != null ? onClick(context) : null,
             style: (style ?? Theme.of(context).outlinedButtonTheme.style)
                 ?.copyWith(
-              fixedSize: MaterialStatePropertyAll(
+              fixedSize: WidgetStatePropertyAll(
                 Size.fromHeight(size.value.sp),
               ),
             ),
@@ -173,7 +173,7 @@ class RegalButton extends StatelessWidget with EventTrackMixin {
           return TextButton(
             onPressed: onPressed != null ? onClick(context) : null,
             style: (style ?? Theme.of(context).textButtonTheme.style)?.copyWith(
-              fixedSize: MaterialStatePropertyAll(
+              fixedSize: WidgetStatePropertyAll(
                 Size.fromHeight(size.value.sp),
               ),
             ),
