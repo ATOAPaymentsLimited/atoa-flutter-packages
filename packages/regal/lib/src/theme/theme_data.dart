@@ -1,4 +1,5 @@
 // coverage:ignore-file
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -330,6 +331,8 @@ final kThemeData = ThemeData.light().copyWith(
     selectionColor: RegalColors.vividRed.withOpacity(0.40),
     selectionHandleColor: RegalColors.vividRed,
   ),
+  cupertinoOverrideTheme:
+      const CupertinoThemeData(primaryColor: RegalColors.vividRed),
 );
 
 final kDarkThemeData = kThemeData.copyWith(
@@ -629,6 +632,8 @@ final kDarkThemeData = kThemeData.copyWith(
   ),
   textSelectionTheme: TextSelectionThemeData(
     selectionColor: RegalColors.vividRed.withOpacity(0.40),
-    selectionHandleColor: RegalColors.claretRed,
+    selectionHandleColor: RegalColors.vividRed,
   ),
+  cupertinoOverrideTheme:
+      const CupertinoThemeData(primaryColor: RegalColors.vividRed),
 );
