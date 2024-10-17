@@ -560,7 +560,7 @@ final kDarkThemeData = kThemeData.copyWith(
     }),
     dayBackgroundColor: WidgetStateProperty.resolveWith((states) {
       if (states.contains(WidgetState.selected)) {
-        return kThemeData.primaryColor;
+        return RegalColors.vividRed;
       }
       return Colors.transparent;
     }),
