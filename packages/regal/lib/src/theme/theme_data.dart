@@ -179,8 +179,6 @@ final kThemeData = ThemeData.light().copyWith(
     floatingLabelStyle:
         kInterTextTheme.bodyLarge?.copyWith(color: RegalColors.licoriceBlack),
   ),
-  textSelectionTheme:
-      const TextSelectionThemeData(cursorColor: RegalColors.claretRed),
   textButtonTheme: TextButtonThemeData(
     style: TextButton.styleFrom(
       shape: const StadiumBorder(),
@@ -269,6 +267,68 @@ final kThemeData = ThemeData.light().copyWith(
       fontWeight: FontWeight.bold,
     ),
     contentTextStyle: kInterTextTheme.bodyLarge,
+  ),
+  datePickerTheme: DatePickerThemeData(
+    backgroundColor: RegalColors.snowWhite,
+    weekdayStyle: const TextStyle(color: RegalColors.vividRed),
+    yearStyle: const TextStyle(color: RegalColors.licoriceBlack),
+    dayForegroundColor: WidgetStateProperty.resolveWith((states) {
+      if (states.contains(WidgetState.disabled)) {
+        return RegalColors.grey.shade10;
+      }
+      if (states.contains(WidgetState.selected)) {
+        return RegalColors.snowWhite;
+      }
+      return RegalColors.licoriceBlack;
+    }),
+    dayBackgroundColor: WidgetStateProperty.resolveWith((states) {
+      if (states.contains(WidgetState.selected)) {
+        return RegalColors.vividRed;
+      }
+      return Colors.transparent;
+    }),
+    yearForegroundColor: WidgetStateProperty.resolveWith((states) {
+      if (states.contains(WidgetState.selected)) {
+        return RegalColors.snowWhite;
+      }
+      if (states.contains(WidgetState.disabled)) {
+        return RegalColors.grey.shade10;
+      }
+
+      return RegalColors.licoriceBlack;
+    }),
+    yearBackgroundColor: WidgetStateProperty.resolveWith((states) {
+      if (states.contains(WidgetState.selected)) {
+        return RegalColors.vividRed;
+      }
+      return Colors.transparent;
+    }),
+    todayBackgroundColor: WidgetStateProperty.resolveWith((states) {
+      if (states.contains(WidgetState.selected)) {
+        return RegalColors.vividRed;
+      }
+      return RegalColors.snowWhite;
+    }),
+    todayForegroundColor: WidgetStateProperty.resolveWith((states) {
+      if (states.contains(WidgetState.selected)) {
+        return RegalColors.snowWhite;
+      }
+      if (states.contains(WidgetState.disabled)) {
+        return RegalColors.vividRed.withOpacity(0.40);
+      }
+      return RegalColors.vividRed;
+    }),
+    yearOverlayColor: WidgetStateProperty.resolveWith((states) {
+      if (states.contains(WidgetState.disabled)) {
+        return RegalColors.grey.shade60;
+      }
+      return RegalColors.licoriceBlack;
+    }),
+    headerForegroundColor: RegalColors.licoriceBlack,
+  ),
+  textSelectionTheme: TextSelectionThemeData(
+    selectionColor: RegalColors.vividRed.withOpacity(0.40),
+    selectionHandleColor: RegalColors.vividRed,
   ),
 );
 
@@ -481,44 +541,51 @@ final kDarkThemeData = kThemeData.copyWith(
     ),
   ),
   datePickerTheme: DatePickerThemeData(
+    backgroundColor: RegalColors.licoriceBlack,
     weekdayStyle: const TextStyle(color: RegalColors.vividRed),
-    yearStyle: const TextStyle(color: RegalColors.licoriceBlack),
+    yearStyle: const TextStyle(color: RegalColors.snowWhite),
     dayForegroundColor: WidgetStateProperty.resolveWith((states) {
       if (states.contains(WidgetState.disabled)) {
-        return RegalColors.grey.shade10;
+        return RegalColors.darkGrey.shade10;
       }
-      if (states.contains(WidgetState.selected)) {
-        return RegalColors.snowWhite;
-      }
-      return RegalColors.licoriceBlack;
+
+      return RegalColors.snowWhite;
     }),
     yearForegroundColor: WidgetStateProperty.resolveWith((states) {
       if (states.contains(WidgetState.disabled)) {
-        return RegalColors.grey.shade10;
+        return RegalColors.darkGrey.shade10;
       }
-      if (states.contains(WidgetState.selected)) {
-        return RegalColors.snowWhite;
-      }
-      return RegalColors.licoriceBlack;
+
+      return RegalColors.snowWhite;
     }),
-    yearBackgroundColor: WidgetStateProperty.resolveWith((states) {
+    dayBackgroundColor: WidgetStateProperty.resolveWith((states) {
       if (states.contains(WidgetState.selected)) {
-        return RegalColors.licoriceBlack;
+        return kThemeData.primaryColor;
       }
       return Colors.transparent;
     }),
-    yearOverlayColor: WidgetStateProperty.resolveWith((states) {
-      if (states.contains(WidgetState.disabled)) {
-        return RegalColors.grey.shade60;
+    todayBackgroundColor: WidgetStateProperty.resolveWith((states) {
+      if (states.contains(WidgetState.selected)) {
+        return RegalColors.vividRed;
       }
       return RegalColors.licoriceBlack;
     }),
-    // dayForegroundColor: WidgetStateProperty.resolveWith((states) {
-    //   if (states.contains(WidgetState.disabled)) {
-    //     return RegalColors.grey.shade10;
-    //   }
-    //   return RegalColors.licoriceBlack;
-    // },
+    todayForegroundColor: WidgetStateProperty.resolveWith((states) {
+      if (states.contains(WidgetState.selected)) {
+        return RegalColors.snowWhite;
+      }
+      if (states.contains(WidgetState.disabled)) {
+        return RegalColors.vividRed.withOpacity(0.40);
+      }
+      return RegalColors.vividRed;
+    }),
+    yearBackgroundColor: WidgetStateProperty.resolveWith((states) {
+      if (states.contains(WidgetState.selected)) {
+        return RegalColors.vividRed;
+      }
+      return Colors.transparent;
+    }),
+    headerForegroundColor: RegalColors.snowWhite,
   ),
   inputDecorationTheme: InputDecorationTheme(
     isDense: true,
@@ -559,5 +626,9 @@ final kDarkThemeData = kThemeData.copyWith(
     ),
     floatingLabelStyle:
         kInterTextTheme.bodyLarge?.copyWith(color: RegalColors.snowWhite),
+  ),
+  textSelectionTheme: TextSelectionThemeData(
+    selectionColor: RegalColors.vividRed.withOpacity(0.40),
+    selectionHandleColor: RegalColors.claretRed,
   ),
 );
