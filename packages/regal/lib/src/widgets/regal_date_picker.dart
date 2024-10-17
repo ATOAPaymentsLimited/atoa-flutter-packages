@@ -105,7 +105,7 @@ class _CustomDatePickerState extends State<CustomDatePicker> {
                                 .textButtonTheme
                                 .style!
                                 .copyWith(
-                                  foregroundColor: MaterialStateProperty.all(
+                                  foregroundColor: WidgetStateProperty.all(
                                     context.brightness.map(
                                       (l) => RegalColors.licoriceBlack,
                                       (d) => RegalColors.snowWhite,
