@@ -4,7 +4,7 @@
 
 - Upgrade to latest flutter version
 - Added Date Picker Theme
-- Added text Selection Theme
+- Added Text Selection Theme
 
 # 3.4.5
 
