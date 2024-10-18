@@ -1,9 +1,19 @@
+# 3.5.0 [Breaking Changes]
+
+## 🧹 Updates:
+
+- Upgrade to latest flutter version
+- Added Date Picker Theme
+- Added Text Selection Theme
+
 # 3.4.5
 
 ## 🐕‍🦺 Accessability:
+
 - Semantics for check box
 
 ## 💅 Polish:
+
 - Gradient support for custom text
 - Stackable bottom sheet with image header support
 
