@@ -1,7 +1,7 @@
 name: regal
 description: ATOA Design System which is used in all the Flutter Atoa products. It makes the theming and tracking events easy.
 
-version: 3.5.0
+version: 3.5.1
 
 homepage: https://github.com/ATOAPaymentsLimited/atoa-flutter-packages/tree/main/packages/regal
 repository: https://github.com/ATOAPaymentsLimited/atoa-flutter-packages/tree/main/packages/regal
@@ -54,3 +54,8 @@ flutter:
           weight: 600
         - asset: assets/fonts/Inter/Inter-Bold.ttf
           weight: 700
+    - family: FigTree
+      fonts:
+        - asset: assets/fonts/FigTree/Figtree-VariableFont_wght.ttf
+        - asset: assets/fonts/FigTree/Figtree-Italic-VariableFont_wght.ttf
+          style: italic
