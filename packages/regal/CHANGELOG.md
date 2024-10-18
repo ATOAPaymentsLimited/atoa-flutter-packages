@@ -1,3 +1,9 @@
+# 3.5.1
+
+## 💅 Polish:
+
+- Add FigTree text theme
+
 # 3.5.0 [Breaking Changes]
 
 ## 🧹 Updates:
