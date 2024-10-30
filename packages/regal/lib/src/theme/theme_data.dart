@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:regal/regal.dart';
-import 'package:regal/src/theme/text/figtree_text_theme.dart';
 import 'package:regal/src/theme/text/figtree_x.dart';
 import 'package:regal/src/theme/theme.dart';
 
