@@ -14,6 +14,7 @@ class RegalChip extends StatelessWidget {
     this.labelColor,
     this.iconColor,
     this.borderRadius,
+    this.labelStyle,
     this.spacing,
   });
 
@@ -27,6 +28,7 @@ class RegalChip extends StatelessWidget {
   final Color? iconColor;
   final BorderRadius? borderRadius;
   final SizedBox? spacing;
+  final TextStyle? labelStyle;
 
   @override
   Widget build(BuildContext context) => Center(
@@ -50,15 +52,16 @@ class RegalChip extends StatelessWidget {
               children: [
                 CustomText.semantics(
                   label,
-                  style: context.bodyLarge!.w600.copyWith(
-                    color: labelColor ??
-                        context.brightness.map(
-                          (l) => isSelected
-                              ? RegalColors.snowWhite
-                              : RegalColors.licoriceBlack,
-                          (d) => RegalColors.snowWhite,
-                        ),
-                  ),
+                  style: labelStyle ??
+                      context.bodyLarge!.w600.copyWith(
+                        color: labelColor ??
+                            context.brightness.map(
+                              (l) => isSelected
+                                  ? RegalColors.snowWhite
+                                  : RegalColors.licoriceBlack,
+                              (d) => RegalColors.snowWhite,
+                            ),
+                      ),
                 ),
                 if (onRemove != null) ...[
                   spacing ?? Spacing.small.xBox,
