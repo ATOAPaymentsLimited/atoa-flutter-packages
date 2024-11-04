@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:regal/regal.dart';
+import 'package:regal/src/enums/text_validation_state_enum.dart';
 
 class RegalTextField extends StatefulWidget {
   const RegalTextField({
@@ -188,10 +189,16 @@ class _RegalTextFieldState extends State<RegalTextField> {
                 color: _errorListenable?.labelColor,
               ),
               suffixIcon: widget.suffix ?? _buildSuffixIcon,
-              filled: widget.filled ?? widget.decoration?.filled ?? context.theme.inputDecorationTheme.filled,
-              fillColor: widget.fillColor ?? widget.decoration?.fillColor ?? context.theme.inputDecorationTheme.fillColor,
+              filled: widget.filled ??
+                  widget.decoration?.filled ??
+                  context.theme.inputDecorationTheme.filled,
+              fillColor: widget.fillColor ??
+                  widget.decoration?.fillColor ??
+                  context.theme.inputDecorationTheme.fillColor,
               hintText: widget.hintText ?? widget.decoration?.hintText,
-              hintStyle: widget.hintStyle ?? widget.decoration?.hintStyle ??  context.theme.inputDecorationTheme.hintStyle,
+              hintStyle: widget.hintStyle ??
+                  widget.decoration?.hintStyle ??
+                  context.theme.inputDecorationTheme.hintStyle,
             ),
             validator: (value) {
               final result = widget.validator?.call(value);
@@ -307,24 +314,4 @@ class _RegalTextFieldState extends State<RegalTextField> {
       if (mounted) setState(() {});
     });
   }
-}
-
-enum TextValidationState {
-  none,
-  typing,
-  invalid;
-
-  bool get isNone => this == none;
-
-  Color get labelColor =>
-      this == invalid ? RegalColors.brightOrange : RegalColors.grey.shade40;
-
-  Color get suffixColor => this == none
-      ? Colors.transparent
-      : this == invalid
-          ? RegalColors.brightOrange
-          : RegalColors.grey.shade40;
-
-  IconData get iconData =>
-      this == invalid ? Icons.error_outline : Icons.cancel_outlined;
 }
