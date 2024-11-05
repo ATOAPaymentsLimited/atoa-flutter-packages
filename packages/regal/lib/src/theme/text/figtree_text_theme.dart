@@ -66,9 +66,9 @@ final kFigTreeTextTheme = TextTheme(
   ),
   labelSmall: TextStyle(
     letterSpacing: 0,
-    fontSize: 16.sp,
+    fontSize: 13.sp,
     fontWeight: FontWeight.w400,
-    height: 1.45,
+    height: 1.5,
   ),
   bodyLarge: TextStyle(
     letterSpacing: 0,
