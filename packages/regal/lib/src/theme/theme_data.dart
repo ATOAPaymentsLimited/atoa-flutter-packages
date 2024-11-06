@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:regal/regal.dart';
+import 'package:regal/src/theme/text/figtree_x.dart';
 import 'package:regal/src/theme/theme.dart';
 
 /// The theme of the application.
@@ -109,6 +110,83 @@ final kThemeData = ThemeData.light().copyWith(
         fontWeight: FontWeight.w400,
       ),
       bodySmall: kMontserratTextTheme.bodySmall!.copyWith(
+        color: RegalColors.licoriceBlack,
+        fontSize: 11.sp,
+        fontWeight: FontWeight.w400,
+      ),
+    ),
+    FigTreeX(
+      displayLarge: kFigTreeTextTheme.displayLarge!.copyWith(
+        color: RegalColors.licoriceBlack,
+        fontSize: 48.sp,
+        fontWeight: FontWeight.bold,
+      ),
+      displayMedium: kFigTreeTextTheme.displayMedium!.copyWith(
+        color: RegalColors.licoriceBlack,
+        fontSize: 36.sp,
+        fontWeight: FontWeight.bold,
+      ),
+      displaySmall: kFigTreeTextTheme.displaySmall!.copyWith(
+        color: RegalColors.licoriceBlack,
+        fontSize: 32.sp,
+        fontWeight: FontWeight.bold,
+      ),
+      headlineLarge: kFigTreeTextTheme.headlineLarge!.copyWith(
+        color: RegalColors.licoriceBlack,
+        fontSize: 32.sp,
+        fontWeight: FontWeight.bold,
+      ),
+      headlineMedium: kFigTreeTextTheme.headlineMedium!.copyWith(
+        color: RegalColors.licoriceBlack,
+        fontSize: 28.sp,
+        fontWeight: FontWeight.bold,
+      ),
+      headlineSmall: kFigTreeTextTheme.headlineSmall!.copyWith(
+        color: RegalColors.licoriceBlack,
+        fontSize: 24.sp,
+        fontWeight: FontWeight.bold,
+      ),
+      titleLarge: kFigTreeTextTheme.titleLarge!.copyWith(
+        color: RegalColors.licoriceBlack,
+        fontSize: 24.sp,
+        fontWeight: FontWeight.w400,
+      ),
+      titleMedium: kFigTreeTextTheme.titleMedium!.copyWith(
+        color: RegalColors.licoriceBlack,
+        fontSize: 20.sp,
+        fontWeight: FontWeight.w400,
+      ),
+      titleSmall: kFigTreeTextTheme.titleSmall!.copyWith(
+        color: RegalColors.licoriceBlack,
+        fontSize: 16.sp,
+        fontWeight: FontWeight.w400,
+      ),
+      labelLarge: kFigTreeTextTheme.labelLarge!.copyWith(
+        color: RegalColors.licoriceBlack,
+        fontSize: 20.sp,
+        fontWeight: FontWeight.w400,
+      ),
+      labelMedium: kFigTreeTextTheme.labelMedium!.copyWith(
+        color: RegalColors.licoriceBlack,
+        fontSize: 18.sp,
+        fontWeight: FontWeight.w400,
+      ),
+      labelSmall: kFigTreeTextTheme.labelSmall!.copyWith(
+        color: RegalColors.licoriceBlack,
+        fontSize: 16.sp,
+        fontWeight: FontWeight.w400,
+      ),
+      bodyLarge: kFigTreeTextTheme.bodyLarge!.copyWith(
+        color: RegalColors.licoriceBlack,
+        fontSize: 14.sp,
+        fontWeight: FontWeight.w400,
+      ),
+      bodyMedium: kFigTreeTextTheme.bodyMedium!.copyWith(
+        color: RegalColors.licoriceBlack,
+        fontSize: 12.sp,
+        fontWeight: FontWeight.w400,
+      ),
+      bodySmall: kFigTreeTextTheme.bodySmall!.copyWith(
         color: RegalColors.licoriceBlack,
         fontSize: 11.sp,
         fontWeight: FontWeight.w400,
@@ -438,6 +516,83 @@ final kDarkThemeData = kThemeData.copyWith(
         fontWeight: FontWeight.w400,
       ),
       bodySmall: kMontserratTextTheme.bodySmall!.copyWith(
+        color: RegalColors.snowWhite,
+        fontSize: 11.sp,
+        fontWeight: FontWeight.w400,
+      ),
+    ),
+    FigTreeX(
+      displayLarge: kFigTreeTextTheme.displayLarge!.copyWith(
+        color: RegalColors.snowWhite,
+        fontSize: 48.sp,
+        fontWeight: FontWeight.bold,
+      ),
+      displayMedium: kFigTreeTextTheme.displayMedium!.copyWith(
+        color: RegalColors.snowWhite,
+        fontSize: 36.sp,
+        fontWeight: FontWeight.bold,
+      ),
+      displaySmall: kFigTreeTextTheme.displaySmall!.copyWith(
+        color: RegalColors.snowWhite,
+        fontSize: 32.sp,
+        fontWeight: FontWeight.bold,
+      ),
+      headlineLarge: kFigTreeTextTheme.headlineLarge!.copyWith(
+        color: RegalColors.snowWhite,
+        fontSize: 32.sp,
+        fontWeight: FontWeight.bold,
+      ),
+      headlineMedium: kFigTreeTextTheme.headlineMedium!.copyWith(
+        color: RegalColors.snowWhite,
+        fontSize: 28.sp,
+        fontWeight: FontWeight.bold,
+      ),
+      headlineSmall: kFigTreeTextTheme.headlineSmall!.copyWith(
+        color: RegalColors.snowWhite,
+        fontSize: 24.sp,
+        fontWeight: FontWeight.bold,
+      ),
+      titleLarge: kFigTreeTextTheme.titleLarge!.copyWith(
+        color: RegalColors.snowWhite,
+        fontSize: 24.sp,
+        fontWeight: FontWeight.w400,
+      ),
+      titleMedium: kFigTreeTextTheme.titleMedium!.copyWith(
+        fontSize: 20.sp,
+        color: RegalColors.snowWhite,
+        fontFamily: 'Montserrat',
+      ),
+      titleSmall: kFigTreeTextTheme.titleSmall!.copyWith(
+        color: RegalColors.snowWhite,
+        fontSize: 16.sp,
+        fontWeight: FontWeight.w400,
+      ),
+      labelLarge: kFigTreeTextTheme.labelLarge!.copyWith(
+        color: RegalColors.snowWhite,
+        fontSize: 20.sp,
+        fontWeight: FontWeight.w400,
+      ),
+      labelMedium: kFigTreeTextTheme.labelMedium!.copyWith(
+        color: RegalColors.snowWhite,
+        fontSize: 18.sp,
+        fontWeight: FontWeight.w400,
+      ),
+      labelSmall: kFigTreeTextTheme.labelSmall!.copyWith(
+        color: RegalColors.snowWhite,
+        fontSize: 16.sp,
+        fontWeight: FontWeight.w400,
+      ),
+      bodyLarge: kFigTreeTextTheme.bodyLarge!.copyWith(
+        color: RegalColors.snowWhite,
+        fontSize: 14.sp,
+        fontWeight: FontWeight.w400,
+      ),
+      bodyMedium: kFigTreeTextTheme.bodyMedium!.copyWith(
+        color: RegalColors.snowWhite,
+        fontSize: 12.sp,
+        fontWeight: FontWeight.w400,
+      ),
+      bodySmall: kFigTreeTextTheme.bodySmall!.copyWith(
         color: RegalColors.snowWhite,
         fontSize: 11.sp,
         fontWeight: FontWeight.w400,

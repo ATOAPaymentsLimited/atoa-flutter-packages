@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:regal/src/theme/text/figtree_x.dart';
 import 'package:regal/src/theme/theme.dart';
 
 /// Theme Extension
@@ -159,6 +160,8 @@ extension ThemeX on BuildContext {
   RegalColorsX get regalColor => theme.extension<RegalColorsX>()!;
 
   MontserratX get montserrat => theme.extension<MontserratX>()!;
+
+  FigTreeX get figtree => theme.extension<FigTreeX>()!;
 
   Brightness get brightness => theme.brightness;
 }
