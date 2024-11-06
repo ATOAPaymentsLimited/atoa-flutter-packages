@@ -10,6 +10,7 @@ export 'disable_widget.dart';
 export 'focus_lines_shape_animation.dart';
 export 'gradient_circular_progress_indicator.dart';
 export 'infinite_listview.dart';
+export 'ledger_checkbox.dart';
 export 'ledger_text_field.dart';
 export 'progress_timeline.dart';
 export 'regal_app_bar.dart';
