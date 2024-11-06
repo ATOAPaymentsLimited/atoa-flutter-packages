@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:regal/src/theme/ledger_colors/ledger_color_system.dart';
+import 'package:regal/src/theme/ledger_colors/ledger_colors.dart';
+import 'package:regal/src/theme/ledger_colors/semantics_colors.dart';
+import 'package:regal/src/theme/ledger_colors/shade_colors.dart';
 
 @immutable
 class LedgerColorsX extends ThemeExtension<LedgerColorsX> {
@@ -12,21 +14,21 @@ class LedgerColorsX extends ThemeExtension<LedgerColorsX> {
     required this.intact,
   });
 
-  final Color base;
-  final LedgerShadeColorSystem brand;
-  final LedgerShadeColorSystem neutral;
-  final LedgerSemanticColorSystem semantic;
-  final Color background;
-  final Color intact;
+  final BaseColors base;
+  final BrandColors brand;
+  final NeutralColors neutral;
+  final SemanticsColors semantic;
+  final BackgroundColors background;
+  final IntactColors intact;
 
   @override
   ThemeExtension<LedgerColorsX> copyWith({
-    Color? base,
-    LedgerShadeColorSystem? brand,
-    LedgerShadeColorSystem? neutral,
-    LedgerSemanticColorSystem? semantic,
-    Color? background,
-    Color? intact,
+    BaseColors? base,
+    BrandColors? brand,
+    NeutralColors? neutral,
+    SemanticsColors? semantic,
+    BackgroundColors? background,
+    IntactColors? intact,
   }) =>
       LedgerColorsX(
         base: base ?? this.base,
@@ -47,12 +49,12 @@ class LedgerColorsX extends ThemeExtension<LedgerColorsX> {
     }
 
     return LedgerColorsX(
-      base: Color.lerp(base, other.base, t)!,
-      brand: LedgerShadeColorSystem.lerp(brand, other.brand, t)!,
-      neutral: LedgerShadeColorSystem.lerp(neutral, other.neutral, t)!,
-      semantic: LedgerSemanticColorSystem.lerp(semantic, other.semantic, t)!,
-      background: Color.lerp(background, other.background, t)!,
-      intact: Color.lerp(intact, other.intact, t)!,
+      base: BaseColors.lerp(base, other.base, t)!,
+      brand: BrandColors.lerp(brand, other.brand, t)!,
+      neutral: NeutralColors.lerp(neutral, other.neutral, t)!,
+      semantic: SemanticsColors.lerp(semantic, other.semantic, t)!,
+      background: BackgroundColors.lerp(background, other.background, t)!,
+      intact: IntactColors.lerp(intact, other.intact, t)!,
     );
   }
 }
