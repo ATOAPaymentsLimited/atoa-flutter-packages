@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:regal/regal.dart';
-import 'package:regal/src/theme/regal_colors.dart';
-import 'package:regal/src/utils/spacing.dart';
-import 'package:regal/src/widgets/regal_linear_progress_indicator.dart';
 import 'package:shimmer/shimmer.dart';
 
 class RegalAppBar extends StatelessWidget implements PreferredSizeWidget {
