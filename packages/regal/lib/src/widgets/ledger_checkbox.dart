@@ -65,59 +65,81 @@ class _LedgerCheckboxState extends State<LedgerCheckbox> {
           },
           child: Row(
             mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  SizedBox(height: 4.sp),
-                  AnimatedContainer(
-                    duration: const Duration(milliseconds: 250),
-                    height: widget.size,
-                    width: widget.size,
-                    decoration: BoxDecoration(
-                      color: _checked
-                          ? (widget.activeColor ?? context.theme.primaryColor)
-                          : Colors.transparent,
-                      borderRadius: widget.circular
-                          ? BorderRadius.circular(widget.size)
-                          : BorderRadius.circular(4),
-                      border: Border.all(
-                        color: (_checked
-                                ? widget.activeColor
-                                : widget.borderColor) ??
-                            context.theme.primaryColor,
-                      ),
+              Padding(
+                padding: Spacing.tiny.y,
+                child: AnimatedContainer(
+                  duration: const Duration(milliseconds: 250),
+                  height: widget.size,
+                  width: widget.size,
+                  decoration: BoxDecoration(
+                    color: _checked
+                        ? (widget.activeColor ?? context.theme.primaryColor)
+                        : Colors.transparent,
+                    borderRadius: widget.circular
+                        ? BorderRadius.circular(widget.size)
+                        : BorderRadius.circular(4),
+                    border: Border.all(
+                      color: (_checked
+                              ? widget.activeColor
+                              : widget.borderColor) ??
+                          context.theme.primaryColor,
                     ),
-                    child: Center(
-                      child: AnimatedOpacity(
-                        duration: const Duration(milliseconds: 250),
-                        opacity: _checked ? 1.0 : 0.0,
-                        child: Icon(
-                          Icons.done,
-                          size: widget.size * 0.8,
-                          color: widget.checkColor,
-                        ),
+                  ),
+                  child: Center(
+                    child: AnimatedOpacity(
+                      duration: const Duration(milliseconds: 250),
+                      opacity: _checked ? 1.0 : 0.0,
+                      child: Icon(
+                        Icons.done,
+                        size: widget.size * 0.8,
+                        color: widget.checkColor,
                       ),
                     ),
                   ),
-                ],
+                ),
               ),
-              if (widget.label.isNotEmpty) ...[
-                Spacing.medium.yBox,
-                CustomText.semantics(
-                  widget.label,
-                  style: widget.labelStyle,
-                  overflow: TextOverflow.ellipsis,
+              Spacing.medium.xBox,
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    if (widget.label.isNotEmpty) ...[
+                      Row(
+                        children: [
+                          Expanded(
+                            child: CustomText.semantics(
+                              widget.label,
+                              style: widget.labelStyle ??
+                                  Theme.of(context).textTheme.bodyLarge,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                    if (widget.subtitle?.isNotEmpty ?? false) ...[
+                      Row(
+                        children: [
+                          Expanded(
+                            child: CustomText.semantics(
+                              widget.subtitle!,
+                              style: widget.subtitleStyle ??
+                                  Theme.of(context)
+                                      .textTheme
+                                      .bodyLarge
+                                      ?.copyWith(
+                                        color: context.grey.shade20,
+                                      ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ],
                 ),
-              ],
-              if (widget.subtitle?.isNotEmpty ?? false) ...[
-                Spacing.medium.yBox,
-                CustomText.semantics(
-                  widget.subtitle!,
-                  style: widget.subtitleStyle,
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ],
+              ),
             ],
           ),
         ),
