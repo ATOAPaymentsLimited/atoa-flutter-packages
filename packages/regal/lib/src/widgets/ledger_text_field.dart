@@ -175,10 +175,7 @@ class _LedgerTextFieldState extends State<LedgerTextField> {
               if (widget.showLabel && widget.label is String) ...[
                 CustomText.semantics(
                   widget.label!,
-                  style:
-                      context.theme.inputDecorationTheme.labelStyle?.copyWith(
-                    color: _errorListenable?.labelColor,
-                  ),
+                  style: context.theme.inputDecorationTheme.labelStyle,
                 ),
                 Spacing.smallMedium.yBox,
               ],
@@ -304,7 +301,7 @@ class _LedgerTextFieldState extends State<LedgerTextField> {
             if (value == null || value.isNone) return const SizedBox.shrink();
 
             return RegalIconButton.iconData(
-              iconData: value.iconData,
+              iconData: value.ledgerIconData,
               iconColor: value.suffixColor,
               trackLabel: 'Clear ${widget.label}',
               semanticsLabel: 'Clear ${widget.label}',

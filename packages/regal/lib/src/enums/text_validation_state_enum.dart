@@ -19,4 +19,7 @@ enum TextValidationState {
 
   IconData get iconData =>
       this == invalid ? Icons.error_outline : Icons.cancel_outlined;
+
+  IconData get ledgerIconData =>
+      this == invalid ? Icons.error_outline : Icons.cancel;
 }
