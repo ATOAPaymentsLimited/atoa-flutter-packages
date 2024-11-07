@@ -231,10 +231,6 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
               ),
               shape: WidgetStatePropertyAll(
                 RoundedRectangleBorder(
-                  side: BorderSide(
-                    color: context.baseColors.black,
-                    width: 1.sp,
-                  ),
                   borderRadius:
                       BorderRadius.circular(Spacing.smallMedium.value),
                 ),
@@ -242,10 +238,103 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
               foregroundColor: _ElevatedButtonColor(context.intactColors.white),
               backgroundColor:
                   _ElevatedButtonColor(context.brandColors.primary.shade500),
+              surfaceTintColor:
+                  WidgetStatePropertyAll(context.neutralColors.grey.shade500),
+              elevation: const WidgetStatePropertyAll(0),
             ),
             child: child,
           );
         case _LedgerButtonType.primary2:
+          return ElevatedButton(
+            onPressed: onPressed != null ? onClick(context) : null,
+            style: (style ?? Theme.of(context).elevatedButtonTheme.style)
+                ?.copyWith(
+              fixedSize: WidgetStatePropertyAll(
+                Size.fromHeight(size.value.sp),
+              ),
+              shape: WidgetStatePropertyAll(
+                RoundedRectangleBorder(
+                  borderRadius:
+                      BorderRadius.circular(Spacing.smallMedium.value),
+                ),
+              ),
+              foregroundColor: _ElevatedButtonColor(context.baseColors.white),
+              backgroundColor: _ElevatedButtonColor(context.baseColors.black),
+              surfaceTintColor:
+                  WidgetStatePropertyAll(context.neutralColors.grey.shade500),
+              elevation: const WidgetStatePropertyAll(0),
+            ),
+            child: child,
+          );
+        case _LedgerButtonType.secondary:
+          return ElevatedButton(
+            onPressed: onPressed != null ? onClick(context) : null,
+            style: (style ?? Theme.of(context).elevatedButtonTheme.style)
+                ?.copyWith(
+              fixedSize: WidgetStatePropertyAll(
+                Size.fromHeight(size.value.sp),
+              ),
+              shape: WidgetStatePropertyAll(
+                RoundedRectangleBorder(
+                  borderRadius:
+                      BorderRadius.circular(Spacing.smallMedium.value),
+                ),
+              ),
+              foregroundColor: _ElevatedButtonColor(context.baseColors.black),
+              backgroundColor:
+                  _ElevatedButtonColor(context.neutralColors.grey.shade50),
+              surfaceTintColor:
+                  WidgetStatePropertyAll(context.neutralColors.grey.shade500),
+              elevation: const WidgetStatePropertyAll(0),
+            ),
+            child: child,
+          );
+        case _LedgerButtonType.tertiary1:
+          return ElevatedButton(
+            onPressed: onPressed != null ? onClick(context) : null,
+            style: (style ?? Theme.of(context).elevatedButtonTheme.style)
+                ?.copyWith(
+              fixedSize: WidgetStatePropertyAll(
+                Size.fromHeight(size.value.sp),
+              ),
+              shape: WidgetStatePropertyAll(
+                RoundedRectangleBorder(
+                  borderRadius:
+                      BorderRadius.circular(Spacing.smallMedium.value),
+                ),
+              ),
+              foregroundColor:
+                  _ElevatedButtonColor(context.brandColors.primary.shade500),
+              backgroundColor: _ElevatedButtonColor(context.baseColors.white),
+              surfaceTintColor:
+                  WidgetStatePropertyAll(context.neutralColors.grey.shade500),
+              elevation: const WidgetStatePropertyAll(0),
+            ),
+            child: child,
+          );
+        case _LedgerButtonType.tertiary2:
+          return ElevatedButton(
+            onPressed: onPressed != null ? onClick(context) : null,
+            style: (style ?? Theme.of(context).elevatedButtonTheme.style)
+                ?.copyWith(
+              fixedSize: WidgetStatePropertyAll(
+                Size.fromHeight(size.value.sp),
+              ),
+              shape: WidgetStatePropertyAll(
+                RoundedRectangleBorder(
+                  borderRadius:
+                      BorderRadius.circular(Spacing.smallMedium.value),
+                ),
+              ),
+              foregroundColor: _ElevatedButtonColor(context.baseColors.black),
+              backgroundColor: _ElevatedButtonColor(context.baseColors.white),
+              surfaceTintColor:
+                  WidgetStatePropertyAll(context.neutralColors.grey.shade500),
+              elevation: const WidgetStatePropertyAll(0),
+            ),
+            child: child,
+          );
+        case _LedgerButtonType.ghost:
           return ElevatedButton(
             onPressed: onPressed != null ? onClick(context) : null,
             style: (style ?? Theme.of(context).elevatedButtonTheme.style)
@@ -263,99 +352,11 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
                       BorderRadius.circular(Spacing.smallMedium.value),
                 ),
               ),
-              foregroundColor: _ElevatedButtonColor(context.baseColors.white),
-              backgroundColor: _ElevatedButtonColor(context.baseColors.black),
-            ),
-            child: child,
-          );
-        case _LedgerButtonType.secondary:
-          return OutlinedButton(
-            onPressed: onPressed != null ? onClick(context) : null,
-            style: (style ?? Theme.of(context).outlinedButtonTheme.style)
-                ?.copyWith(
-              fixedSize: WidgetStatePropertyAll(
-                Size.fromHeight(size.value.sp),
-              ),
-              shape: WidgetStatePropertyAll(
-                RoundedRectangleBorder(
-                  side: BorderSide(
-                    color: context.baseColors.black,
-                    width: 1.sp,
-                  ),
-                  borderRadius:
-                      BorderRadius.circular(Spacing.smallMedium.value),
-                ),
-              ),
-              foregroundColor: _ElevatedButtonColor(context.baseColors.black),
-              backgroundColor:
-                  _ElevatedButtonColor(context.neutralColors.grey.shade50),
-            ),
-            child: child,
-          );
-        case _LedgerButtonType.tertiary1:
-          return TextButton(
-            onPressed: onPressed != null ? onClick(context) : null,
-            style: (style ?? Theme.of(context).textButtonTheme.style)?.copyWith(
-              fixedSize: WidgetStatePropertyAll(
-                Size.fromHeight(size.value.sp),
-              ),
-              shape: WidgetStatePropertyAll(
-                RoundedRectangleBorder(
-                  side: BorderSide(
-                    color: context.baseColors.black,
-                    width: 1.sp,
-                  ),
-                  borderRadius:
-                      BorderRadius.circular(Spacing.smallMedium.value),
-                ),
-              ),
-              foregroundColor:
-                  _ElevatedButtonColor(context.brandColors.primary.shade500),
-              backgroundColor: _ElevatedButtonColor(context.baseColors.white),
-            ),
-            child: child,
-          );
-        case _LedgerButtonType.tertiary2:
-          return TextButton(
-            onPressed: onPressed != null ? onClick(context) : null,
-            style: (style ?? Theme.of(context).textButtonTheme.style)?.copyWith(
-              fixedSize: WidgetStatePropertyAll(
-                Size.fromHeight(size.value.sp),
-              ),
-              shape: WidgetStatePropertyAll(
-                RoundedRectangleBorder(
-                  side: BorderSide(
-                    color: context.baseColors.black,
-                    width: 1.sp,
-                  ),
-                  borderRadius:
-                      BorderRadius.circular(Spacing.smallMedium.value),
-                ),
-              ),
               foregroundColor: _ElevatedButtonColor(context.baseColors.black),
               backgroundColor: _ElevatedButtonColor(context.baseColors.white),
-            ),
-            child: child,
-          );
-        case _LedgerButtonType.ghost:
-          return TextButton(
-            onPressed: onPressed != null ? onClick(context) : null,
-            style: (style ?? Theme.of(context).textButtonTheme.style)?.copyWith(
-              fixedSize: WidgetStatePropertyAll(
-                Size.fromHeight(size.value.sp),
-              ),
-              shape: WidgetStatePropertyAll(
-                RoundedRectangleBorder(
-                  side: BorderSide(
-                    color: context.baseColors.black,
-                    width: 1.sp,
-                  ),
-                  borderRadius:
-                      BorderRadius.circular(Spacing.smallMedium.value),
-                ),
-              ),
-              foregroundColor: _ElevatedButtonColor(context.baseColors.black),
-              backgroundColor: _ElevatedButtonColor(context.baseColors.white),
+              surfaceTintColor:
+                  WidgetStatePropertyAll(context.neutralColors.grey.shade500),
+              elevation: const WidgetStatePropertyAll(0),
             ),
             child: child,
           );
