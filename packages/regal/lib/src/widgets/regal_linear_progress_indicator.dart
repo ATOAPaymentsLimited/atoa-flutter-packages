@@ -39,7 +39,6 @@ class RegalLinearProgressIndicator extends StatelessWidget {
               color: backgroundColor ?? Colors.white,
               borderRadius: borderRadius ?? BorderRadius.circular(6.r),
               border: Border.all(
-                width: 1,
                 color: borderColor ?? context.grey.shade20,
               ),
             ),

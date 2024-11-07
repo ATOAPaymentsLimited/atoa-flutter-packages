@@ -12,25 +12,25 @@ extension TextStyleExtension on TextStyle {
   TextStyle get w300 => copyWith(
         fontWeight: FontWeight.w300,
         fontVariations: [
-          FontVariation.weight(300),
+          const FontVariation.weight(300),
         ],
       );
   TextStyle get w400 => copyWith(
         fontWeight: FontWeight.w400,
         fontVariations: [
-          FontVariation.weight(400),
+          const FontVariation.weight(400),
         ],
       );
   TextStyle get w600 => copyWith(
         fontWeight: FontWeight.w600,
         fontVariations: [
-          FontVariation.weight(600),
+          const FontVariation.weight(600),
         ],
       );
   TextStyle get w700 => copyWith(
         fontWeight: FontWeight.w700,
         fontVariations: [
-          FontVariation.weight(700),
+          const FontVariation.weight(700),
         ],
       );
 
