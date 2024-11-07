@@ -2,24 +2,26 @@ import 'dart:ui';
 
 import 'ledger_color_system.dart';
 
+export 'semantics_colors.dart';
+
 /**
  * These are the main neutral, brand and semantic colors that make up the majority of the colors used in the design system and components.
  */
 class BaseColors {
-  static get lightBase => _BaseColors();
-  static get darkBase => _BaseColors(isDark: true);
+  BaseColors.light(): base = _BaseColors();
+  BaseColors.dark(): base = _BaseColors(isDark: true);
+  final _BaseColors base;
 
-  static lerp(BaseColors base, BaseColors base2, double t) {
-    
-  }
+  static lerp(BaseColors base, BaseColors base2, double t) {}
 }
 
 /**
  * These are the background colors that will be applied in both light and dark modes.
  */
 class BackgroundColors {
-  static get lightBackground => _BackgroundColors();
-  static get darkBackground => _BackgroundColors(isDark: true);
+  BackgroundColors.light(): background = _BackgroundColors();
+  BackgroundColors.dark(): background = _BackgroundColors(isDark: true);
+  final _BackgroundColors background;
 
   static lerp(BackgroundColors background, BackgroundColors background2, double t) {}
 }
@@ -28,8 +30,9 @@ class BackgroundColors {
  * These are neutral colors that remain consistent in both dark and light mode. When used, they won't change based on the theme but will stay the same across all modes.
  */
 class IntactColors {
-  static get lightIntact => _IntactColors();
-  static get darkIntact => _IntactColors(isDark: true);
+  IntactColors.light(): intact = _IntactColors();
+  IntactColors.dark(): intact = _IntactColors(isDark: true);
+  final _IntactColors intact;
 
   static lerp(IntactColors intact, IntactColors intact2, double t) {}
 }
