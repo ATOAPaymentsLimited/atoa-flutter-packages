@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:regal/src/theme/ledger_colors/ledger_colors.dart';
-import 'package:regal/src/theme/ledger_colors/shade_colors.dart';
+import 'package:regal/src/theme/ledger_colors/shade_colors.dart' show BrandColors, NeutralColors;
 
 @immutable
 class LedgerColorsX extends ThemeExtension<LedgerColorsX> {

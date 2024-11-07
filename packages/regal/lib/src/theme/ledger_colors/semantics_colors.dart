@@ -1,43 +1,50 @@
 import 'package:flutter/material.dart';
 import 'package:regal/src/theme/ledger_colors/ledger_color_system.dart';
-import 'package:regal/src/theme/ledger_colors/ledger_colors_x.dart';
+import 'package:regal/src/theme/ledger_colors/ledger_colors.dart';
 
 extension LedgerColorX on BuildContext {
   ThemeData get _theme => Theme.of(this);
-  _ErrorColor get error => _theme.extension<LedgerColorsX>()!.semantic.error;
-  _InfoColor get info => _theme.extension<LedgerColorsX>()!.semantic.info;
-  _NegativeColor get negative => _theme.extension<LedgerColorsX>()!.semantic.negative;
-  _PositiveColor get positive => _theme.extension<LedgerColorsX>()!.semantic.positive;
-  _NoticeColor get notice => _theme.extension<LedgerColorsX>()!.semantic.notice;
+  LedgerColorsX get _ledgerColorsX => _theme.extension<LedgerColorsX>()!;
+  SemanticsColors get _semantics => _ledgerColorsX.semantic;
+  ErrorColor get error => _semantics.error;
+  InfoColor get info => _semantics.info;
+  NegativeColor get negative => _semantics.negative;
+  PositiveColor get positive => _semantics.positive;
+  NoticeColor get notice => _semantics.notice;
+  BaseColors get baseColors => _ledgerColorsX.base;
+  IntactColors get intactColors => _ledgerColorsX.intact;
+  BackgroundColors get backgroundColors => _ledgerColorsX.background;
+  NeutralColors get neutralColors => _ledgerColorsX.neutral;
+  BrandColors get brandColors => _ledgerColorsX.brand;
 }
 
 /// These are the main neutral, brand and semantic colors that make up the majority of the colors used in the design system and components.
 class SemanticsColors {
   SemanticsColors.dark()
-      : error = _ErrorColor(isDark: true),
-        notice = _NoticeColor(isDark: true),
-        negative = _NegativeColor(isDark: true),
-        positive = _PositiveColor(isDark: true),
-        info = _InfoColor(isDark: true);
+      : error = ErrorColor(isDark: true),
+        notice = NoticeColor(isDark: true),
+        negative = NegativeColor(isDark: true),
+        positive = PositiveColor(isDark: true),
+        info = InfoColor(isDark: true);
 
   SemanticsColors.light()
-      : error = _ErrorColor(),
-        notice = _NoticeColor(),
-        negative = _NegativeColor(),
-        positive = _PositiveColor(),
-        info = _InfoColor();
-  final _ErrorColor error;
-  final _NoticeColor notice;
-  final _NegativeColor negative;
-  final _PositiveColor positive;
-  final _InfoColor info;
+      : error = ErrorColor(),
+        notice = NoticeColor(),
+        negative = NegativeColor(),
+        positive = PositiveColor(),
+        info = InfoColor();
+  final ErrorColor error;
+  final NoticeColor notice;
+  final NegativeColor negative;
+  final PositiveColor positive;
+  final InfoColor info;
 
   static SemanticsColors lerp(SemanticsColors semantic, SemanticsColors semantic2, double t) => semantic;
 }
 
 /// Error colors are used across error states and in "destructive" actions. They communicate a destructive/negative action, such as removing a user from your team.
-class _ErrorColor extends LedgerSemanticColorSystem {
-  _ErrorColor({this.isDark = false});
+class ErrorColor extends LedgerSemanticColorSystem {
+  ErrorColor({this.isDark = false});
   final bool isDark;
   @override
   Color get subtle => isDark ? const Color(0xFF32170C) : const Color(0xFFFFF1EB);
@@ -56,8 +63,8 @@ class _ErrorColor extends LedgerSemanticColorSystem {
 }
 
 /// Notice colors can communicate that an action is potentially destructive or "on-hold". These colors are commonly used in confirmations to grab the users' attention.
-class _NoticeColor extends LedgerSemanticColorSystem {
-  _NoticeColor({this.isDark = false});
+class NoticeColor extends LedgerSemanticColorSystem {
+  NoticeColor({this.isDark = false});
   final bool isDark;
   @override
   Color get subtle => isDark ? const Color(0xFF2C210A) : const Color(0xFFFFF8E9);
@@ -76,8 +83,8 @@ class _NoticeColor extends LedgerSemanticColorSystem {
 }
 
 /// Negative colors can communicate that an action is potentially destructive or "on-hold". These colors are commonly used in confirmations to grab the users' attention.
-class _NegativeColor extends LedgerSemanticColorSystem {
-  _NegativeColor({this.isDark = false});
+class NegativeColor extends LedgerSemanticColorSystem {
+  NegativeColor({this.isDark = false});
   final bool isDark;
   @override
   Color get subtle => isDark ? const Color(0xFF331312) : const Color(0xFFFFF4F4);
@@ -96,8 +103,8 @@ class _NegativeColor extends LedgerSemanticColorSystem {
 }
 
 /// Positive colors communicate a positive action, positive trend, or a successful confirmation. If you're using green as your primary color, it can be helpful to introduce a different hue for your success green.
-class _PositiveColor extends LedgerSemanticColorSystem {
-  _PositiveColor({this.isDark = false});
+class PositiveColor extends LedgerSemanticColorSystem {
+  PositiveColor({this.isDark = false});
   final bool isDark;
   @override
   Color get subtle => isDark ? const Color(0xFF0D241C) : const Color(0xFFEAFAF4);
@@ -116,8 +123,8 @@ class _PositiveColor extends LedgerSemanticColorSystem {
 }
 
 /// Error colors are used across error states and in "destructive" actions. They communicate a destructive/negative action, such as removing a user from your team.
-class _InfoColor extends LedgerSemanticColorSystem {
-  _InfoColor({this.isDark = false});
+class InfoColor extends LedgerSemanticColorSystem {
+  InfoColor({this.isDark = false});
   final bool isDark;
   @override
   Color get subtle => isDark ? const Color(0xFF1C2335) : const Color(0xFFF1F6FF);

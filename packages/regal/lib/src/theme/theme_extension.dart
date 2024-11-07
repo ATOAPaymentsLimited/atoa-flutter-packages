@@ -2,8 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:regal/src/theme/ledger_colors/ledger_colors_x.dart';
-import 'package:regal/src/theme/ledger_colors/shade_colors.dart';
 import 'package:regal/src/theme/text/figtree_x.dart';
 import 'package:regal/src/theme/theme.dart';
 
@@ -164,10 +162,4 @@ extension ThemeX on BuildContext {
   FigTreeX get figtree => theme.extension<FigTreeX>()!;
 
   Brightness get brightness => theme.brightness;
-
-  BaseColors get baseColors => theme.extension<LedgerColorsX>()!.base;
-  IntactColors get intactColors => theme.extension<LedgerColorsX>()!.intact;
-  BackgroundColors get backgroundColors => theme.extension<LedgerColorsX>()!.background;
-  NeutralColors get neutralColors => theme.extension<LedgerColorsX>()!.neutral;
-  BrandColors get brandColors => theme.extension<LedgerColorsX>()!.brand;
 }
