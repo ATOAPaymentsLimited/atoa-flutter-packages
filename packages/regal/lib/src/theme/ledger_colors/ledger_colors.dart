@@ -47,10 +47,10 @@ class _BackgroundColors extends LedgerBackgroundColorSystem {
   final bool isDark;
   _BackgroundColors({this.isDark = false});
   @override
-  Color get dark => isDark ? const Color(0xFF): const Color(0xFF);
+  Color get light => isDark ? const Color(0xFF171717): const Color(0xFFFFFFFF);
   
   @override
-  Color get light => isDark ? const Color(0xFF): const Color(0xFF);
+  Color get dark => isDark ? const Color(0xFFFFFFFF): const Color(0xFF171717);
 }
 
 /// These are neutral colors that remain consistent in both dark and light mode. When used, they won't change based on the theme but will stay the same across all modes.
