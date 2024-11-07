@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:regal/src/theme/ledger_colors/ledger_colors.dart';
-import 'package:regal/src/theme/ledger_colors/shade_colors.dart' show BrandColors, NeutralColors;
 
 @immutable
 class LedgerColorsX extends ThemeExtension<LedgerColorsX> {
@@ -43,17 +42,14 @@ class LedgerColorsX extends ThemeExtension<LedgerColorsX> {
     covariant ThemeExtension<LedgerColorsX>? other,
     double t,
   ) {
-    if (other is! LedgerColorsX) {
-      return this;
-    }
-
+    if (other is! LedgerColorsX) return this;
     return LedgerColorsX(
-      base: BaseColors.lerp(base, other.base, t),
-      brand: BrandColors.lerp(brand, other.brand, t),
-      neutral: NeutralColors.lerp(neutral, other.neutral, t),
-      semantic: SemanticsColors.lerp(semantic, other.semantic, t),
-      background: BackgroundColors.lerp(background, other.background, t),
-      intact: IntactColors.lerp(intact, other.intact, t),
+      base: base.lerp(other.base, t),
+      brand: brand.lerp(other.brand, t),
+      neutral: neutral.lerp(other.neutral, t),
+      semantic: semantic.lerp(other.semantic, t),
+      background: background.lerp(other.background, t),
+      intact: intact.lerp(other.intact, t),
     );
   }
 }
