@@ -24,7 +24,7 @@ class RegalColorsX extends ThemeExtension<RegalColorsX> {
     Color? claretRed,
     Color? snowWhite,
     Color? licoriceBlack,
-    Color? neutral,
+    Color? grey,
     Color? pink,
   }) =>
       RegalColorsX(
@@ -32,7 +32,7 @@ class RegalColorsX extends ThemeExtension<RegalColorsX> {
         claretRed: claretRed ?? this.claretRed,
         snowWhite: snowWhite ?? this.snowWhite,
         licoriceBlack: licoriceBlack ?? this.licoriceBlack,
-        grey: neutral ?? this.grey,
+        grey: grey ?? this.grey,
         pink: pink ?? this.pink,
       );
 

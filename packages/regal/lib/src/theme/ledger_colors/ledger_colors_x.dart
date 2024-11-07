@@ -50,8 +50,8 @@ class LedgerColorsX extends ThemeExtension<LedgerColorsX> {
     return LedgerColorsX(
       base: BaseColors.lerp(base, other.base, t),
       brand: BrandColors.lerp(brand, other.brand, t),
-      neutral: NeutralColors.lerp(neutral, other.neutral, t)!,
-      semantic: SemanticsColors.lerp(semantic, other.semantic, t)!,
+      neutral: NeutralColors.lerp(neutral, other.neutral, t),
+      semantic: SemanticsColors.lerp(semantic, other.semantic, t),
       background: BackgroundColors.lerp(background, other.background, t),
       intact: IntactColors.lerp(intact, other.intact, t),
     );
