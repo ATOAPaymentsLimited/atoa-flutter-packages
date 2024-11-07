@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:regal/src/theme/ledger_colors/ledger_colors.dart';
-import 'package:regal/src/theme/ledger_colors/semantics_colors.dart';
 import 'package:regal/src/theme/ledger_colors/shade_colors.dart';
 
 @immutable

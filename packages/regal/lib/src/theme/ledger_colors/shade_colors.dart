@@ -6,8 +6,9 @@ import 'ledger_color_system.dart';
  * These are the main neutral, brand and semantic colors that make up the majority of the colors used in the design system and components.
  */
 class NeutralColors {
-  static get lightGrey => _Grey();
-  static get darkGrey => _Grey(isDark: true);
+  NeutralColors.light(): grey = _Grey();
+  NeutralColors.dark(): grey = _Grey(isDark: true);
+  final _Grey grey;
 
   static lerp(NeutralColors neutral, NeutralColors neutral2, double t) {}
 }
@@ -16,8 +17,9 @@ class NeutralColors {
  * These are the main brand and semantic colors that make up the majority of the colors used in the design system and components.
  */
 class BrandColors {
-  static get lightPrimary => _Primary();
-  static get darkPrimary => _Primary(isDark: true);
+  BrandColors.light(): primary = _Primary();
+  BrandColors.dark(): primary = _Primary(isDark: true);
+  final _Primary primary;
 
   static lerp(BrandColors brand, BrandColors brand2, double t) {}
 }

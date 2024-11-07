@@ -1,16 +1,39 @@
-import 'dart:ui';
+import 'package:flutter/material.dart';
+import 'package:regal/src/theme/ledger_colors/ledger_colors_x.dart';
 
 import 'ledger_color_system.dart';
+
+extension LedgerColorX on BuildContext {
+  ThemeData get _theme => Theme.of(this);
+  _ErrorColor get error => _theme.extension<LedgerColorsX>()!.semantic.error;
+  _InfoColor get info => _theme.extension<LedgerColorsX>()!.semantic.info;
+  _NegativeColor get negative => _theme.extension<LedgerColorsX>()!.semantic.negative;
+  _PositiveColor get positive => _theme.extension<LedgerColorsX>()!.semantic.positive;
+  _NoticeColor get notice => _theme.extension<LedgerColorsX>()!.semantic.notice;
+}
 
 /**
  * These are the main neutral, brand and semantic colors that make up the majority of the colors used in the design system and components.
  */
 class SemanticsColors {
-  static get error => _ErrorColor();
-  static get notice => _NoticeColor();
-  static get negative => _NegativeColor();
-  static get positive => _PositiveColor();
-  static get info => _InfoColor();
+  final _ErrorColor error;
+  final _NoticeColor notice;
+  final _NegativeColor negative;
+  final _PositiveColor positive;
+  final _InfoColor info;
+
+  SemanticsColors.light()
+      : error = _ErrorColor(),
+        notice = _NoticeColor(),
+        negative = _NegativeColor(),
+        positive = _PositiveColor(),
+        info = _InfoColor();
+  SemanticsColors.dark()
+      : error = _ErrorColor(isDark: true),
+        notice = _NoticeColor(isDark: true),
+        negative = _NegativeColor(isDark: true),
+        positive = _PositiveColor(isDark: true),
+        info = _InfoColor(isDark: true);
 
   static lerp(SemanticsColors semantic, SemanticsColors semantic2, double t) {}
 }
@@ -22,19 +45,19 @@ class _ErrorColor extends LedgerSemanticColorSystem {
   final bool isDark;
   _ErrorColor({this.isDark = false});
   @override
-  Color get subtle => isDark ? Color(0xFF32170C): Color(0xFFFFF1EB);
+  Color get subtle => isDark ? Color(0xFF32170C) : Color(0xFFFFF1EB);
 
   @override
-  Color get lighter => isDark ? Color(0xFF47291D): Color(0xFFF8D3C5);
+  Color get lighter => isDark ? Color(0xFF47291D) : Color(0xFFF8D3C5);
 
   @override
-  Color get defaultColor => isDark ? Color(0xFFD46940): Color(0xFFE97244);
+  Color get defaultColor => isDark ? Color(0xFFD46940) : Color(0xFFE97244);
 
   @override
-  Color get darker => isDark ? Color(0xFFF6B39A): Color(0xFFBC5A34);
+  Color get darker => isDark ? Color(0xFFF6B39A) : Color(0xFFBC5A34);
 
   @override
-  Color get deep => isDark ? Color(0xFFF5CFC0): Color(0xFF62301D);
+  Color get deep => isDark ? Color(0xFFF5CFC0) : Color(0xFF62301D);
 }
 
 /**
@@ -45,10 +68,10 @@ class _NoticeColor extends LedgerSemanticColorSystem {
   _NoticeColor({this.isDark = false});
   @override
   Color get subtle => isDark ? Color(0xFF2C210A) : Color(0xFFFFF8E9);
-  
+
   @override
   Color get lighter => isDark ? Color(0xFF4A3B1D) : Color(0xFFF4E9D0);
-  
+
   @override
   Color get defaultColor => isDark ? Color(0xFFD29F3C) : Color(0xFFE6AE40);
 
@@ -73,7 +96,7 @@ class _NegativeColor extends LedgerSemanticColorSystem {
 
   @override
   Color get defaultColor => isDark ? Color(0xFFD84646) : Color(0xFFED4A4A);
-  
+
   @override
   Color get darker => isDark ? Color(0xFFF8A5A5) : Color(0xFFCC100F);
 
@@ -95,7 +118,7 @@ class _PositiveColor extends LedgerSemanticColorSystem {
 
   @override
   Color get defaultColor => isDark ? Color(0xFF3B9F7E) : Color(0xFF43BF95);
-  
+
   @override
   Color get darker => isDark ? Color(0xFF78C9AC) : Color(0xFF2A7E62);
 
@@ -117,7 +140,7 @@ class _InfoColor extends LedgerSemanticColorSystem {
 
   @override
   Color get defaultColor => isDark ? Color(0xFF436BCE) : Color(0xFF4673E6);
-  
+
   @override
   Color get darker => isDark ? Color(0xFF97AEEB) : Color(0xFF2B53B6);
 
