@@ -2,7 +2,9 @@ import 'dart:ui';
 
 import 'package:regal/src/theme/ledger_colors/ledger_color_system.dart';
 
+export 'ledger_colors_x.dart';
 export 'semantics_colors.dart';
+export 'shade_colors.dart';
 
 /// These are the main neutral, brand and semantic colors that make up the majority of the colors used in the design system and components.
 /// Base is a neutral color and is the foundation of the color system. Almost everything in UI design — text, form fields, backgrounds, dividers — are usually grey.

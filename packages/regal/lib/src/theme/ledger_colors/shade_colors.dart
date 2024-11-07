@@ -4,26 +4,26 @@ import 'package:regal/src/theme/ledger_colors/ledger_color_system.dart';
 
 /// These are the main neutral, brand and semantic colors that make up the majority of the colors used in the design system and components.
 class NeutralColors {
-  NeutralColors.light(): grey = _Grey();
-  NeutralColors.dark(): grey = _Grey(isDark: true);
-  final _Grey grey;
+  NeutralColors.light(): grey = Grey();
+  NeutralColors.dark(): grey = Grey(isDark: true);
+  final Grey grey;
 
   static NeutralColors lerp(NeutralColors neutral, NeutralColors neutral2, double t) => neutral;
 }
 
 /// These are the main brand and semantic colors that make up the majority of the colors used in the design system and components.
 class BrandColors {
-  BrandColors.light(): primary = _Primary();
-  BrandColors.dark(): primary = _Primary(isDark: true);
-  final _Primary primary;
+  BrandColors.light(): primary = Primary();
+  BrandColors.dark(): primary = Primary(isDark: true);
+  final Primary primary;
 
   static BrandColors lerp(BrandColors brand, BrandColors brand2, double t) => brand;
 }
 
 /// The brand color is your "primary" color, and is used across all interactive elements such as buttons, links, inputs, etc. This color can define the overall feel and can elicit emotion.
-class _Primary extends LedgerShadeColorSystem {
+class Primary extends LedgerShadeColorSystem {
+  Primary({this.isDark = false});
   final bool isDark;
-  _Primary({this.isDark = false});
   @override
   Color get shade10 => isDark ? const Color(0xFF2D060E) : const Color(0xFFFFF6F8);
 
@@ -65,9 +65,9 @@ class _Primary extends LedgerShadeColorSystem {
 /// 
 /// Grey 10 → Hover state on white cards
 /// Grey 50 → Default card background
-class _Grey extends LedgerShadeColorSystem {
+class Grey extends LedgerShadeColorSystem {
+  Grey({this.isDark = false});
   final bool isDark;
-  _Grey({this.isDark = false});
   @override
   Color get shade10 => isDark ? const Color(0xFF1D1D1D) : const Color(0xFFFBFCFC);
 
