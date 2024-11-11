@@ -4,7 +4,12 @@
 
 - Add Ledger bottom sheet
 - Add Extension for figtree font
-- Add Ledger color scheme
+- Add Ledger Color Scheme
+- Add progress bar & loading indicator in Regal App Bar
+- Add Ledger Button Widgets
+- Add Ledger 
+- Add Figtree in Typography Screen
+- Add Ledger Color Scheme Screen
 
 # 3.5.1
 
