@@ -1,9 +1,10 @@
-# 3.5.2
+# 3.6.0
 
 ## 💅 Polish:
 
 - Add Ledger bottom sheet
-- Added Extension for figtree font
+- Add Extension for figtree font
+- Add Ledger color scheme
 
 # 3.5.1
 
