@@ -2,14 +2,24 @@
 
 ## 💅 Polish:
 
-- Add Ledger bottom sheet
-- Add Extension for figtree font
-- Add Ledger Color Scheme
 - Add progress bar & loading indicator in Regal App Bar
-- Add Ledger Button Widgets
-- Add Ledger 
-- Add Figtree in Typography Screen
-- Add Ledger Color Scheme Screen
+- Ledger Changes
+    - Add Bottom sheet
+    - Add Color Scheme (Light and Dark theme included)
+    - Add Button Widgets, Text Fields
+    - Add Extension for figtree font
+    - Example App
+        - Add Figtree in Typography Screen
+        - Add Ledger Color Scheme Screen
+
+## 🧺 Chore:
+
+- Move `TextValidationState` into enum folder with addition of regal icon data
+- Move existing colors into folder `colors` to separate `ledger_colors` from regal color scheme
+
+## 🐛 Bugfix:
+
+- Fix use of variable font file in `kFigTreeTextTheme` from v3.5.1
 
 # 3.5.1
 
