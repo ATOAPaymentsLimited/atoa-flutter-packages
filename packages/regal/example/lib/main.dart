@@ -1,4 +1,5 @@
 import 'package:bot_toast/bot_toast.dart';
+import 'package:example/screens/ledger_colors_screen.dart';
 import 'package:example/screens/snackbar_screen.dart';
 import 'package:example/widgets/regal_buttons.dart';
 import 'package:flutter/cupertino.dart';
@@ -14,7 +15,7 @@ import 'screens/typography_screen.dart';
 late final SharedPreferences prefs;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
+  Regal.enableTracking = false;
   prefs = await SharedPreferences.getInstance();
   runApp(const MyApp());
 }
@@ -106,6 +107,16 @@ class _MyHomePageState extends State<MyHomePage> {
                   },
                 ),
               ),
+              RegalButton.primary(
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const LedgerColorsScreen(),
+                  ));
+                },
+                label: ('Ledger Colors'),
+                trackLabel: 'Go to Ledger Colors',
+              ),
+              Spacing.medium.yBox,
               RegalButton.primary(
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(
