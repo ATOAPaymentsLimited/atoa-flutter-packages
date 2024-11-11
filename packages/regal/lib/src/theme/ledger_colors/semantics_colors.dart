@@ -21,7 +21,12 @@ extension LedgerColorX on BuildContext {
 /// These are the main neutral, brand and semantic colors that make up the majority of the colors used in the design system and components.
 class SemanticsColors {
   SemanticsColors._(
-      this.error, this.notice, this.negative, this.positive, this.info);
+    this.error,
+    this.notice,
+    this.negative,
+    this.positive,
+    this.info,
+  );
   SemanticsColors.light()
       : error = ErrorColor.light(),
         notice = NoticeColor.light(),
