@@ -3,10 +3,14 @@
 ## 💅 Polish:
 
 - Add progress bar & loading indicator in Regal App Bar
+- Add arguments `iconColor`, `borderRadius`, `labelStyle` & `spacing` for `RegalChip`
+- Add `RegalLinearProgressIndicator`
+- Add `titleTextStyle` in regal snackbar
+- Add Spacing of `smallMedium` with value of 10
 - Ledger Changes
     - Add Bottom sheet
     - Add Color Scheme (Light and Dark theme included)
-    - Add Button Widgets, Text Fields
+    - Add Button Widgets, Text Fields, Checkbox
     - Add Extension for figtree font
     - Example App
         - Add Figtree in Typography Screen
