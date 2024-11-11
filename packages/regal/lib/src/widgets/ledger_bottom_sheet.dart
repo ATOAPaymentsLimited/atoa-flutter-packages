@@ -3,7 +3,11 @@ import 'package:regal/regal.dart';
 
 Future<T?> showLedgerBottomSheet<T>({
   required BuildContext context,
+  required String title,
   required WidgetBuilder body,
+  void Function(BuildContext)? onClose,
+  TextStyle? titleStyle,
+  TextAlign? titleAlign,
   BoxConstraints? constraints,
   Color? barrierColor,
   bool useRootNavigator = false,
@@ -12,29 +16,83 @@ Future<T?> showLedgerBottomSheet<T>({
   Color? backgroundColor,
   Clip? clipBehavior,
   double? elevation,
+  double? titleBottomSpacing,
   bool enableDrag = true,
   bool isDismissable = true,
+  bool showCloseButton = true,
   ShapeBorder? shape,
-  OperatorSizedBox? topPadding,
   AnimationController? transitionAnimationController,
+  Alignment confettiAlignment = Alignment.center,
 }) =>
     showModalBottomSheet<T>(
       context: context,
       builder: (dialogContext) => Padding(
-        padding:
-            Spacing.xtraLarge.x + Spacing.large.top + Spacing.xtraLarge.bottom,
+        padding: Spacing.large.y + Spacing.xtraLarge.x,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             Container(
               height: Spacing.mini.value,
-              width: Spacing.huge.value * 2,
+              width: Spacing.huge.value * 2 + Spacing.tiny.value,
               decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(Spacing.mini.value),
                 color: context.grey.shade10,
-                borderRadius: BorderRadius.circular(Spacing.xtraLarge.value),
               ),
             ),
-            topPadding ?? Spacing.huge.yBox,
+            Spacing.huge.yBox,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(
+                  child: CustomText.semantics(
+                    title,
+                    textAlign: TextAlign.left,
+                    style: titleStyle ??
+                        dialogContext.labelLarge
+                            ?.copyWith(fontWeight: FontWeight.w700),
+                  ),
+                ),
+                Spacing.large.xBox,
+                if (showCloseButton)
+                  Padding(
+                    padding: Spacing.mini.top,
+                    child: CustomInkWell(
+                      semanticsLabel: 'Close Dialog Sheet Icon',
+                      context: dialogContext,
+                      trackLabel: 'Close Dialog Sheet Icon',
+                      onTap: onClose != null
+                          ? () => onClose.call(dialogContext)
+                          : () {
+                              Navigator.pop(dialogContext);
+                            },
+                      child: Container(
+                        width: Spacing.huge.value,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: RegalColors.grey.shade40,
+                        ),
+                        child: Center(
+                          child: Padding(
+                            padding: Spacing.mini.all,
+                            child: Icon(
+                              Icons.close,
+                              size: Spacing.medium.value,
+                              color: RegalColors.snowWhite,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+              ],
+            ),
+            if (titleBottomSpacing != null)
+              OperatorSizedBox.height(
+                titleBottomSpacing,
+              )
+            else
+              Spacing.huge.yBox,
             Builder(
               builder: body,
             ),
