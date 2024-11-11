@@ -99,7 +99,7 @@ final kFigTreeTextTheme = TextTheme(
   ),
   labelSmall: TextStyle(
     letterSpacing: 0,
-    fontSize: 16.sp,
+    fontSize: 13.sp,
     fontWeight: FontWeight.w400,
     fontVariations: const [
       FontVariation.weight(400),

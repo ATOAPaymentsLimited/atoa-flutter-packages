@@ -3,8 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:regal/regal.dart';
 import 'package:regal/src/enums/text_validation_state_enum.dart';
 
-class RegalTextField extends StatefulWidget {
-  const RegalTextField({
+class LedgerTextField extends StatefulWidget {
+  const LedgerTextField({
     super.key,
     this.margin,
     this.suffix,
@@ -141,10 +141,10 @@ class RegalTextField extends StatefulWidget {
   final TextMagnifierConfiguration? magnifierConfiguration;
 
   @override
-  State<RegalTextField> createState() => _RegalTextFieldState();
+  State<LedgerTextField> createState() => _LedgerTextFieldState();
 }
 
-class _RegalTextFieldState extends State<RegalTextField> {
+class _LedgerTextFieldState extends State<LedgerTextField> {
   late final TextEditingController _textEditingController;
   TextValidationState? _errorListenable;
 
@@ -169,117 +169,126 @@ class _RegalTextFieldState extends State<RegalTextField> {
         label: '${widget.label} TextFormField',
         child: Container(
           margin: widget.margin ?? Spacing.large.y,
-          child: TextFormField(
-            restorationId: widget.restorationId,
-            contextMenuBuilder: widget.contextMenuBuilder ??
-                (context, editableTextState) =>
-                    AdaptiveTextSelectionToolbar.buttonItems(
-                      anchors: editableTextState.contextMenuAnchors,
-                      buttonItems: editableTextState.contextMenuButtonItems,
-                    ),
-            controller:
-                widget.initialValue == null ? _textEditingController : null,
-            focusNode: widget.focusNode,
-            decoration: (widget.decoration ?? const InputDecoration()).copyWith(
-              label: widget.showLabel && widget.label is String
-                  ? CustomText.semantics(widget.label!)
-                  : null,
-              floatingLabelStyle:
-                  context.theme.inputDecorationTheme.labelStyle?.copyWith(
-                color: _errorListenable?.labelColor,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              if (widget.showLabel && widget.label is String) ...[
+                CustomText.semantics(
+                  widget.label!,
+                  style: context.theme.inputDecorationTheme.labelStyle,
+                ),
+                Spacing.smallMedium.yBox,
+              ],
+              TextFormField(
+                restorationId: widget.restorationId,
+                contextMenuBuilder: widget.contextMenuBuilder ??
+                    (context, editableTextState) =>
+                        AdaptiveTextSelectionToolbar.buttonItems(
+                          anchors: editableTextState.contextMenuAnchors,
+                          buttonItems: editableTextState.contextMenuButtonItems,
+                        ),
+                controller:
+                    widget.initialValue == null ? _textEditingController : null,
+                focusNode: widget.focusNode,
+                decoration:
+                    (widget.decoration ?? const InputDecoration()).copyWith(
+                  suffixIcon: widget.suffix ?? _buildSuffixIcon,
+                  filled: widget.filled ??
+                      widget.decoration?.filled ??
+                      context.theme.inputDecorationTheme.filled,
+                  fillColor: widget.fillColor ??
+                      widget.decoration?.fillColor ??
+                      context.theme.inputDecorationTheme.fillColor,
+                  hintText: widget.hintText ?? widget.decoration?.hintText,
+                  hintStyle: widget.hintStyle ??
+                      widget.decoration?.hintStyle ??
+                      context.theme.inputDecorationTheme.hintStyle,
+                ),
+                validator: (value) {
+                  final result = widget.validator?.call(value);
+
+                  if (result is String) {
+                    _updateLabelColor(TextValidationState.invalid);
+                  } else {
+                    _updateLabelColor(
+                      _textEditingController.text.isNotEmpty
+                          ? TextValidationState.typing
+                          : TextValidationState.none,
+                    );
+                  }
+
+                  return result;
+                },
+                autovalidateMode: widget.autovalidateMode,
+                initialValue: widget.initialValue,
+                onSaved: widget.onSaved,
+                keyboardType: widget.keyboardType,
+                textInputAction: widget.textInputAction,
+                style: widget.style ?? context.titleSmall?.w600,
+                strutStyle: widget.strutStyle,
+                textAlign: widget.textAlign,
+                textAlignVertical: widget.textAlignVertical,
+                textDirection: widget.textDirection,
+                textCapitalization: widget.textCapitalization,
+                autofocus: widget.autofocus,
+                readOnly: widget.readOnly,
+                showCursor: widget.showCursor,
+                obscuringCharacter: widget.obscuringCharacter,
+                obscureText: widget.obscureText,
+                autocorrect: widget.autocorrect,
+                smartDashesType: widget.smartDashesType ??
+                    (widget.obscureText
+                        ? SmartDashesType.disabled
+                        : SmartDashesType.enabled),
+                smartQuotesType: widget.smartQuotesType ??
+                    (widget.obscureText
+                        ? SmartQuotesType.disabled
+                        : SmartQuotesType.enabled),
+                enableSuggestions: widget.enableSuggestions,
+                maxLengthEnforcement: widget.maxLengthEnforcement,
+                maxLines: widget.maxLines,
+                minLines: widget.minLines,
+                expands: widget.expands,
+                maxLength: widget.maxLength,
+                onChanged: (String value) {
+                  widget.onChanged?.call(value);
+
+                  if (widget.autovalidateMode == AutovalidateMode.disabled) {
+                    return;
+                  }
+
+                  if (value.isNotEmpty) {
+                    _updateLabelColor(TextValidationState.typing);
+                  } else if (value.isEmpty) {
+                    _updateLabelColor(TextValidationState.none);
+                  }
+                },
+                onTap: widget.onTap,
+                onTapOutside: widget.onTapOutside,
+                onEditingComplete: widget.onEditingComplete,
+                onFieldSubmitted: widget.onFieldSubmitted,
+                inputFormatters: widget.inputFormatters,
+                enabled: widget.enabled,
+                cursorWidth: widget.cursorWidth,
+                cursorHeight: widget.cursorHeight,
+                cursorRadius: widget.cursorRadius,
+                cursorColor: context.regalColor.licoriceBlack,
+                scrollPadding: widget.scrollPadding,
+                scrollPhysics: widget.scrollPhysics,
+                keyboardAppearance: widget.keyboardAppearance,
+                enableInteractiveSelection: widget.enableInteractiveSelection ??
+                    (!widget.obscureText || !widget.readOnly),
+                selectionControls: widget.selectionControls,
+                buildCounter: widget.buildCounter,
+                autofillHints: widget.autofillHints,
+                scrollController: widget.scrollController,
+                enableIMEPersonalizedLearning:
+                    widget.enableIMEPersonalizedLearning,
+                mouseCursor: widget.mouseCursor,
+                spellCheckConfiguration: widget.spellCheckConfiguration,
+                magnifierConfiguration: widget.magnifierConfiguration,
               ),
-              suffixIcon: widget.suffix ?? _buildSuffixIcon,
-              filled: widget.filled ??
-                  widget.decoration?.filled ??
-                  context.theme.inputDecorationTheme.filled,
-              fillColor: widget.fillColor ??
-                  widget.decoration?.fillColor ??
-                  context.theme.inputDecorationTheme.fillColor,
-              hintText: widget.hintText ?? widget.decoration?.hintText,
-              hintStyle: widget.hintStyle ??
-                  widget.decoration?.hintStyle ??
-                  context.theme.inputDecorationTheme.hintStyle,
-            ),
-            validator: (value) {
-              final result = widget.validator?.call(value);
-
-              if (result is String) {
-                _updateLabelColor(TextValidationState.invalid);
-              } else {
-                _updateLabelColor(
-                  _textEditingController.text.isNotEmpty
-                      ? TextValidationState.typing
-                      : TextValidationState.none,
-                );
-              }
-
-              return result;
-            },
-            autovalidateMode: widget.autovalidateMode,
-            initialValue: widget.initialValue,
-            onSaved: widget.onSaved,
-            keyboardType: widget.keyboardType,
-            textInputAction: widget.textInputAction,
-            style: widget.style ?? context.titleSmall?.w600,
-            strutStyle: widget.strutStyle,
-            textAlign: widget.textAlign,
-            textAlignVertical: widget.textAlignVertical,
-            textDirection: widget.textDirection,
-            textCapitalization: widget.textCapitalization,
-            autofocus: widget.autofocus,
-            readOnly: widget.readOnly,
-            showCursor: widget.showCursor,
-            obscuringCharacter: widget.obscuringCharacter,
-            obscureText: widget.obscureText,
-            autocorrect: widget.autocorrect,
-            smartDashesType: widget.smartDashesType ??
-                (widget.obscureText
-                    ? SmartDashesType.disabled
-                    : SmartDashesType.enabled),
-            smartQuotesType: widget.smartQuotesType ??
-                (widget.obscureText
-                    ? SmartQuotesType.disabled
-                    : SmartQuotesType.enabled),
-            enableSuggestions: widget.enableSuggestions,
-            maxLengthEnforcement: widget.maxLengthEnforcement,
-            maxLines: widget.maxLines,
-            minLines: widget.minLines,
-            expands: widget.expands,
-            maxLength: widget.maxLength,
-            onChanged: (String value) {
-              widget.onChanged?.call(value);
-
-              if (widget.autovalidateMode == AutovalidateMode.disabled) return;
-
-              if (value.isNotEmpty) {
-                _updateLabelColor(TextValidationState.typing);
-              } else if (value.isEmpty) {
-                _updateLabelColor(TextValidationState.none);
-              }
-            },
-            onTap: widget.onTap,
-            onTapOutside: widget.onTapOutside,
-            onEditingComplete: widget.onEditingComplete,
-            onFieldSubmitted: widget.onFieldSubmitted,
-            inputFormatters: widget.inputFormatters,
-            enabled: widget.enabled,
-            cursorWidth: widget.cursorWidth,
-            cursorHeight: widget.cursorHeight,
-            cursorRadius: widget.cursorRadius,
-            cursorColor: context.regalColor.licoriceBlack,
-            scrollPadding: widget.scrollPadding,
-            scrollPhysics: widget.scrollPhysics,
-            keyboardAppearance: widget.keyboardAppearance,
-            enableInteractiveSelection: widget.enableInteractiveSelection ??
-                (!widget.obscureText || !widget.readOnly),
-            selectionControls: widget.selectionControls,
-            buildCounter: widget.buildCounter,
-            autofillHints: widget.autofillHints,
-            scrollController: widget.scrollController,
-            enableIMEPersonalizedLearning: widget.enableIMEPersonalizedLearning,
-            mouseCursor: widget.mouseCursor,
-            spellCheckConfiguration: widget.spellCheckConfiguration,
-            magnifierConfiguration: widget.magnifierConfiguration,
+            ],
           ),
         ),
       );
@@ -292,7 +301,7 @@ class _RegalTextFieldState extends State<RegalTextField> {
             if (value == null || value.isNone) return const SizedBox.shrink();
 
             return RegalIconButton.iconData(
-              iconData: value.iconData,
+              iconData: value.ledgerIconData,
               iconColor: value.suffixColor,
               trackLabel: 'Clear ${widget.label}',
               semanticsLabel: 'Clear ${widget.label}',

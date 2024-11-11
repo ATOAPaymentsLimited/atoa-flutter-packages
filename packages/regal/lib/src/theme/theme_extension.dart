@@ -7,8 +7,6 @@ import 'package:regal/src/theme/theme.dart';
 
 /// Theme Extension
 extension ThemeX on BuildContext {
-  //  THEMES
-
   /// performs a simple [Theme.of(context)] action and returns given [ThemeData]
   ThemeData get theme => Theme.of(this);
 
