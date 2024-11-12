@@ -6,6 +6,7 @@ extension SnackbarExtension on BuildContext {
   void showSnackbar(
     SnackbarType snackbar, {
     Widget? leading,
+    TextStyle? titleTextStyle,
     bool infiniteDuration = false,
   }) {
     BotToast.showAnimationWidget(
@@ -20,6 +21,7 @@ extension SnackbarExtension on BuildContext {
       toastBuilder: (cancelFunc) => Snackbar(
         snackbar,
         leading: leading,
+        titleTextStyle: titleTextStyle,
         onClose: cancelFunc,
       ),
     );

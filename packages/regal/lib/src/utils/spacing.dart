@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 const double ktiny = 2;
 const double kMini = 4;
 const double ksmall = 8;
+const double kSmallMedium = 10;
 const double kmedium = 12;
 const double klarge = 16;
 const double kMediumLarge = 18;
@@ -20,12 +21,15 @@ enum Spacing {
   /// 8
   small,
 
+  /// 10
+  smallMedium,
+
   /// 12
   medium,
 
   /// 16
   large,
-  
+
   /// 18
   mediumlarge,
 
@@ -49,6 +53,8 @@ extension SpacingX on Spacing {
         return kMini;
       case Spacing.small:
         return ksmall;
+      case Spacing.smallMedium:
+        return kSmallMedium;
       case Spacing.medium:
         return kmedium;
       case Spacing.large:
