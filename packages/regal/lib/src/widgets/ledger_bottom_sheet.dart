@@ -23,6 +23,7 @@ Future<T?> showLedgerBottomSheet<T>({
   ShapeBorder? shape,
   AnimationController? transitionAnimationController,
   Alignment confettiAlignment = Alignment.center,
+  bool showTitle = true,
 }) =>
     showModalBottomSheet<T>(
       context: context,
@@ -40,53 +41,55 @@ Future<T?> showLedgerBottomSheet<T>({
               ),
             ),
             Spacing.huge.yBox,
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Expanded(
-                  child: CustomText.semantics(
-                    title,
-                    textAlign: TextAlign.left,
-                    style: titleStyle ??
-                        dialogContext.labelLarge
-                            ?.copyWith(fontWeight: FontWeight.w700),
+            if (showTitle) ...[
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: CustomText.semantics(
+                      title,
+                      textAlign: TextAlign.left,
+                      style: titleStyle ??
+                          dialogContext.labelLarge
+                              ?.copyWith(fontWeight: FontWeight.w700),
+                    ),
                   ),
-                ),
-                Spacing.large.xBox,
-                if (showCloseButton)
-                  Padding(
-                    padding: Spacing.mini.top,
-                    child: CustomInkWell(
-                      semanticsLabel: 'Close Dialog Sheet Icon',
-                      context: dialogContext,
-                      trackLabel: 'Close Dialog Sheet Icon',
-                      onTap: onClose != null
-                          ? () => onClose.call(dialogContext)
-                          : () {
-                              Navigator.pop(dialogContext);
-                            },
-                      child: Container(
-                        width: Spacing.huge.value,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: RegalColors.grey.shade40,
-                        ),
-                        child: Center(
-                          child: Padding(
-                            padding: Spacing.mini.all,
-                            child: Icon(
-                              Icons.close,
-                              size: Spacing.medium.value,
-                              color: RegalColors.snowWhite,
+                  Spacing.large.xBox,
+                  if (showCloseButton)
+                    Padding(
+                      padding: Spacing.mini.top,
+                      child: CustomInkWell(
+                        semanticsLabel: 'Close Dialog Sheet Icon',
+                        context: dialogContext,
+                        trackLabel: 'Close Dialog Sheet Icon',
+                        onTap: onClose != null
+                            ? () => onClose.call(dialogContext)
+                            : () {
+                                Navigator.pop(dialogContext);
+                              },
+                        child: Container(
+                          width: Spacing.huge.value,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: RegalColors.grey.shade40,
+                          ),
+                          child: Center(
+                            child: Padding(
+                              padding: Spacing.mini.all,
+                              child: Icon(
+                                Icons.close,
+                                size: Spacing.medium.value,
+                                color: RegalColors.snowWhite,
+                              ),
                             ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-              ],
-            ),
+                ],
+              ),
+            ],
             if (titleBottomSpacing != null)
               OperatorSizedBox.height(
                 titleBottomSpacing,
