@@ -1,3 +1,11 @@
+# 3.6.1
+
+## 💅 Polish:
+
+- Ledger Changes
+    - Add checkbox and date picker button
+    - Add `showTitle` flag to ledger bottom sheet
+
 # 3.6.0
 
 ## 💅 Polish:
