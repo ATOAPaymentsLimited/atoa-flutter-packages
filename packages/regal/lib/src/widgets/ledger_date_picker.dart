@@ -272,8 +272,6 @@ class _LedgerDatePickerButtonState extends State<LedgerDatePickerButton> {
                     ),
                   ),
                 ),
-          fillColor: context.baseColors.white,
-          filled: true,
         ),
         textAlign: TextAlign.left,
       );
