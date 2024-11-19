@@ -51,8 +51,8 @@ Future<T?> showLedgerBottomSheet<T>({
                       title,
                       textAlign: TextAlign.left,
                       style: titleStyle ??
-                          dialogContext.labelLarge
-                              ?.copyWith(fontWeight: FontWeight.w700),
+                          dialogContext.labelMedium?.w700.height130
+                              .textColor(context.baseColors.black),
                     ),
                   ),
                   Spacing.large.xBox,
