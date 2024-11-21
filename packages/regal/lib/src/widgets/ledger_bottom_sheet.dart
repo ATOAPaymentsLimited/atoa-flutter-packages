@@ -113,5 +113,6 @@ Future<T?> showLedgerBottomSheet<T>({
       enableDrag: enableDrag,
       isDismissible: isDismissable,
       shape: shape,
+      useSafeArea: true,
       transitionAnimationController: transitionAnimationController,
     );
