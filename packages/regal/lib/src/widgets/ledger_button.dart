@@ -191,7 +191,7 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
       mainAxisSize: shrink ? MainAxisSize.min : MainAxisSize.max,
       mainAxisAlignment: mainAxisAlignment,
       children: [
-        if (shrink) Spacing.medium.xBox,
+        if (shrink) Spacing.huge.xBox,
         if (loading)
           GradientCircularProgressIndicator(
             radius: 18.sp,
@@ -214,7 +214,7 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
                 ),
           if (suffixIcon != null && label != null) Spacing.small.xBox,
           if (suffixIcon != null) suffixIcon!,
-          if (shrink) Spacing.medium.xBox,
+          if (shrink) Spacing.huge.xBox,
         ],
       ],
     );
