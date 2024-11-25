@@ -150,9 +150,20 @@ class _LedgerTextFieldState extends State<LedgerTextField> {
 
   @override
   void initState() {
-    _textEditingController = widget.controller ?? TextEditingController();
+    _textEditingController = widget.controller ??
+        TextEditingController(
+          text: widget.initialValue ?? '',
+        );
     _errorListenable = null;
     super.initState();
+  }
+
+  @override
+  void didUpdateWidget(covariant LedgerTextField oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.initialValue != widget.initialValue) {
+      _textEditingController.text = widget.initialValue ?? '';
+    }
   }
 
   @override
@@ -187,8 +198,7 @@ class _LedgerTextFieldState extends State<LedgerTextField> {
                           anchors: editableTextState.contextMenuAnchors,
                           buttonItems: editableTextState.contextMenuButtonItems,
                         ),
-                controller:
-                    widget.initialValue == null ? _textEditingController : null,
+                controller: _textEditingController,
                 focusNode: widget.focusNode,
                 decoration:
                     (widget.decoration ?? const InputDecoration()).copyWith(
@@ -210,17 +220,24 @@ class _LedgerTextFieldState extends State<LedgerTextField> {
                   if (result is String) {
                     _updateLabelColor(TextValidationState.invalid);
                   } else {
-                    _updateLabelColor(
-                      _textEditingController.text.isNotEmpty
-                          ? TextValidationState.typing
-                          : TextValidationState.none,
-                    );
+                    if (widget.initialValue != null) {
+                      _updateLabelColor(
+                        widget.initialValue?.isNotEmpty ?? false
+                            ? TextValidationState.typing
+                            : TextValidationState.none,
+                      );
+                    } else {
+                      _updateLabelColor(
+                        _textEditingController.text.isNotEmpty
+                            ? TextValidationState.typing
+                            : TextValidationState.none,
+                      );
+                    }
                   }
 
                   return result;
                 },
                 autovalidateMode: widget.autovalidateMode,
-                initialValue: widget.initialValue,
                 onSaved: widget.onSaved,
                 keyboardType: widget.keyboardType,
                 textInputAction: widget.textInputAction,

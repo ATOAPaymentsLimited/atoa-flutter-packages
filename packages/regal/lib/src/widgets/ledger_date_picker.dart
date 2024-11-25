@@ -20,6 +20,8 @@ class LedgerCustomDatePicker extends StatefulWidget {
     this.readOnly = false,
     this.showIcon = true,
     required this.label,
+    this.validator,
+    this.autovalidateMode,
   });
   final DateTime? selectedDate;
   final DateTime? minDate;
@@ -32,6 +34,8 @@ class LedgerCustomDatePicker extends StatefulWidget {
   final String dateDisplayFormat;
   final bool readOnly;
   final String label;
+  final String? Function(String?)? validator;
+  final AutovalidateMode? autovalidateMode;
 
   @override
   State<LedgerCustomDatePicker> createState() => _LedgerCustomDatePickerState();
@@ -62,6 +66,8 @@ class _LedgerCustomDatePickerState extends State<LedgerCustomDatePicker> {
         hintText: widget.placeholderText,
         showIcon: widget.showIcon,
         onTap: widget.readOnly ? null : _showDatePicker,
+        validator: widget.validator,
+        autovalidateMode: widget.autovalidateMode,
       );
 
   Future<void> _showDatePicker() async {
@@ -206,6 +212,8 @@ class LedgerDatePickerButton extends StatefulWidget {
     required this.labelText,
     this.showIcon = true,
     required this.onTap,
+    this.validator,
+    this.autovalidateMode,
   });
   final DateTime? dateTime;
   final String dateDisplayFormat;
@@ -213,6 +221,8 @@ class LedgerDatePickerButton extends StatefulWidget {
   final String labelText;
   final bool showIcon;
   final VoidCallback? onTap;
+  final String? Function(String?)? validator;
+  final AutovalidateMode? autovalidateMode;
 
   @override
   State<LedgerDatePickerButton> createState() => _LedgerDatePickerButtonState();
@@ -272,9 +282,9 @@ class _LedgerDatePickerButtonState extends State<LedgerDatePickerButton> {
                     ),
                   ),
                 ),
-          fillColor: context.baseColors.white,
-          filled: true,
         ),
+        validator: widget.validator,
         textAlign: TextAlign.left,
+        autovalidateMode: widget.autovalidateMode,
       );
 }

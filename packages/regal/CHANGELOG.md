@@ -1,3 +1,22 @@
+# 3.6.2
+
+## 🩻 Document:
+
+- Ledger Figtree font theme comments updated to include font height and correct sizes
+
+## 🐛 BugFixes:
+
+- Ledger Text Field to work with text controllers internally for better typing status notification on ui
+- Add Ledger date picker validations
+
+## 💅 Polish:
+
+- w500 extension for text styles
+- Ledger bottom sheet default text style updated in titleStyle
+- Ledger bottom sheet safe area set to true
+
+    
+
 # 3.6.1
 
 ## 💅 Polish:
