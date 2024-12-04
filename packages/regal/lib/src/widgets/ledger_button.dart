@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:regal/regal.dart';
 import 'package:regal/src/mixin/event_track_mixin.dart';
+import 'package:regal/src/widgets/ledger_infinite_spinner.dart';
 
 class LedgerButton extends StatelessWidget with EventTrackMixin {
   const LedgerButton.primary1({
@@ -192,17 +193,21 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
       mainAxisAlignment: mainAxisAlignment,
       children: [
         if (shrink) Spacing.huge.xBox,
-        if (loading)
-          GradientCircularProgressIndicator(
-            radius: 18.sp,
-            gradientColor: context.theme.brightness == Brightness.light &&
-                    (_type == _LedgerButtonType.secondary ||
-                        _type == _LedgerButtonType.tertiary1 ||
-                        _type == _LedgerButtonType.tertiary2)
-                ? context.theme.primaryColor
-                : loadingIndicatorColor ?? Colors.white,
-          )
-        else ...[
+        if (loading) ...[
+          InfiniteSpinner(
+            color: loadingIndicatorColor ?? _type.loadingIndicatorColor(context),
+            height: 18.sp,
+          ),
+          if (label != null) ...[
+            Spacing.smallMedium.xBox,
+            labelWidget ??
+                AutoSizeText(
+                  label!,
+                  textAlign: TextAlign.center,
+                  semanticsLabel: label,
+                ),
+          ],
+        ] else ...[
           if (prefixIcon != null) prefixIcon!,
           if (prefixIcon != null && label != null) Spacing.small.xBox,
           if (label != null)
@@ -305,7 +310,7 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
               ),
               foregroundColor:
                   _ElevatedButtonColor(context.brandColors.primary.shade500),
-              backgroundColor: _ElevatedButtonColor(context.baseColors.white),
+              backgroundColor: _ElevatedButtonColor(Colors.transparent),
               surfaceTintColor:
                   WidgetStatePropertyAll(context.neutralColors.grey.shade500),
               elevation: const WidgetStatePropertyAll(0),
@@ -327,7 +332,7 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
                 ),
               ),
               foregroundColor: _ElevatedButtonColor(context.baseColors.black),
-              backgroundColor: _ElevatedButtonColor(context.baseColors.white),
+              backgroundColor: _ElevatedButtonColor(Colors.transparent),
               surfaceTintColor:
                   WidgetStatePropertyAll(context.neutralColors.grey.shade500),
               elevation: const WidgetStatePropertyAll(0),
@@ -395,7 +400,16 @@ enum _LedgerButtonType {
   secondary,
   tertiary1,
   tertiary2,
-  ghost
+  ghost;
+
+  Color loadingIndicatorColor(BuildContext ctx) => switch (this) {
+        primary1 => ctx.intactColors.white,
+        primary2 => ctx.baseColors.white,
+        secondary => ctx.baseColors.black,
+        tertiary1 => ctx.baseColors.black,
+        tertiary2 => ctx.baseColors.black,
+        ghost => ctx.baseColors.black,
+      };
 }
 
 enum LedgerButtonSize {
