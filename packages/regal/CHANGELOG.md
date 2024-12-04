@@ -1,3 +1,9 @@
+# 3.6.3
+
+## 💅 Polish:
+
+- Ledger button loading indicator color based on types for light and dark theme
+
 # 3.6.2
 
 ## 🩻 Document:

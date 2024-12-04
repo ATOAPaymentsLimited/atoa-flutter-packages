@@ -200,7 +200,7 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
                         _type == _LedgerButtonType.tertiary1 ||
                         _type == _LedgerButtonType.tertiary2)
                 ? context.theme.primaryColor
-                : loadingIndicatorColor ?? context.baseColors.white,
+                : loadingIndicatorColor ?? _type.loadingIndicatorColor(context),
             height: 18.sp,
           ),
           if (label != null) ...[
@@ -405,7 +405,16 @@ enum _LedgerButtonType {
   secondary,
   tertiary1,
   tertiary2,
-  ghost
+  ghost;
+
+  Color loadingIndicatorColor(BuildContext ctx) => switch (this) {
+        primary1 => ctx.intactColors.white,
+        primary2 => ctx.baseColors.white,
+        secondary => ctx.baseColors.black,
+        tertiary1 => ctx.brandColors.primary.shade500,
+        tertiary2 => ctx.baseColors.black,
+        ghost => ctx.baseColors.black,
+      };
 }
 
 enum LedgerButtonSize {
