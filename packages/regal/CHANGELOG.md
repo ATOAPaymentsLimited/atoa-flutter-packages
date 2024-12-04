@@ -1,3 +1,11 @@
+# 3.6.3
+
+## 💅 Polish:
+
+- Loading spinner for ledger button
+- Infinite spinner widget for ledger theme
+- Ledger button loading indicator color based on types for light and dark theme
+
 # 3.6.2
 
 ## 🩻 Document:
