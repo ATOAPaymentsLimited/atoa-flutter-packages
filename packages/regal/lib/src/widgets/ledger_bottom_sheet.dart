@@ -37,7 +37,7 @@ Future<T?> showLedgerBottomSheet<T>({
               width: Spacing.huge.value * 2 + Spacing.tiny.value,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(Spacing.mini.value),
-                color: context.grey.shade10,
+                color: context.neutralColors.grey.shade200,
               ),
             ),
             Spacing.huge.yBox,
@@ -49,7 +49,7 @@ Future<T?> showLedgerBottomSheet<T>({
                   Expanded(
                     child: CustomText.semantics(
                       title,
-                      textAlign: TextAlign.left,
+                      textAlign: titleAlign ?? TextAlign.left,
                       style: titleStyle ??
                           dialogContext.labelMedium?.w700.height130
                               .textColor(context.baseColors.black),
