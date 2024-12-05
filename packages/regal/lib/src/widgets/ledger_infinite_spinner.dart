@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:regal/regal.dart';
 
-class InfiniteSpinner extends StatefulWidget {
-  const InfiniteSpinner({
+class LedgerInfiniteSpinner extends StatefulWidget {
+  const LedgerInfiniteSpinner({
     super.key,
     this.height,
     this.color,
@@ -13,10 +13,10 @@ class InfiniteSpinner extends StatefulWidget {
   final double? height;
 
   @override
-  State<InfiniteSpinner> createState() => InfiniteSpinnerState();
+  State<LedgerInfiniteSpinner> createState() => LedgerInfiniteSpinnerState();
 }
 
-class InfiniteSpinnerState extends State<InfiniteSpinner>
+class LedgerInfiniteSpinnerState extends State<LedgerInfiniteSpinner>
     with SingleTickerProviderStateMixin {
   late final AnimationController animationController;
   late final Animation<double> animation;

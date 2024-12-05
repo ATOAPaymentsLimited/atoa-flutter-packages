@@ -1,3 +1,9 @@
+# 3.6.4
+
+## 💅 Polish:
+
+- Ledger infinite spinner
+
 # 3.6.3
 
 ## 💅 Polish:
