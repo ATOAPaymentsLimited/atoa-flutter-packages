@@ -194,8 +194,9 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
       children: [
         if (shrink) Spacing.huge.xBox,
         if (loading) ...[
-          InfiniteSpinner(
-            color: loadingIndicatorColor ?? _type.loadingIndicatorColor(context),
+          LedgerInfiniteSpinner(
+            color:
+                loadingIndicatorColor ?? _type.loadingIndicatorColor(context),
             height: 18.sp,
           ),
           if (label != null) ...[
