@@ -2,7 +2,7 @@
 
 ## 💅 Polish:
 
-- Ledger infinite spinner
+- Add export for ledger infinite spinner
 
 # 3.6.3
 
