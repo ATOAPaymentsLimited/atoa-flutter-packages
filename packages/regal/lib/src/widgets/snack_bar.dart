@@ -11,6 +11,7 @@ class Snackbar extends StatelessWidget with EventTrackMixin {
     this.onClose,
     this.alignment,
     this.leading,
+    this.titleTextStyle,
     this.showClose = true,
   });
 
@@ -19,6 +20,7 @@ class Snackbar extends StatelessWidget with EventTrackMixin {
   final Alignment? alignment;
   final Widget? leading;
   final bool showClose;
+  final TextStyle? titleTextStyle;
 
   Widget _verticalDivider(BuildContext context) => Container(
         width: 1.sp,
@@ -159,10 +161,11 @@ class Snackbar extends StatelessWidget with EventTrackMixin {
           tileColor: snackbar.type.bg(context),
           leading: leading ?? snackbar.type.leading(context),
           title: Text(snackbar.title),
-          titleTextStyle: context.montserrat.headlineSmall.copyWith(
-            color: snackbar.type.textColor(context),
-            fontSize: 14.sp,
-          ),
+          titleTextStyle: titleTextStyle ??
+              context.montserrat.headlineSmall.copyWith(
+                color: snackbar.type.textColor(context),
+                fontSize: 14.sp,
+              ),
           subtitle: snackbar.description != null
               ? Text(
                   snackbar.description!,
