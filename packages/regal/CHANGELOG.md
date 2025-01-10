@@ -1,5 +1,11 @@
 # 3.6.5
 
+## 🧹 Updates:
+
+- Add `.widget()` constructor for `CarouselItemWidget`
+
+# 3.6.5
+
 ## 💅 Polish:
 
 - Add draggable ledger bottom sheet
@@ -35,15 +41,13 @@
 - Ledger bottom sheet default text style updated in titleStyle
 - Ledger bottom sheet safe area set to true
 
-    
-
 # 3.6.1
 
 ## 💅 Polish:
 
 - Ledger Changes
-    - Add checkbox and date picker button
-    - Add `showTitle` flag to ledger bottom sheet
+  - Add checkbox and date picker button
+  - Add `showTitle` flag to ledger bottom sheet
 
 # 3.6.0
 
@@ -55,13 +59,13 @@
 - Add `titleTextStyle` in regal snackbar
 - Add Spacing of `smallMedium` with value of 10
 - Ledger Changes
-    - Add Bottom sheet
-    - Add Color Scheme (Light and Dark theme included)
-    - Add Button Widgets, Text Fields, Checkbox
-    - Add Extension for figtree font
-    - Example App
-        - Add Figtree in Typography Screen
-        - Add Ledger Color Scheme Screen
+  - Add Bottom sheet
+  - Add Color Scheme (Light and Dark theme included)
+  - Add Button Widgets, Text Fields, Checkbox
+  - Add Extension for figtree font
+  - Example App
+    - Add Figtree in Typography Screen
+    - Add Ledger Color Scheme Screen
 
 ## 🧺 Chore:
 
