@@ -14,7 +14,8 @@ class CarouselItemWidget extends StatelessWidget {
         desc = '',
         bgColor = null,
         textColor = null,
-        prefixIcon = null;
+        prefixIcon = null,
+        widget = null;
 
   const CarouselItemWidget.card({
     super.key,
@@ -26,7 +27,21 @@ class CarouselItemWidget extends StatelessWidget {
     this.onTap,
     this.disableAnimationsForTest = false,
     this.padding,
-  }) : imageUrl = '';
+  })  : imageUrl = '',
+        widget = null;
+
+  const CarouselItemWidget.widget({
+    super.key,
+    this.widget,
+    this.onTap,
+    this.disableAnimationsForTest = false,
+    this.padding,
+  })  : title = '',
+        desc = '',
+        prefixIcon = null,
+        imageUrl = '',
+        bgColor = null,
+        textColor = null;
 
   final String imageUrl;
   final String title;
@@ -37,6 +52,7 @@ class CarouselItemWidget extends StatelessWidget {
   final VoidCallback? onTap;
   final bool disableAnimationsForTest;
   final EdgeInsets? padding;
+  final Widget? widget;
 
   @override
   Widget build(BuildContext context) => Padding(
@@ -44,6 +60,7 @@ class CarouselItemWidget extends StatelessWidget {
         child: Stack(
           fit: StackFit.expand,
           children: [
+            if (widget != null) widget!,
             if (title.isNotEmpty && desc.isNotEmpty && prefixIcon is Widget)
               RegalStatusCard.info(
                 bgColor: bgColor,
