@@ -60,7 +60,6 @@ class CarouselItemWidget extends StatelessWidget {
         child: Stack(
           fit: StackFit.expand,
           children: [
-            if (widget != null) widget!,
             if (title.isNotEmpty && desc.isNotEmpty && prefixIcon is Widget)
               RegalStatusCard.info(
                 bgColor: bgColor,
@@ -104,6 +103,7 @@ class CarouselItemWidget extends StatelessWidget {
               onTap: onTap,
               splashColor: RegalColors.vividRed.withOpacity(0.22),
             ),
+            if (widget != null) widget!,
           ],
         ),
       );
