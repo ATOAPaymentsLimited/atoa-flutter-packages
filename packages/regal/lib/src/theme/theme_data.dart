@@ -577,7 +577,6 @@ final kDarkThemeData = kThemeData.copyWith(
       titleMedium: kFigTreeTextTheme.titleMedium!.copyWith(
         fontSize: 20.sp,
         color: RegalColors.snowWhite,
-        fontFamily: 'Montserrat',
       ),
       titleSmall: kFigTreeTextTheme.titleSmall!.copyWith(
         color: RegalColors.snowWhite,
