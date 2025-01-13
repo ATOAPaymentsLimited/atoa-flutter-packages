@@ -12,7 +12,7 @@
 
 # 3.6.6
 
-## Updates:
+## 🧹 Updates:
 
 - Add `.widget()` constructor for `CarouselItemWidget`
 
