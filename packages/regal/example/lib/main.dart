@@ -1,6 +1,7 @@
 import 'package:bot_toast/bot_toast.dart';
 import 'package:example/screens/ledger_colors_screen.dart';
 import 'package:example/screens/snackbar_screen.dart';
+import 'package:example/widgets/ledger_buttons.dart';
 import 'package:example/widgets/regal_buttons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -310,6 +311,8 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               Spacing.large.yBox,
               const RegalButtons(),
+              Spacing.large.yBox,
+              const LedgerButtons(),
               Spacing.large.yBox,
               SupportedBankSlider(bankIconUrlList: _bankIconUrls),
               Spacing.large.yBox,

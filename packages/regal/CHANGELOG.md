@@ -1,3 +1,60 @@
+# 3.6.7
+
+## 🐛 BugFixes:
+
+- Fix `.widget()` constructor for `CarouselItemWidget`
+
+# 3.6.6
+
+## 🧹 Updates:
+
+- Add `.widget()` constructor for `CarouselItemWidget`
+
+# 3.6.5
+
+## 💅 Polish:
+
+- Add draggable ledger bottom sheet
+
+# 3.6.4
+
+## 💅 Polish:
+
+- Add export for ledger infinite spinner
+
+# 3.6.3
+
+## 💅 Polish:
+
+- Loading spinner for ledger button
+- Infinite spinner widget for ledger theme
+- Ledger button loading indicator color based on types for light and dark theme
+
+# 3.6.2
+
+## 🩻 Document:
+
+- Ledger Figtree font theme comments updated to include font height and correct sizes
+
+## 🐛 BugFixes:
+
+- Ledger Text Field to work with text controllers internally for better typing status notification on ui
+- Add Ledger date picker validations
+
+## 💅 Polish:
+
+- w500 extension for text styles
+- Ledger bottom sheet default text style updated in titleStyle
+- Ledger bottom sheet safe area set to true
+
+# 3.6.1
+
+## 💅 Polish:
+
+- Ledger Changes
+  - Add checkbox and date picker button
+  - Add `showTitle` flag to ledger bottom sheet
+
 # 3.6.0
 
 ## 💅 Polish:
@@ -8,13 +65,13 @@
 - Add `titleTextStyle` in regal snackbar
 - Add Spacing of `smallMedium` with value of 10
 - Ledger Changes
-    - Add Bottom sheet
-    - Add Color Scheme (Light and Dark theme included)
-    - Add Button Widgets, Text Fields, Checkbox
-    - Add Extension for figtree font
-    - Example App
-        - Add Figtree in Typography Screen
-        - Add Ledger Color Scheme Screen
+  - Add Bottom sheet
+  - Add Color Scheme (Light and Dark theme included)
+  - Add Button Widgets, Text Fields, Checkbox
+  - Add Extension for figtree font
+  - Example App
+    - Add Figtree in Typography Screen
+    - Add Ledger Color Scheme Screen
 
 ## 🧺 Chore:
 

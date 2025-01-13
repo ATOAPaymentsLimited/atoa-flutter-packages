@@ -119,6 +119,7 @@ class _LedgerCheckboxState extends State<LedgerCheckbox> {
                       ),
                     ],
                     if (widget.subtitle?.isNotEmpty ?? false) ...[
+                      Spacing.mini.yBox,
                       Row(
                         children: [
                           Expanded(

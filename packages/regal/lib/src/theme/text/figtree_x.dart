@@ -22,91 +22,91 @@ class FigTreeX extends ThemeExtension<FigTreeX> {
 
   /// performs a simple [Theme.of(context).displayLarge] action and returns given [displayLarge]
   /// ```
-  /// displayLarge        48.0  FontWeight.w700
+  /// displayLarge        48.0  FontWeight.w700 1
   /// ```
   final TextStyle displayLarge;
 
   /// performs a simple [Theme.of(context).displayMedium] action and returns given [displayMedium]
   /// ```
-  /// displayMedium       36.0  FontWeight.w700
+  /// displayMedium       36.0  FontWeight.w700 1
   /// ```
   final TextStyle displayMedium;
 
   /// performs a simple [Theme.of(context).displaySmall] action and returns given [displaySmall]
   /// ```
-  /// displayMedium       32.0  FontWeight.w700
+  /// displayMedium       32.0  FontWeight.w700 1
   /// ```
   final TextStyle displaySmall;
 
   /// performs a simple [Theme.of(context).headlineLarge] action and returns given [headlineLarge]
   /// ```
-  /// headlineLarge        32.0  FontWeight.w700
+  /// headlineLarge        32.0  FontWeight.w700 1
   /// ```
   final TextStyle headlineLarge;
 
   /// performs a simple [Theme.of(context).headlineMedium] action and returns given [headlineMedium]
   /// ```
-  /// headlineMedium       28.0  FontWeight.w700
+  /// headlineMedium       28.0  FontWeight.w700 1
   /// ```
   final TextStyle headlineMedium;
 
   /// performs a simple [Theme.of(context).headlineSmall] action and returns given [headlineSmall]
   /// ```
-  /// headlineMedium       24.0  FontWeight.w700
+  /// headlineMedium       24.0  FontWeight.w700 1.3
   /// ```
   final TextStyle headlineSmall;
 
   /// performs a simple [Theme.of(context).titleLarge] action and returns given [titleLarge]
   /// ```
-  /// titleLarge           24.0  FontWeight.w400
+  /// titleLarge           24.0  FontWeight.w400 1.3
   /// ```
   final TextStyle titleLarge;
 
   /// performs a simple [Theme.of(context).titleMedium] action and returns given [titleMedium]
   /// ```
-  /// titleLarge           20.0  FontWeight.w400
+  /// titleLarge           20.0  FontWeight.w400 1.4
   /// ```
   final TextStyle titleMedium;
 
   /// performs a simple [Theme.of(context).titleSmall] action and returns given [titleSmall]
   /// ```
-  /// titleLarge           16.0  FontWeight.w400
+  /// titleLarge           16.0  FontWeight.w400 1.45
   /// ```
   final TextStyle titleSmall;
 
   /// performs a simple [Theme.of(context).labelLarge] action and returns given [labelLarge]
   /// ```
-  /// labelLarge           20.0  FontWeight.w400
+  /// labelLarge           20.0  FontWeight.w400 1.4
   /// ```
   final TextStyle labelLarge;
 
   /// performs a simple [Theme.of(context).labelMedium] action and returns given [labelMedium]
   /// ```
-  /// labelMedium          18.0  FontWeight.w400
+  /// labelMedium          18.0  FontWeight.w400 1.4
   /// ```
   final TextStyle labelMedium;
 
   /// performs a simple [Theme.of(context).labelSmall] action and returns given [labelSmall]
   /// ```
-  /// labelSmall           16.0  FontWeight.w400
+  /// labelSmall           13.0  FontWeight.w400 1.5
   /// ```
   final TextStyle labelSmall;
 
   /// performs a simple [Theme.of(context).bodyLarge] action and returns given [bodyLarge]
   /// ```
-  /// bodyLarge            14.0  FontWeight.w400
+  /// bodyLarge            14.0  FontWeight.w400 1.5
   /// ```
   final TextStyle bodyLarge;
 
   /// performs a simple [Theme.of(context).bodyMedium] action and returns given [bodyMedium]
   /// ```
-  /// bodyMedium           12.0  FontWeight.w400
+  /// bodyMedium           12.0  FontWeight.w400 1.5
   /// ```
   final TextStyle bodyMedium;
 
   /// performs a simple [Theme.of(context).bodySmall] action and returns given [bodySmall]
   /// ```
-  /// bodySmall            11.0  FontWeight.w400
+  /// bodySmall            11.0  FontWeight.w400 1.6
   /// ```
   final TextStyle bodySmall;
 

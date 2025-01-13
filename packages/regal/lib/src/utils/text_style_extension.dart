@@ -21,6 +21,12 @@ extension TextStyleExtension on TextStyle {
           const FontVariation.weight(400),
         ],
       );
+  TextStyle get w500 => copyWith(
+        fontWeight: FontWeight.w500,
+        fontVariations: [
+          const FontVariation.weight(500),
+        ],
+      );
   TextStyle get w600 => copyWith(
         fontWeight: FontWeight.w600,
         fontVariations: [
