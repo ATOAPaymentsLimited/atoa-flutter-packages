@@ -4,6 +4,10 @@
 
 - Add optional parameters on regal search bar
 
+## 💅 Polish:
+
+- Update `titleMedium` for figtree text theme
+
 # 3.6.7
 
 ## 🐛 BugFixes:
