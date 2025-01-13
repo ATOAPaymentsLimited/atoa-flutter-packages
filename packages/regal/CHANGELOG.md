@@ -1,3 +1,9 @@
+# 3.6.7
+
+## 🐛 BugFixes:
+
+- Fix `.widget()` constructor for `CarouselItemWidget`
+
 # 3.6.6
 
 ## 🧹 Updates:
