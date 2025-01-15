@@ -1,3 +1,9 @@
+# 3.6.9
+
+## 💅 Polish:
+
+- Add `labelStyle` constructor parameter for `LedgerTextField`
+
 # 3.6.8
 
 ## 🧹 Updates:

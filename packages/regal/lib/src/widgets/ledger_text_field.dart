@@ -23,6 +23,7 @@ class LedgerTextField extends StatefulWidget {
     this.textInputAction,
     this.style,
     this.hintStyle,
+    this.labelStyle,
     this.strutStyle,
     this.textDirection,
     this.textAlign = TextAlign.start,
@@ -91,6 +92,7 @@ class LedgerTextField extends StatefulWidget {
   final TextInputAction? textInputAction;
   final TextStyle? style;
   final TextStyle? hintStyle;
+  final TextStyle? labelStyle;
   final StrutStyle? strutStyle;
   final TextDirection? textDirection;
   final TextAlign textAlign;
@@ -186,7 +188,8 @@ class _LedgerTextFieldState extends State<LedgerTextField> {
               if (widget.showLabel && widget.label is String) ...[
                 CustomText.semantics(
                   widget.label!,
-                  style: context.theme.inputDecorationTheme.labelStyle,
+                  style: widget.labelStyle ??
+                      context.theme.inputDecorationTheme.labelStyle,
                 ),
                 Spacing.smallMedium.yBox,
               ],
