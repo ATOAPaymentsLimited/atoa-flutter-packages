@@ -182,7 +182,7 @@ final kThemeData = ThemeData.light().copyWith(
       ),
       labelSmall: kFigTreeTextTheme.labelSmall!.copyWith(
         color: RegalColors.licoriceBlack,
-        fontSize: 16.sp,
+        fontSize: 13.sp,
         fontWeight: FontWeight.w400,
       ),
       bodyLarge: kFigTreeTextTheme.bodyLarge!.copyWith(
@@ -595,7 +595,7 @@ final kDarkThemeData = kThemeData.copyWith(
       ),
       labelSmall: kFigTreeTextTheme.labelSmall!.copyWith(
         color: RegalColors.snowWhite,
-        fontSize: 16.sp,
+        fontSize: 13.sp,
         fontWeight: FontWeight.w400,
       ),
       bodyLarge: kFigTreeTextTheme.bodyLarge!.copyWith(

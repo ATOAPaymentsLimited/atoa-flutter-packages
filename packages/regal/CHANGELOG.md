@@ -1,3 +1,9 @@
+# 3.7.0
+
+## 🐛 BugFixes:
+
+- Fix `labelSmall` font size for Figtree theme
+
 # 3.6.9
 
 ## 💅 Polish:
