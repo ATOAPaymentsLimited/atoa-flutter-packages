@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:regal/regal.dart';
 import 'package:regal/src/mixin/event_track_mixin.dart';
-import 'package:regal/src/widgets/ledger_infinite_spinner.dart';
 
 class LedgerButton extends StatelessWidget with EventTrackMixin {
   const LedgerButton.primary1({
