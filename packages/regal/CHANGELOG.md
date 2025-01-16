@@ -1,3 +1,9 @@
+# 3.7.1
+
+## 💅 Polish:
+
+- Add `illustrationWidget` for `showLedgerBottomSheet` and `showLedgerBottomSheetDraggable`
+
 # 3.7.0
 
 ## 🐛 BugFixes:
