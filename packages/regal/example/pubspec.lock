@@ -390,7 +390,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "3.6.7"
+    version: "3.7.1"
   rxdart:
     dependency: transitive
     description:
