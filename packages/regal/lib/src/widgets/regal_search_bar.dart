@@ -8,6 +8,11 @@ class RegalSearchBar extends StatefulWidget {
     this.onChanged,
     this.hintText,
     this.onClear,
+    this.hintStyle,
+    this.iconSize,
+    this.border,
+    this.filled,
+    this.fillColor,
     this.autofocus = false,
     this.showClose = true,
     required this.searchController,
@@ -20,6 +25,11 @@ class RegalSearchBar extends StatefulWidget {
   final bool autofocus;
   final bool showClose;
   final String semanticsLabel;
+  final TextStyle? hintStyle;
+  final double? iconSize;
+  final BorderSide? border;
+  final bool? filled;
+  final Color? fillColor;
 
   @override
   State<RegalSearchBar> createState() => _RegalSearchBarState();
@@ -55,31 +65,32 @@ class _RegalSearchBarState extends State<RegalSearchBar> {
           cursorColor: context.regalColor.licoriceBlack,
           decoration: InputDecoration(
             isDense: true,
-            fillColor: context.grey.shade05,
-            filled: true,
+            fillColor: widget.fillColor ?? context.grey.shade05,
+            filled: widget.filled ?? true,
             disabledBorder: OutlineInputBorder(
               borderSide: BorderSide.none,
               borderRadius: BorderRadius.circular(100),
             ),
             enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide.none,
+              borderSide: widget.border ?? BorderSide.none,
               borderRadius: BorderRadius.circular(100),
             ),
             focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide.none,
+              borderSide: widget.border ?? BorderSide.none,
               borderRadius: BorderRadius.circular(100),
             ),
             hintText: widget.hintText,
-            hintStyle: context.labelSmall!.copyWith(
-              color: context.grey.shade60,
-            ),
+            hintStyle: widget.hintStyle ??
+                context.labelSmall!.copyWith(
+                  color: context.grey.shade60,
+                ),
             contentPadding:
                 EdgeInsets.symmetric(horizontal: 15.sp, vertical: 12.sp),
             prefixIcon: Padding(
               padding: Spacing.medium.left,
               child: Icon(
                 Icons.search,
-                size: 18.sp,
+                size: widget.iconSize ?? 18.sp,
                 color: context.regalColor.licoriceBlack,
               ),
             ),

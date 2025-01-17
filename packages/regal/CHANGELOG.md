@@ -4,6 +4,34 @@
 
 - Export `Ledgers Colors`
 
+# 3.7.1
+
+## 💅 Polish:
+
+- Add `illustrationWidget` for `showLedgerBottomSheet` and `showLedgerBottomSheetDraggable`
+
+# 3.7.0
+
+## 🐛 BugFixes:
+
+- Fix `labelSmall` font size for Figtree theme
+
+# 3.6.9
+
+## 💅 Polish:
+
+- Add `labelStyle` constructor parameter for `LedgerTextField`
+
+# 3.6.8
+
+## 🧹 Updates:
+
+- Add optional parameters on regal search bar
+
+## 💅 Polish:
+
+- Update `titleMedium` for figtree text theme
+
 # 3.6.7
 
 ## 🐛 BugFixes:

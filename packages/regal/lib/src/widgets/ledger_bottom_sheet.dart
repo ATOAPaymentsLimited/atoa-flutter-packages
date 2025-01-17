@@ -23,6 +23,7 @@ Future<T?> showLedgerBottomSheet<T>({
   ShapeBorder? shape,
   AnimationController? transitionAnimationController,
   Alignment confettiAlignment = Alignment.center,
+  Widget? illustrationWidget,
   bool showTitle = true,
 }) =>
     showModalBottomSheet<T>(
@@ -41,6 +42,7 @@ Future<T?> showLedgerBottomSheet<T>({
               ),
             ),
             Spacing.huge.yBox,
+            if (illustrationWidget != null) illustrationWidget,
             if (showTitle) ...[
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -143,6 +145,7 @@ Future<T?> showLedgerBottomSheetDraggable<T>({
   double minChildSize = 0.7,
   double maxChildSize = 1.0,
   List<double> snapSizes = const [0.7, 1.0],
+  Widget? illustrationWidget,
 }) =>
     showModalBottomSheet<T>(
       context: context,
@@ -172,6 +175,7 @@ Future<T?> showLedgerBottomSheetDraggable<T>({
                   ),
                 ),
                 Spacing.huge.yBox,
+                if (illustrationWidget != null) illustrationWidget,
                 if (showTitle) ...[
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
