@@ -1,3 +1,9 @@
+# 3.7.2
+
+## 🧹 Updates:
+
+- Export `Ledgers Colors`
+
 # 3.7.1
 
 ## 💅 Polish:
