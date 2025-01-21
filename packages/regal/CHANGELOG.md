@@ -1,3 +1,10 @@
+# 3.7.3
+
+## 🧹 Updates:
+
+- Extension `ledgerTheme` on BuildContext
+- Update `shared_preferences` to 2.3.5 due to [GHSA-3hpf-ff72-j67p](https://github.com/advisories/GHSA-3hpf-ff72-j67p)
+
 # 3.7.2
 
 ## 🧹 Updates:
