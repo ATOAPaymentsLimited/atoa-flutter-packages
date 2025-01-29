@@ -1,3 +1,9 @@
+# 3.7.4
+
+## 💅 Polish:
+
+- Add `w800` for text style
+
 # 3.7.3
 
 ## 🧹 Updates:
