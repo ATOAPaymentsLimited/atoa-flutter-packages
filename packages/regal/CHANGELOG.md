@@ -1,3 +1,9 @@
+# 3.7.5
+
+## 💅 Polish:
+
+- Update icon for ledger bottom sheet
+
 # 3.7.4
 
 ## 💅 Polish:
