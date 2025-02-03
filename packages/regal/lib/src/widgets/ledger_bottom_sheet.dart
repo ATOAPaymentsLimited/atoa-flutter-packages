@@ -71,18 +71,18 @@ Future<T?> showLedgerBottomSheet<T>({
                                 Navigator.pop(dialogContext);
                               },
                         child: Container(
-                          width: Spacing.huge.value,
+                          width: Spacing.huge.value + Spacing.mini.value,
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
-                            color: RegalColors.grey.shade40,
+                            color: context.neutralColors.grey.shade50,
                           ),
                           child: Center(
                             child: Padding(
                               padding: Spacing.mini.all,
                               child: Icon(
                                 Icons.close,
-                                size: Spacing.medium.value,
-                                color: RegalColors.snowWhite,
+                                size: Spacing.large.value,
+                                color: context.neutralColors.grey.shade700,
                               ),
                             ),
                           ),
@@ -204,18 +204,18 @@ Future<T?> showLedgerBottomSheetDraggable<T>({
                                     Navigator.pop(dialogContext);
                                   },
                             child: Container(
-                              width: Spacing.huge.value,
+                              width: Spacing.huge.value + Spacing.mini.value,
                               decoration: BoxDecoration(
                                 shape: BoxShape.circle,
-                                color: RegalColors.grey.shade40,
+                                color: context.neutralColors.grey.shade50,
                               ),
                               child: Center(
                                 child: Padding(
                                   padding: Spacing.mini.all,
                                   child: Icon(
                                     Icons.close,
-                                    size: Spacing.medium.value,
-                                    color: RegalColors.snowWhite,
+                                    size: Spacing.large.value,
+                                    color: context.neutralColors.grey.shade700,
                                   ),
                                 ),
                               ),
