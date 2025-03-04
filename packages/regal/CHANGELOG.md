@@ -1,3 +1,9 @@
+# 3.7.6
+
+## 💅 Polish:
+
+- Wrap `showLedgerBottomSheet` builder argument with `Theme` widget.
+
 # 3.7.5
 
 ## 💅 Polish:

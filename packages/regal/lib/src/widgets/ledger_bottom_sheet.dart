@@ -28,80 +28,83 @@ Future<T?> showLedgerBottomSheet<T>({
 }) =>
     showModalBottomSheet<T>(
       context: context,
-      builder: (dialogContext) => Padding(
-        padding: Spacing.large.y + Spacing.xtraLarge.x,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Container(
-              height: Spacing.mini.value,
-              width: Spacing.huge.value * 2 + Spacing.tiny.value,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(Spacing.mini.value),
-                color: context.neutralColors.grey.shade200,
+      builder: (dialogContext) => Theme(
+        data: context.ledgerTheme,
+        child: Padding(
+          padding: Spacing.large.y + Spacing.xtraLarge.x,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
+                height: Spacing.mini.value,
+                width: Spacing.huge.value * 2 + Spacing.tiny.value,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(Spacing.mini.value),
+                  color: context.neutralColors.grey.shade200,
+                ),
               ),
-            ),
-            Spacing.huge.yBox,
-            if (illustrationWidget != null) illustrationWidget,
-            if (showTitle) ...[
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(
-                    child: CustomText.semantics(
-                      title,
-                      textAlign: titleAlign ?? TextAlign.left,
-                      style: titleStyle ??
-                          dialogContext.labelMedium?.w700.height130
-                              .textColor(context.baseColors.black),
+              Spacing.huge.yBox,
+              if (illustrationWidget != null) illustrationWidget,
+              if (showTitle) ...[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child: CustomText.semantics(
+                        title,
+                        textAlign: titleAlign ?? TextAlign.left,
+                        style: titleStyle ??
+                            dialogContext.labelMedium?.w700.height130
+                                .textColor(context.baseColors.black),
+                      ),
                     ),
-                  ),
-                  Spacing.large.xBox,
-                  if (showCloseButton)
-                    Padding(
-                      padding: Spacing.mini.top,
-                      child: CustomInkWell(
-                        semanticsLabel: 'Close Dialog Sheet Icon',
-                        context: dialogContext,
-                        trackLabel: 'Close Dialog Sheet Icon',
-                        onTap: onClose != null
-                            ? () => onClose.call(dialogContext)
-                            : () {
-                                Navigator.pop(dialogContext);
-                              },
-                        child: Container(
-                          width: Spacing.huge.value + Spacing.mini.value,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: context.neutralColors.grey.shade50,
-                          ),
-                          child: Center(
-                            child: Padding(
-                              padding: Spacing.mini.all,
-                              child: Icon(
-                                Icons.close,
-                                size: Spacing.large.value,
-                                color: context.neutralColors.grey.shade700,
+                    Spacing.large.xBox,
+                    if (showCloseButton)
+                      Padding(
+                        padding: Spacing.mini.top,
+                        child: CustomInkWell(
+                          semanticsLabel: 'Close Dialog Sheet Icon',
+                          context: dialogContext,
+                          trackLabel: 'Close Dialog Sheet Icon',
+                          onTap: onClose != null
+                              ? () => onClose.call(dialogContext)
+                              : () {
+                                  Navigator.pop(dialogContext);
+                                },
+                          child: Container(
+                            width: Spacing.huge.value + Spacing.mini.value,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: context.neutralColors.grey.shade50,
+                            ),
+                            child: Center(
+                              child: Padding(
+                                padding: Spacing.mini.all,
+                                child: Icon(
+                                  Icons.close,
+                                  size: Spacing.large.value,
+                                  color: context.neutralColors.grey.shade700,
+                                ),
                               ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                ],
+                  ],
+                ),
+              ],
+              if (titleBottomSpacing != null)
+                OperatorSizedBox.height(
+                  titleBottomSpacing,
+                )
+              else
+                Spacing.huge.yBox,
+              Builder(
+                builder: body,
               ),
             ],
-            if (titleBottomSpacing != null)
-              OperatorSizedBox.height(
-                titleBottomSpacing,
-              )
-            else
-              Spacing.huge.yBox,
-            Builder(
-              builder: body,
-            ),
-          ],
+          ),
         ),
       ),
       isScrollControlled: isScrollControlled,
@@ -149,92 +152,95 @@ Future<T?> showLedgerBottomSheetDraggable<T>({
 }) =>
     showModalBottomSheet<T>(
       context: context,
-      builder: (dialogContext) => DraggableScrollableSheet(
-        initialChildSize: initialChildSize,
-        minChildSize: minChildSize,
-        maxChildSize: maxChildSize,
-        snap: true,
-        snapSizes: snapSizes,
-        builder: (_, controller) => Container(
-          decoration: BoxDecoration(
-            color: context.baseColors.white,
-            borderRadius: Spacing.huge.brTopLeft + Spacing.huge.brTopRight,
-          ),
-          padding: Spacing.large.y + Spacing.xtraLarge.x,
-          child: SingleChildScrollView(
-            controller: controller,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Container(
-                  height: Spacing.mini.value,
-                  width: Spacing.huge.value * 2 + Spacing.tiny.value,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(Spacing.mini.value),
-                    color: context.neutralColors.grey.shade200,
+      builder: (dialogContext) => Theme(
+        data: context.ledgerTheme,
+        child: DraggableScrollableSheet(
+          initialChildSize: initialChildSize,
+          minChildSize: minChildSize,
+          maxChildSize: maxChildSize,
+          snap: true,
+          snapSizes: snapSizes,
+          builder: (_, controller) => Container(
+            decoration: BoxDecoration(
+              color: context.baseColors.white,
+              borderRadius: Spacing.huge.brTopLeft + Spacing.huge.brTopRight,
+            ),
+            padding: Spacing.large.y + Spacing.xtraLarge.x,
+            child: SingleChildScrollView(
+              controller: controller,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Container(
+                    height: Spacing.mini.value,
+                    width: Spacing.huge.value * 2 + Spacing.tiny.value,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(Spacing.mini.value),
+                      color: context.neutralColors.grey.shade200,
+                    ),
                   ),
-                ),
-                Spacing.huge.yBox,
-                if (illustrationWidget != null) illustrationWidget,
-                if (showTitle) ...[
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        child: CustomText.semantics(
-                          title,
-                          textAlign: titleAlign ?? TextAlign.left,
-                          style: titleStyle ??
-                              dialogContext.labelMedium?.w700.height130
-                                  .textColor(context.baseColors.black),
+                  Spacing.huge.yBox,
+                  if (illustrationWidget != null) illustrationWidget,
+                  if (showTitle) ...[
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          child: CustomText.semantics(
+                            title,
+                            textAlign: titleAlign ?? TextAlign.left,
+                            style: titleStyle ??
+                                dialogContext.labelMedium?.w700.height130
+                                    .textColor(context.baseColors.black),
+                          ),
                         ),
-                      ),
-                      Spacing.large.xBox,
-                      if (showCloseButton)
-                        Padding(
-                          padding: Spacing.mini.top,
-                          child: CustomInkWell(
-                            semanticsLabel: 'Close Dialog Sheet Icon',
-                            context: dialogContext,
-                            trackLabel: 'Close Dialog Sheet Icon',
-                            onTap: onClose != null
-                                ? () => onClose.call(dialogContext)
-                                : () {
-                                    Navigator.pop(dialogContext);
-                                  },
-                            child: Container(
-                              width: Spacing.huge.value + Spacing.mini.value,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: context.neutralColors.grey.shade50,
-                              ),
-                              child: Center(
-                                child: Padding(
-                                  padding: Spacing.mini.all,
-                                  child: Icon(
-                                    Icons.close,
-                                    size: Spacing.large.value,
-                                    color: context.neutralColors.grey.shade700,
+                        Spacing.large.xBox,
+                        if (showCloseButton)
+                          Padding(
+                            padding: Spacing.mini.top,
+                            child: CustomInkWell(
+                              semanticsLabel: 'Close Dialog Sheet Icon',
+                              context: dialogContext,
+                              trackLabel: 'Close Dialog Sheet Icon',
+                              onTap: onClose != null
+                                  ? () => onClose.call(dialogContext)
+                                  : () {
+                                      Navigator.pop(dialogContext);
+                                    },
+                              child: Container(
+                                width: Spacing.huge.value + Spacing.mini.value,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: context.neutralColors.grey.shade50,
+                                ),
+                                child: Center(
+                                  child: Padding(
+                                    padding: Spacing.mini.all,
+                                    child: Icon(
+                                      Icons.close,
+                                      size: Spacing.large.value,
+                                      color: context.neutralColors.grey.shade700,
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
                           ),
-                        ),
-                    ],
+                      ],
+                    ),
+                  ],
+                  if (titleBottomSpacing != null)
+                    OperatorSizedBox.height(
+                      titleBottomSpacing,
+                    )
+                  else
+                    Spacing.huge.yBox,
+                  Builder(
+                    builder: body,
                   ),
                 ],
-                if (titleBottomSpacing != null)
-                  OperatorSizedBox.height(
-                    titleBottomSpacing,
-                  )
-                else
-                  Spacing.huge.yBox,
-                Builder(
-                  builder: body,
-                ),
-              ],
+              ),
             ),
           ),
         ),
