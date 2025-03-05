@@ -23,6 +23,8 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
     this.shrink = false,
     this.loadingIndicatorColor,
     this.labelWidget,
+    this.backgroundColor,
+    this.foregroundColor,
   })  : _type = _LedgerButtonType.primary1,
         assert(
           label != null || prefixIcon != null || suffixIcon != null,
@@ -47,6 +49,8 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
     this.shrink = false,
     this.loadingIndicatorColor,
     this.labelWidget,
+    this.backgroundColor,
+    this.foregroundColor,
   })  : _type = _LedgerButtonType.primary2,
         assert(
           label != null || prefixIcon != null || suffixIcon != null,
@@ -72,6 +76,8 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
     this.loadingIndicatorColor,
     this.labelWidget,
     this.mainAxisAlignment = MainAxisAlignment.center,
+    this.backgroundColor,
+    this.foregroundColor,
   })  : _type = _LedgerButtonType.secondary,
         assert(
           label != null || prefixIcon != null || suffixIcon != null,
@@ -95,6 +101,8 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
     this.shrink = false,
     this.loadingIndicatorColor,
     this.labelWidget,
+    this.backgroundColor,
+    this.foregroundColor,
   })  : _type = _LedgerButtonType.tertiary1,
         assert(
           label != null || prefixIcon != null || suffixIcon != null,
@@ -119,6 +127,8 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
     this.shrink = false,
     this.loadingIndicatorColor,
     this.labelWidget,
+    this.backgroundColor,
+    this.foregroundColor,
   })  : _type = _LedgerButtonType.tertiary2,
         assert(
           label != null || prefixIcon != null || suffixIcon != null,
@@ -143,6 +153,8 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
     this.shrink = false,
     this.loadingIndicatorColor,
     this.labelWidget,
+    this.backgroundColor,
+    this.foregroundColor,
   })  : _type = _LedgerButtonType.ghost,
         assert(
           label != null || prefixIcon != null || suffixIcon != null,
@@ -184,6 +196,9 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
 
   /// [shrink] will minimize the button width to hug its contents
   final bool shrink;
+
+  final Color? backgroundColor;
+  final Color? foregroundColor;
 
   @override
   Widget build(BuildContext context) {
@@ -263,8 +278,12 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
                       BorderRadius.circular(Spacing.smallMedium.value),
                 ),
               ),
-              foregroundColor: _ElevatedButtonColor(context.baseColors.white),
-              backgroundColor: _ElevatedButtonColor(context.baseColors.black),
+              foregroundColor: _ElevatedButtonColor(
+                foregroundColor ?? context.baseColors.white,
+              ),
+              backgroundColor: _ElevatedButtonColor(
+                backgroundColor ?? context.baseColors.black,
+              ),
               surfaceTintColor:
                   WidgetStatePropertyAll(context.neutralColors.grey.shade500),
               elevation: const WidgetStatePropertyAll(0),
@@ -285,9 +304,12 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
                       BorderRadius.circular(Spacing.smallMedium.value),
                 ),
               ),
-              foregroundColor: _ElevatedButtonColor(context.baseColors.black),
-              backgroundColor:
-                  _ElevatedButtonColor(context.neutralColors.grey.shade50),
+              foregroundColor: _ElevatedButtonColor(
+                foregroundColor ?? context.baseColors.black,
+              ),
+              backgroundColor: _ElevatedButtonColor(
+                backgroundColor ?? context.neutralColors.grey.shade50,
+              ),
               surfaceTintColor:
                   WidgetStatePropertyAll(context.neutralColors.grey.shade500),
               elevation: const WidgetStatePropertyAll(0),
