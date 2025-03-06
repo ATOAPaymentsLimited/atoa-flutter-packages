@@ -15,6 +15,10 @@ class RegalSearchBar extends StatefulWidget {
     this.fillColor,
     this.autofocus = false,
     this.showClose = true,
+    this.label,
+    this.showFloatingLabel,
+    this.isLightMode = false,
+    this.textStyle,
     required this.searchController,
     required this.semanticsLabel,
   });
@@ -30,6 +34,10 @@ class RegalSearchBar extends StatefulWidget {
   final BorderSide? border;
   final bool? filled;
   final Color? fillColor;
+  final Widget? label;
+  final bool isLightMode;
+  final FloatingLabelBehavior? showFloatingLabel;
+  final TextStyle? textStyle;
 
   @override
   State<RegalSearchBar> createState() => _RegalSearchBarState();
@@ -61,8 +69,15 @@ class _RegalSearchBarState extends State<RegalSearchBar> {
           autofocus: widget.autofocus,
           controller: widget.searchController,
           keyboardType: TextInputType.text,
-          style: context.labelSmall,
-          cursorColor: context.regalColor.licoriceBlack,
+          style: widget.textStyle ??
+              context.labelSmall?.textColor(
+                widget.isLightMode
+                    ? context.intactColors.black
+                    : context.regalColor.licoriceBlack,
+              ),
+          cursorColor: widget.isLightMode
+              ? context.intactColors.black
+              : context.regalColor.licoriceBlack,
           decoration: InputDecoration(
             isDense: true,
             fillColor: widget.fillColor ?? context.grey.shade05,
@@ -91,9 +106,13 @@ class _RegalSearchBarState extends State<RegalSearchBar> {
               child: Icon(
                 Icons.search,
                 size: widget.iconSize ?? 18.sp,
-                color: context.regalColor.licoriceBlack,
+                color: widget.isLightMode
+                    ? context.intactColors.black
+                    : context.regalColor.licoriceBlack,
               ),
             ),
+            label: widget.label,
+            floatingLabelBehavior: widget.showFloatingLabel,
             suffixIcon: _showClear && widget.showClose
                 ? CustomGestureDetector(
                     context: context,
@@ -106,7 +125,9 @@ class _RegalSearchBarState extends State<RegalSearchBar> {
                     child: Icon(
                       Icons.clear_sharp,
                       size: 18.sp,
-                      color: context.regalColor.licoriceBlack,
+                      color: widget.isLightMode
+                          ? context.intactColors.black
+                          : context.regalColor.licoriceBlack,
                     ),
                   )
                 : null,

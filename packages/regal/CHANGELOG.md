@@ -1,3 +1,9 @@
+# 3.7.7
+
+## 💅 Polish:
+
+- Update Legder Buttons and Regal Search Bar.
+
 # 3.7.6
 
 ## 💅 Polish:
