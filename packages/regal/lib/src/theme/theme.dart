@@ -3,7 +3,8 @@ export 'colors/color_system.dart';
 export 'colors/colors.dart';
 export 'colors/regal_colors.dart';
 export 'ledger_colors/ledger_colors.dart'
-    show LedgerColorX, NeutralColors, BaseColors;
+    show LedgerColorX, NeutralColors, BaseColors, SemanticsColors, BrandColors;
+
 export 'text/text.dart';
 export 'theme_data.dart';
 export 'theme_extension.dart';
