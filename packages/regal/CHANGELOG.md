@@ -1,3 +1,9 @@
+# 3.7.8
+
+## 🚀 Updates:
+
+- Exposed `IntactColors`
+
 # 3.7.7
 
 ## 💅 Polish:
