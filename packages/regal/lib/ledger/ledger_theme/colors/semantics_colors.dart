@@ -282,7 +282,7 @@ class PositiveColor extends SemanticColorSystem {
   PositiveColor.light()
       : _subtle = const Color(0xFFEAFAF4),
         _lighter = const Color(0xFFD5F1E7),
-        _defaultColor = const Color(0xFF43BF95),
+        _defaultColor = const Color(0xFF2EB392),
         _darker = const Color(0xFF2A7E62),
         _deep = const Color(0xFF1E5B47);
   PositiveColor.dark()
