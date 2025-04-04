@@ -80,7 +80,7 @@ class _LedgerCustomDatePickerState extends State<LedgerCustomDatePicker> {
           builder: (context) => ClipRRect(
             borderRadius: RadiusSpacing.rds2xl.topCorners,
             child: Container(
-              padding: EmptySpacing.lds200.y,
+              padding: Spacing.lds200.y,
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
@@ -96,7 +96,7 @@ class _LedgerCustomDatePickerState extends State<LedgerCustomDatePicker> {
                       ),
                     ),
                     child: Padding(
-                      padding: EmptySpacing.lds300.x + EmptySpacing.lds25.y,
+                      padding: Spacing.lds300.x + Spacing.lds25.y,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
@@ -139,7 +139,7 @@ class _LedgerCustomDatePickerState extends State<LedgerCustomDatePicker> {
                     ),
                   ),
                   SizedBox(
-                    height: EmptySpacing.lds250.value * 10,
+                    height: Spacing.lds250.value * 10,
                     child: CupertinoDatePicker(
                       initialDateTime: _selected,
                       minimumDate: _getFirstDate(),
@@ -261,7 +261,7 @@ class _LedgerDatePickerButtonState extends State<LedgerDatePickerButton> {
           suffixIcon: widget.dateTime != null
               ? null
               : Transform.translate(
-                  offset: Offset(0, -EmptySpacing.lds25.value),
+                  offset: Offset(0, -Spacing.lds25.value),
                   child: SizedBox(
                     child: Center(
                       widthFactor: 0,

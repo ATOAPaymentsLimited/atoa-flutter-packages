@@ -100,7 +100,7 @@ class _LedgerSearchBarState extends State<LedgerSearchBar> {
             contentPadding:
                 EdgeInsets.symmetric(horizontal: 15.sp, vertical: 12.sp),
             prefixIcon: Padding(
-              padding: EmptySpacing.lds150.left,
+              padding: Spacing.lds150.left,
               child: Icon(
                 Icons.search,
                 size: widget.iconSize ?? 18.sp,

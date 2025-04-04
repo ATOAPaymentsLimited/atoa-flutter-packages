@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-enum EmptySpacing {
+enum Spacing {
   /// 0 Empty Spacing
   lds0(0),
   /// 2 Empty Spacing
@@ -37,7 +37,7 @@ enum EmptySpacing {
   /// 112 Empty Spacing
   lds1400(112);
 
-  const EmptySpacing(this.value);
+  const Spacing(this.value);
 
   final double value;
 

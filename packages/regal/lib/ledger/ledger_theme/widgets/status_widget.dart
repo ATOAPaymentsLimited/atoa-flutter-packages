@@ -30,7 +30,7 @@ class StatusWidget extends StatelessWidget {
         children: [
           if (placeholder != null) placeholder! else _buildIcon(context),
           if (title != null && title!.trim().isNotEmpty) ...[
-            EmptySpacing.lds300.yBox,
+            Spacing.lds300.yBox,
             CustomText.semantics(
               title!,
               textAlign: TextAlign.center,
@@ -38,7 +38,7 @@ class StatusWidget extends StatelessWidget {
             ),
           ],
           if (description != null && description!.trim().isNotEmpty) ...[
-            EmptySpacing.lds300.yBox,
+            Spacing.lds300.yBox,
             CustomText.semantics(
               description!,
               style: descriptionStyle ?? context.body2,
@@ -46,7 +46,7 @@ class StatusWidget extends StatelessWidget {
             ),
           ],
           if (cta != null) ...[
-            EmptySpacing.lds300.yBox,
+            Spacing.lds300.yBox,
             Center(child: cta),
           ],
         ],
@@ -91,7 +91,7 @@ class _Icon extends StatelessWidget {
     return SvgPicture.asset(
       assetPath,
       colorFilter: filter,
-      package: 'atoa_dls',
+      package: 'regal',
       height: 80.sp,
       width: 80.sp,
     );

@@ -47,7 +47,7 @@ extension LightThemeDataExtension on ThemeData {
             ),
         inputDecorationTheme: InputDecorationTheme(
           isDense: true,
-          contentPadding: EmptySpacing.lds200.all,
+          contentPadding: Spacing.lds200.all,
           fillColor: LedgerColors.lightColors.neutral.grey.shade50,
           border: OutlineInputBorder(
             borderRadius: RadiusSpacing.rdsxl.all,

@@ -58,10 +58,17 @@ class LedgerInfiniteSpinnerState extends State<LedgerInfiniteSpinner>
             package: 'regal',
             height: widget.height,
             colorFilter: ColorFilter.mode(
-              widget.color ?? LedgerColors.lightColors.base.black,
+              widget.color ?? _defaultColor(context),
               BlendMode.srcIn,
             ),
           ),
         ),
       );
+
+  Color _defaultColor(BuildContext context) {
+    print(Theme.of(context).brightness == Brightness.light);
+    return Theme.of(context).brightness == Brightness.light
+        ? LedgerColors.lightColors.base.black
+        : LedgerColors.darkColors.base.black;
+  }
 }

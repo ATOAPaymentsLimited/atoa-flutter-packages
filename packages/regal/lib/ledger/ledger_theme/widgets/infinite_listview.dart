@@ -96,7 +96,7 @@ class _InfiniteListViewState extends State<InfiniteListView> {
         return widget.loadingWidget ??
             Center(
               child: Padding(
-                padding: EmptySpacing.lds100.all,
+                padding: Spacing.lds100.all,
                 child: const LedgerInfiniteSpinner(),
               ),
             );

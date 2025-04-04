@@ -9,8 +9,8 @@ import 'package:regal/ledger/spacing/spacing.dart';
 
 extension DarkThemeDataExtension on ThemeData {
   TextTheme get _textTheme => kFigTreeTextTheme.apply(
-        bodyColor: LedgerColors.darkColors.base.white,
-        displayColor: LedgerColors.darkColors.base.white,
+        bodyColor: LedgerColors.darkColors.base.black,
+        displayColor: LedgerColors.darkColors.base.black,
       );
 
   ThemeData get darkLedger => ThemeData.dark().copyWith(
@@ -28,7 +28,7 @@ extension DarkThemeDataExtension on ThemeData {
                 color: LedgerColors.darkColors.neutral.grey.shade600,
               ),
               isDense: true,
-              contentPadding: EmptySpacing.lds200.all,
+              contentPadding: Spacing.lds200.all,
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(14.sp),
                 borderSide: BorderSide(

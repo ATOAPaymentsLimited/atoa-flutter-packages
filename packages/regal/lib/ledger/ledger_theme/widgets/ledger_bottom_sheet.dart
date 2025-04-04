@@ -32,19 +32,19 @@ Future<T?> showLedgerBottomSheet<T>({
       builder: (dialogContext) => Theme(
         data: dialogContext.theme,
         child: Padding(
-          padding: EmptySpacing.lds200.y + EmptySpacing.lds250.x,
+          padding: Spacing.lds200.y + Spacing.lds250.x,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               Container(
-                height: EmptySpacing.lds50.value,
-                width: EmptySpacing.lds300.value * 2 + EmptySpacing.lds25.value,
+                height: Spacing.lds50.value,
+                width: Spacing.lds300.value * 2 + Spacing.lds25.value,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(EmptySpacing.lds50.value),
+                  borderRadius: BorderRadius.circular(Spacing.lds50.value),
                   color: dialogContext.grey.shade200,
                 ),
               ),
-              EmptySpacing.lds300.yBox,
+              Spacing.lds300.yBox,
               if (illustrationWidget != null) illustrationWidget,
               if (showTitle) ...[
                 Row(
@@ -60,10 +60,10 @@ Future<T?> showLedgerBottomSheet<T>({
                                 .copyWith(color: dialogContext.baseBlack),
                       ),
                     ),
-                    EmptySpacing.lds200.xBox,
+                    Spacing.lds200.xBox,
                     if (showCloseButton)
                       Padding(
-                        padding: EmptySpacing.lds50.top,
+                        padding: Spacing.lds50.top,
                         child: CustomInkWell(
                           semanticsLabel: 'Close Dialog Sheet Icon',
                           context: dialogContext,
@@ -74,18 +74,18 @@ Future<T?> showLedgerBottomSheet<T>({
                                   Navigator.pop(dialogContext);
                                 },
                           child: Container(
-                            width: EmptySpacing.lds300.value +
-                                EmptySpacing.lds50.value,
+                            width: Spacing.lds300.value +
+                                Spacing.lds50.value,
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               color: dialogContext.grey.shade50,
                             ),
                             child: Center(
                               child: Padding(
-                                padding: EmptySpacing.lds50.all,
+                                padding: Spacing.lds50.all,
                                 child: Icon(
                                   Icons.close,
-                                  size: EmptySpacing.lds200.value,
+                                  size: Spacing.lds200.value,
                                   color: dialogContext.grey.shade700,
                                 ),
                               ),
@@ -99,7 +99,7 @@ Future<T?> showLedgerBottomSheet<T>({
               if (titleBottomSpacing != null)
                 SizedBox(height: titleBottomSpacing)
               else
-                EmptySpacing.lds300.yBox,
+                Spacing.lds300.yBox,
               Builder(
                 builder: body,
               ),
@@ -165,23 +165,23 @@ Future<T?> showLedgerBottomSheetDraggable<T>({
               color: dialogContext.baseWhite,
               borderRadius: RadiusSpacing.rds2xl.topCorners,
             ),
-            padding: EmptySpacing.lds200.y + EmptySpacing.lds250.x,
+            padding: Spacing.lds200.y + Spacing.lds250.x,
             child: SingleChildScrollView(
               controller: controller,
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Container(
-                    height: EmptySpacing.lds50.value,
-                    width: EmptySpacing.lds300.value * 2 +
-                        EmptySpacing.lds25.value,
+                    height: Spacing.lds50.value,
+                    width: Spacing.lds300.value * 2 +
+                        Spacing.lds25.value,
                     decoration: BoxDecoration(
                       borderRadius:
-                          BorderRadius.circular(EmptySpacing.lds50.value),
+                          BorderRadius.circular(Spacing.lds50.value),
                       color: dialogContext.grey.shade200,
                     ),
                   ),
-                  EmptySpacing.lds300.yBox,
+                  Spacing.lds300.yBox,
                   if (illustrationWidget != null) illustrationWidget,
                   if (showTitle) ...[
                     Row(
@@ -197,10 +197,10 @@ Future<T?> showLedgerBottomSheetDraggable<T>({
                                     .copyWith(color: dialogContext.baseBlack),
                           ),
                         ),
-                        EmptySpacing.lds200.xBox,
+                        Spacing.lds200.xBox,
                         if (showCloseButton)
                           Padding(
-                            padding: EmptySpacing.lds50.top,
+                            padding: Spacing.lds50.top,
                             child: CustomInkWell(
                               semanticsLabel: 'Close Dialog Sheet Icon',
                               context: dialogContext,
@@ -211,18 +211,18 @@ Future<T?> showLedgerBottomSheetDraggable<T>({
                                       Navigator.pop(dialogContext);
                                     },
                               child: Container(
-                                width: EmptySpacing.lds300.value +
-                                    EmptySpacing.lds50.value,
+                                width: Spacing.lds300.value +
+                                    Spacing.lds50.value,
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,
                                   color: dialogContext.grey.shade50,
                                 ),
                                 child: Center(
                                   child: Padding(
-                                    padding: EmptySpacing.lds50.all,
+                                    padding: Spacing.lds50.all,
                                     child: Icon(
                                       Icons.close,
-                                      size: EmptySpacing.lds200.value,
+                                      size: Spacing.lds200.value,
                                       color: dialogContext.grey.shade700,
                                     ),
                                   ),
@@ -236,7 +236,7 @@ Future<T?> showLedgerBottomSheetDraggable<T>({
                   if (titleBottomSpacing != null)
                     SizedBox(height: titleBottomSpacing)
                   else
-                    EmptySpacing.lds300.yBox,
+                    Spacing.lds300.yBox,
                   Builder(
                     builder: body,
                   ),
@@ -295,7 +295,7 @@ Future<T?> showLedgerBottomSheetStacked<T>({
                 Align(
                   alignment: Alignment.topRight,
                   child: Padding(
-                    padding: EmptySpacing.lds250.all,
+                    padding: Spacing.lds250.all,
                     child: CustomInkWell(
                       semanticsLabel: 'Close Dialog Sheet Icon',
                       context: dialogContext,
@@ -307,7 +307,7 @@ Future<T?> showLedgerBottomSheetStacked<T>({
                             },
                       child: Icon(
                         Icons.close,
-                        size: EmptySpacing.lds300.value,
+                        size: Spacing.lds300.value,
                         color: dialogContext.baseWhite,
                       ),
                     ),
@@ -316,7 +316,7 @@ Future<T?> showLedgerBottomSheetStacked<T>({
             ],
           ),
           Padding(
-            padding: bodyPadding ?? EmptySpacing.lds250.all,
+            padding: bodyPadding ?? Spacing.lds250.all,
             child: Builder(
               builder: body,
             ),

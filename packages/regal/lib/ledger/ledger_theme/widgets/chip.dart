@@ -41,7 +41,7 @@ class LedgerChip extends StatelessWidget {
           semanticsLabel: 'OnTap chip $label',
           onTap: onTap,
           child: Container(
-            padding: EmptySpacing.lds150.x + (EmptySpacing.lds25.y * 2.5),
+            padding: Spacing.lds150.x + (Spacing.lds25.y * 2.5),
             decoration: BoxDecoration(
               color: bgColor ??
                   (isSelected ? context.primary.shade500 : context.primary.shade100),
@@ -66,7 +66,7 @@ class LedgerChip extends StatelessWidget {
                       ),
                 ),
                 if (onRemove != null) ...[
-                  spacing ?? EmptySpacing.lds100.xBox,
+                  spacing ?? Spacing.lds100.xBox,
                   CustomGestureDetector(
                     context: context,
                     trackLabel: 'Deselect chip $label',

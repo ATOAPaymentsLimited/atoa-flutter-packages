@@ -15,9 +15,9 @@ class PlaceHolderCarousel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Padding(
-        padding: EmptySpacing.lds100.y +
-            EmptySpacing.lds250.left +
-            EmptySpacing.lds100.right,
+        padding: Spacing.lds100.y +
+            Spacing.lds250.left +
+            Spacing.lds100.right,
         child: ClipRRect(
           borderRadius: BorderRadius.circular(24),
           child: Shimmer.fromColors(

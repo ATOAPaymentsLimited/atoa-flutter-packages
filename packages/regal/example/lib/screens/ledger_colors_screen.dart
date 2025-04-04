@@ -22,7 +22,7 @@ class _LedgerColorsScreenState extends State<LedgerColorsScreen> {
               (e) => MapEntry(
                   e,
                   Padding(
-                    padding: EmptySpacing.lds25.all,
+                    padding: Spacing.lds25.all,
                     child: Text(e.name),
                   )),
             ),

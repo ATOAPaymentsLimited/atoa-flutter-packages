@@ -145,12 +145,12 @@ class LedgerStatusCard extends StatelessWidget {
         child: Container(
           clipBehavior: Clip.hardEdge,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(EmptySpacing.lds250.value),
+            borderRadius: BorderRadius.circular(Spacing.lds250.value),
             color: bgColor ?? _type.bgColor(context),
           ),
           width: double.infinity,
           child: Padding(
-            padding: EmptySpacing.lds200.all,
+            padding: Spacing.lds200.all,
             child: Column(
               children: [
                 Row(
@@ -158,7 +158,7 @@ class LedgerStatusCard extends StatelessWidget {
                   children: [
                     if (prefixIcon != null) ...[
                       prefixIcon!,
-                      EmptySpacing.lds150.xBox,
+                      Spacing.lds150.xBox,
                     ],
                     Expanded(
                       child: Column(
@@ -212,11 +212,11 @@ class LedgerStatusCard extends StatelessWidget {
                   ],
                 ),
                 if (body != null) ...[
-                  EmptySpacing.lds150.yBox,
+                  Spacing.lds150.yBox,
                   body!,
                 ],
                 if (onTapCta != null && ctaText != null) ...[
-                  EmptySpacing.lds150.yBox,
+                  Spacing.lds150.yBox,
                   LedgerButton.primary1(
                     label: ctaText,
                     size: LedgerButtonSize.small,

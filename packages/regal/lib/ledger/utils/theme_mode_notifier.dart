@@ -6,8 +6,7 @@ class ThemeModeNotifier extends StateNotifier<ThemeMode> {
   ThemeModeNotifier({
     required this.prefs,
     ThemeMode mode = ThemeMode.system,
-    this.oldPrefsKey = 'regal/theme_mode',
-    this.prefsKey = 'atoa_dls/theme_mode',
+    this.prefsKey = 'regal/theme_mode',
   }) : super(mode) {
     if (mode == ThemeMode.system) {
       _getModeFromPrefs();
@@ -16,19 +15,11 @@ class ThemeModeNotifier extends StateNotifier<ThemeMode> {
 
   final SharedPreferences prefs;
   final String prefsKey;
-  final String oldPrefsKey;
 
   ThemeMode get themeMode => state;
 
   void _getModeFromPrefs() {
-    var name = prefs.getString(prefsKey);
-    if (name == null) {
-      name = prefs.getString(oldPrefsKey);
-      prefs
-        ..remove(oldPrefsKey)
-        ..setString(prefsKey, name ?? ThemeMode.system.name);
-    }
-
+    final name = prefs.getString(prefsKey);
     for (final mode in ThemeMode.values) {
       if (name == mode.name) {
         state = mode;

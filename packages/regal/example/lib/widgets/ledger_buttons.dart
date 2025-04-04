@@ -9,7 +9,7 @@ class LedgerButtons extends StatelessWidget {
     return Column(
       children: [
         const Text('Ledger Buttons'),
-        EmptySpacing.lds200.yBox,
+        Spacing.lds200.yBox,
         LedgerButton.primary1(
           trackLabel: 'trackLabel',
           label: 'primary1',
@@ -23,7 +23,7 @@ class LedgerButtons extends StatelessWidget {
             );
           },
         ),
-        EmptySpacing.lds200.yBox,
+        Spacing.lds200.yBox,
         LedgerButton.primary2(
           trackLabel: 'trackLabel',
           label: 'primary2',
@@ -31,7 +31,7 @@ class LedgerButtons extends StatelessWidget {
           onPressed: () {},
           prefixIcon: const Icon(Icons.download),
         ),
-        EmptySpacing.lds200.yBox,
+        Spacing.lds200.yBox,
         LedgerButton.secondary(
           trackLabel: 'trackLabel',
           label: 'Secondary',
@@ -39,7 +39,7 @@ class LedgerButtons extends StatelessWidget {
           onPressed: () {},
           loading: true,
         ),
-        EmptySpacing.lds200.yBox,
+        Spacing.lds200.yBox,
         LedgerButton.tertiary1(
           trackLabel: 'trackLabel',
           label: 'tertiary1',
@@ -47,7 +47,7 @@ class LedgerButtons extends StatelessWidget {
           onPressed: () {},
           loading: true,
         ),
-        EmptySpacing.lds200.yBox,
+        Spacing.lds200.yBox,
         LedgerButton.tertiary2(
           trackLabel: 'trackLabel',
           label: 'tertiary2',
@@ -56,7 +56,7 @@ class LedgerButtons extends StatelessWidget {
           onPressed: () {},
           loading: true,
         ),
-        EmptySpacing.lds200.yBox,
+        Spacing.lds200.yBox,
         const LedgerButton.ghost(
           trackLabel: 'trackLabel',
           label: 'ghost',
@@ -64,7 +64,7 @@ class LedgerButtons extends StatelessWidget {
           prefixIcon: Icon(Icons.download),
           loading: true,
         ),
-        EmptySpacing.lds200.yBox,
+        Spacing.lds200.yBox,
       ],
     );
   }

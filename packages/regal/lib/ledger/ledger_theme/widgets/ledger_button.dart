@@ -207,7 +207,7 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
       mainAxisSize: shrink ? MainAxisSize.min : MainAxisSize.max,
       mainAxisAlignment: mainAxisAlignment,
       children: [
-        if (shrink) EmptySpacing.lds300.xBox,
+        if (shrink) Spacing.lds300.xBox,
         if (loading) ...[
           LedgerInfiniteSpinner(
             color:
@@ -215,7 +215,7 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
             height: 18.sp,
           ),
           if (label != null) ...[
-            EmptySpacing.lds150.xBox,
+            Spacing.lds150.xBox,
             labelWidget ??
                 AutoSizeText(
                   label!,
@@ -225,7 +225,7 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
           ],
         ] else ...[
           if (prefixIcon != null) prefixIcon!,
-          if (prefixIcon != null && label != null) EmptySpacing.lds100.xBox,
+          if (prefixIcon != null && label != null) Spacing.lds150.xBox,
           if (label != null)
             labelWidget ??
                 AutoSizeText(
@@ -233,9 +233,9 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
                   textAlign: TextAlign.center,
                   semanticsLabel: label,
                 ),
-          if (suffixIcon != null && label != null) EmptySpacing.lds100.xBox,
+          if (suffixIcon != null && label != null) Spacing.lds100.xBox,
           if (suffixIcon != null) suffixIcon!,
-          if (shrink) EmptySpacing.lds300.xBox,
+          if (shrink) Spacing.lds300.xBox,
         ],
       ],
     );
@@ -253,7 +253,7 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
               shape: WidgetStatePropertyAll(
                 RoundedRectangleBorder(
                   borderRadius:
-                      BorderRadius.circular(EmptySpacing.lds150.value),
+                      BorderRadius.circular(Spacing.lds150.value),
                 ),
               ),
               foregroundColor: _ElevatedButtonColor(context.intactWhite),
@@ -276,7 +276,7 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
               shape: WidgetStatePropertyAll(
                 RoundedRectangleBorder(
                   borderRadius:
-                      BorderRadius.circular(EmptySpacing.lds150.value),
+                      BorderRadius.circular(Spacing.lds150.value),
                 ),
               ),
               foregroundColor: _ElevatedButtonColor(
@@ -302,7 +302,7 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
               shape: WidgetStatePropertyAll(
                 RoundedRectangleBorder(
                   borderRadius:
-                      BorderRadius.circular(EmptySpacing.lds150.value),
+                      BorderRadius.circular(Spacing.lds150.value),
                 ),
               ),
               foregroundColor: _ElevatedButtonColor(
@@ -328,7 +328,7 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
               shape: WidgetStatePropertyAll(
                 RoundedRectangleBorder(
                   borderRadius:
-                      BorderRadius.circular(EmptySpacing.lds150.value),
+                      BorderRadius.circular(Spacing.lds150.value),
                 ),
               ),
               foregroundColor:
@@ -351,7 +351,7 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
               shape: WidgetStatePropertyAll(
                 RoundedRectangleBorder(
                   borderRadius:
-                      BorderRadius.circular(EmptySpacing.lds150.value),
+                      BorderRadius.circular(Spacing.lds150.value),
                 ),
               ),
               foregroundColor: _ElevatedButtonColor(context.baseBlack),
@@ -377,7 +377,7 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
                     width: 1.sp,
                   ),
                   borderRadius:
-                      BorderRadius.circular(EmptySpacing.lds150.value),
+                      BorderRadius.circular(Spacing.lds150.value),
                 ),
               ),
               foregroundColor: _ElevatedButtonColor(context.baseBlack),

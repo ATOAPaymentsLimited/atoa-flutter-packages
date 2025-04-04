@@ -180,7 +180,7 @@ class _LedgerTextFieldState extends State<LedgerTextField> {
         explicitChildNodes: true,
         label: '${widget.label} TextFormField',
         child: Container(
-          margin: widget.margin ?? EmptySpacing.lds200.y,
+          margin: widget.margin ?? Spacing.lds200.y,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -190,7 +190,7 @@ class _LedgerTextFieldState extends State<LedgerTextField> {
                   style: widget.labelStyle ??
                       context.theme.inputDecorationTheme.labelStyle,
                 ),
-                EmptySpacing.lds150.yBox,
+                Spacing.lds150.yBox,
               ],
               TextFormField(
                 restorationId: widget.restorationId,

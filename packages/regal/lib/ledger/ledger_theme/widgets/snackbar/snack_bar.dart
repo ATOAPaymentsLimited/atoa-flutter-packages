@@ -26,7 +26,7 @@ class Snackbar extends StatelessWidget with EventTrackMixin {
 
   Widget _verticalDivider(BuildContext context) => Container(
         width: 1.sp,
-        margin: EmptySpacing.lds50.right + EmptySpacing.lds50.y,
+        margin: Spacing.lds50.right + Spacing.lds50.y,
         decoration: BoxDecoration(
           border: Border(
             left: Divider.createBorderSide(
@@ -65,7 +65,7 @@ class Snackbar extends StatelessWidget with EventTrackMixin {
             ),
             child: snackbar.loading
                 ? LedgerInfiniteSpinner(
-                    height: EmptySpacing.lds100.value,
+                    height: Spacing.lds100.value,
                   )
                 : Text(snackbar.ctaText!),
           )
@@ -77,15 +77,15 @@ class Snackbar extends StatelessWidget with EventTrackMixin {
           mainAxisSize: MainAxisSize.min,
           children: [
             if (showClose) ...[
-              EmptySpacing.lds150.xBox,
+              Spacing.lds150.xBox,
               cta,
-              EmptySpacing.lds150.xBox,
+              Spacing.lds150.xBox,
               _verticalDivider(context),
-              EmptySpacing.lds25.xBox,
+              Spacing.lds25.xBox,
               close,
             ] else ...[
               _verticalDivider(context),
-              EmptySpacing.lds25.xBox,
+              Spacing.lds25.xBox,
               cta,
             ],
           ],
@@ -105,7 +105,7 @@ class Snackbar extends StatelessWidget with EventTrackMixin {
   }
 
   Widget wrap(Widget widget, BuildContext context) => SafeArea(
-        minimum: EmptySpacing.lds300.y,
+        minimum: Spacing.lds300.y,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           mainAxisSize: MainAxisSize.min,
@@ -134,7 +134,7 @@ class Snackbar extends StatelessWidget with EventTrackMixin {
       children: [
         if (snackbar.headerIcon != null && snackbar.headerText != null)
           Container(
-            padding: EmptySpacing.lds150.all,
+            padding: Spacing.lds150.all,
             decoration: BoxDecoration(
               color: snackbar.type.bg(context),
               border: Border.all(color: context.grey.shade400),
@@ -146,7 +146,7 @@ class Snackbar extends StatelessWidget with EventTrackMixin {
             child: Row(
               children: [
                 snackbar.headerIcon!,
-                EmptySpacing.lds150.xBox,
+                Spacing.lds150.xBox,
                 Text(
                   snackbar.headerText!,
                   style: context.body2.copyWith(
@@ -158,7 +158,7 @@ class Snackbar extends StatelessWidget with EventTrackMixin {
           ),
         ListTile(
           horizontalTitleGap: 12.sp,
-          contentPadding: EmptySpacing.lds150.x + EmptySpacing.lds100.y,
+          contentPadding: Spacing.lds150.x + Spacing.lds100.y,
           tileColor: snackbar.type.bg(context),
           leading: leading ?? snackbar.type.leading(context),
           title: Text(snackbar.title),
@@ -189,7 +189,7 @@ class Snackbar extends StatelessWidget with EventTrackMixin {
     return Align(
       alignment: alignment ?? Alignment.bottomCenter,
       child: Padding(
-        padding: EmptySpacing.lds200.x,
+        padding: Spacing.lds200.x,
         child: wrap(listTile, context),
       ),
     );
