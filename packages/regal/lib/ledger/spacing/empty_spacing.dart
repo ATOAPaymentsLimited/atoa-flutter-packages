@@ -57,7 +57,7 @@ enum Spacing {
   SizedBox get yBox => SizedBox(height: value.sp);
 }
 
-extension OperatorSizedBoxX on SizedBox {
+extension SizedBoxSpacingX on SizedBox {
   SizedBox operator *(double other) {
     if (height != null) return SizedBox(height: height! * other);
 
