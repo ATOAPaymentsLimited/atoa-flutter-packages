@@ -65,10 +65,7 @@ class LedgerInfiniteSpinnerState extends State<LedgerInfiniteSpinner>
         ),
       );
 
-  Color _defaultColor(BuildContext context) {
-    print(Theme.of(context).brightness == Brightness.light);
-    return Theme.of(context).brightness == Brightness.light
+  Color _defaultColor(BuildContext context) => Theme.of(context).brightness == Brightness.light
         ? LedgerColors.lightColors.base.black
         : LedgerColors.darkColors.base.black;
-  }
 }
