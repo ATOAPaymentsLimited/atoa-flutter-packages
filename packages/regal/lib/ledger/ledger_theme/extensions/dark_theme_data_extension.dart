@@ -18,6 +18,9 @@ extension DarkThemeDataExtension on ThemeData {
         extensions: [
           LedgerColors.darkColors,
         ],
+        iconTheme: IconThemeData(
+          color: LedgerColors.darkColors.base.black,
+        ),
         dialogTheme: ThemeData.dark().dialogTheme.copyWith(
               surfaceTintColor: LedgerColors.darkColors.base.white,
               backgroundColor: LedgerColors.darkColors.base.white,
@@ -32,13 +35,13 @@ extension DarkThemeDataExtension on ThemeData {
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(14.sp),
                 borderSide: BorderSide(
-                  color: LedgerColors.darkColors.neutral.grey.shade10,
+                  color: LedgerColors.darkColors.neutral.grey.shade100,
                 ),
               ),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(14.sp),
                 borderSide: BorderSide(
-                  color: LedgerColors.darkColors.neutral.grey.shade10,
+                  color: LedgerColors.darkColors.neutral.grey.shade100,
                 ),
               ),
               focusedBorder: OutlineInputBorder(

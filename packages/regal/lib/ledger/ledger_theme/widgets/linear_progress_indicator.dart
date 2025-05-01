@@ -13,6 +13,7 @@ class LedgerLinearProgressIndicator extends StatelessWidget {
     this.shouldClipLeft = true,
     required this.value,
     this.backgroundColor,
+    this.showBorder = true,
   }) : assert(value >= 0 && value <= 1.0, 'value should be between 0 and 1');
 
   final double? width;
@@ -23,6 +24,7 @@ class LedgerLinearProgressIndicator extends StatelessWidget {
   final LinearGradient? linearGradient;
   final Color? borderColor;
   final Color? backgroundColor;
+  final bool showBorder;
 
   @override
   Widget build(BuildContext context) {
@@ -38,9 +40,11 @@ class LedgerLinearProgressIndicator extends StatelessWidget {
             decoration: BoxDecoration(
               color: backgroundColor ?? Colors.white,
               borderRadius: borderRadius ?? BorderRadius.circular(6.r),
-              border: Border.all(
-                color: borderColor ?? context.grey.shade400,
-              ),
+              border: showBorder
+                  ? Border.all(
+                      color: borderColor ?? context.grey.shade400,
+                    )
+                  : null,
             ),
           ),
           ClipRRect(
@@ -57,8 +61,8 @@ class LedgerLinearProgressIndicator extends StatelessWidget {
                 gradient: linearGradient ??
                     LinearGradient(
                       colors: [
-                        SemanticsColors.light().info.darker,
-                        SemanticsColors.light().notice.defaultColor,
+                        LedgerColors.lightColors.semantic.info.darker,
+                        LedgerColors.lightColors.semantic.notice.defaultColor,
                       ],
                     ),
               ),

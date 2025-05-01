@@ -217,12 +217,12 @@ class LedgerStatusCard extends StatelessWidget {
                 ],
                 if (onTapCta != null && ctaText != null) ...[
                   Spacing.lds150.yBox,
-                  LedgerButton.primary1(
+                  LedgerButton.primary2(
                     label: ctaText,
                     size: LedgerButtonSize.small,
                     style: ElevatedButton.styleFrom(
-                      foregroundColor: BrandColors.light().primary.shade500,
-                      backgroundColor: BaseColors.light().white,
+                      foregroundColor: LedgerColors.lightColors.brand.primary.shade500,
+                      backgroundColor: LedgerColors.lightColors.base.white,
                     ),
                     trackLabel: ctaText!,
                     onPressed: onTapCta,
@@ -247,9 +247,9 @@ enum LedgerStatusCardTypeEnum {
       case LedgerStatusCardTypeEnum.info:
         return context.grey.shade50;
       case LedgerStatusCardTypeEnum.pending:
-        return SemanticsColors.light().notice.defaultColor;
+        return LedgerColors.lightColors.semantic.notice.defaultColor;
       case LedgerStatusCardTypeEnum.success:
-        return SemanticsColors.light().positive.defaultColor;
+        return LedgerColors.lightColors.semantic.positive.defaultColor;
     }
   }
 

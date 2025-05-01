@@ -2,8 +2,8 @@ import 'dart:math';
 import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
+import 'package:regal/ledger/ledger_theme/colors/colors.dart';
 
-import 'package:regal/ledger/ledger_theme/ledger_theme.dart';
 
 class CustomFocusLinesShapeAnimation extends StatefulWidget {
   const CustomFocusLinesShapeAnimation({
@@ -74,7 +74,7 @@ class _CustomFocusLinesShapeAnimationState
                           size: Size(widget.width, widget.height),
                           painter: _FocusLinesShapePainter(
                             gradientColor: widget.gradientColor ??
-                                BrandColors.light().primary.shade800,
+                                LedgerColors.lightColors.brand.primary.shade800,
                           ),
                         ),
                       ),

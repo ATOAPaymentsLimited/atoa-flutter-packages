@@ -1,9 +1,7 @@
 // coverage:ignore-file
 
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-import 'package:regal/src/regal.dart';
 import 'package:regal/src/theme/text/figtree_x.dart';
 import 'package:regal/src/theme/theme.dart';
 

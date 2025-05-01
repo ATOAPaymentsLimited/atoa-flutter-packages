@@ -1,10 +1,8 @@
 
-import 'package:regal/ledger/ledger_theme/colors/colors.dart';
-
-export 'base_colors.dart';
-export 'colors_theme_extension.dart';
-export 'semantics_colors.dart';
-export 'shade_colors.dart';
+import 'package:regal/ledger/ledger_theme/colors/base_colors.dart';
+import 'package:regal/ledger/ledger_theme/colors/colors_theme_extension.dart';
+import 'package:regal/ledger/ledger_theme/colors/semantics_colors.dart';
+import 'package:regal/ledger/ledger_theme/colors/shade_colors.dart';
 
 class LedgerColors {
   static ColorsThemeExtension lightColors = ColorsThemeExtension(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:regal/assets/assets.gen.dart';
 import 'package:regal/ledger/ledger_theme/ledger_theme.dart';
 import 'package:regal/ledger/mixin/mixins.dart';
 import 'package:regal/ledger/spacing/spacing.dart';
@@ -44,7 +45,7 @@ class Snackbar extends StatelessWidget with EventTrackMixin {
       onPressed: (context) => onClose?.call(),
       iconData: Icons.close,
       trackLabel: 'Close Snackbar',
-      size: LedgerIconButtonSize.medium,
+      size: LedgerIconButtonSize.small,
       iconColor: snackbar.type.closeColor(context),
     );
 
@@ -60,6 +61,7 @@ class Snackbar extends StatelessWidget with EventTrackMixin {
             },
             style: TextButton.styleFrom(
               padding: EdgeInsets.zero,
+              textStyle: context.body3,
               visualDensity: VisualDensity.compact,
               foregroundColor: snackbar.type.ctaColor(context),
             ),
@@ -67,7 +69,7 @@ class Snackbar extends StatelessWidget with EventTrackMixin {
                 ? LedgerInfiniteSpinner(
                     height: Spacing.lds100.value,
                   )
-                : Text(snackbar.ctaText!),
+                : CustomText.semantics(snackbar.ctaText!),
           )
         : null;
 
@@ -147,7 +149,7 @@ class Snackbar extends StatelessWidget with EventTrackMixin {
               children: [
                 snackbar.headerIcon!,
                 Spacing.lds150.xBox,
-                Text(
+                CustomText.semantics(
                   snackbar.headerText!,
                   style: context.body2.copyWith(
                     color: snackbar.type.textColor(context),
@@ -157,19 +159,26 @@ class Snackbar extends StatelessWidget with EventTrackMixin {
             ),
           ),
         ListTile(
+          dense: true,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(Spacing.lds150.value),
+            side: BorderSide(
+              color: snackbar.type.borderColor(context),
+            ),
+          ),
           horizontalTitleGap: 12.sp,
           contentPadding: Spacing.lds150.x + Spacing.lds100.y,
           tileColor: snackbar.type.bg(context),
           leading: leading ?? snackbar.type.leading(context),
-          title: Text(snackbar.title),
+          title: CustomText.semantics(snackbar.title),
           titleTextStyle: titleTextStyle ??
-              context.body2.copyWith(
+              context.body3.copyWith(
                 color: snackbar.type.textColor(context),
               ),
           subtitle: snackbar.description != null
-              ? Text(
+              ? CustomText.semantics(
                   snackbar.description!,
-                  style: context.body2.copyWith(
+                  style: context.body3.copyWith(
                     color: snackbar.type.textColor(context),
                   ),
                 )
@@ -189,7 +198,7 @@ class Snackbar extends StatelessWidget with EventTrackMixin {
     return Align(
       alignment: alignment ?? Alignment.bottomCenter,
       child: Padding(
-        padding: Spacing.lds200.x,
+        padding: Spacing.lds200.x + Spacing.lds400.bottom,
         child: wrap(listTile, context),
       ),
     );
@@ -198,43 +207,60 @@ class Snackbar extends StatelessWidget with EventTrackMixin {
 
 extension on SnackbarTypeEnum {
   Widget leading(BuildContext context) => switch (this) {
-        SnackbarTypeEnum.success => Icon(
-            Icons.check_circle,
-            color: context.baseWhite,
-            size: 20.sp,
+        SnackbarTypeEnum.success =>
+          Assets.icons.ledger.successFillLedgerIcon.svg(
+            colorFilter: ColorFilter.mode(
+              context.positive.defaultColor,
+              BlendMode.srcIn,
+            ),
+            height: 20.sp,
+            width: 20.sp,
           ),
-        SnackbarTypeEnum.error => Icon(
-            Icons.error_outline,
-            color: context.baseWhite,
-            size: 20.sp,
+        SnackbarTypeEnum.error => Assets.icons.ledger.warningFillLedgerIcon.svg(
+            colorFilter: ColorFilter.mode(
+              context.error.defaultColor,
+              BlendMode.srcIn,
+            ),
+            height: 20.sp,
+            width: 20.sp,
           ),
-        SnackbarTypeEnum.info => Icon(
-            Icons.info_outline,
-            color: context.grey.shade500,
+        SnackbarTypeEnum.info => Assets.icons.ledger.infoFillLedgerIcon.svg(
+            colorFilter: ColorFilter.mode(
+              context.grey.shade600,
+              BlendMode.srcIn,
+            ),
+            height: 20.sp,
+            width: 20.sp,
           ),
       };
 
   Color bg(BuildContext context) => switch (this) {
-        SnackbarTypeEnum.success => context.positive.darker,
-        SnackbarTypeEnum.error => context.error.defaultColor,
+        SnackbarTypeEnum.success => context.positive.subtle,
+        SnackbarTypeEnum.error => context.error.subtle,
         SnackbarTypeEnum.info => context.grey.shade50,
       };
 
+  Color borderColor(BuildContext context) => switch (this) {
+        SnackbarTypeEnum.success => context.positive.lighter,
+        SnackbarTypeEnum.error => context.error.lighter,
+        SnackbarTypeEnum.info => context.grey.shade200,
+      };
+
   Color textColor(BuildContext context) => switch (this) {
-        SnackbarTypeEnum.success => context.baseWhite,
-        SnackbarTypeEnum.error => context.baseWhite,
-        SnackbarTypeEnum.info => context.baseBlack,
+        SnackbarTypeEnum.success => context.positive.deep,
+        SnackbarTypeEnum.error => context.error.deep,
+        SnackbarTypeEnum.info => context.grey.shade600,
       };
 
   Color closeColor(BuildContext context) => switch (this) {
-        SnackbarTypeEnum.success => context.grey.shade200,
-        SnackbarTypeEnum.error => context.grey.shade200,
-        SnackbarTypeEnum.info => context.grey.shade500,
+        SnackbarTypeEnum.success => context.positive.deep,
+        SnackbarTypeEnum.error => context.error.deep,
+        SnackbarTypeEnum.info => context.grey.shade600,
       };
 
   Color ctaColor(BuildContext context) => switch (this) {
-        SnackbarTypeEnum.success => context.baseWhite,
-        SnackbarTypeEnum.error => context.baseWhite,
-        SnackbarTypeEnum.info => context.primary.shade500,
+        SnackbarTypeEnum.success => context.positive.deep,
+        SnackbarTypeEnum.error => context.error.deep,
+        SnackbarTypeEnum.info => context.grey.shade600,
       };
 }

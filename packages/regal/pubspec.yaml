@@ -48,9 +48,6 @@ flutter:
     - assets/icons/
     - assets/icons/ledger/
   fonts:
-    - family: LedgerIcons
-      fonts:
-      - asset: assets/icons_font/LedgerIcons.ttf
     - family: Montserrat
       fonts:
         - asset: assets/fonts/Montserrat/Montserrat-Regular.ttf

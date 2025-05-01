@@ -44,7 +44,9 @@ class LedgerChip extends StatelessWidget {
             padding: Spacing.lds150.x + (Spacing.lds25.y * 2.5),
             decoration: BoxDecoration(
               color: bgColor ??
-                  (isSelected ? context.primary.shade500 : context.primary.shade100),
+                  (isSelected
+                      ? context.primary.shade500
+                      : context.primary.shade100),
               borderRadius: borderRadius ?? RadiusSpacing.rdss.all,
             ),
             child: Row(
@@ -59,9 +61,9 @@ class LedgerChip extends StatelessWidget {
                         color: labelColor ??
                             context.brightness.map(
                               (l) => isSelected
-                                  ? BaseColors.light().white
-                                  : BaseColors.light().black,
-                              (d) => BaseColors.light().white,
+                                  ? LedgerColors.lightColors.base.white
+                                  : LedgerColors.lightColors.base.black,
+                              (d) => LedgerColors.lightColors.base.white,
                             ),
                       ),
                 ),

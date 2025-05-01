@@ -192,7 +192,7 @@ class CustomNavigationCard extends StatelessWidget {
                           svgAsset!,
                           theme: SvgTheme(
                             currentColor:
-                                foregroundColor ?? BrandColors.light().primary.shade500,
+                                foregroundColor ?? LedgerColors.lightColors.brand.primary.shade500,
                           ),
                         ),
                       ),
@@ -283,7 +283,7 @@ class CustomNavigationCard extends StatelessWidget {
                                 svgAsset!,
                                 theme: SvgTheme(
                                   currentColor:
-                                      foregroundColor ?? BrandColors.light().primary.shade500,
+                                      foregroundColor ?? LedgerColors.lightColors.brand.primary.shade500,
                                 ),
                               ),
                             ),

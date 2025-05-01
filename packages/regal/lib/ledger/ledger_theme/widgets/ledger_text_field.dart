@@ -354,14 +354,14 @@ enum TextValidationState {
 
   Color get labelColor =>
       this == invalid
-          ? SemanticsColors.light().error.defaultColor
-          : NeutralColors.light().grey.shade500;
+          ? LedgerColors.lightColors.semantic.error.defaultColor
+          : LedgerColors.lightColors.neutral.grey.shade500;
 
   Color get suffixColor => this == none
       ? Colors.transparent
       : this == invalid
-          ? SemanticsColors.light().error.defaultColor
-          :  NeutralColors.light().grey.shade500;
+          ? LedgerColors.lightColors.semantic.error.defaultColor
+          : LedgerColors.lightColors.neutral.grey.shade500;
 
   IconData get iconData =>
       this == invalid ? Icons.error_outline : Icons.cancel_outlined;

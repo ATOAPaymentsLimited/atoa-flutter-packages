@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:regal/ledger/ledger_theme/colors/colors.dart';
+import 'package:regal/ledger/ledger_theme/colors/exports.dart';
 import 'package:regal/ledger/utils/theme_mode_notifier.dart';
 
 extension BasicThemeDataExtension on BuildContext {

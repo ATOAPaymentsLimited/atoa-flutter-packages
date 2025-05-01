@@ -1,3 +1,6 @@
+/*
+  DLS Utility is a singleton class for toggling event tracking
+*/
 class DlsUtility {
   factory DlsUtility() => _instance;
   DlsUtility._();
