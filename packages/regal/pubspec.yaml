@@ -46,7 +46,6 @@ flutter:
   generate: true
   assets:
     - assets/icons/
-    - assets/icons/ledger/
   fonts:
     - family: Montserrat
       fonts:
