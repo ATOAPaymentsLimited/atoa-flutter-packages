@@ -208,6 +208,7 @@ class Snackbar extends StatelessWidget with EventTrackMixin {
 extension on SnackbarTypeEnum {
   Widget leading(BuildContext context) => switch (this) {
         SnackbarTypeEnum.success => Assets.icons.successFill.svg(
+            package: 'regal',
             colorFilter: ColorFilter.mode(
               context.positive.defaultColor,
               BlendMode.srcIn,
@@ -216,6 +217,7 @@ extension on SnackbarTypeEnum {
             width: 20.sp,
           ),
         SnackbarTypeEnum.error => Assets.icons.warningFill.svg(
+            package: 'regal',
             colorFilter: ColorFilter.mode(
               context.error.defaultColor,
               BlendMode.srcIn,
@@ -224,6 +226,7 @@ extension on SnackbarTypeEnum {
             width: 20.sp,
           ),
         SnackbarTypeEnum.info => Assets.icons.infoFill.svg(
+            package: 'regal',
             colorFilter: ColorFilter.mode(
               context.grey.shade600,
               BlendMode.srcIn,
