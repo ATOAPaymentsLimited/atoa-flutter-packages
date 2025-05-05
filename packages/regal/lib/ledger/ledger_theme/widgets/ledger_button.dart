@@ -264,7 +264,8 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
               shape: WidgetStatePropertyAll(
                 RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(
-                      borderRadius ?? Spacing.lds150.value),
+                    borderRadius ?? Spacing.lds150.value,
+                  ),
                 ),
               ),
               foregroundColor: _ElevatedButtonColor(context.intactWhite),
@@ -450,7 +451,8 @@ enum LedgerButtonSize {
   final double value;
 
   TextStyle style(BuildContext context) => switch (this) {
-        LedgerButtonSize.xtraLarge => context.buttonMedium.bold.copyWith(height: 1),
+        LedgerButtonSize.xtraLarge =>
+          context.buttonMedium.bold.copyWith(height: 1),
         LedgerButtonSize.large => context.buttonMedium.bold.copyWith(height: 1),
         _ => context.buttonSmall.bold.copyWith(height: 1),
       };
