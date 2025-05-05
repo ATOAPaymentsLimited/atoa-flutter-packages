@@ -27,6 +27,9 @@ final kFigTreeTextTheme = TextTheme(
       _defaultStyle.copyWith(fontSize: 12.sp, height: 1.6, letterSpacing: 0.1),
 ).apply(fontFamily: FontFamily.figTree, package: 'regal');
 
+/// FigTreeTextTheme is an extension on BuildContext
+/// !!! Keeping null checks for all the text theme properties !!!
+/// ref-link: https://github.com/flutter/flutter/issues/86807
 extension FigTreeTextTheme on BuildContext {
   TextTheme get tt => Theme.of(this).textTheme;
 
