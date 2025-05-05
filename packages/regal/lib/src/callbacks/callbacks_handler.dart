@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:meta/meta.dart';
+// ignore: depend_on_referenced_packages
 
 typedef TrackClickEvent = void Function(
   BuildContext context,
@@ -24,7 +24,6 @@ class CustomClickEventTrackHandler {
     _onCallback = onClickEvent;
   }
 
-  @internal
   static void dispatch(
     BuildContext context,
     String trackLabel, {

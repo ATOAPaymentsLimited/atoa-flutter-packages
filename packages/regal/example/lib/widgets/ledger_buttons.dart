@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:regal/assets/assets.gen.dart';
-import 'package:regal/ledger/atoa_dls.dart';
+import 'package:regal/ledger.dart';
+
 
 class LedgerButtons extends StatelessWidget {
   const LedgerButtons({super.key});
@@ -15,7 +16,7 @@ class LedgerButtons extends StatelessWidget {
           trackLabel: 'trackLabel',
           label: 'primary1',
           loading: true,
-          prefixIcon: Assets.icons.infoFill.svg(),
+          prefixIcon: Assets.icons.infoFill,
           onPressed: () {
             showLedgerBottomSheet(
               context: context,
@@ -30,13 +31,13 @@ class LedgerButtons extends StatelessWidget {
           label: 'primary2',
           loading: true,
           onPressed: () {},
-          prefixIcon: Assets.icons.infoFill.svg(),
+          prefixIcon: Assets.icons.infoFill,
         ),
         Spacing.lds200.yBox,
         LedgerButton.secondary(
           trackLabel: 'trackLabel',
           label: 'Secondary',
-          prefixIcon: Assets.icons.infoFill.svg(),
+          prefixIcon: Assets.icons.infoFill,
           onPressed: () {},
           loading: true,
         ),
@@ -44,7 +45,7 @@ class LedgerButtons extends StatelessWidget {
         LedgerButton.tertiary1(
           trackLabel: 'trackLabel',
           label: 'tertiary1',
-          prefixIcon: Assets.icons.infoFill.svg(),
+          prefixIcon: Assets.icons.infoFill,
           onPressed: () {},
           loading: true,
         ),
@@ -53,7 +54,7 @@ class LedgerButtons extends StatelessWidget {
           trackLabel: 'trackLabel',
           label: 'tertiary2',
           size: LedgerButtonSize.small,
-          prefixIcon: Assets.icons.infoFill.svg(),
+          prefixIcon: Assets.icons.infoFill,
           onPressed: () {},
           loading: true,
         ),
@@ -62,7 +63,7 @@ class LedgerButtons extends StatelessWidget {
           trackLabel: 'trackLabel',
           label: 'ghost',
           size: LedgerButtonSize.small,
-          prefixIcon: Assets.icons.infoFill.svg(),
+          prefixIcon: Assets.icons.infoFill,
           loading: true,
         ),
         Spacing.lds200.yBox,

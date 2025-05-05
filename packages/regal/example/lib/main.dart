@@ -2,13 +2,12 @@ import 'package:bot_toast/bot_toast.dart';
 import 'package:example/screens/ledger_colors_screen.dart';
 import 'package:example/screens/snackbar_screen.dart';
 import 'package:example/widgets/ledger_buttons.dart';
-import 'package:example/widgets/regal_buttons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-import 'package:regal/regal.dart';
+import 'package:regal/ledger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'screens/typography_screen.dart';
@@ -16,7 +15,7 @@ import 'screens/typography_screen.dart';
 late final SharedPreferences prefs;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  Regal.enableTracking = false;
+  DlsUtility.enableTracking = false;
   prefs = await SharedPreferences.getInstance();
   runApp(const MyApp());
 }
@@ -30,13 +29,13 @@ class MyApp extends StatelessWidget {
     return ScreenUtilInit(
       designSize: const Size(375, 812),
       minTextAdapt: true,
-      builder: (context, _) => RegalThemeProvider(
+      builder: (context, _) => LedgerThemeProvider(
         prefs: prefs,
         builder: (context, themeMode, child) => MaterialApp(
           title: 'Custom Home Grid',
           themeMode: themeMode,
-          theme: kThemeData,
-          darkTheme: kDarkThemeData,
+          theme: ThemeData().lightLedger,
+          darkTheme: ThemeData().darkLedger,
           builder: BotToastInit(),
           home: const MyHomePage(),
         ),
@@ -79,7 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
               (e) => MapEntry(
                   e,
                   Padding(
-                    padding: Spacing.tiny.all,
+                    padding: Spacing.lds25.all,
                     child: Text(e.name),
                   )),
             ),
@@ -90,16 +89,16 @@ class _MyHomePageState extends State<MyHomePage> {
       }),
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: Spacing.small.x,
+          padding: Spacing.lds100.x,
           child: Column(
             children: [
-              Spacing.medium.yBox,
-              RegalTextField(
+              Spacing.lds150.yBox,
+              LedgerTextField(
                 label: 'Test label',
                 controller: TextEditingController(),
               ),
               Form(
-                child: RegalTextField(
+                child: LedgerTextField(
                   label: 'Test label',
                   controller: TextEditingController(),
                   autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -108,7 +107,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   },
                 ),
               ),
-              RegalButton.primary(
+              LedgerButton.primary1(
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => const LedgerColorsScreen(),
@@ -117,8 +116,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 label: ('Ledger Colors'),
                 trackLabel: 'Go to Ledger Colors',
               ),
-              Spacing.medium.yBox,
-              RegalButton.primary(
+              Spacing.lds150.yBox,
+              LedgerButton.primary2(
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => const TypographyScreen(),
@@ -127,8 +126,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 label: ('Typography'),
                 trackLabel: 'Go to typography',
               ),
-              Spacing.medium.yBox,
-              RegalButton.primary(
+              Spacing.lds150.yBox,
+              LedgerButton.primary1(
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => const SnackbarScreen(),
@@ -137,7 +136,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 label: ('Snackbar'),
                 trackLabel: 'Go to snackbar',
               ),
-              Spacing.medium.yBox,
+              Spacing.lds150.yBox,
               const Text(
                 "Custom Navigation Card",
                 style: TextStyle(
@@ -302,20 +301,20 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 onPressed: () {},
               ),
-              Spacing.large.yBox,
-              RegalSwitch(
+              Spacing.lds200.yBox,
+              LedgerSwitch(
                 trackLabel: 'Switch',
                 value: true,
                 onChanged: (t) {},
                 semanticsLabel: 'Switch',
               ),
-              Spacing.large.yBox,
-              const RegalButtons(),
-              Spacing.large.yBox,
+              Spacing.lds200.yBox,
               const LedgerButtons(),
-              Spacing.large.yBox,
+              Spacing.lds200.yBox,
+              const LedgerButtons(),
+              Spacing.lds200.yBox,
               SupportedBankSlider(bankIconUrlList: _bankIconUrls),
-              Spacing.large.yBox,
+              Spacing.lds200.yBox,
               CarouselSlider(
                 offersListCount: offerImgUrl.length,
                 options: CarouselOptions(),
@@ -325,7 +324,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   );
                 },
               ),
-              Spacing.large.yBox,
+              Spacing.lds200.yBox,
               CarouselSlider(
                 options: CarouselOptions(),
                 indicatorOptions: const IndicatorOptions(

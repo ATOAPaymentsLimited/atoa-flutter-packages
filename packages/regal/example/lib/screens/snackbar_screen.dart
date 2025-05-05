@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:regal/regal.dart';
+import 'package:regal/ledger.dart';
 
 class SnackbarScreen extends StatelessWidget {
   const SnackbarScreen({Key? key}) : super(key: key);

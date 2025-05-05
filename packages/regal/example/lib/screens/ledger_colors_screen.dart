@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:regal/ledger/atoa_dls.dart';
+import 'package:regal/ledger.dart';
 
 class LedgerColorsScreen extends StatefulWidget {
   const LedgerColorsScreen({super.key});
