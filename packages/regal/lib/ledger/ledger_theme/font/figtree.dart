@@ -24,7 +24,7 @@ final kFigTreeTextTheme = TextTheme(
   bodyMedium: _defaultStyle.copyWith(fontSize: 14.sp, height: 1.5),
   bodySmall: _defaultStyle.copyWith(fontSize: 13.sp, height: 1.5),
   labelSmall:
-      _defaultStyle.copyWith(fontSize: 12.sp, height: 1.6, letterSpacing: 0.1),
+      _defaultStyle.copyWith(fontSize: 14.sp, height: 1.5, letterSpacing: 0.1),
 ).apply(fontFamily: FontFamily.figTree, package: 'regal');
 
 /// FigTreeTextTheme is an extension on BuildContext
@@ -75,7 +75,7 @@ extension FigTreeTextTheme on BuildContext {
   TextStyle get buttonMedium =>
       _defaultStyle.copyWith(fontSize: 14.sp, height: 1.6);
 
-  /// Label Small is Flutter Label Small with 16px size and 145% height
+  /// Label Small is Flutter Label Small with 14px size and 16% height and 10% letter spacing
   TextStyle get labelSmall => tt.labelSmall!;
   /// Label Extra Small is Text Style with 12px size and 160% height and 10% letter spacing
   TextStyle get labelExtraSmall =>
