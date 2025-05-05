@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:regal/assets/assets.gen.dart';
+import 'package:regal/ledger/spacing/spacing.dart';
 
 class LedgerInfiniteSpinner extends StatefulWidget {
   const LedgerInfiniteSpinner({
@@ -21,6 +22,6 @@ class LedgerInfiniteSpinnerState extends State<LedgerInfiniteSpinner> {
         package: 'regal',
         animate: true,
         repeat: true,
-        height: widget.height,
+        height: widget.height ?? Spacing.lds250.value,
       );
 }
