@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:regal/assets/assets.gen.dart';
 import 'package:regal/ledger/atoa_dls.dart';
 
 class LedgerButtons extends StatelessWidget {
@@ -14,7 +15,7 @@ class LedgerButtons extends StatelessWidget {
           trackLabel: 'trackLabel',
           label: 'primary1',
           loading: true,
-          prefixIcon: const Icon(Icons.download),
+          prefixIcon: Assets.icons.infoFill.svg(),
           onPressed: () {
             showLedgerBottomSheet(
               context: context,
@@ -29,13 +30,13 @@ class LedgerButtons extends StatelessWidget {
           label: 'primary2',
           loading: true,
           onPressed: () {},
-          prefixIcon: const Icon(Icons.download),
+          prefixIcon: Assets.icons.infoFill.svg(),
         ),
         Spacing.lds200.yBox,
         LedgerButton.secondary(
           trackLabel: 'trackLabel',
           label: 'Secondary',
-          prefixIcon: const Icon(Icons.download),
+          prefixIcon: Assets.icons.infoFill.svg(),
           onPressed: () {},
           loading: true,
         ),
@@ -43,7 +44,7 @@ class LedgerButtons extends StatelessWidget {
         LedgerButton.tertiary1(
           trackLabel: 'trackLabel',
           label: 'tertiary1',
-          prefixIcon: const Icon(Icons.download),
+          prefixIcon: Assets.icons.infoFill.svg(),
           onPressed: () {},
           loading: true,
         ),
@@ -52,16 +53,16 @@ class LedgerButtons extends StatelessWidget {
           trackLabel: 'trackLabel',
           label: 'tertiary2',
           size: LedgerButtonSize.small,
-          prefixIcon: const Icon(Icons.download),
+          prefixIcon: Assets.icons.infoFill.svg(),
           onPressed: () {},
           loading: true,
         ),
         Spacing.lds200.yBox,
-        const LedgerButton.ghost(
+        LedgerButton.ghost(
           trackLabel: 'trackLabel',
           label: 'ghost',
           size: LedgerButtonSize.small,
-          prefixIcon: Icon(Icons.download),
+          prefixIcon: Assets.icons.infoFill.svg(),
           loading: true,
         ),
         Spacing.lds200.yBox,

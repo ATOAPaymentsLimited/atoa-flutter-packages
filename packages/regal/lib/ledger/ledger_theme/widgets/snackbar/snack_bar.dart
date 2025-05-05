@@ -40,10 +40,10 @@ class Snackbar extends StatelessWidget with EventTrackMixin {
       );
 
   Widget? trailing(BuildContext context) {
-    final close = LedgerIconButton.iconData(
+    final close = LedgerIconButton(
       semanticsLabel: 'Close Snackbar',
       onPressed: (context) => onClose?.call(),
-      iconData: Icons.close,
+      assetPath: Assets.icons.close.path,
       trackLabel: 'Close Snackbar',
       size: LedgerIconButtonSize.small,
       iconColor: snackbar.type.closeColor(context),

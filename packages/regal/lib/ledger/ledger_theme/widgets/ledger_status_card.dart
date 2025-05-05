@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:regal/assets/assets.gen.dart';
 import 'package:regal/ledger/ledger_theme/ledger_theme.dart';
 import 'package:regal/ledger/spacing/spacing.dart';
 
@@ -192,9 +193,9 @@ class LedgerStatusCard extends StatelessWidget {
                           button: true,
                           enabled: true,
                           label: 'Close Button',
-                          child: LedgerIconButton.iconData(
+                          child: LedgerIconButton(
                             semanticsLabel: 'Close Button',
-                            iconData: Icons.close,
+                            assetPath: Assets.icons.close.path,
                             trackLabel: 'Close Button',
                             iconColor:
                                 textColor ?? _type.foregroundColor(context),
@@ -203,7 +204,7 @@ class LedgerStatusCard extends StatelessWidget {
                         ),
                       ),
                     if (trailingAssetPath != null && onTrailingPressed != null)
-                      LedgerIconButton.asset(
+                      LedgerIconButton(
                         assetPath: trailingAssetPath!,
                         trackLabel: 'Trailing Icon Button',
                         semanticsLabel: 'Trailing Icon Button',

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:regal/assets/assets.gen.dart';
 import 'package:regal/ledger/atoa_dls.dart';
 
 class LedgerTextField extends StatefulWidget {
@@ -319,8 +320,8 @@ class _LedgerTextFieldState extends State<LedgerTextField> {
             final value = _errorListenable;
             if (value == null || value.isNone) return const SizedBox.shrink();
 
-            return LedgerIconButton.iconData(
-              iconData: value.ledgerIconData,
+            return LedgerIconButton(
+              assetPath: value.assetPath,
               iconColor: value.suffixColor,
               trackLabel: 'Clear ${widget.label}',
               semanticsLabel: 'Clear ${widget.label}',
@@ -344,7 +345,6 @@ class _LedgerTextFieldState extends State<LedgerTextField> {
   }
 }
 
-
 enum TextValidationState {
   none,
   typing,
@@ -352,10 +352,9 @@ enum TextValidationState {
 
   bool get isNone => this == none;
 
-  Color get labelColor =>
-      this == invalid
-          ? LedgerColors.lightColors.semantic.error.defaultColor
-          : LedgerColors.lightColors.neutral.grey.shade500;
+  Color get labelColor => this == invalid
+      ? LedgerColors.lightColors.semantic.error.defaultColor
+      : LedgerColors.lightColors.neutral.grey.shade500;
 
   Color get suffixColor => this == none
       ? Colors.transparent
@@ -363,9 +362,6 @@ enum TextValidationState {
           ? LedgerColors.lightColors.semantic.error.defaultColor
           : LedgerColors.lightColors.neutral.grey.shade500;
 
-  IconData get iconData =>
-      this == invalid ? Icons.error_outline : Icons.cancel_outlined;
-
-  IconData get ledgerIconData =>
-      this == invalid ? Icons.error_outline : Icons.cancel;
+  String get assetPath =>
+      this == invalid ? Assets.icons.error.path : Assets.icons.closeFill.path;
 }

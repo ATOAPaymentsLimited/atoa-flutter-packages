@@ -27,6 +27,15 @@ class $AssetsAnimationsGen {
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/close.svg
+  SvgGenImage get close => const SvgGenImage('assets/icons/close.svg');
+
+  /// File path: assets/icons/close_fill.svg
+  SvgGenImage get closeFill => const SvgGenImage('assets/icons/close_fill.svg');
+
+  /// File path: assets/icons/error.svg
+  SvgGenImage get error => const SvgGenImage('assets/icons/error.svg');
+
   /// File path: assets/icons/info_fill.svg
   SvgGenImage get infoFill => const SvgGenImage('assets/icons/info_fill.svg');
 
@@ -39,7 +48,8 @@ class $AssetsIconsGen {
       const SvgGenImage('assets/icons/warning_fill.svg');
 
   /// List of all assets
-  List<SvgGenImage> get values => [infoFill, successFill, warningFill];
+  List<SvgGenImage> get values =>
+      [close, closeFill, error, infoFill, successFill, warningFill];
 }
 
 class Assets {
