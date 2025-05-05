@@ -2,6 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:regal/ledger/ledger_theme/ledger_theme.dart';
 import 'package:regal/ledger/mixin/mixins.dart';
 import 'package:regal/ledger/spacing/spacing.dart';
@@ -173,9 +174,9 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
 
   final Widget? labelWidget;
 
-  final Widget? prefixIcon;
+  final SvgPicture? prefixIcon;
 
-  final Widget? suffixIcon;
+  final SvgPicture? suffixIcon;
 
   final ButtonStyle? style;
 
@@ -221,7 +222,7 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
           LedgerInfiniteSpinner(
             color:
                 loadingIndicatorColor ?? _type.loadingIndicatorColor(context),
-            height: 18.sp,
+            height: Spacing.lds200.value + Spacing.lds25.value,
           ),
           if (label != null) ...[
             Spacing.lds150.xBox,

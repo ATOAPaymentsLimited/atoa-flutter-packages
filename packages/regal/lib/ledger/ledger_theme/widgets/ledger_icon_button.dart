@@ -4,9 +4,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:regal/ledger/ledger_theme/ledger_theme.dart';
 
 class LedgerIconButton extends StatelessWidget {
-  const LedgerIconButton.asset({
+  const LedgerIconButton({
     super.key,
-    required String assetPath,
+    required this.assetPath,
     this.size = LedgerIconButtonSize.large,
     this.onPressed,
     this.iconColor,
@@ -17,32 +17,12 @@ class LedgerIconButton extends StatelessWidget {
     this.padding,
     this.border,
     this.bgOpacity,
-  })  : _type = _LedgerIconButtonType.asset,
-        _assetPath = assetPath,
-        _iconData = null;
+  });
 
-  const LedgerIconButton.iconData({
-    super.key,
-    required IconData iconData,
-    this.size = LedgerIconButtonSize.large,
-    this.onPressed,
-    this.iconColor,
-    required this.trackLabel,
-    required this.semanticsLabel,
-    this.borderRadius,
-    this.color,
-    this.padding,
-    this.border,
-    this.bgOpacity,
-  })  : _type = _LedgerIconButtonType.icon,
-        _assetPath = '',
-        _iconData = iconData;
-  final _LedgerIconButtonType _type;
   final LedgerIconButtonSize size;
   final void Function(BuildContext context)? onPressed;
   final Color? iconColor;
-  final String _assetPath;
-  final IconData? _iconData;
+  final String assetPath;
   final String trackLabel;
   final String semanticsLabel;
   final BorderRadius? borderRadius;
@@ -70,9 +50,7 @@ class LedgerIconButton extends StatelessWidget {
         ),
         child: Center(
           child: _BuildIcon(
-            type: _type,
-            assetPath: _assetPath,
-            iconData: _iconData,
+            assetPath: assetPath,
             iconColor: iconColor,
             iconSize: size.value,
             disabled: disabled,
@@ -85,48 +63,28 @@ class LedgerIconButton extends StatelessWidget {
 
 class _BuildIcon extends StatelessWidget {
   const _BuildIcon({
-    required this.type,
     this.assetPath = '',
-    this.iconData = Icons.close,
     this.iconColor,
     this.iconSize,
     this.disabled = false,
   });
-  final _LedgerIconButtonType type;
   final String assetPath;
-  final IconData? iconData;
   final Color? iconColor;
   final double? iconSize;
   final bool disabled;
 
   @override
-  Widget build(BuildContext context) {
-    if (type == _LedgerIconButtonType.asset) {
-      return SvgPicture.asset(
-        assetPath,
-        colorFilter: ColorFilter.mode(
-          (iconColor ?? context.baseBlack)
-              .withOpacity(disabled ? 0.3 : 1.0),
-          BlendMode.srcIn,
-        ),
-        height: iconSize,
-        width: iconSize,
-        fit: BoxFit.scaleDown,
-      );
-    }
-    if (type == _LedgerIconButtonType.icon) {
-      return Icon(
-        iconData,
-        color: (iconColor ?? context.baseBlack)
-            .withOpacity(disabled ? 0.3 : 1.0),
-        size: iconSize,
-      );
-    }
-    return const SizedBox.shrink();
-  }
+  Widget build(BuildContext context) => SvgPicture.asset(
+      assetPath,
+      colorFilter: ColorFilter.mode(
+        (iconColor ?? context.baseBlack).withOpacity(disabled ? 0.3 : 1.0),
+        BlendMode.srcIn,
+      ),
+      height: iconSize,
+      width: iconSize,
+      fit: BoxFit.scaleDown,
+    );
 }
-
-enum _LedgerIconButtonType { icon, asset }
 
 enum LedgerIconButtonSize {
   /// 16.sp
