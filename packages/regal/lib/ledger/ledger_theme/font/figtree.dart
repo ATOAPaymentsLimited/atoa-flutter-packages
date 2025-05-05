@@ -28,8 +28,8 @@ final kFigTreeTextTheme = TextTheme(
 ).apply(fontFamily: FontFamily.figTree, package: 'regal');
 
 /// FigTreeTextTheme is an extension on BuildContext
-/// !!! Keeping null checks for all the text theme properties !!!
-/// ref-link: https://github.com/flutter/flutter/issues/86807
+/// !!! Keeping null checks for all used text theme properties of flutter !!!
+/// As we have given a fixated text style which will never be null in app when using text theme extensions.
 extension FigTreeTextTheme on BuildContext {
   TextTheme get tt => Theme.of(this).textTheme;
 
