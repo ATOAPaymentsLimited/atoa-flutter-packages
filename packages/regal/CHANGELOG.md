@@ -1,3 +1,9 @@
+# 3.8.0
+
+## 🚀 Updates:
+
+- Ledger DLS
+
 # 3.7.8
 
 ## 🚀 Updates:
