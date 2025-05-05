@@ -142,7 +142,7 @@ class LedgerStatusCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Semantics(
         container: true,
-        label: 'Regal Status Card',
+        label: 'Ledger Status Card',
         child: Container(
           clipBehavior: Clip.hardEdge,
           decoration: BoxDecoration(

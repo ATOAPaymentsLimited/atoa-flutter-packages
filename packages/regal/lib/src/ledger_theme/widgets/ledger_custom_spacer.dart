@@ -1,15 +1,15 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:regal/src/spacing/spacing.dart';
 
-class RegalBottomSpacer extends StatelessWidget {
-  const RegalBottomSpacer({super.key});
+class LedgerBottomSpacer extends StatelessWidget {
+  const LedgerBottomSpacer({super.key});
 
   @override
   Widget build(BuildContext context) {
     final bottomPadding = MediaQuery.of(context).viewInsets.bottom;
 
-    return SizedBox(height: math.max(bottomPadding, 34.sp));
+    return SizedBox(height: math.max(bottomPadding, Spacing.lds400.value));
   }
 }
