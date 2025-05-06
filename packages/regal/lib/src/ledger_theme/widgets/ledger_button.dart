@@ -15,6 +15,7 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
     this.prefixIconPath,
     this.suffixIconPath,
     this.iconColor,
+    this.overrideColor = true,
     this.onPressed,
     this.style,
     this.size = LedgerButtonSize.xtraLarge,
@@ -43,6 +44,7 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
     this.prefixIconPath,
     this.suffixIconPath,
     this.iconColor,
+    this.overrideColor = true,
     this.onPressed,
     this.style,
     this.size = LedgerButtonSize.xtraLarge,
@@ -71,6 +73,7 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
     this.prefixIconPath,
     this.suffixIconPath,
     this.iconColor,
+    this.overrideColor = true,
     this.onPressed,
     this.style,
     this.size = LedgerButtonSize.xtraLarge,
@@ -99,6 +102,7 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
     this.prefixIconPath,
     this.suffixIconPath,
     this.iconColor,
+    this.overrideColor = true,
     this.onPressed,
     this.style,
     this.size = LedgerButtonSize.xtraLarge,
@@ -127,6 +131,7 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
     this.prefixIconPath,
     this.suffixIconPath,
     this.iconColor,
+    this.overrideColor = true,
     this.onPressed,
     this.style,
     this.size = LedgerButtonSize.xtraLarge,
@@ -155,6 +160,7 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
     this.prefixIconPath,
     this.suffixIconPath,
     this.iconColor,
+    this.overrideColor = true,
     this.onPressed,
     this.style,
     this.size = LedgerButtonSize.xtraLarge,
@@ -210,6 +216,8 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
 
   final Color? loadingIndicatorColor;
 
+  final bool overrideColor;
+
   /// [shrink] will minimize the button width to hug its contents
   final bool shrink;
 
@@ -247,6 +255,7 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
               svgPath: prefixIconPath!,
               color: iconColor ?? _type.iconColor(context),
               size: Spacing.lds250.value,
+              overrideColor: overrideColor,
             ),
           if (prefixIconPath != null && label != null) Spacing.lds150.xBox,
           if (label != null)
@@ -262,6 +271,7 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
               svgPath: suffixIconPath!,
               color: iconColor ?? _type.iconColor(context),
               size: Spacing.lds250.value,
+              overrideColor: overrideColor,
             ),
           if (shrink) Spacing.lds300.xBox,
         ],
