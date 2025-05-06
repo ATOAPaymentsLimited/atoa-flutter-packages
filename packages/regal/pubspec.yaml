@@ -40,7 +40,6 @@ dev_dependencies:
 flutter_gen:
   output: lib/assets/
   integrations:
-    flutter_svg: false
     lottie: true
 
 flutter:
