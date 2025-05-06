@@ -8,6 +8,7 @@ const _defaultStyle = TextStyle(
   fontVariations: [
     FontVariation.weight(400),
   ],
+  fontFamily: FontFamily.figTree,
 );
 
 final kFigTreeTextTheme = TextTheme(
