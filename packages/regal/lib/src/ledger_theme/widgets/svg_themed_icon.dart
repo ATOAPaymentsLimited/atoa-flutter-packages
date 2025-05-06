@@ -10,6 +10,7 @@ class SvgThemedIcon extends StatelessWidget {
     this.semanticsLabel,
     this.package,
     this.fit,
+    this.overrideColor = true,
     super.key,
   });
   final String svgPath;
@@ -18,6 +19,7 @@ class SvgThemedIcon extends StatelessWidget {
   final Color? color;
   final String? package;
   final BoxFit? fit;
+  final bool overrideColor;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +35,9 @@ class SvgThemedIcon extends StatelessWidget {
       fit: fit ?? BoxFit.contain,
       semanticsLabel: semanticsLabel ??
           svgPath.split('/').lastOrNull?.replaceAll('.svg', ''),
-      colorFilter: ColorFilter.mode(effectiveColor, BlendMode.srcIn),
+      colorFilter: overrideColor
+          ? ColorFilter.mode(effectiveColor, BlendMode.srcIn)
+          : null,
     );
   }
 }
