@@ -9,6 +9,7 @@ class SvgThemedIcon extends StatelessWidget {
     this.color,
     this.semanticsLabel,
     this.package,
+    this.fit,
     super.key,
   });
   final String svgPath;
@@ -16,6 +17,7 @@ class SvgThemedIcon extends StatelessWidget {
   final String? semanticsLabel;
   final Color? color;
   final String? package;
+  final BoxFit? fit;
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +30,7 @@ class SvgThemedIcon extends StatelessWidget {
       package: package,
       width: effectiveSize,
       height: effectiveSize,
+      fit: fit,
       semanticsLabel: semanticsLabel ??
           svgPath.split('/').lastOrNull?.replaceAll('.svg', ''),
       colorFilter: ColorFilter.mode(effectiveColor, BlendMode.srcIn),
