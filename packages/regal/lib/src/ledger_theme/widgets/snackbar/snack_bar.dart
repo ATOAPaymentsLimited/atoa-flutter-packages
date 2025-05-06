@@ -43,7 +43,8 @@ class Snackbar extends StatelessWidget with EventTrackMixin {
     final close = LedgerIconButton(
       semanticsLabel: 'Close Snackbar',
       onPressed: (context) => onClose?.call(),
-      assetPath: Assets.icons.close.path,
+      assetPath: Assets.icons.close,
+      package: 'regal',
       trackLabel: 'Close Snackbar',
       size: LedgerIconButtonSize.small,
       iconColor: snackbar.type.closeColor(context),
@@ -207,32 +208,23 @@ class Snackbar extends StatelessWidget with EventTrackMixin {
 
 extension on SnackbarTypeEnum {
   Widget leading(BuildContext context) => switch (this) {
-        SnackbarTypeEnum.success => Assets.icons.successFill.svg(
+        SnackbarTypeEnum.success => SvgThemedIcon(
+            svgPath: Assets.icons.successFill,
             package: 'regal',
-            colorFilter: ColorFilter.mode(
-              context.positive.defaultColor,
-              BlendMode.srcIn,
-            ),
-            height: 20.sp,
-            width: 20.sp,
+            color: context.positive.defaultColor,
+            size: Spacing.lds250.value,
           ),
-        SnackbarTypeEnum.error => Assets.icons.warningFill.svg(
+        SnackbarTypeEnum.error => SvgThemedIcon(
+            svgPath: Assets.icons.warningFill,
             package: 'regal',
-            colorFilter: ColorFilter.mode(
-              context.error.defaultColor,
-              BlendMode.srcIn,
-            ),
-            height: 20.sp,
-            width: 20.sp,
+            color: context.error.defaultColor,
+            size: Spacing.lds250.value,
           ),
-        SnackbarTypeEnum.info => Assets.icons.infoFill.svg(
+        SnackbarTypeEnum.info => SvgThemedIcon(
+            svgPath: Assets.icons.infoFill,
             package: 'regal',
-            colorFilter: ColorFilter.mode(
-              context.grey.shade600,
-              BlendMode.srcIn,
-            ),
-            height: 20.sp,
-            width: 20.sp,
+            color: context.grey.shade600,
+            size: Spacing.lds250.value,
           ),
       };
 

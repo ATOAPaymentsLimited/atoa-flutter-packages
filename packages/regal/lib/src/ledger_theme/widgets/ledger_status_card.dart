@@ -195,7 +195,7 @@ class LedgerStatusCard extends StatelessWidget {
                           label: 'Close Button',
                           child: LedgerIconButton(
                             semanticsLabel: 'Close Button',
-                            assetPath: Assets.icons.close.path,
+                            assetPath: Assets.icons.close,
                             trackLabel: 'Close Button',
                             iconColor:
                                 textColor ?? _type.foregroundColor(context),

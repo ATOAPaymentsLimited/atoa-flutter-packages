@@ -17,6 +17,7 @@ class LedgerIconButton extends StatelessWidget {
     this.padding,
     this.border,
     this.bgOpacity,
+    this.package,
   });
 
   final LedgerIconButtonSize size;
@@ -30,6 +31,7 @@ class LedgerIconButton extends StatelessWidget {
   final EdgeInsets? padding;
   final BoxBorder? border;
   final double? bgOpacity;
+  final String? package;
 
   @override
   Widget build(BuildContext context) {
@@ -54,6 +56,7 @@ class LedgerIconButton extends StatelessWidget {
             iconColor: iconColor,
             iconSize: size.value,
             disabled: disabled,
+            package: package,
           ),
         ),
       ),
@@ -63,7 +66,8 @@ class LedgerIconButton extends StatelessWidget {
 
 class _BuildIcon extends StatelessWidget {
   const _BuildIcon({
-    this.assetPath = '',
+    required this.assetPath,
+    this.package,
     this.iconColor,
     this.iconSize,
     this.disabled = false,
@@ -72,6 +76,7 @@ class _BuildIcon extends StatelessWidget {
   final Color? iconColor;
   final double? iconSize;
   final bool disabled;
+  final String? package;
 
   @override
   Widget build(BuildContext context) => SvgPicture.asset(
@@ -83,6 +88,7 @@ class _BuildIcon extends StatelessWidget {
       height: iconSize,
       width: iconSize,
       fit: BoxFit.scaleDown,
+      package: package,
     );
 }
 

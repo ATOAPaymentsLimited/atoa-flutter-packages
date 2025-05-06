@@ -7,11 +7,8 @@
 // ignore_for_file: type=lint
 // ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal,deprecated_member_use
 
-import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_svg/flutter_svg.dart' as _svg;
 import 'package:lottie/lottie.dart' as _lottie;
-import 'package:vector_graphics/vector_graphics.dart' as _vg;
 
 class $AssetsAnimationsGen {
   const $AssetsAnimationsGen();
@@ -28,27 +25,25 @@ class $AssetsIconsGen {
   const $AssetsIconsGen();
 
   /// File path: assets/icons/close.svg
-  SvgGenImage get close => const SvgGenImage('assets/icons/close.svg');
+  String get close => 'assets/icons/close.svg';
 
   /// File path: assets/icons/close_fill.svg
-  SvgGenImage get closeFill => const SvgGenImage('assets/icons/close_fill.svg');
+  String get closeFill => 'assets/icons/close_fill.svg';
 
   /// File path: assets/icons/error.svg
-  SvgGenImage get error => const SvgGenImage('assets/icons/error.svg');
+  String get error => 'assets/icons/error.svg';
 
   /// File path: assets/icons/info_fill.svg
-  SvgGenImage get infoFill => const SvgGenImage('assets/icons/info_fill.svg');
+  String get infoFill => 'assets/icons/info_fill.svg';
 
   /// File path: assets/icons/success_fill.svg
-  SvgGenImage get successFill =>
-      const SvgGenImage('assets/icons/success_fill.svg');
+  String get successFill => 'assets/icons/success_fill.svg';
 
   /// File path: assets/icons/warning_fill.svg
-  SvgGenImage get warningFill =>
-      const SvgGenImage('assets/icons/warning_fill.svg');
+  String get warningFill => 'assets/icons/warning_fill.svg';
 
   /// List of all assets
-  List<SvgGenImage> get values =>
+  List<String> get values =>
       [close, closeFill, error, infoFill, successFill, warningFill];
 }
 
@@ -57,83 +52,6 @@ class Assets {
 
   static const $AssetsAnimationsGen animations = $AssetsAnimationsGen();
   static const $AssetsIconsGen icons = $AssetsIconsGen();
-}
-
-class SvgGenImage {
-  const SvgGenImage(
-    this._assetName, {
-    this.size,
-    this.flavors = const {},
-  }) : _isVecFormat = false;
-
-  const SvgGenImage.vec(
-    this._assetName, {
-    this.size,
-    this.flavors = const {},
-  }) : _isVecFormat = true;
-
-  final String _assetName;
-  final Size? size;
-  final Set<String> flavors;
-  final bool _isVecFormat;
-
-  _svg.SvgPicture svg({
-    Key? key,
-    bool matchTextDirection = false,
-    AssetBundle? bundle,
-    String? package,
-    double? width,
-    double? height,
-    BoxFit fit = BoxFit.contain,
-    AlignmentGeometry alignment = Alignment.center,
-    bool allowDrawingOutsideViewBox = false,
-    WidgetBuilder? placeholderBuilder,
-    String? semanticsLabel,
-    bool excludeFromSemantics = false,
-    _svg.SvgTheme? theme,
-    ColorFilter? colorFilter,
-    Clip clipBehavior = Clip.hardEdge,
-    @deprecated Color? color,
-    @deprecated BlendMode colorBlendMode = BlendMode.srcIn,
-    @deprecated bool cacheColorFilter = false,
-  }) {
-    final _svg.BytesLoader loader;
-    if (_isVecFormat) {
-      loader = _vg.AssetBytesLoader(
-        _assetName,
-        assetBundle: bundle,
-        packageName: package,
-      );
-    } else {
-      loader = _svg.SvgAssetLoader(
-        _assetName,
-        assetBundle: bundle,
-        packageName: package,
-        theme: theme,
-      );
-    }
-    return _svg.SvgPicture(
-      loader,
-      key: key,
-      matchTextDirection: matchTextDirection,
-      width: width,
-      height: height,
-      fit: fit,
-      alignment: alignment,
-      allowDrawingOutsideViewBox: allowDrawingOutsideViewBox,
-      placeholderBuilder: placeholderBuilder,
-      semanticsLabel: semanticsLabel,
-      excludeFromSemantics: excludeFromSemantics,
-      colorFilter: colorFilter ??
-          (color == null ? null : ColorFilter.mode(color, colorBlendMode)),
-      clipBehavior: clipBehavior,
-      cacheColorFilter: cacheColorFilter,
-    );
-  }
-
-  String get path => _assetName;
-
-  String get keyName => _assetName;
 }
 
 class LottieGenImage {

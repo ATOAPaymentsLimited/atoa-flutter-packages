@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:regal/assets/assets.gen.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:regal/src/ledger_theme/widgets/app_svg_theme_provider.dart';
 
 class SvgThemedIcon extends StatelessWidget {
   const SvgThemedIcon({
-    required this.svg,
+    required this.svgPath,
     this.size,
     this.color,
     this.semanticsLabel,
+    this.package,
     super.key,
   });
-  final SvgGenImage svg;
+  final String svgPath;
   final double? size;
   final String? semanticsLabel;
   final Color? color;
+  final String? package;
 
   @override
   Widget build(BuildContext context) {
@@ -21,10 +23,13 @@ class SvgThemedIcon extends StatelessWidget {
     final effectiveSize = size ?? theme.defaultSize;
     final effectiveColor = color ?? theme.defaultColor;
 
-    return svg.svg(
+    return SvgPicture.asset(
+      svgPath,
+      package: package,
       width: effectiveSize,
       height: effectiveSize,
-      semanticsLabel: semanticsLabel ?? svg.path.split('/').lastOrNull,
+      semanticsLabel: semanticsLabel ??
+          svgPath.split('/').lastOrNull?.replaceAll('.svg', ''),
       colorFilter: ColorFilter.mode(effectiveColor, BlendMode.srcIn),
     );
   }

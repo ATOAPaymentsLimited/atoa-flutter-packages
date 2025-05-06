@@ -363,5 +363,5 @@ enum TextValidationState {
           : LedgerColors.lightColors.neutral.grey.shade500;
 
   String get assetPath =>
-      this == invalid ? Assets.icons.error.path : Assets.icons.closeFill.path;
+      this == invalid ? Assets.icons.error : Assets.icons.closeFill;
 }

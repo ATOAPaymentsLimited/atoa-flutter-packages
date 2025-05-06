@@ -2,7 +2,6 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:regal/assets/assets.gen.dart';
 import 'package:regal/src/ledger_theme/ledger_theme.dart';
 import 'package:regal/src/mixin/mixins.dart';
 import 'package:regal/src/spacing/spacing.dart';
@@ -13,8 +12,8 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
     required this.trackLabel,
     this.enableTracking = true,
     this.label,
-    this.prefixIcon,
-    this.suffixIcon,
+    this.prefixIconPath,
+    this.suffixIconPath,
     this.iconColor,
     this.onPressed,
     this.style,
@@ -31,7 +30,7 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
     this.borderRadius,
   })  : _type = _LedgerButtonType.primary1,
         assert(
-          label != null || prefixIcon != null || suffixIcon != null,
+          label != null || prefixIconPath != null || suffixIconPath != null,
           'Label or icon must be provided.',
         ),
         mainAxisAlignment = MainAxisAlignment.center;
@@ -41,8 +40,8 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
     required this.trackLabel,
     this.enableTracking = true,
     this.label,
-    this.prefixIcon,
-    this.suffixIcon,
+    this.prefixIconPath,
+    this.suffixIconPath,
     this.iconColor,
     this.onPressed,
     this.style,
@@ -59,7 +58,7 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
     this.borderRadius,
   })  : _type = _LedgerButtonType.primary2,
         assert(
-          label != null || prefixIcon != null || suffixIcon != null,
+          label != null || prefixIconPath != null || suffixIconPath != null,
           'Label or icon must be provided.',
         ),
         mainAxisAlignment = MainAxisAlignment.center;
@@ -69,8 +68,8 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
     required this.trackLabel,
     this.enableTracking = true,
     this.label,
-    this.prefixIcon,
-    this.suffixIcon,
+    this.prefixIconPath,
+    this.suffixIconPath,
     this.iconColor,
     this.onPressed,
     this.style,
@@ -88,7 +87,7 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
     this.borderRadius,
   })  : _type = _LedgerButtonType.secondary,
         assert(
-          label != null || prefixIcon != null || suffixIcon != null,
+          label != null || prefixIconPath != null || suffixIconPath != null,
           'Label or icon must be provided.',
         );
 
@@ -97,8 +96,8 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
     required this.trackLabel,
     this.enableTracking = true,
     this.label,
-    this.prefixIcon,
-    this.suffixIcon,
+    this.prefixIconPath,
+    this.suffixIconPath,
     this.iconColor,
     this.onPressed,
     this.style,
@@ -115,7 +114,7 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
     this.borderRadius,
   })  : _type = _LedgerButtonType.tertiary1,
         assert(
-          label != null || prefixIcon != null || suffixIcon != null,
+          label != null || prefixIconPath != null || suffixIconPath != null,
           'Label or icon must be provided.',
         ),
         mainAxisAlignment = MainAxisAlignment.center;
@@ -125,8 +124,8 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
     required this.trackLabel,
     this.enableTracking = true,
     this.label,
-    this.prefixIcon,
-    this.suffixIcon,
+    this.prefixIconPath,
+    this.suffixIconPath,
     this.iconColor,
     this.onPressed,
     this.style,
@@ -143,7 +142,7 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
     this.borderRadius,
   })  : _type = _LedgerButtonType.tertiary2,
         assert(
-          label != null || prefixIcon != null || suffixIcon != null,
+          label != null || prefixIconPath != null || suffixIconPath != null,
           'Label or icon must be provided.',
         ),
         mainAxisAlignment = MainAxisAlignment.center;
@@ -153,8 +152,8 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
     required this.trackLabel,
     this.enableTracking = true,
     this.label,
-    this.prefixIcon,
-    this.suffixIcon,
+    this.prefixIconPath,
+    this.suffixIconPath,
     this.iconColor,
     this.onPressed,
     this.style,
@@ -171,7 +170,7 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
     this.borderRadius,
   })  : _type = _LedgerButtonType.ghost,
         assert(
-          label != null || prefixIcon != null || suffixIcon != null,
+          label != null || prefixIconPath != null || suffixIconPath != null,
           'Label or icon must be provided.',
         ),
         mainAxisAlignment = MainAxisAlignment.center;
@@ -182,9 +181,9 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
 
   final Color? iconColor;
 
-  final SvgGenImage? prefixIcon;
+  final String? prefixIconPath;
 
-  final SvgGenImage? suffixIcon;
+  final String? suffixIconPath;
 
   final ButtonStyle? style;
 
@@ -243,13 +242,13 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
                 ),
           ],
         ] else ...[
-          if (prefixIcon != null)
+          if (prefixIconPath != null)
             SvgThemedIcon(
-              svg: prefixIcon!,
+              svgPath: prefixIconPath!,
               color: iconColor ?? _type.iconColor(context),
               size: Spacing.lds250.value,
             ),
-          if (prefixIcon != null && label != null) Spacing.lds150.xBox,
+          if (prefixIconPath != null && label != null) Spacing.lds150.xBox,
           if (label != null)
             labelWidget ??
                 AutoSizeText(
@@ -257,10 +256,10 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
                   textAlign: TextAlign.center,
                   semanticsLabel: label,
                 ),
-          if (suffixIcon != null && label != null) Spacing.lds100.xBox,
-          if (suffixIcon != null)
+          if (suffixIconPath != null && label != null) Spacing.lds100.xBox,
+          if (suffixIconPath != null)
             SvgThemedIcon(
-              svg: suffixIcon!,
+              svgPath: suffixIconPath!,
               color: iconColor ?? _type.iconColor(context),
               size: Spacing.lds250.value,
             ),
