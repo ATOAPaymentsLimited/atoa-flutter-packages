@@ -30,7 +30,7 @@ class SvgThemedIcon extends StatelessWidget {
       package: package,
       width: effectiveSize,
       height: effectiveSize,
-      fit: fit,
+      fit: fit ?? BoxFit.contain,
       semanticsLabel: semanticsLabel ??
           svgPath.split('/').lastOrNull?.replaceAll('.svg', ''),
       colorFilter: ColorFilter.mode(effectiveColor, BlendMode.srcIn),
