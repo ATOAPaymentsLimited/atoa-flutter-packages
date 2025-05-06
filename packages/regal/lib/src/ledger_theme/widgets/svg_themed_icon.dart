@@ -11,6 +11,7 @@ class SvgThemedIcon extends StatelessWidget {
     this.package,
     this.fit,
     this.overrideColor = true,
+    this.overrideSize = true,
     super.key,
   });
   final String svgPath;
@@ -20,6 +21,7 @@ class SvgThemedIcon extends StatelessWidget {
   final String? package;
   final BoxFit? fit;
   final bool overrideColor;
+  final bool overrideSize;
 
   @override
   Widget build(BuildContext context) {
@@ -30,8 +32,8 @@ class SvgThemedIcon extends StatelessWidget {
     return SvgPicture.asset(
       svgPath,
       package: package,
-      width: effectiveSize,
-      height: effectiveSize,
+      width: overrideSize ? effectiveSize : null,
+      height: overrideSize ? effectiveSize : null,
       fit: fit ?? BoxFit.contain,
       semanticsLabel: semanticsLabel ??
           svgPath.split('/').lastOrNull?.replaceAll('.svg', ''),
