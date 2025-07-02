@@ -4,7 +4,7 @@ import 'package:regal/src/spacing/spacing.dart';
 
 Future<T?> showLedgerBottomSheet<T>({
   required BuildContext context,
-  required String title,
+  String? title,
   required WidgetBuilder body,
   void Function(BuildContext)? onClose,
   TextStyle? titleStyle,
@@ -18,6 +18,7 @@ Future<T?> showLedgerBottomSheet<T>({
   Clip? clipBehavior,
   double? elevation,
   double? titleBottomSpacing,
+  bool showDragBar = true,
   bool enableDrag = true,
   bool isDismissable = true,
   bool showCloseButton = true,
@@ -36,30 +37,35 @@ Future<T?> showLedgerBottomSheet<T>({
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Container(
-                height: Spacing.lds50.value,
-                width: Spacing.lds300.value * 2 + Spacing.lds25.value,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(Spacing.lds50.value),
-                  color: dialogContext.grey.shade200,
+              if (showDragBar) ...[
+                Container(
+                  height: Spacing.lds50.value,
+                  width: Spacing.lds300.value * 2 + Spacing.lds25.value,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(Spacing.lds50.value),
+                    color: dialogContext.grey.shade200,
+                  ),
                 ),
-              ),
+              ],
               Spacing.lds300.yBox,
               if (illustrationWidget != null) illustrationWidget,
               if (showTitle) ...[
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: title != null
+                      ? MainAxisAlignment.spaceBetween
+                      : MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Expanded(
-                      child: CustomText.semantics(
-                        title,
-                        textAlign: titleAlign ?? TextAlign.left,
-                        style: titleStyle ??
-                            dialogContext.title3.bold
-                                .copyWith(color: dialogContext.baseBlack),
+                    if (title != null)
+                      Expanded(
+                        child: CustomText.semantics(
+                          title,
+                          textAlign: titleAlign ?? TextAlign.left,
+                          style: titleStyle ??
+                              dialogContext.title3.bold
+                                  .copyWith(color: dialogContext.baseBlack),
+                        ),
                       ),
-                    ),
                     Spacing.lds200.xBox,
                     if (showCloseButton)
                       Padding(
@@ -74,8 +80,7 @@ Future<T?> showLedgerBottomSheet<T>({
                                   Navigator.pop(dialogContext);
                                 },
                           child: Container(
-                            width: Spacing.lds300.value +
-                                Spacing.lds50.value,
+                            width: Spacing.lds300.value + Spacing.lds50.value,
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               color: dialogContext.grey.shade50,
@@ -173,11 +178,9 @@ Future<T?> showLedgerBottomSheetDraggable<T>({
                 children: [
                   Container(
                     height: Spacing.lds50.value,
-                    width: Spacing.lds300.value * 2 +
-                        Spacing.lds25.value,
+                    width: Spacing.lds300.value * 2 + Spacing.lds25.value,
                     decoration: BoxDecoration(
-                      borderRadius:
-                          BorderRadius.circular(Spacing.lds50.value),
+                      borderRadius: BorderRadius.circular(Spacing.lds50.value),
                       color: dialogContext.grey.shade200,
                     ),
                   ),
@@ -211,8 +214,8 @@ Future<T?> showLedgerBottomSheetDraggable<T>({
                                       Navigator.pop(dialogContext);
                                     },
                               child: Container(
-                                width: Spacing.lds300.value +
-                                    Spacing.lds50.value,
+                                width:
+                                    Spacing.lds300.value + Spacing.lds50.value,
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,
                                   color: dialogContext.grey.shade50,
@@ -261,12 +264,10 @@ Future<T?> showLedgerBottomSheetDraggable<T>({
       transitionAnimationController: transitionAnimationController,
     );
 
-
-
 Future<T?> showLedgerBottomSheetStacked<T>({
   required BuildContext context,
   required WidgetBuilder body,
-  required Widget illustrationWidget,
+  Widget? illustrationWidget,
   void Function(BuildContext)? onClose,
   BoxConstraints? constraints,
   Color? barrierColor,
@@ -290,7 +291,7 @@ Future<T?> showLedgerBottomSheetStacked<T>({
         children: [
           Stack(
             children: [
-              illustrationWidget,
+              if (illustrationWidget != null) illustrationWidget,
               if (showCloseButton)
                 Align(
                   alignment: Alignment.topRight,
