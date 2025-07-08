@@ -17,6 +17,7 @@ Future<T?> showLedgerBottomSheet<T>({
   Color? backgroundColor,
   Clip? clipBehavior,
   double? elevation,
+  EdgeInsets? padding,
   double? titleBottomSpacing,
   bool showDragBar = true,
   bool enableDrag = true,
@@ -33,7 +34,7 @@ Future<T?> showLedgerBottomSheet<T>({
       builder: (dialogContext) => Theme(
         data: dialogContext.theme,
         child: Padding(
-          padding: Spacing.lds200.y + Spacing.lds250.x,
+          padding: padding ?? (Spacing.lds200.y + Spacing.lds250.x),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
