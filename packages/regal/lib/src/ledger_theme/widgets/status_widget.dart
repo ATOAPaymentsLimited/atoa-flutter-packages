@@ -67,7 +67,6 @@ class StatusWidget extends StatelessWidget {
           trackLabel: 'Success check',
           checked: true,
           semanticsLabel: 'success check',
-          circular: true,
           size: 100.sp,
           activeColor: context.positive.darker,
         );
