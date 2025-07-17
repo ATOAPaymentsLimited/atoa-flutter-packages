@@ -63,11 +63,10 @@ class StatusWidget extends StatelessWidget {
           'assets/icons/icon_hourglass_empty.svg',
         );
       case StatusType.success:
-        return LedgerCheckbox(
+        return LedgerCheckbox.circular(
           trackLabel: 'Success check',
           checked: true,
           semanticsLabel: 'success check',
-          circular: true,
           size: 100.sp,
           activeColor: context.positive.darker,
         );
