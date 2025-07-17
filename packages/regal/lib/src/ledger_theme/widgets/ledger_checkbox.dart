@@ -17,8 +17,7 @@ class LedgerCheckboxWithLabel extends StatefulWidget {
     this.subtitle,
     this.labelStyle,
     this.subtitleStyle,
-    this.circular = false,
-  }) : _type = _LedgerCheckboxType.checkbox;
+  }) : _type = _LedgerCheckboxType._checkbox;
 
   const LedgerCheckboxWithLabel.circular({
     super.key,
@@ -34,9 +33,8 @@ class LedgerCheckboxWithLabel extends StatefulWidget {
     this.subtitle,
     this.labelStyle,
     this.subtitleStyle,
-    this.circular = false,
-  })  : _type = _LedgerCheckboxType.circular,
-        assert(circular == true, 'Circular must be true');
+  }) : _type = _LedgerCheckboxType._circular;
+
   final bool checked;
   final double size;
   final Color? activeColor;
@@ -46,7 +44,6 @@ class LedgerCheckboxWithLabel extends StatefulWidget {
   final TextStyle? labelStyle;
   final String? subtitle;
   final TextStyle? subtitleStyle;
-  final bool circular;
   final ValueChanged<bool>? onChanged;
   final String semanticsLabel;
   final String trackLabel;
@@ -98,9 +95,8 @@ class _LedgerCheckboxWithLabelState extends State<LedgerCheckboxWithLabel> {
                         ? (widget.activeColor ??
                             widget._type.activeColor(context))
                         : Colors.transparent,
-                    borderRadius: widget.circular
-                        ? BorderRadius.circular(widget.size)
-                        : BorderRadius.circular(4),
+                    borderRadius:
+                        widget._type.borderRadius(context, widget.size),
                     border: Border.all(
                       color: (_checked
                           ? widget.activeColor ??
@@ -180,8 +176,7 @@ class LedgerCheckbox extends StatefulWidget {
     this.borderColor,
     this.checkColor,
     this.onChanged,
-    this.circular = false,
-  }) : _type = _LedgerCheckboxType.checkbox;
+  }) : _type = _LedgerCheckboxType._checkbox;
 
   const LedgerCheckbox.circular({
     super.key,
@@ -193,16 +188,13 @@ class LedgerCheckbox extends StatefulWidget {
     this.borderColor,
     this.checkColor,
     this.onChanged,
-    this.circular = true,
-  })  : _type = _LedgerCheckboxType.circular,
-        assert(circular == true, 'Circular must be true');
+  }) : _type = _LedgerCheckboxType._circular;
 
   final bool checked;
   final double size;
   final Color? activeColor;
   final Color? borderColor;
   final Color? checkColor;
-  final bool circular;
   final ValueChanged<bool>? onChanged;
   final String semanticsLabel;
   final String trackLabel;
@@ -248,9 +240,7 @@ class _LedgerCheckboxState extends State<LedgerCheckbox> {
                 color: _checked
                     ? (widget.activeColor ?? widget._type.activeColor(context))
                     : Colors.transparent,
-                borderRadius: widget.circular
-                    ? BorderRadius.circular(widget.size)
-                    : BorderRadius.circular(4),
+                borderRadius: widget._type.borderRadius(context, widget.size),
                 border: Border.all(
                   color: (_checked
                       ? widget.activeColor ?? widget._type.activeColor(context)
@@ -277,22 +267,27 @@ class _LedgerCheckboxState extends State<LedgerCheckbox> {
 }
 
 enum _LedgerCheckboxType {
-  checkbox,
-  circular;
+  _checkbox,
+  _circular;
 
   Color activeColor(BuildContext ctx) => switch (this) {
-        checkbox => ctx.baseBlack,
-        circular => ctx.primary.shade500
+        _checkbox => ctx.baseBlack,
+        _circular => ctx.primary.shade500
       };
 
   Color borderColor(BuildContext ctx) => switch (this) {
-        checkbox => ctx.brightness == Brightness.light
+        _checkbox => ctx.brightness == Brightness.light
             ? ctx.baseBlack
             : ctx.grey.shade300,
-        circular => ctx.brightness == Brightness.light
+        _circular => ctx.brightness == Brightness.light
             ? ctx.baseBlack
             : ctx.grey.shade300,
       };
   Color checkColor(BuildContext ctx) =>
-      switch (this) { checkbox => ctx.baseWhite, circular => ctx.baseWhite };
+      switch (this) { _checkbox => ctx.baseWhite, _circular => ctx.baseWhite };
+
+  BorderRadius borderRadius(BuildContext ctx, double size) => switch (this) {
+        _checkbox => BorderRadius.circular(4),
+        _circular => BorderRadius.circular(size),
+      };
 }
