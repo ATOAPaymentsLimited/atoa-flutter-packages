@@ -95,8 +95,7 @@ class _LedgerCheckboxWithLabelState extends State<LedgerCheckboxWithLabel> {
                         ? (widget.activeColor ??
                             widget._type.activeColor(context))
                         : Colors.transparent,
-                    borderRadius:
-                        widget._type.borderRadius(context, widget.size),
+                    borderRadius: widget._type.borderRadius(context),
                     border: Border.all(
                       color: (_checked
                           ? widget.activeColor ??
@@ -240,7 +239,7 @@ class _LedgerCheckboxState extends State<LedgerCheckbox> {
                 color: _checked
                     ? (widget.activeColor ?? widget._type.activeColor(context))
                     : Colors.transparent,
-                borderRadius: widget._type.borderRadius(context, widget.size),
+                borderRadius: widget._type.borderRadius(context),
                 border: Border.all(
                   color: (_checked
                       ? widget.activeColor ?? widget._type.activeColor(context)
@@ -286,8 +285,8 @@ enum _LedgerCheckboxType {
   Color checkColor(BuildContext ctx) =>
       switch (this) { _checkbox => ctx.baseWhite, _circular => ctx.baseWhite };
 
-  BorderRadius borderRadius(BuildContext ctx, double size) => switch (this) {
+  BorderRadius borderRadius(BuildContext ctx) => switch (this) {
         _checkbox => BorderRadius.circular(4),
-        _circular => BorderRadius.circular(size),
+        _circular => BorderRadius.circular(Spacing.lds1000.value),
       };
 }
