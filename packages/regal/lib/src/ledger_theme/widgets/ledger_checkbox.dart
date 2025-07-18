@@ -11,30 +11,47 @@ class LedgerCheckboxWithLabel extends StatefulWidget {
     this.size = 20.0,
     this.activeColor,
     this.borderColor,
-    this.checkColor = Colors.white,
+    this.checkColor,
     this.onChanged,
     this.label = '',
     this.subtitle,
     this.labelStyle,
     this.subtitleStyle,
-    this.circular = false,
-  });
+  }) : _type = _LedgerCheckboxType._checkbox;
+
+  const LedgerCheckboxWithLabel.circular({
+    super.key,
+    required this.checked,
+    required this.trackLabel,
+    required this.semanticsLabel,
+    this.size = 20.0,
+    this.activeColor,
+    this.borderColor,
+    this.checkColor,
+    this.onChanged,
+    this.label = '',
+    this.subtitle,
+    this.labelStyle,
+    this.subtitleStyle,
+  }) : _type = _LedgerCheckboxType._circular;
+
   final bool checked;
   final double size;
   final Color? activeColor;
   final Color? borderColor;
-  final Color checkColor;
+  final Color? checkColor;
   final String label;
   final TextStyle? labelStyle;
   final String? subtitle;
   final TextStyle? subtitleStyle;
-  final bool circular;
   final ValueChanged<bool>? onChanged;
   final String semanticsLabel;
   final String trackLabel;
+  final _LedgerCheckboxType _type;
 
   @override
-  State<LedgerCheckboxWithLabel> createState() => _LedgerCheckboxWithLabelState();
+  State<LedgerCheckboxWithLabel> createState() =>
+      _LedgerCheckboxWithLabelState();
 }
 
 class _LedgerCheckboxWithLabelState extends State<LedgerCheckboxWithLabel> {
@@ -75,16 +92,16 @@ class _LedgerCheckboxWithLabelState extends State<LedgerCheckboxWithLabel> {
                   width: widget.size,
                   decoration: BoxDecoration(
                     color: _checked
-                        ? (widget.activeColor ?? context.primary.shade500)
+                        ? (widget.activeColor ??
+                            widget._type.activeColor(context))
                         : Colors.transparent,
-                    borderRadius: widget.circular
-                        ? BorderRadius.circular(widget.size)
-                        : BorderRadius.circular(4),
+                    borderRadius: widget._type.borderRadius(context),
                     border: Border.all(
                       color: (_checked
-                              ? widget.activeColor
-                              : widget.borderColor) ??
-                          context.theme.primaryColor,
+                          ? widget.activeColor ??
+                              widget._type.activeColor(context)
+                          : widget.borderColor ??
+                              widget._type.borderColor(context)),
                     ),
                   ),
                   child: Center(
@@ -156,19 +173,31 @@ class LedgerCheckbox extends StatefulWidget {
     this.size = 20.0,
     this.activeColor,
     this.borderColor,
-    this.checkColor = Colors.white,
+    this.checkColor,
     this.onChanged,
-    this.circular = false,
-  });
+  }) : _type = _LedgerCheckboxType._checkbox;
+
+  const LedgerCheckbox.circular({
+    super.key,
+    required this.checked,
+    required this.trackLabel,
+    required this.semanticsLabel,
+    this.size = 20.0,
+    this.activeColor,
+    this.borderColor,
+    this.checkColor,
+    this.onChanged,
+  }) : _type = _LedgerCheckboxType._circular;
+
   final bool checked;
   final double size;
   final Color? activeColor;
   final Color? borderColor;
-  final Color checkColor;
-  final bool circular;
+  final Color? checkColor;
   final ValueChanged<bool>? onChanged;
   final String semanticsLabel;
   final String trackLabel;
+  final _LedgerCheckboxType _type;
 
   @override
   State<LedgerCheckbox> createState() => _LedgerCheckboxState();
@@ -208,14 +237,14 @@ class _LedgerCheckboxState extends State<LedgerCheckbox> {
               width: widget.size,
               decoration: BoxDecoration(
                 color: _checked
-                    ? (widget.activeColor ?? context.primary.shade500)
+                    ? (widget.activeColor ?? widget._type.activeColor(context))
                     : Colors.transparent,
-                borderRadius: widget.circular
-                    ? BorderRadius.circular(widget.size)
-                    : BorderRadius.circular(4),
+                borderRadius: widget._type.borderRadius(context),
                 border: Border.all(
-                  color: (_checked ? widget.activeColor : widget.borderColor) ??
-                      context.theme.primaryColor,
+                  color: (_checked
+                      ? widget.activeColor ?? widget._type.activeColor(context)
+                      : widget.borderColor ??
+                          widget._type.borderColor(context)),
                 ),
               ),
               child: Center(
@@ -225,7 +254,8 @@ class _LedgerCheckboxState extends State<LedgerCheckbox> {
                   child: Icon(
                     Icons.done,
                     size: widget.size * 0.8,
-                    color: widget.checkColor,
+                    color:
+                        widget.checkColor ?? widget._type.checkColor(context),
                   ),
                 ),
               ),
@@ -233,4 +263,30 @@ class _LedgerCheckboxState extends State<LedgerCheckbox> {
           ),
         ),
       );
+}
+
+enum _LedgerCheckboxType {
+  _checkbox,
+  _circular;
+
+  Color activeColor(BuildContext ctx) => switch (this) {
+        _checkbox => ctx.baseBlack,
+        _circular => ctx.primary.shade500
+      };
+
+  Color borderColor(BuildContext ctx) => switch (this) {
+        _checkbox => ctx.brightness == Brightness.light
+            ? ctx.baseBlack
+            : ctx.grey.shade300,
+        _circular => ctx.brightness == Brightness.light
+            ? ctx.baseBlack
+            : ctx.grey.shade300,
+      };
+  Color checkColor(BuildContext ctx) =>
+      switch (this) { _checkbox => ctx.baseWhite, _circular => ctx.baseWhite };
+
+  BorderRadius borderRadius(BuildContext ctx) => switch (this) {
+        _checkbox => BorderRadius.circular(4),
+        _circular => BorderRadius.circular(Spacing.lds1000.value),
+      };
 }
