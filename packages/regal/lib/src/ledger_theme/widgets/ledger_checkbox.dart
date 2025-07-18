@@ -111,7 +111,8 @@ class _LedgerCheckboxWithLabelState extends State<LedgerCheckboxWithLabel> {
                       child: Icon(
                         Icons.done,
                         size: widget.size * 0.8,
-                        color: widget.checkColor,
+                        color: widget.checkColor ??
+                            widget._type.checkColor(context),
                       ),
                     ),
                   ),
