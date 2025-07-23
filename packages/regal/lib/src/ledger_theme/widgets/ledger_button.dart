@@ -2,6 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:regal/assets/fonts.gen.dart';
 import 'package:regal/src/ledger_theme/ledger_theme.dart';
 import 'package:regal/src/mixin/mixins.dart';
 import 'package:regal/src/spacing/spacing.dart';
@@ -288,7 +289,9 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
               fixedSize: WidgetStatePropertyAll(
                 Size.fromHeight(size.value.sp),
               ),
-              textStyle: WidgetStatePropertyAll(size.style(context)),
+              textStyle: WidgetStatePropertyAll(size
+                  .style(context)
+                  .apply(fontFamily: FontFamily.figTree, package: 'regal')),
               shape: WidgetStatePropertyAll(
                 RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(
@@ -311,7 +314,9 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
               fixedSize: WidgetStatePropertyAll(
                 Size.fromHeight(size.value.sp),
               ),
-              textStyle: WidgetStatePropertyAll(size.style(context)),
+              textStyle: WidgetStatePropertyAll(size
+                  .style(context)
+                  .apply(fontFamily: FontFamily.figTree, package: 'regal')),
               shape: WidgetStatePropertyAll(
                 RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(Spacing.lds150.value),
@@ -336,7 +341,9 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
               fixedSize: WidgetStatePropertyAll(
                 Size.fromHeight(size.value.sp),
               ),
-              textStyle: WidgetStatePropertyAll(size.style(context)),
+              textStyle: WidgetStatePropertyAll(size
+                  .style(context)
+                  .apply(fontFamily: FontFamily.figTree, package: 'regal')),
               shape: WidgetStatePropertyAll(
                 RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(Spacing.lds150.value),
@@ -361,7 +368,9 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
               fixedSize: WidgetStatePropertyAll(
                 Size.fromHeight(size.value.sp),
               ),
-              textStyle: WidgetStatePropertyAll(size.style(context)),
+              textStyle: WidgetStatePropertyAll(size
+                  .style(context)
+                  .apply(fontFamily: FontFamily.figTree, package: 'regal')),
               shape: WidgetStatePropertyAll(
                 RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(Spacing.lds150.value),
@@ -382,7 +391,9 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
               fixedSize: WidgetStatePropertyAll(
                 Size.fromHeight(size.value.sp),
               ),
-              textStyle: WidgetStatePropertyAll(size.style(context)),
+              textStyle: WidgetStatePropertyAll(size
+                  .style(context)
+                  .apply(fontFamily: FontFamily.figTree, package: 'regal')),
               shape: WidgetStatePropertyAll(
                 RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(Spacing.lds150.value),
@@ -403,7 +414,9 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
               fixedSize: WidgetStatePropertyAll(
                 Size.fromHeight(size.value.sp),
               ),
-              textStyle: WidgetStatePropertyAll(size.style(context)),
+              textStyle: WidgetStatePropertyAll(size
+                  .style(context)
+                  .apply(fontFamily: FontFamily.figTree, package: 'regal')),
               shape: WidgetStatePropertyAll(
                 RoundedRectangleBorder(
                   side: BorderSide(
