@@ -48,8 +48,8 @@ class _LedgerSwitchState extends State<LedgerSwitch> {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(150),
               color: widget.value
-                  ? (widget.activeColor ?? context.theme.primaryColor)
-                  : (widget.inActiveColor ?? context.grey.shade400),
+                  ? (widget.activeColor ?? context.primary.shade500)
+                  : (widget.inActiveColor ?? context.grey.shade300),
             ),
             child: AnimatedAlign(
               duration: const Duration(milliseconds: 300),
@@ -62,7 +62,7 @@ class _LedgerSwitchState extends State<LedgerSwitch> {
                   width: 16.sp,
                   height: 16.sp,
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: context.baseWhite,
                     boxShadow: [
                       BoxShadow(
                         offset: const Offset(2, 0),
