@@ -13,6 +13,8 @@ class LedgerChip extends StatelessWidget {
     this.onTap,
     this.expand = false,
     this.bgColor,
+    this.selectedColor,
+    this.baseColor,
     this.labelColor,
     this.iconColor,
     this.borderRadius,
@@ -26,6 +28,8 @@ class LedgerChip extends StatelessWidget {
   final VoidCallback? onTap;
   final bool expand;
   final Color? bgColor;
+  final Color? selectedColor;
+  final Color? baseColor;
   final Color? labelColor;
   final Color? iconColor;
   final BorderRadius? borderRadius;
@@ -43,7 +47,8 @@ class LedgerChip extends StatelessWidget {
           child: Container(
             padding: Spacing.lds150.x + (Spacing.lds25.y * 2.5),
             decoration: BoxDecoration(
-              color: bgColor ??
+              color: (isSelected ? selectedColor : baseColor) ??
+                  bgColor ??
                   (isSelected
                       ? context.primary.shade500
                       : context.primary.shade100),
@@ -59,12 +64,9 @@ class LedgerChip extends StatelessWidget {
                   style: labelStyle ??
                       context.body2.semiBold.copyWith(
                         color: labelColor ??
-                            context.brightness.map(
-                              (l) => isSelected
-                                  ? LedgerColors.lightColors.base.white
-                                  : LedgerColors.lightColors.base.black,
-                              (d) => LedgerColors.lightColors.base.white,
-                            ),
+                            (isSelected
+                                ? context.baseWhite
+                                : context.baseBlack),
                       ),
                 ),
                 if (onRemove != null) ...[
