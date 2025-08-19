@@ -62,7 +62,7 @@ class _LedgerSwitchState extends State<LedgerSwitch> {
                   width: 16.sp,
                   height: 16.sp,
                   decoration: BoxDecoration(
-                    color: context.baseWhite,
+                    color: Colors.white,
                     boxShadow: [
                       BoxShadow(
                         offset: const Offset(2, 0),
