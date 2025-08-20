@@ -5,6 +5,7 @@ export 'custom_auto_size_text.dart';
 export 'custom_gesture_detector.dart';
 export 'custom_ink_well.dart';
 export 'custom_navigation_card.dart';
+export 'custom_refresh_indicator.dart';
 export 'custom_text.dart';
 export 'custom_text_span.dart';
 export 'disable_widget.dart';
