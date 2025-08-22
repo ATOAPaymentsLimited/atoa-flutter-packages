@@ -72,7 +72,8 @@ class CarouselItemWidget extends StatelessWidget {
               ),
             if (imageUrl.isNotEmpty)
               ClipRRect(
-                borderRadius: BorderRadius.circular(RadiusSpacing.rds2xl+RadiusSpacing.rdsxs.value),
+                borderRadius:
+                    RadiusSpacing.rds2xl.all + RadiusSpacing.rdsxs.all,
                 child: CachedNetworkImage(
                   imageUrl: imageUrl,
                   errorWidget: (_, __, ___) => Shimmer.fromColors(
