@@ -1,8 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:regal/src/ledger_theme/ledger_theme.dart';
-import 'package:regal/src/spacing/empty_spacing.dart';
-import 'package:regal/src/spacing/spacing.dart';
+import 'package:regal/ledger.dart';
 import 'package:shimmer/shimmer.dart';
 
 class CarouselItemWidget extends StatelessWidget {
