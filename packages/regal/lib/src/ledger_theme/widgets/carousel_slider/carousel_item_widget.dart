@@ -1,4 +1,3 @@
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:regal/src/ledger_theme/ledger_theme.dart';
@@ -70,20 +69,11 @@ class CarouselItemWidget extends StatelessWidget {
                 description: desc,
               ),
             if (imageUrl.isNotEmpty)
-              CachedNetworkImage(
-                imageUrl: imageUrl,
-                errorWidget: (_, __, ___) => Shimmer.fromColors(
-                  enabled: !disableAnimationsForTest,
-                  baseColor: context.grey.shade400,
-                  highlightColor: context.grey.shade400.withOpacity(0.05),
-                  child: Container(
-                    width: double.infinity,
-                    color: Colors.white,
-                  ),
-                ),
-                placeholder: (_, __) => ClipRRect(
-                  borderRadius: BorderRadius.circular(24),
-                  child: Shimmer.fromColors(
+              ClipRRect(
+                borderRadius: BorderRadius.circular(24),
+                child: CachedNetworkImage(
+                  imageUrl: imageUrl,
+                  errorWidget: (_, __, ___) => Shimmer.fromColors(
                     enabled: !disableAnimationsForTest,
                     baseColor: context.grey.shade400,
                     highlightColor: context.grey.shade400.withOpacity(0.05),
@@ -92,9 +82,18 @@ class CarouselItemWidget extends StatelessWidget {
                       color: Colors.white,
                     ),
                   ),
+                  placeholder: (_, __) => Shimmer.fromColors(
+                    enabled: !disableAnimationsForTest,
+                    baseColor: context.grey.shade400,
+                    highlightColor: context.grey.shade400.withOpacity(0.05),
+                    child: Container(
+                      width: double.infinity,
+                      color: Colors.white,
+                    ),
+                  ),
+                  fit: BoxFit.fill,
+                  width: double.infinity,
                 ),
-                fit: BoxFit.fill,
-                width: double.infinity,
               ),
             CustomInkWell(
               context: context,
