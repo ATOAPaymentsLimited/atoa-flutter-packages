@@ -31,6 +31,7 @@ Future<T?> showLedgerBottomSheet<T>({
 }) =>
     showModalBottomSheet<T>(
       context: context,
+      barrierColor: barrierColor ?? context.grey.shade700.withOpacity(0.5),
       builder: (dialogContext) => Theme(
         data: dialogContext.theme,
         child: Padding(
@@ -114,7 +115,6 @@ Future<T?> showLedgerBottomSheet<T>({
         ),
       ),
       isScrollControlled: isScrollControlled,
-      barrierColor: barrierColor,
       constraints: constraints,
       useRootNavigator: useRootNavigator,
       routeSettings: routeSettings,
@@ -158,6 +158,7 @@ Future<T?> showLedgerBottomSheetDraggable<T>({
 }) =>
     showModalBottomSheet<T>(
       context: context,
+      barrierColor: barrierColor ?? context.grey.shade700.withOpacity(0.5),
       builder: (dialogContext) => Theme(
         data: dialogContext.theme,
         child: DraggableScrollableSheet(
@@ -251,7 +252,6 @@ Future<T?> showLedgerBottomSheetDraggable<T>({
         ),
       ),
       isScrollControlled: true,
-      barrierColor: barrierColor,
       constraints: constraints,
       useRootNavigator: useRootNavigator,
       routeSettings: routeSettings,
@@ -287,6 +287,7 @@ Future<T?> showLedgerBottomSheetStacked<T>({
 }) =>
     showModalBottomSheet<T>(
       context: context,
+      barrierColor: barrierColor ?? context.grey.shade700,
       builder: (dialogContext) => Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -326,7 +327,6 @@ Future<T?> showLedgerBottomSheetStacked<T>({
         ],
       ),
       isScrollControlled: isScrollControlled,
-      barrierColor: barrierColor,
       constraints: constraints,
       useRootNavigator: useRootNavigator,
       routeSettings: routeSettings,
