@@ -67,9 +67,7 @@ class Snackbar extends StatelessWidget with EventTrackMixin {
               foregroundColor: snackbar.type.ctaColor(context),
             ),
             child: snackbar.loading
-                ? LedgerInfiniteSpinner(
-                    height: Spacing.lds100.value,
-                  )
+                ? LedgerInfiniteSpinner(size: Spacing.lds100.value)
                 : CustomText.semantics(snackbar.ctaText!),
           )
         : null;

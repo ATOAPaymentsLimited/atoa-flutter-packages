@@ -5,21 +5,21 @@ import 'package:regal/ledger.dart';
 class LedgerInfiniteSpinner extends StatefulWidget {
   const LedgerInfiniteSpinner({
     super.key,
-    this.height,
+    this.size,
   }) : brightness = null;
 
   const LedgerInfiniteSpinner.dark({
     super.key,
-    this.height,
+    this.size,
   }) : brightness = Brightness.light;
 
   const LedgerInfiniteSpinner.light({
     super.key,
-    this.height,
+    this.size,
   }) : brightness = Brightness.dark;
 
   final Brightness? brightness;
-  final double? height;
+  final double? size;
 
   @override
   State<LedgerInfiniteSpinner> createState() => LedgerInfiniteSpinnerState();
@@ -33,7 +33,7 @@ class LedgerInfiniteSpinnerState extends State<LedgerInfiniteSpinner> {
         package: 'regal',
         animate: true,
         repeat: true,
-        height: widget.height ?? Spacing.lds250.value,
-        width: widget.height ?? Spacing.lds250.value,
+        height: widget.size ?? Spacing.lds250.value,
+        width: widget.size ?? Spacing.lds250.value,
       );
 }
