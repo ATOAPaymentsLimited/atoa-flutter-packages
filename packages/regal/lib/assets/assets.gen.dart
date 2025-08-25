@@ -13,12 +13,20 @@ import 'package:lottie/lottie.dart' as _lottie;
 class $AssetsAnimationsGen {
   const $AssetsAnimationsGen();
 
+  /// File path: assets/animations/grey_loader.json
+  LottieGenImage get greyLoader =>
+      const LottieGenImage('assets/animations/grey_loader.json');
+
   /// File path: assets/animations/ledger_loader.json
   LottieGenImage get ledgerLoader =>
       const LottieGenImage('assets/animations/ledger_loader.json');
 
+  /// File path: assets/animations/white_loader.json
+  LottieGenImage get whiteLoader =>
+      const LottieGenImage('assets/animations/white_loader.json');
+
   /// List of all assets
-  List<LottieGenImage> get values => [ledgerLoader];
+  List<LottieGenImage> get values => [greyLoader, ledgerLoader, whiteLoader];
 }
 
 class $AssetsIconsGen {
@@ -33,6 +41,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/error.svg
   String get error => 'assets/icons/error.svg';
 
+  /// File path: assets/icons/hourglass.svg
+  String get hourglass => 'assets/icons/hourglass.svg';
+
   /// File path: assets/icons/info_fill.svg
   String get infoFill => 'assets/icons/info_fill.svg';
 
@@ -44,7 +55,7 @@ class $AssetsIconsGen {
 
   /// List of all assets
   List<String> get values =>
-      [close, closeFill, error, infoFill, successFill, warningFill];
+      [close, closeFill, error, hourglass, infoFill, successFill, warningFill];
 }
 
 class Assets {

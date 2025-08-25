@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:regal/ledger.dart';
 
 class CustomRefreshIndicator extends StatelessWidget {
-  const CustomRefreshIndicator(
-      {super.key,
-      required this.child,
-      this.backgroundColor,
-      this.color,
-      required this.onRefresh});
+  const CustomRefreshIndicator({
+    super.key,
+    required this.child,
+    this.backgroundColor,
+    this.color,
+    required this.onRefresh,
+  });
 
   final Widget child;
   final Color? backgroundColor;

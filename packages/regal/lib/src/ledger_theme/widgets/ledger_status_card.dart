@@ -169,7 +169,7 @@ class LedgerStatusCard extends StatelessWidget {
                             CustomText.semantics(
                               title!,
                               style: titleStyle ??
-                                  context.body1.copyWith(
+                                  context.body1.bold.copyWith(
                                     color: textColor ??
                                         _type.foregroundColor(context),
                                   ),
@@ -220,7 +220,6 @@ class LedgerStatusCard extends StatelessWidget {
                   Spacing.lds150.yBox,
                   LedgerButton.primary2(
                     label: ctaText,
-                    size: LedgerButtonSize.small,
                     style: ElevatedButton.styleFrom(
                       foregroundColor: LedgerColors.lightColors.brand.primary.shade500,
                       backgroundColor: LedgerColors.lightColors.base.white,

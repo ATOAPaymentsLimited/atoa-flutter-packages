@@ -57,9 +57,9 @@ extension FigTreeTextTheme on BuildContext {
 
   /// Title 1 is Flutter Title Large with 24px size and 130% height
   TextStyle get title1 => tt.titleLarge!;
-  /// Title 1 is Flutter Title Large with 20px size and 140% height
+  /// Title 2 is Flutter Title Large with 20px size and 140% height
   TextStyle get title2 => tt.titleMedium!;
-  /// Title 1 is Flutter Title Large with 18px size and 140% height
+  /// Title 3 is Flutter Title Large with 18px size and 140% height
   TextStyle get title3 => tt.titleSmall!;
 
   /// Caption is Text Style with 12px size and 150% height

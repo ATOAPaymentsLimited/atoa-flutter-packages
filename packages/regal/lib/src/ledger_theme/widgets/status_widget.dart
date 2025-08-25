@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:regal/assets/assets.gen.dart';
 import 'package:regal/src/ledger_theme/ledger_theme.dart';
 import 'package:regal/src/spacing/spacing.dart';
 
@@ -55,13 +56,9 @@ class StatusWidget extends StatelessWidget {
   Widget _buildIcon(BuildContext context) {
     switch (type) {
       case StatusType.failed:
-        return const _Icon(
-          'assets/icons/icon_error.svg',
-        );
+        return _Icon(Assets.icons.warningFill);
       case StatusType.processing:
-        return const _Icon(
-          'assets/icons/icon_hourglass_empty.svg',
-        );
+        return _Icon(Assets.icons.hourglass);
       case StatusType.success:
         return LedgerCheckbox.circular (
           trackLabel: 'Success check',

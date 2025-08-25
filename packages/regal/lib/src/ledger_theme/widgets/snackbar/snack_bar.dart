@@ -132,19 +132,18 @@ class Snackbar extends StatelessWidget with EventTrackMixin {
 
   @override
   Widget build(BuildContext context) {
+    final hasHeader =
+        snackbar.headerIcon != null && snackbar.headerText != null;
     final listTile = Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        if (snackbar.headerIcon != null && snackbar.headerText != null)
+        if (hasHeader)
           Container(
             padding: Spacing.lds150.all,
             decoration: BoxDecoration(
               color: snackbar.type.bg(context),
               border: Border.all(color: context.grey.shade400),
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(20.sp),
-                topRight: Radius.circular(20.sp),
-              ),
+              borderRadius: RadiusSpacing.rds2xl.topCorners,
             ),
             child: Row(
               children: [
@@ -162,7 +161,9 @@ class Snackbar extends StatelessWidget with EventTrackMixin {
         ListTile(
           dense: true,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(Spacing.lds150.value),
+            borderRadius: hasHeader
+                ? RadiusSpacing.rdsl.bottomCorners
+                : RadiusSpacing.rdsl.all,
             side: BorderSide(
               color: snackbar.type.borderColor(context),
             ),

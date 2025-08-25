@@ -48,22 +48,6 @@ flutter:
     - assets/icons/
     - assets/animations/
   fonts:
-    - family: Montserrat
-      fonts:
-        - asset: assets/fonts/Montserrat/Montserrat-Regular.ttf
-          weight: 400
-        - asset: assets/fonts/Montserrat/Montserrat-SemiBold.ttf
-          weight: 600
-        - asset: assets/fonts/Montserrat/Montserrat-Bold.ttf
-          weight: 700
-    - family: Inter
-      fonts:
-        - asset: assets/fonts/Inter/Inter-Regular.ttf
-          weight: 400
-        - asset: assets/fonts/Inter/Inter-SemiBold.ttf
-          weight: 600
-        - asset: assets/fonts/Inter/Inter-Bold.ttf
-          weight: 700
     - family: FigTree
       fonts:
         - asset: assets/fonts/FigTree/Figtree-VariableFont_wght.ttf
