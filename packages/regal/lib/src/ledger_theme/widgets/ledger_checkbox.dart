@@ -283,11 +283,14 @@ enum _LedgerCheckboxType {
             ? ctx.baseBlack
             : ctx.grey.shade300,
       };
-  Color checkColor(BuildContext ctx) =>
-      switch (this) { _checkbox => ctx.baseWhite, _circular => ctx.baseWhite };
+
+  Color checkColor(BuildContext ctx) => switch (this) {
+        _checkbox => ctx.baseWhite,
+        _circular => ctx.intactWhite
+      };
 
   BorderRadius borderRadius(BuildContext ctx) => switch (this) {
-        _checkbox => BorderRadius.circular(4),
+        _checkbox => BorderRadius.circular(Spacing.lds50.value),
         _circular => BorderRadius.circular(Spacing.lds1000.value),
       };
 }
