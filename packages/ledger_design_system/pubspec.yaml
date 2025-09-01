@@ -48,7 +48,7 @@ flutter:
   fonts:
     - family: FigTree
       fonts:
-        - asset: assets/fonts/FigTree/Figtree-VariableFont_wght.ttf
+        - asset: assets/fonts/Figtree-VariableFont_wght.ttf
           style: normal
-        - asset: assets/fonts/FigTree/Figtree-Italic-VariableFont_wght.ttf
+        - asset: assets/fonts/Figtree-Italic-VariableFont_wght.ttf
           style: italic
