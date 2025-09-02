@@ -7,6 +7,7 @@ class LedgerTextField extends StatefulWidget {
     super.key,
     this.margin,
     this.suffix,
+    this.prefix,
     this.label,
     this.hintText,
     this.onClear,
@@ -80,6 +81,7 @@ class LedgerTextField extends StatefulWidget {
   final bool showLabel;
   final bool showClear;
   final Widget? suffix;
+  final Widget? prefix;
   final EdgeInsets? margin;
   final TextEditingController? controller;
   final ValueChanged<String>? onChanged;
@@ -188,9 +190,10 @@ class _LedgerTextFieldState extends State<LedgerTextField> {
                 CustomText.semantics(
                   widget.label!,
                   style: widget.labelStyle ??
-                      context.theme.inputDecorationTheme.labelStyle,
+                      context.body3.semiBold
+                          .copyWith(color: context.grey.shade700),
                 ),
-                Spacing.lds50.yBox,
+                Spacing.lds100.yBox,
               ],
               TextFormField(
                 restorationId: widget.restorationId,
@@ -204,21 +207,36 @@ class _LedgerTextFieldState extends State<LedgerTextField> {
                 focusNode: widget.focusNode,
                 decoration:
                     (widget.decoration ?? const InputDecoration()).copyWith(
+                  prefixIcon: widget.prefix,
                   suffixIcon: widget.suffix ?? _buildSuffixIcon,
-                  filled: widget.filled ??
-                      widget.decoration?.filled ??
-                      context.theme.inputDecorationTheme.filled,
+                  filled: widget.filled ?? widget.decoration?.filled,
                   fillColor: widget.fillColor ??
                       widget.decoration?.fillColor ??
-                      context.theme.inputDecorationTheme.fillColor,
+                      context.grey.shade10,
                   hintText: widget.hintText ?? widget.decoration?.hintText,
                   hintStyle: widget.hintStyle ??
                       widget.decoration?.hintStyle ??
-                      context.theme.inputDecorationTheme.hintStyle,
+                      context.body2.medium
+                          .copyWith(color: context.grey.shade400),
+                  prefixIconConstraints: BoxConstraints.tight(
+                    Size(
+                      Spacing.lds600.value,
+                      Spacing.lds250.value,
+                    ),
+                  ),
+                  suffixIconConstraints: BoxConstraints.tight(
+                    Size(
+                      Spacing.lds600.value,
+                      Spacing.lds250.value,
+                    ),
+                  ),
+                  errorStyle: context.caption.bold.copyWith(
+                    color: context.error.defaultColor,
+                  ),
                 ),
                 validator: (value) {
                   final result = widget.validator?.call(value);
-          
+
                   if (result is String) {
                     _updateLabelColor(TextValidationState.invalid);
                   } else {
@@ -236,14 +254,16 @@ class _LedgerTextFieldState extends State<LedgerTextField> {
                       );
                     }
                   }
-          
+
                   return result;
                 },
                 autovalidateMode: widget.autovalidateMode,
                 onSaved: widget.onSaved,
                 keyboardType: widget.keyboardType,
                 textInputAction: widget.textInputAction,
-                style: widget.style ?? context.body2.semiBold,
+                style: widget.style ??
+                    context.body2.semiBold
+                        .copyWith(color: context.grey.shade700),
                 strutStyle: widget.strutStyle,
                 textAlign: widget.textAlign,
                 textAlignVertical: widget.textAlignVertical,
@@ -271,11 +291,11 @@ class _LedgerTextFieldState extends State<LedgerTextField> {
                 maxLength: widget.maxLength,
                 onChanged: (String value) {
                   widget.onChanged?.call(value);
-          
+
                   if (widget.autovalidateMode == AutovalidateMode.disabled) {
                     return;
                   }
-          
+
                   if (value.isNotEmpty) {
                     _updateLabelColor(TextValidationState.typing);
                   } else if (value.isEmpty) {
@@ -322,6 +342,7 @@ class _LedgerTextFieldState extends State<LedgerTextField> {
             return LedgerIconButton(
               assetPath: value.assetPath,
               iconColor: value.suffixColor,
+              package: 'ledger_design_system',
               trackLabel: 'Clear ${widget.label}',
               semanticsLabel: 'Clear ${widget.label}',
               onPressed: value == TextValidationState.typing
@@ -361,6 +382,7 @@ enum TextValidationState {
           ? LedgerColors.lightColors.semantic.error.defaultColor
           : LedgerColors.lightColors.neutral.grey.shade500;
 
-  String get assetPath =>
-      this == invalid ? 'assets/icons/error.svg' : 'assets/icons/close_fill.svg';
+  String get assetPath => this == invalid
+      ? 'assets/icons/high_importance.svg'
+      : 'assets/icons/close.svg';
 }

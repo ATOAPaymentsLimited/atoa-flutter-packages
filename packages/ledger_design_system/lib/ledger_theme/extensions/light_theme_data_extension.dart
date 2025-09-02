@@ -2,9 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:ledger_design_system/ledger_theme/colors/colors.dart';
-import 'package:ledger_design_system/ledger_theme/font/figtree.dart';
-import 'package:ledger_design_system/spacing/spacing.dart';
+import 'package:ledger_design_system/ledger_design_system.dart';
 
 extension LightThemeDataExtension on ThemeData {
   TextTheme get _textTheme => kFigTreeTextTheme.apply(
@@ -25,12 +23,8 @@ extension LightThemeDataExtension on ThemeData {
                 LedgerColors.lightColors.brand.primary.shade800,
             disabledForegroundColor: Colors.white,
             fixedSize: Size.fromHeight(60.sp),
-            textStyle: TextStyle(
-              fontFamily: 'FigTree',
-              package: 'ledger_design_system',
+            textStyle: _textTheme.bodyLarge!.bold.copyWith(
               color: LedgerColors.lightColors.base.white,
-              fontSize: 16.sp,
-              fontWeight: FontWeight.bold,
             ),
           ),
         ),
@@ -46,44 +40,41 @@ extension LightThemeDataExtension on ThemeData {
             ),
         inputDecorationTheme: InputDecorationTheme(
           isDense: true,
+          isCollapsed: true,
           contentPadding: Spacing.lds200.x + Spacing.lds150.y + Spacing.lds25.y,
           border: OutlineInputBorder(
             borderRadius: RadiusSpacing.rdsm.all,
             borderSide: BorderSide(
-              color: LedgerColors.lightColors.neutral.grey.shade500,
+              color: LedgerColors.lightColors.neutral.grey.shade700,
             ),
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: RadiusSpacing.rdsm.all,
             borderSide: BorderSide(
-              color: LedgerColors.lightColors.neutral.grey.shade500,
+              color: LedgerColors.lightColors.neutral.grey.shade300,
             ),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: RadiusSpacing.rdsm.all,
-            borderSide: BorderSide(color: LedgerColors.lightColors.base.black),
+            borderSide: BorderSide(
+              width: 1.5,
+              color: LedgerColors.lightColors.neutral.grey.shade700,
+            ),
           ),
           disabledBorder: OutlineInputBorder(
             borderRadius: RadiusSpacing.rdsm.all,
             borderSide: BorderSide(
-              color: LedgerColors.lightColors.neutral.grey.shade10,
+              color: LedgerColors.lightColors.neutral.grey.shade200,
             ),
           ),
           errorBorder: OutlineInputBorder(
             borderRadius: RadiusSpacing.rdsm.all,
             borderSide: BorderSide(
+              width: 1.5,
               color: LedgerColors.lightColors.semantic.error.defaultColor,
             ),
           ),
           errorMaxLines: 2,
-          hintStyle: kFigTreeTextTheme.bodyMedium?.copyWith(
-            color: LedgerColors.lightColors.neutral.grey.shade600,
-            height: 1.3,
-          ),
-          errorStyle: kFigTreeTextTheme.bodyMedium?.copyWith(
-            color: LedgerColors.lightColors.semantic.error.defaultColor,
-          ),
-          isCollapsed: true,
           labelStyle: kFigTreeTextTheme.labelSmall
               ?.copyWith(color: LedgerColors.lightColors.base.black),
           floatingLabelStyle: kFigTreeTextTheme.bodyLarge
@@ -108,12 +99,8 @@ extension LightThemeDataExtension on ThemeData {
           iconTheme: IconThemeData(
             color: LedgerColors.lightColors.background.dark,
           ),
-          titleTextStyle: TextStyle(
+          titleTextStyle: _textTheme.titleMedium!.bold.copyWith(
             color: LedgerColors.lightColors.base.black,
-            fontFamily: 'FigTree',
-            package: 'ledger_design_system',
-            fontSize: 20.sp,
-            fontWeight: FontWeight.bold,
           ),
           surfaceTintColor: LedgerColors.lightColors.base.white,
         ),
@@ -123,12 +110,8 @@ extension LightThemeDataExtension on ThemeData {
             foregroundColor: LedgerColors.lightColors.brand.primary.shade500,
             disabledForegroundColor:
                 LedgerColors.lightColors.brand.primary.shade800,
-            textStyle: TextStyle(
-              fontFamily: 'FigTree',
-              package: 'ledger_design_system',
+            textStyle: _textTheme.bodyLarge!.bold.copyWith(
               color: LedgerColors.lightColors.brand.primary.shade500,
-              fontSize: 16.sp,
-              fontWeight: FontWeight.bold,
             ),
           ),
         ),
@@ -137,12 +120,8 @@ extension LightThemeDataExtension on ThemeData {
             foregroundColor: LedgerColors.lightColors.brand.primary.shade500,
             disabledForegroundColor:
                 LedgerColors.lightColors.brand.primary.shade800,
-            textStyle: TextStyle(
-              fontFamily: 'FigTree',
-              package: 'ledger_design_system',
+            textStyle: _textTheme.bodyLarge!.bold.copyWith(
               color: LedgerColors.lightColors.brand.primary.shade500,
-              fontSize: 16.sp,
-              fontWeight: FontWeight.bold,
             ),
             side: BorderSide(
               color: LedgerColors.lightColors.brand.primary.shade500,
@@ -182,10 +161,7 @@ extension LightThemeDataExtension on ThemeData {
           backgroundColor: Colors.white,
           surfaceTintColor: LedgerColors.lightColors.base.white,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(32.w),
-              topRight: Radius.circular(32.w),
-            ),
+            borderRadius: RadiusSpacing.rds2xl.topCorners,
           ),
         ),
         datePickerTheme: DatePickerThemeData(

@@ -193,6 +193,7 @@ class LedgerStatusCard extends StatelessWidget {
                           label: 'Close Button',
                           child: LedgerIconButton(
                             semanticsLabel: 'Close Button',
+                            package: 'ledger_design_system',
                             assetPath: 'assets/icons/close.svg',
                             trackLabel: 'Close Button',
                             iconColor:
@@ -218,10 +219,6 @@ class LedgerStatusCard extends StatelessWidget {
                   Spacing.lds150.yBox,
                   LedgerButton.primary2(
                     label: ctaText,
-                    style: ElevatedButton.styleFrom(
-                      foregroundColor: LedgerColors.lightColors.brand.primary.shade500,
-                      backgroundColor: LedgerColors.lightColors.base.white,
-                    ),
                     trackLabel: ctaText!,
                     onPressed: onTapCta,
                   ),

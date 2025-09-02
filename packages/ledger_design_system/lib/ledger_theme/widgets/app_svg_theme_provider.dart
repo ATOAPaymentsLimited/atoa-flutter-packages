@@ -14,7 +14,7 @@ class AppSvgThemeProvider extends InheritedWidget {
     return inherited?.config ??
         SvgThemeConfig(
           defaultSize: Spacing.lds250.value,
-          defaultColor: Colors.black,
+          defaultColor: context.baseBlack,
         );
   }
 

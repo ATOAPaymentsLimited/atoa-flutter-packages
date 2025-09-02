@@ -1,3 +1,6 @@
+import 'dart:io';
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:ledger_design_system/ledger_design_system.dart';
 
@@ -48,7 +51,7 @@ Future<T?> showLedgerBottomSheet<T>({
                   ),
                 ),
               ],
-              Spacing.lds300.yBox,
+              Spacing.lds200.yBox,
               if (illustrationWidget != null) illustrationWidget,
               if (showTitle) ...[
                 Row(
@@ -105,9 +108,11 @@ Future<T?> showLedgerBottomSheet<T>({
               if (titleBottomSpacing != null)
                 SizedBox(height: titleBottomSpacing)
               else
-                Spacing.lds300.yBox,
-              Builder(
-                builder: body,
+                Spacing.lds150.yBox,
+              SafeArea(
+                child: Builder(
+                  builder: body,
+                ),
               ),
             ],
           ),
@@ -244,6 +249,18 @@ Future<T?> showLedgerBottomSheetDraggable<T>({
                   Builder(
                     builder: body,
                   ),
+                  if (Platform.isAndroid)
+                    SizedBox(
+                      height: MediaQuery.of(context).viewInsets.bottom +
+                          Spacing.lds300.value,
+                    )
+                  else
+                    SizedBox(
+                      height: max(
+                        MediaQuery.of(context).viewInsets.bottom,
+                        Spacing.lds600.value,
+                      ),
+                    ),
                 ],
               ),
             ),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ledger_design_system/ledger_design_system.dart';
 
 class LedgerSearchBar extends StatefulWidget {
@@ -20,7 +19,6 @@ class LedgerSearchBar extends StatefulWidget {
     this.textStyle,
     required this.searchController,
     required this.semanticsLabel,
-    this.prefixIcon,
   });
   final TextEditingController searchController;
   final String? hintText;
@@ -37,7 +35,6 @@ class LedgerSearchBar extends StatefulWidget {
   final bool isLightMode;
   final FloatingLabelBehavior? showFloatingLabel;
   final TextStyle? textStyle;
-  final Widget? prefixIcon;
 
   @override
   State<LedgerSearchBar> createState() => _LedgerSearchBarState();
@@ -70,7 +67,7 @@ class _LedgerSearchBarState extends State<LedgerSearchBar> {
           controller: widget.searchController,
           keyboardType: TextInputType.text,
           style: widget.textStyle ??
-              context.labelSmall.copyWith(
+              context.body3.semiBold.copyWith(
                 color: context.baseBlack,
               ),
           cursorColor: context.baseBlack,
@@ -80,23 +77,33 @@ class _LedgerSearchBarState extends State<LedgerSearchBar> {
             filled: widget.filled ?? true,
             disabledBorder: OutlineInputBorder(
               borderSide: BorderSide.none,
-              borderRadius: RadiusSpacing.rdscircular.all,
+              borderRadius: RadiusSpacing.rdsm.all,
             ),
             enabledBorder: OutlineInputBorder(
               borderSide: widget.border ?? BorderSide.none,
-              borderRadius: RadiusSpacing.rdscircular.all,
+              borderRadius: RadiusSpacing.rdsm.all,
             ),
             focusedBorder: OutlineInputBorder(
-              borderSide: widget.border ?? BorderSide.none,
-              borderRadius: RadiusSpacing.rdscircular.all,
+              borderSide:
+                  widget.border ?? BorderSide(color: context.grey.shade200),
+              borderRadius: RadiusSpacing.rdsm.all,
             ),
             hintText: widget.hintText,
             hintStyle: widget.hintStyle ??
-                context.labelSmall.copyWith(
-                  color: context.grey.shade600,
+                context.body3.copyWith(
+                  color: context.grey.shade400,
                 ),
             contentPadding: Spacing.lds150.y + Spacing.lds200.x,
-            prefixIcon: widget.prefixIcon,
+            prefixIcon: const SvgThemedIcon(
+              svgPath: 'assets/icons/search.svg',
+              package: 'ledger_design_system',
+            ),
+            prefixIconConstraints: BoxConstraints.tight(
+              Size(
+                Spacing.lds600.value,
+                Spacing.lds300.value,
+              ),
+            ),
             label: widget.label,
             floatingLabelBehavior: widget.showFloatingLabel,
             suffixIcon: _showClear && widget.showClose
@@ -108,14 +115,10 @@ class _LedgerSearchBarState extends State<LedgerSearchBar> {
                       widget.searchController.clear();
                       widget.onClear?.call();
                     },
-                    child: SvgPicture.asset(
-                      'assets/icons/close.svg',
-                      width: Spacing.lds250.value,
-                      height: Spacing.lds250.value,
-                      colorFilter: ColorFilter.mode(
-                        context.baseBlack,
-                        BlendMode.srcIn,
-                      ),
+                    child: SvgThemedIcon(
+                      svgPath: 'assets/icons/close.svg',
+                      size: Spacing.lds200.value,
+                      package: 'ledger_design_system',
                     ),
                   )
                 : null,

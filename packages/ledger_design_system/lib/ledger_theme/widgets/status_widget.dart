@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ledger_design_system/ledger_design_system.dart';
 
@@ -54,15 +53,15 @@ class StatusWidget extends StatelessWidget {
   Widget _buildIcon(BuildContext context) {
     switch (type) {
       case StatusType.failed:
-        return const _Icon('assets/icons/warning.svg');
+        return const _Icon('assets/icons/warning_fill.svg');
       case StatusType.processing:
         return const _Icon('assets/icons/hourglass.svg');
       case StatusType.success:
-        return LedgerCheckbox.circular (
+        return LedgerCheckbox.circular(
           trackLabel: 'Success check',
           checked: true,
           semanticsLabel: 'success check',
-          size: 100.sp,
+          size: Spacing.lds800.value,
           activeColor: context.positive.darker,
         );
       case StatusType.empty:
@@ -79,15 +78,15 @@ class _Icon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final filter = ColorFilter.mode(
-      context.primary.shade100,
+      context.grey.shade400,
       BlendMode.srcIn,
     );
     return SvgPicture.asset(
       assetPath,
       colorFilter: filter,
       package: 'ledger_design_system',
-      height: 80.sp,
-      width: 80.sp,
+      height: Spacing.lds800.value,
+      width: Spacing.lds800.value,
     );
   }
 }

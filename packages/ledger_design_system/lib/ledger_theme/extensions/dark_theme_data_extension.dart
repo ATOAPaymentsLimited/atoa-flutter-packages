@@ -2,10 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:ledger_design_system/ledger_theme/colors/colors.dart';
-import 'package:ledger_design_system/ledger_theme/extensions/font_extension.dart';
-import 'package:ledger_design_system/ledger_theme/font/figtree.dart';
-import 'package:ledger_design_system/spacing/spacing.dart';
+import 'package:ledger_design_system/ledger_design_system.dart';
 
 extension DarkThemeDataExtension on ThemeData {
   TextTheme get _textTheme => kFigTreeTextTheme.apply(
@@ -26,49 +23,43 @@ extension DarkThemeDataExtension on ThemeData {
               backgroundColor: LedgerColors.darkColors.base.white,
             ),
         inputDecorationTheme: ThemeData.dark().inputDecorationTheme.copyWith(
-              fillColor: LedgerColors.darkColors.neutral.grey.shade50,
-              labelStyle: kFigTreeTextTheme.labelSmall?.copyWith(
-                color: LedgerColors.darkColors.neutral.grey.shade600,
-              ),
               isDense: true,
-              contentPadding: Spacing.lds200.all,
+              isCollapsed: true,
+              contentPadding:
+                  Spacing.lds200.x + Spacing.lds150.y + Spacing.lds25.y,
               border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(14.sp),
+                borderRadius: RadiusSpacing.rdsm.all,
                 borderSide: BorderSide(
-                  color: LedgerColors.darkColors.neutral.grey.shade100,
+                  color: LedgerColors.darkColors.neutral.grey.shade700,
                 ),
               ),
               enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(14.sp),
+                borderRadius: RadiusSpacing.rdsm.all,
                 borderSide: BorderSide(
-                  color: LedgerColors.darkColors.neutral.grey.shade100,
+                  color: LedgerColors.darkColors.neutral.grey.shade300,
                 ),
               ),
               focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(14.sp),
-                borderSide:
-                    BorderSide(color: LedgerColors.darkColors.base.black),
+                borderRadius: RadiusSpacing.rdsm.all,
+                borderSide: BorderSide(
+                  width: 1.5,
+                  color: LedgerColors.darkColors.neutral.grey.shade700,
+                ),
               ),
               disabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(14.sp),
+                borderRadius: RadiusSpacing.rdsm.all,
                 borderSide: BorderSide(
-                  color: LedgerColors.darkColors.neutral.grey.shade10,
+                  color: LedgerColors.darkColors.neutral.grey.shade200,
                 ),
               ),
               errorBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(14.sp),
+                borderRadius: RadiusSpacing.rdsm.all,
                 borderSide: BorderSide(
+                  width: 1.5,
                   color: LedgerColors.darkColors.semantic.error.darker,
                 ),
               ),
               errorMaxLines: 2,
-              hintStyle: _textTheme.bodyLarge!.copyWith(
-                color: LedgerColors.darkColors.neutral.grey.shade600,
-              ),
-              errorStyle: _textTheme.labelSmall!.copyWith(
-                color: LedgerColors.darkColors.semantic.error.darker,
-              ),
-              isCollapsed: true,
               floatingLabelStyle: _textTheme.bodyLarge
                   ?.copyWith(color: LedgerColors.darkColors.base.black),
             ),
@@ -155,10 +146,7 @@ extension DarkThemeDataExtension on ThemeData {
           backgroundColor: LedgerColors.darkColors.base.white,
           surfaceTintColor: LedgerColors.darkColors.base.white,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(32.w),
-              topRight: Radius.circular(32.w),
-            ),
+            borderRadius: RadiusSpacing.rds2xl.topCorners,
           ),
         ),
         datePickerTheme: DatePickerThemeData(

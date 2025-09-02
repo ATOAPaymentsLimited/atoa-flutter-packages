@@ -1,9 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ledger_design_system/ledger_design_system.dart';
-import 'package:ledger_design_system/mixin/mixins.dart';
+
+import '../../mixin/mixins.dart';
 
 class LedgerButton extends StatelessWidget with EventTrackMixin {
   const LedgerButton.primary1({
@@ -13,27 +12,22 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
     this.label,
     this.prefixIconPath,
     this.suffixIconPath,
-    this.iconColor,
-    this.overrideColor = true,
     this.onPressed,
-    this.style,
     this.size = LedgerButtonSize.xtraLarge,
     this.loading = false,
     this.enable = true,
     this.trackProperties,
     this.semanticsLabel,
-    this.shrink = false,
-    this.loadingIndicatorColor,
-    this.labelWidget,
-    this.backgroundColor,
     this.foregroundColor,
-    this.borderRadius,
+    this.backgroundColor,
+    this.labelWidget,
+    this.textStyle,
+    this.shrink = false,
   })  : _type = _LedgerButtonType.primary1,
         assert(
           label != null || prefixIconPath != null || suffixIconPath != null,
           'Label or icon must be provided.',
-        ),
-        mainAxisAlignment = MainAxisAlignment.center;
+        );
 
   const LedgerButton.primary2({
     super.key,
@@ -42,27 +36,22 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
     this.label,
     this.prefixIconPath,
     this.suffixIconPath,
-    this.iconColor,
-    this.overrideColor = true,
     this.onPressed,
-    this.style,
     this.size = LedgerButtonSize.xtraLarge,
     this.loading = false,
     this.enable = true,
     this.trackProperties,
     this.semanticsLabel,
-    this.shrink = false,
-    this.loadingIndicatorColor,
-    this.labelWidget,
-    this.backgroundColor,
     this.foregroundColor,
-    this.borderRadius,
+    this.backgroundColor,
+    this.labelWidget,
+    this.textStyle,
+    this.shrink = false,
   })  : _type = _LedgerButtonType.primary2,
         assert(
           label != null || prefixIconPath != null || suffixIconPath != null,
           'Label or icon must be provided.',
-        ),
-        mainAxisAlignment = MainAxisAlignment.center;
+        );
 
   const LedgerButton.secondary({
     super.key,
@@ -71,22 +60,17 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
     this.label,
     this.prefixIconPath,
     this.suffixIconPath,
-    this.iconColor,
-    this.overrideColor = true,
     this.onPressed,
-    this.style,
     this.size = LedgerButtonSize.xtraLarge,
     this.loading = false,
     this.enable = true,
     this.trackProperties,
     this.semanticsLabel,
-    this.shrink = false,
-    this.loadingIndicatorColor,
-    this.labelWidget,
-    this.mainAxisAlignment = MainAxisAlignment.center,
-    this.backgroundColor,
     this.foregroundColor,
-    this.borderRadius,
+    this.backgroundColor,
+    this.labelWidget,
+    this.textStyle,
+    this.shrink = false,
   })  : _type = _LedgerButtonType.secondary,
         assert(
           label != null || prefixIconPath != null || suffixIconPath != null,
@@ -100,27 +84,22 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
     this.label,
     this.prefixIconPath,
     this.suffixIconPath,
-    this.iconColor,
-    this.overrideColor = true,
     this.onPressed,
-    this.style,
     this.size = LedgerButtonSize.xtraLarge,
     this.loading = false,
     this.enable = true,
     this.trackProperties,
     this.semanticsLabel,
-    this.shrink = false,
-    this.loadingIndicatorColor,
-    this.labelWidget,
-    this.backgroundColor,
     this.foregroundColor,
-    this.borderRadius,
+    this.backgroundColor,
+    this.labelWidget,
+    this.textStyle,
+    this.shrink = false,
   })  : _type = _LedgerButtonType.tertiary1,
         assert(
           label != null || prefixIconPath != null || suffixIconPath != null,
           'Label or icon must be provided.',
-        ),
-        mainAxisAlignment = MainAxisAlignment.center;
+        );
 
   const LedgerButton.tertiary2({
     super.key,
@@ -129,27 +108,22 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
     this.label,
     this.prefixIconPath,
     this.suffixIconPath,
-    this.iconColor,
-    this.overrideColor = true,
     this.onPressed,
-    this.style,
     this.size = LedgerButtonSize.xtraLarge,
     this.loading = false,
     this.enable = true,
     this.trackProperties,
     this.semanticsLabel,
-    this.shrink = false,
-    this.loadingIndicatorColor,
-    this.labelWidget,
-    this.backgroundColor,
     this.foregroundColor,
-    this.borderRadius,
+    this.backgroundColor,
+    this.labelWidget,
+    this.textStyle,
+    this.shrink = false,
   })  : _type = _LedgerButtonType.tertiary2,
         assert(
           label != null || prefixIconPath != null || suffixIconPath != null,
           'Label or icon must be provided.',
-        ),
-        mainAxisAlignment = MainAxisAlignment.center;
+        );
 
   const LedgerButton.ghost({
     super.key,
@@ -158,39 +132,32 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
     this.label,
     this.prefixIconPath,
     this.suffixIconPath,
-    this.iconColor,
-    this.overrideColor = true,
     this.onPressed,
-    this.style,
     this.size = LedgerButtonSize.xtraLarge,
     this.loading = false,
     this.enable = true,
     this.trackProperties,
     this.semanticsLabel,
-    this.shrink = false,
-    this.loadingIndicatorColor,
-    this.labelWidget,
-    this.backgroundColor,
     this.foregroundColor,
-    this.borderRadius,
+    this.backgroundColor,
+    this.labelWidget,
+    this.textStyle,
+    this.shrink = false,
   })  : _type = _LedgerButtonType.ghost,
         assert(
           label != null || prefixIconPath != null || suffixIconPath != null,
           'Label or icon must be provided.',
-        ),
-        mainAxisAlignment = MainAxisAlignment.center;
+        );
 
   final String? label;
 
   final Widget? labelWidget;
 
-  final Color? iconColor;
+  final bool shrink;
 
   final String? prefixIconPath;
 
   final String? suffixIconPath;
-
-  final ButtonStyle? style;
 
   final VoidCallback? onPressed;
 
@@ -211,228 +178,58 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
 
   final String? semanticsLabel;
 
-  final MainAxisAlignment mainAxisAlignment;
-
-  final Color? loadingIndicatorColor;
-
-  final bool overrideColor;
-
-  /// [shrink] will minimize the button width to hug its contents
-  final bool shrink;
+  final Color? foregroundColor;
 
   final Color? backgroundColor;
 
-  final Color? foregroundColor;
-
-  final double? borderRadius;
+  final TextStyle? textStyle;
 
   @override
   Widget build(BuildContext context) {
+    final prefixIcon = prefixIconPath != null
+        ? loading
+            ? _type.spinner(context)
+            : SvgThemedIcon(
+                svgPath: prefixIconPath!,
+                color: _type.iconColor(context),
+              )
+        : null;
+    final suffixIcon = suffixIconPath != null
+        ? loading
+            ? _type.spinner(context)
+            : SvgThemedIcon(
+                svgPath: suffixIconPath!,
+                color: _type.iconColor(context),
+              )
+        : null;
     final child = Row(
-      mainAxisSize: shrink ? MainAxisSize.min : MainAxisSize.max,
-      mainAxisAlignment: mainAxisAlignment,
+      mainAxisSize: shrink ? MainAxisSize.min : mainAxisSize,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        if (loading) ...[
-          _type.spinner(context),
-          if (label != null) ...[
-            Spacing.lds150.xBox,
-            labelWidget ??
-                AutoSizeText(
-                  label!,
-                  textAlign: TextAlign.center,
-                  semanticsLabel: label,
-                ),
-          ],
-        ] else ...[
-          if (prefixIconPath != null)
-            SvgThemedIcon(
-              svgPath: prefixIconPath!,
-              color: iconColor ?? _type.iconColor(context),
-              size: Spacing.lds250.value,
-              overrideColor: overrideColor,
-            ),
-          if (prefixIconPath != null && label != null) Spacing.lds150.xBox,
-          if (label != null)
-            labelWidget ??
-                AutoSizeText(
-                  label!,
-                  textAlign: TextAlign.center,
-                  semanticsLabel: label,
-                ),
-          if (suffixIconPath != null && label != null) Spacing.lds100.xBox,
-          if (suffixIconPath != null)
-            SvgThemedIcon(
-              svgPath: suffixIconPath!,
-              color: iconColor ?? _type.iconColor(context),
-              size: Spacing.lds250.value,
-              overrideColor: overrideColor,
-            ),
+        Spacing.lds300.xBox,
+        if (prefixIcon != null) ...[
+          prefixIcon,
+          Spacing.lds150.xBox,
         ],
+        if (prefixIcon == null && suffixIcon == null && loading) ...[
+          _type.spinner(context),
+          Spacing.lds150.xBox,
+        ],
+        if (label != null)
+          labelWidget ??
+              AutoSizeText(
+                label!,
+                textAlign: TextAlign.center,
+                semanticsLabel: label,
+                style: style(context),
+              ),
+        if (suffixIcon != null) ...[
+          Spacing.lds150.xBox,
+          suffixIcon,
+        ],
+        Spacing.lds300.xBox,
       ],
     );
-
-    Widget buttonType() {
-      switch (_type) {
-        case _LedgerButtonType.primary1:
-          return ElevatedButton(
-            onPressed: onPressed != null ? onClick(context) : null,
-            style: (style ?? Theme.of(context).elevatedButtonTheme.style)
-                ?.copyWith(
-              fixedSize: WidgetStatePropertyAll(
-                Size.fromHeight(size.value.sp),
-              ),
-              textStyle: WidgetStatePropertyAll(
-                size.style(context).apply(
-                    fontFamily: 'FigTree', package: 'ledger_design_system'),
-              ),
-              shape: WidgetStatePropertyAll(
-                RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(
-                    borderRadius ?? Spacing.lds150.value,
-                  ),
-                ),
-              ),
-              foregroundColor: _ElevatedButtonColor(context.intactWhite),
-              backgroundColor: _ElevatedButtonColor(context.primary.shade500),
-              surfaceTintColor: WidgetStatePropertyAll(context.grey.shade500),
-              elevation: const WidgetStatePropertyAll(0),
-            ),
-            child: child,
-          );
-        case _LedgerButtonType.primary2:
-          return ElevatedButton(
-            onPressed: onPressed != null ? onClick(context) : null,
-            style: (style ?? Theme.of(context).elevatedButtonTheme.style)
-                ?.copyWith(
-              fixedSize: WidgetStatePropertyAll(
-                Size.fromHeight(size.value.sp),
-              ),
-              textStyle: WidgetStatePropertyAll(
-                size.style(context).apply(
-                    fontFamily: 'FigTree', package: 'ledger_design_system'),
-              ),
-              shape: WidgetStatePropertyAll(
-                RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(Spacing.lds150.value),
-                ),
-              ),
-              foregroundColor: _ElevatedButtonColor(
-                foregroundColor ?? context.baseWhite,
-              ),
-              backgroundColor: _ElevatedButtonColor(
-                backgroundColor ?? context.baseBlack,
-              ),
-              surfaceTintColor: WidgetStatePropertyAll(context.grey.shade500),
-              elevation: const WidgetStatePropertyAll(0),
-            ),
-            child: child,
-          );
-        case _LedgerButtonType.secondary:
-          return ElevatedButton(
-            onPressed: onPressed != null ? onClick(context) : null,
-            style: (style ?? Theme.of(context).elevatedButtonTheme.style)
-                ?.copyWith(
-              fixedSize: WidgetStatePropertyAll(
-                Size.fromHeight(size.value.sp),
-              ),
-              textStyle: WidgetStatePropertyAll(
-                size.style(context).apply(
-                    fontFamily: 'FigTree', package: 'ledger_design_system'),
-              ),
-              shape: WidgetStatePropertyAll(
-                RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(Spacing.lds150.value),
-                ),
-              ),
-              foregroundColor: _ElevatedButtonColor(
-                foregroundColor ?? context.baseBlack,
-              ),
-              backgroundColor: _ElevatedButtonColor(
-                backgroundColor ?? context.grey.shade50,
-              ),
-              surfaceTintColor: WidgetStatePropertyAll(context.grey.shade500),
-              elevation: const WidgetStatePropertyAll(0),
-            ),
-            child: child,
-          );
-        case _LedgerButtonType.tertiary1:
-          return ElevatedButton(
-            onPressed: onPressed != null ? onClick(context) : null,
-            style: (style ?? Theme.of(context).elevatedButtonTheme.style)
-                ?.copyWith(
-              fixedSize: WidgetStatePropertyAll(
-                Size.fromHeight(size.value.sp),
-              ),
-              textStyle: WidgetStatePropertyAll(
-                size.style(context).apply(
-                    fontFamily: 'FigTree', package: 'ledger_design_system'),
-              ),
-              shape: WidgetStatePropertyAll(
-                RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(Spacing.lds150.value),
-                ),
-              ),
-              foregroundColor: _ElevatedButtonColor(context.primary.shade500),
-              backgroundColor: _ElevatedButtonColor(Colors.transparent),
-              surfaceTintColor: WidgetStatePropertyAll(context.grey.shade500),
-              elevation: const WidgetStatePropertyAll(0),
-            ),
-            child: child,
-          );
-        case _LedgerButtonType.tertiary2:
-          return ElevatedButton(
-            onPressed: onPressed != null ? onClick(context) : null,
-            style: (style ?? Theme.of(context).elevatedButtonTheme.style)
-                ?.copyWith(
-              fixedSize: WidgetStatePropertyAll(
-                Size.fromHeight(size.value.sp),
-              ),
-              textStyle: WidgetStatePropertyAll(
-                size.style(context).apply(
-                    fontFamily: 'FigTree', package: 'ledger_design_system'),
-              ),
-              shape: WidgetStatePropertyAll(
-                RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(Spacing.lds150.value),
-                ),
-              ),
-              foregroundColor: _ElevatedButtonColor(context.baseBlack),
-              backgroundColor: _ElevatedButtonColor(Colors.transparent),
-              surfaceTintColor: WidgetStatePropertyAll(context.grey.shade500),
-              elevation: const WidgetStatePropertyAll(0),
-            ),
-            child: child,
-          );
-        case _LedgerButtonType.ghost:
-          return ElevatedButton(
-            onPressed: onPressed != null ? onClick(context) : null,
-            style: (style ?? Theme.of(context).elevatedButtonTheme.style)
-                ?.copyWith(
-              fixedSize: WidgetStatePropertyAll(
-                Size.fromHeight(size.value.sp),
-              ),
-              textStyle: WidgetStatePropertyAll(
-                size.style(context).apply(
-                    fontFamily: 'FigTree', package: 'ledger_design_system'),
-              ),
-              shape: WidgetStatePropertyAll(
-                RoundedRectangleBorder(
-                  side: BorderSide(
-                    color: context.baseBlack,
-                    width: 1.sp,
-                  ),
-                  borderRadius: BorderRadius.circular(Spacing.lds150.value),
-                ),
-              ),
-              foregroundColor: _ElevatedButtonColor(context.baseBlack),
-              backgroundColor: _ElevatedButtonColor(context.baseWhite),
-              surfaceTintColor: WidgetStatePropertyAll(context.grey.shade500),
-              elevation: const WidgetStatePropertyAll(0),
-            ),
-            child: child,
-          );
-      }
-    }
 
     return Semantics(
       button: true,
@@ -442,10 +239,71 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
       label: semanticsLabel ?? '$label Button',
       child: DisableWidget(
         ignoring: !enable,
-        child: buttonType(),
+        child: GestureDetector(
+          onTap: onClick(context),
+          child: Container(
+            height: size.value,
+            decoration: BoxDecoration(
+              border: _type == _LedgerButtonType.ghost
+                  ? Border.all(
+                      color: context.baseBlack,
+                    )
+                  : null,
+              color: backgroundColor ?? _type.backgroundColor(context),
+              borderRadius: borderRadius,
+            ),
+            child: child,
+          ),
+        ),
       ),
     );
   }
+
+  TextStyle style(BuildContext context) {
+    if (textStyle != null) return textStyle!;
+    final sizeStyle = switch (size) {
+      LedgerButtonSize.xtraLarge => context.buttonMedium.bold,
+      LedgerButtonSize.large => context.buttonMedium.bold,
+      _ => context.buttonSmall.bold,
+    };
+    final typeStyle = switch (_type) {
+      _LedgerButtonType.primary1 =>
+        sizeStyle.copyWith(color: context.intactWhite),
+      _LedgerButtonType.primary2 =>
+        sizeStyle.copyWith(color: context.baseWhite),
+      _LedgerButtonType.secondary =>
+        sizeStyle.copyWith(color: context.baseBlack),
+      _LedgerButtonType.tertiary1 =>
+        sizeStyle.copyWith(color: context.primary.shade500),
+      _LedgerButtonType.tertiary2 =>
+        sizeStyle.copyWith(color: context.baseBlack),
+      _LedgerButtonType.ghost => sizeStyle.copyWith(color: context.baseBlack),
+    };
+    return typeStyle;
+  }
+
+  BorderRadius get borderRadius => switch (size) {
+        LedgerButtonSize.medium => RadiusSpacing.rdss.all,
+        LedgerButtonSize.small => RadiusSpacing.rdsxs.all,
+        _ => RadiusSpacing.rdsm.all,
+      };
+
+  Widget get spacing => switch (size) {
+        LedgerButtonSize.small => Spacing.lds200.xBox,
+        LedgerButtonSize.xtraSmall => Spacing.lds200.xBox,
+        _ => Spacing.lds300.xBox,
+      };
+
+  MainAxisSize get mainAxisSize => switch (size) {
+        LedgerButtonSize.medium => MainAxisSize.min,
+        LedgerButtonSize.small => MainAxisSize.min,
+        LedgerButtonSize.xtraSmall => MainAxisSize.min,
+        _ => switch (_type) {
+            _LedgerButtonType.tertiary1 => MainAxisSize.min,
+            _LedgerButtonType.tertiary2 => MainAxisSize.min,
+            _ => MainAxisSize.max,
+          },
+      };
 
   VoidCallback? onClick(BuildContext context) => loading
       ? () {}
@@ -468,31 +326,33 @@ enum _LedgerButtonType {
   tertiary2,
   ghost;
 
-  Color loadingIndicatorColor(BuildContext ctx) => switch (this) {
-        primary1 => ctx.intactWhite,
-        primary2 => ctx.baseWhite,
-        secondary => ctx.baseBlack,
-        tertiary1 => ctx.baseBlack,
-        tertiary2 => ctx.baseBlack,
-        ghost => ctx.baseBlack,
-      };
-
   Color iconColor(BuildContext ctx) => switch (this) {
         primary1 => ctx.intactWhite,
         primary2 => ctx.baseWhite,
         secondary => ctx.baseBlack,
-        tertiary1 => ctx.baseBlack,
+        tertiary1 => ctx.primary.shade500,
         tertiary2 => ctx.baseBlack,
         ghost => ctx.baseBlack,
       };
 
   LedgerInfiniteSpinner spinner(BuildContext context) => switch (this) {
-        _LedgerButtonType.primary1 => const LedgerInfiniteSpinner.dark(),
-        _LedgerButtonType.primary2 => const LedgerInfiniteSpinner(),
-        _LedgerButtonType.secondary => const LedgerInfiniteSpinner.dark(),
-        _LedgerButtonType.tertiary1 => const LedgerInfiniteSpinner(),
-        _LedgerButtonType.tertiary2 => const LedgerInfiniteSpinner(),
-        _LedgerButtonType.ghost => const LedgerInfiniteSpinner(),
+        primary1 => LedgerInfiniteSpinner.dark(size: spinnerSize),
+        primary2 => LedgerInfiniteSpinner(size: spinnerSize),
+        secondary => LedgerInfiniteSpinner.dark(size: spinnerSize),
+        tertiary1 => LedgerInfiniteSpinner(size: spinnerSize),
+        tertiary2 => LedgerInfiniteSpinner(size: spinnerSize),
+        ghost => LedgerInfiniteSpinner(size: spinnerSize),
+      };
+
+  double get spinnerSize => Spacing.lds250.value;
+
+  Color backgroundColor(BuildContext context) => switch (this) {
+        primary1 => context.primary.shade500,
+        primary2 => context.baseBlack,
+        secondary => context.grey.shade50,
+        tertiary1 => Colors.transparent,
+        tertiary2 => Colors.transparent,
+        ghost => context.baseWhite,
       };
 }
 
@@ -506,26 +366,4 @@ enum LedgerButtonSize {
   const LedgerButtonSize(this.value);
 
   final double value;
-
-  TextStyle style(BuildContext context) => switch (this) {
-        LedgerButtonSize.xtraLarge =>
-          context.buttonMedium.bold.copyWith(height: 1),
-        LedgerButtonSize.large => context.buttonMedium.bold.copyWith(height: 1),
-        _ => context.buttonSmall.bold.copyWith(height: 1),
-      };
-}
-
-class _ElevatedButtonColor extends WidgetStateProperty<Color?>
-    with Diagnosticable {
-  _ElevatedButtonColor(this.color);
-
-  final Color color;
-
-  @override
-  Color? resolve(Set<WidgetState> states) {
-    if (states.contains(WidgetState.disabled)) {
-      return color.withOpacity(0.4);
-    }
-    return color;
-  }
 }
