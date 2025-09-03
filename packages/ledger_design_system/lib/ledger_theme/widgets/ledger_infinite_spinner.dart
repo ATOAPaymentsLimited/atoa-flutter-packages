@@ -8,12 +8,12 @@ class LedgerInfiniteSpinner extends StatefulWidget {
     this.size,
   }) : brightness = null;
 
-  const LedgerInfiniteSpinner.dark({
+  const LedgerInfiniteSpinner.light({
     super.key,
     this.size,
   }) : brightness = Brightness.light;
 
-  const LedgerInfiniteSpinner.light({
+  const LedgerInfiniteSpinner.dark({
     super.key,
     this.size,
   }) : brightness = Brightness.dark;
@@ -31,8 +31,8 @@ class LedgerInfiniteSpinnerState extends State<LedgerInfiniteSpinner> {
   @override
   Widget build(BuildContext context) => LottieBuilder.asset(
         resolvedBrightness == Brightness.light
-            ? 'assets/animations/ledger_loader_light.json'
-            : 'assets/animations/ledger_loader_dark.json',
+            ? 'assets/animations/ledger_loader_dark.json'
+            : 'assets/animations/ledger_loader_light.json',
         package: 'ledger_design_system',
         animate: true,
         repeat: true,

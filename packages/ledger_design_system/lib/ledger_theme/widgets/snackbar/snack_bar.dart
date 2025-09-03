@@ -205,19 +205,19 @@ class Snackbar extends StatelessWidget with EventTrackMixin {
 extension on SnackbarTypeEnum {
   Widget leading(BuildContext context) => switch (this) {
         SnackbarTypeEnum.success => SvgThemedIcon(
-            svgPath: 'assets/icons/success.svg',
+            svgPath: 'assets/icons/success_fill.svg',
             package: 'ledger_design_system',
             color: context.positive.defaultColor,
             size: Spacing.lds250.value,
           ),
         SnackbarTypeEnum.error => SvgThemedIcon(
-            svgPath: 'assets/icons/warning.svg',
+            svgPath: 'assets/icons/warning_fill.svg',
             package: 'ledger_design_system',
             color: context.error.defaultColor,
             size: Spacing.lds250.value,
           ),
         SnackbarTypeEnum.info => SvgThemedIcon(
-            svgPath: 'assets/icons/info.svg',
+            svgPath: 'assets/icons/info_fill.svg',
             package: 'ledger_design_system',
             color: context.grey.shade600,
             size: Spacing.lds250.value,

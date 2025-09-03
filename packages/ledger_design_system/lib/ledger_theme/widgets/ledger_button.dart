@@ -187,48 +187,43 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
   @override
   Widget build(BuildContext context) {
     final prefixIcon = prefixIconPath != null
-        ? loading
-            ? _type.spinner(context)
-            : SvgThemedIcon(
-                svgPath: prefixIconPath!,
-                color: _type.iconColor(context),
-              )
+        ? SvgThemedIcon(
+            svgPath: prefixIconPath!,
+            color: _type.iconColor(context),
+          )
         : null;
     final suffixIcon = suffixIconPath != null
-        ? loading
-            ? _type.spinner(context)
-            : SvgThemedIcon(
-                svgPath: suffixIconPath!,
-                color: _type.iconColor(context),
-              )
+        ? SvgThemedIcon(
+            svgPath: suffixIconPath!,
+            color: _type.iconColor(context),
+          )
         : null;
-    final child = Row(
-      mainAxisSize: shrink ? MainAxisSize.min : mainAxisSize,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Spacing.lds300.xBox,
-        if (prefixIcon != null) ...[
-          prefixIcon,
-          Spacing.lds150.xBox,
+    final child = Padding(
+      padding: Spacing.lds300.x,
+      child: Row(
+        mainAxisSize: shrink && size != LedgerButtonSize.xtraLarge
+            ? MainAxisSize.min
+            : mainAxisSize,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          if (loading)
+            _type.spinner(context)
+          else ...[
+            if (prefixIcon != null) prefixIcon,
+            if (prefixIcon != null) Spacing.lds150.xBox,
+            if (label != null)
+              labelWidget ??
+                  AutoSizeText(
+                    label!,
+                    textAlign: TextAlign.center,
+                    semanticsLabel: label,
+                    style: style(context),
+                  ),
+            if (suffixIcon != null) Spacing.lds150.xBox,
+            if (suffixIcon != null) suffixIcon,
+          ],
         ],
-        if (prefixIcon == null && suffixIcon == null && loading) ...[
-          _type.spinner(context),
-          Spacing.lds150.xBox,
-        ],
-        if (label != null)
-          labelWidget ??
-              AutoSizeText(
-                label!,
-                textAlign: TextAlign.center,
-                semanticsLabel: label,
-                style: style(context),
-              ),
-        if (suffixIcon != null) ...[
-          Spacing.lds150.xBox,
-          suffixIcon,
-        ],
-        Spacing.lds300.xBox,
-      ],
+      ),
     );
 
     return Semantics(
@@ -344,7 +339,7 @@ enum _LedgerButtonType {
         ghost => LedgerInfiniteSpinner(size: spinnerSize),
       };
 
-  double get spinnerSize => Spacing.lds250.value;
+  double get spinnerSize => Spacing.lds500.value;
 
   Color backgroundColor(BuildContext context) => switch (this) {
         primary1 => context.primary.shade500,
