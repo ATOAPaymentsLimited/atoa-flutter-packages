@@ -37,14 +37,17 @@ class Snackbar extends StatelessWidget with EventTrackMixin {
       );
 
   Widget? trailing(BuildContext context) {
-    final close = LedgerIconButton(
-      semanticsLabel: 'Close Snackbar',
-      onPressed: (context) => onClose?.call(),
-      assetPath: 'assets/icons/close.svg',
-      package: 'ledger_design_system',
-      trackLabel: 'Close Snackbar',
-      size: LedgerIconButtonSize.small,
-      iconColor: snackbar.type.closeColor(context),
+    final close = SizedBox.square(
+      dimension: LedgerIconButtonSize.small.value,
+      child: LedgerIconButton(
+        semanticsLabel: 'Close Snackbar',
+        onPressed: (context) => onClose?.call(),
+        assetPath: 'assets/icons/close.svg',
+        package: 'ledger_design_system',
+        trackLabel: 'Close Snackbar',
+        size: LedgerIconButtonSize.small,
+        iconColor: snackbar.type.closeColor(context),
+      ),
     );
 
     final cta = snackbar.ctaText != null && snackbar.onCTA != null
@@ -64,30 +67,28 @@ class Snackbar extends StatelessWidget with EventTrackMixin {
               foregroundColor: snackbar.type.ctaColor(context),
             ),
             child: snackbar.loading
-                ? LedgerInfiniteSpinner(size: Spacing.lds100.value)
+                ? LedgerInfiniteSpinner(size: Spacing.lds400.value)
                 : CustomText.semantics(snackbar.ctaText!),
           )
         : null;
 
     if (cta != null) {
-      return Expanded(
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            if (showClose) ...[
-              Spacing.lds150.xBox,
-              cta,
-              Spacing.lds150.xBox,
-              _verticalDivider(context),
-              Spacing.lds25.xBox,
-              close,
-            ] else ...[
-              _verticalDivider(context),
-              Spacing.lds25.xBox,
-              cta,
-            ],
+      return Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          if (showClose) ...[
+            Spacing.lds150.xBox,
+            cta,
+            Spacing.lds150.xBox,
+            _verticalDivider(context),
+            Spacing.lds25.xBox,
+            close,
+          ] else ...[
+            _verticalDivider(context),
+            Spacing.lds25.xBox,
+            cta,
           ],
-        ),
+        ],
       );
     }
 
@@ -102,101 +103,87 @@ class Snackbar extends StatelessWidget with EventTrackMixin {
     return null;
   }
 
-  Widget wrap(Widget widget, BuildContext context) => SafeArea(
-        minimum: Spacing.lds300.y,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(20.sp),
-              child: Material(
-                color: Colors.transparent,
-                child: DecoratedBox(
-                  decoration: BoxDecoration(
-                    border: Border.all(color: context.grey.shade400),
-                    borderRadius: BorderRadius.circular(20.sp),
-                  ),
-                  child: widget,
-                ),
-              ),
-            ),
-          ],
-        ),
-      );
-
   @override
   Widget build(BuildContext context) {
     final hasHeader =
         snackbar.headerIcon != null && snackbar.headerText != null;
-    final listTile = Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        if (hasHeader)
+    return Container(
+      padding: Spacing.lds200.all,
+      alignment: Alignment.bottomCenter - const Alignment(0, 0.25),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          if (hasHeader)
+            Container(
+              padding: Spacing.lds150.all,
+              decoration: BoxDecoration(
+                color: snackbar.type.bg(context),
+                border: Border.all(
+                  color: snackbar.type.borderColor(context),
+                ),
+                borderRadius: RadiusSpacing.rds2xl.topCorners,
+              ),
+              child: Row(
+                children: [
+                  snackbar.headerIcon!,
+                  Spacing.lds150.xBox,
+                  CustomText.semantics(
+                    snackbar.headerText!,
+                    style: context.body2.copyWith(
+                      color: snackbar.type.textColor(context),
+                    ),
+                  ),
+                ],
+              ),
+            ),
           Container(
-            padding: Spacing.lds150.all,
+            padding: Spacing.lds150.x + Spacing.lds100.y,
             decoration: BoxDecoration(
               color: snackbar.type.bg(context),
-              border: Border.all(color: context.grey.shade400),
-              borderRadius: RadiusSpacing.rds2xl.topCorners,
+              borderRadius: hasHeader
+                  ? RadiusSpacing.rds2xl.bottomCorners
+                  : RadiusSpacing.rds2xl.all,
+              border: Border.all(
+                color: snackbar.type.borderColor(context),
+              ),
             ),
             child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                snackbar.headerIcon!,
+                leading ?? snackbar.type.leading(context),
                 Spacing.lds150.xBox,
                 CustomText.semantics(
-                  snackbar.headerText!,
-                  style: context.body2.copyWith(
-                    color: snackbar.type.textColor(context),
-                  ),
+                  snackbar.title,
+                  style: titleTextStyle ??
+                      context.body3.copyWith(
+                        color: snackbar.type.textColor(context),
+                      ),
                 ),
-              ],
-            ),
-          ),
-        ListTile(
-          dense: true,
-          shape: RoundedRectangleBorder(
-            borderRadius: hasHeader
-                ? RadiusSpacing.rdsl.bottomCorners
-                : RadiusSpacing.rdsl.all,
-            side: BorderSide(
-              color: snackbar.type.borderColor(context),
-            ),
-          ),
-          horizontalTitleGap: 12.sp,
-          contentPadding: Spacing.lds150.x + Spacing.lds100.y,
-          tileColor: snackbar.type.bg(context),
-          leading: leading ?? snackbar.type.leading(context),
-          title: CustomText.semantics(snackbar.title),
-          titleTextStyle: titleTextStyle ??
-              context.body3.copyWith(
-                color: snackbar.type.textColor(context),
-              ),
-          subtitle: snackbar.description != null
-              ? CustomText.semantics(
-                  snackbar.description!,
-                  style: context.body3.copyWith(
-                    color: snackbar.type.textColor(context),
+                if (snackbar.description != null)
+                  Expanded(
+                    child: CustomText.semantics(
+                      snackbar.description!,
+                      style: context.body3.copyWith(
+                        color: snackbar.type.textColor(context),
+                      ),
+                      maxLines: 5,
+                      overflow: TextOverflow.ellipsis,
+                      textAlign: TextAlign.left,
+                    ),
                   ),
+                const Spacer(),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    if (trailing(context) != null) ...[
+                      trailing(context)!,
+                    ],
+                  ],
                 )
-              : null,
-          trailing: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              if (trailing(context) != null) ...[
-                trailing(context)!,
               ],
-            ],
+            ),
           ),
-        ),
-      ],
-    );
-
-    return Align(
-      alignment: alignment ?? Alignment.bottomCenter,
-      child: Padding(
-        padding: Spacing.lds200.x + Spacing.lds400.bottom,
-        child: wrap(listTile, context),
+        ],
       ),
     );
   }
