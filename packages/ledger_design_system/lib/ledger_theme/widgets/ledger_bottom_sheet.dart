@@ -21,7 +21,6 @@ Future<T?> showLedgerBottomSheet<T>({
   double? elevation,
   EdgeInsets? padding,
   double? titleBottomSpacing,
-  bool showDragBar = true,
   bool enableDrag = true,
   bool isDismissable = true,
   bool showCloseButton = true,
@@ -41,7 +40,7 @@ Future<T?> showLedgerBottomSheet<T>({
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              if (showDragBar) ...[
+              if (enableDrag) ...[
                 Container(
                   height: Spacing.lds50.value,
                   width: Spacing.lds300.value * 2 + Spacing.lds25.value,
@@ -50,8 +49,8 @@ Future<T?> showLedgerBottomSheet<T>({
                     color: dialogContext.grey.shade200,
                   ),
                 ),
+                Spacing.lds200.yBox,
               ],
-              Spacing.lds200.yBox,
               if (illustrationWidget != null) illustrationWidget,
               if (showTitle) ...[
                 Row(
@@ -303,7 +302,7 @@ Future<T?> showLedgerBottomSheetStacked<T>({
 }) =>
     showModalBottomSheet<T>(
       context: context,
-      barrierColor: barrierColor ?? context.grey.shade700,
+      barrierColor: barrierColor ?? context.grey.shade700.withOpacity(0.5),
       builder: (dialogContext) => Column(
         mainAxisSize: MainAxisSize.min,
         children: [

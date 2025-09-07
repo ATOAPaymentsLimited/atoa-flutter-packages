@@ -18,6 +18,7 @@ class LedgerIconButton extends StatelessWidget {
     this.border,
     this.bgOpacity,
     this.package,
+    this.dimension,
   });
 
   final LedgerIconButtonSize size;
@@ -32,6 +33,7 @@ class LedgerIconButton extends StatelessWidget {
   final BoxBorder? border;
   final double? bgOpacity;
   final String? package;
+  final double? dimension;
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +45,8 @@ class LedgerIconButton extends StatelessWidget {
       onTap: () => onPressed?.call(context),
       behavior: HitTestBehavior.translucent,
       child: Container(
-        width: size.value,
+        width: dimension ?? size.value,
+        height: dimension ?? size.value,
         padding: padding,
         decoration: BoxDecoration(
           color: color?.withOpacity(disabled ? 0.3 : bgOpacity ?? 1.0),
@@ -82,12 +85,11 @@ class _BuildIcon extends StatelessWidget {
   Widget build(BuildContext context) => SvgPicture.asset(
       assetPath,
       colorFilter: ColorFilter.mode(
-        (iconColor ?? context.baseBlack).withOpacity(disabled ? 0.3 : 1.0),
+        (iconColor ?? context.baseBlack).withOpacity(disabled ? 0.5 : 1.0),
         BlendMode.srcIn,
       ),
       height: iconSize,
       width: iconSize,
-      fit: BoxFit.scaleDown,
       package: package,
     );
 }
