@@ -24,6 +24,7 @@ class CustomClickEventTrackHandler {
     _onCallback = onClickEvent;
   }
 
+  // ignore: invalid_internal_annotation
   @internal
   static void dispatch(
     BuildContext context,
