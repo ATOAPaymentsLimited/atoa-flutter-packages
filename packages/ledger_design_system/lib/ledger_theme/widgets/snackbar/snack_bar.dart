@@ -152,33 +152,29 @@ class Snackbar extends StatelessWidget with EventTrackMixin {
               children: [
                 leading ?? snackbar.type.leading(context),
                 Spacing.lds150.xBox,
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    CustomText.semantics(
-                      snackbar.title,
-                      style: titleTextStyle ??
-                          context.body3.medium.copyWith(
-                            color: snackbar.type.textColor(context),
-                          ),
-                    ),
-                    if (snackbar.description != null)
-                      Row(
-                        children: [
-                          CustomText.semantics(
-                            snackbar.description!,
-                            style: context.body2.copyWith(
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      CustomText.semantics(
+                        snackbar.title,
+                        style: titleTextStyle ??
+                            context.body3.medium.copyWith(
                               color: snackbar.type.textColor(context),
                             ),
-                            maxLines: 5,
-                            overflow: TextOverflow.ellipsis,
-                            textAlign: TextAlign.left,
-                          ),
-                        ],
                       ),
-                  ],
+                      if (snackbar.description != null)
+                        CustomText.semantics(
+                          snackbar.description!,
+                          style: context.body2.copyWith(
+                            color: snackbar.type.textColor(context),
+                          ),
+                          textAlign: TextAlign.left,
+                        ),
+                    ],
+                  ),
                 ),
-                const Spacer(),
+                Spacing.lds150.xBox,
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
