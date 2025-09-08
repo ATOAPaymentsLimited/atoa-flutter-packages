@@ -137,7 +137,7 @@ class Snackbar extends StatelessWidget with EventTrackMixin {
               ),
             ),
           Container(
-            padding: Spacing.lds150.all,
+            padding: Spacing.lds150.x + Spacing.lds250.y,
             decoration: BoxDecoration(
               color: snackbar.type.bg(context),
               borderRadius: hasHeader
