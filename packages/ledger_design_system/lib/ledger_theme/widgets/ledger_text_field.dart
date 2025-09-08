@@ -207,6 +207,47 @@ class _LedgerTextFieldState extends State<LedgerTextField> {
                 focusNode: widget.focusNode,
                 decoration:
                     (widget.decoration ?? const InputDecoration()).copyWith(
+                  isDense: true,
+                  isCollapsed: true,
+                  contentPadding:
+                      Spacing.lds200.x + Spacing.lds150.y + Spacing.lds25.y,
+                  border: OutlineInputBorder(
+                    borderRadius: RadiusSpacing.rdsm.all,
+                    borderSide: BorderSide(
+                      color: context.grey.shade700,
+                    ),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: RadiusSpacing.rdsm.all,
+                    borderSide: BorderSide(
+                      color: context.grey.shade300,
+                    ),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: RadiusSpacing.rdsm.all,
+                    borderSide: BorderSide(
+                      width: 1.5,
+                      color: context.grey.shade700,
+                    ),
+                  ),
+                  disabledBorder: OutlineInputBorder(
+                    borderRadius: RadiusSpacing.rdsm.all,
+                    borderSide: BorderSide(
+                      color: context.grey.shade200,
+                    ),
+                  ),
+                  errorBorder: OutlineInputBorder(
+                    borderRadius: RadiusSpacing.rdsm.all,
+                    borderSide: BorderSide(
+                      width: 1.5,
+                      color: context.error.defaultColor,
+                    ),
+                  ),
+                  errorMaxLines: 2,
+                  labelStyle:
+                      context.labelSmall.copyWith(color: context.baseBlack),
+                  floatingLabelStyle:
+                      context.body1.copyWith(color: context.baseBlack),
                   prefixIcon: widget.prefix,
                   suffixIcon: widget.suffix ?? _buildSuffixIcon,
                   filled: widget.filled ?? widget.decoration?.filled,

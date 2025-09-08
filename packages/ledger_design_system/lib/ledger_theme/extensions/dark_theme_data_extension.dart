@@ -21,6 +21,13 @@ extension DarkThemeDataExtension on ThemeData {
         dialogTheme: ThemeData.dark().dialogTheme.copyWith(
               surfaceTintColor: LedgerColors.darkColors.base.white,
               backgroundColor: LedgerColors.darkColors.base.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16.r),
+              ),
+              titleTextStyle: _textTheme.labelLarge?.copyWith(
+                fontWeight: FontWeight.bold,
+              ),
+              contentTextStyle: _textTheme.bodyLarge,
             ),
         inputDecorationTheme: ThemeData.dark().inputDecorationTheme.copyWith(
               isDense: true,

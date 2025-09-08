@@ -30,6 +30,7 @@ extension LightThemeDataExtension on ThemeData {
         ),
         dialogTheme: ThemeData.light().dialogTheme.copyWith(
               surfaceTintColor: LedgerColors.lightColors.base.white,
+              backgroundColor: LedgerColors.lightColors.base.white,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(16.r),
               ),
