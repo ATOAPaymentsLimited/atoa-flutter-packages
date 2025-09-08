@@ -96,7 +96,9 @@ class _InfiniteListViewState extends State<InfiniteListView> {
             Center(
               child: Padding(
                 padding: Spacing.lds100.all,
-                child: const LedgerInfiniteSpinner(),
+                child: LedgerInfiniteSpinner(
+                  size: Spacing.lds1000.value,
+                ),
               ),
             );
       }

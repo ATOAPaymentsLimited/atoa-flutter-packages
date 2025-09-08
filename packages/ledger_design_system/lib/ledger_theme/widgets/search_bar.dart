@@ -17,10 +17,10 @@ class LedgerSearchBar extends StatefulWidget {
     this.showFloatingLabel,
     this.isLightMode = false,
     this.textStyle,
-    required this.searchController,
+    this.searchController,
     required this.semanticsLabel,
   });
-  final TextEditingController searchController;
+  final TextEditingController? searchController;
   final String? hintText;
   final ValueChanged<String>? onChanged;
   final VoidCallback? onClear;
@@ -43,13 +43,15 @@ class LedgerSearchBar extends StatefulWidget {
 class _LedgerSearchBarState extends State<LedgerSearchBar> {
   bool _showClear = false;
 
+  late final controller = widget.searchController ?? TextEditingController(); 
+
   @override
   void initState() {
     super.initState();
-    widget.searchController.addListener(() {
+    controller.addListener(() {
       if (mounted) {
         setState(() {
-          _showClear = widget.searchController.text.trim().isNotEmpty;
+          _showClear = controller.text.trim().isNotEmpty;
         });
       }
     });
@@ -64,7 +66,7 @@ class _LedgerSearchBarState extends State<LedgerSearchBar> {
         textField: true,
         child: TextField(
           autofocus: widget.autofocus,
-          controller: widget.searchController,
+          controller: controller,
           keyboardType: TextInputType.text,
           style: widget.textStyle ??
               context.body3.semiBold.copyWith(
@@ -118,7 +120,7 @@ class _LedgerSearchBarState extends State<LedgerSearchBar> {
                     semanticsLabel: 'Clear Search Bar Icon',
                     trackLabel: 'Clear Icon Search Bar',
                     onTap: () {
-                      widget.searchController.clear();
+                      controller.clear();
                       widget.onClear?.call();
                     },
                     child: SvgThemedIcon(
