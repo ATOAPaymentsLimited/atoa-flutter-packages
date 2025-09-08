@@ -137,7 +137,7 @@ class Snackbar extends StatelessWidget with EventTrackMixin {
               ),
             ),
           Container(
-            padding: Spacing.lds150.x + Spacing.lds100.y,
+            padding: Spacing.lds150.all,
             decoration: BoxDecoration(
               color: snackbar.type.bg(context),
               borderRadius: hasHeader
@@ -148,29 +148,36 @@ class Snackbar extends StatelessWidget with EventTrackMixin {
               ),
             ),
             child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 leading ?? snackbar.type.leading(context),
                 Spacing.lds150.xBox,
-                CustomText.semantics(
-                  snackbar.title,
-                  style: titleTextStyle ??
-                      context.body3.copyWith(
-                        color: snackbar.type.textColor(context),
-                      ),
-                ),
-                if (snackbar.description != null)
-                  Expanded(
-                    child: CustomText.semantics(
-                      snackbar.description!,
-                      style: context.body3.copyWith(
-                        color: snackbar.type.textColor(context),
-                      ),
-                      maxLines: 5,
-                      overflow: TextOverflow.ellipsis,
-                      textAlign: TextAlign.left,
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    CustomText.semantics(
+                      snackbar.title,
+                      style: titleTextStyle ??
+                          context.body3.medium.copyWith(
+                            color: snackbar.type.textColor(context),
+                          ),
                     ),
-                  ),
+                    if (snackbar.description != null)
+                      Row(
+                        children: [
+                          CustomText.semantics(
+                            snackbar.description!,
+                            style: context.body2.copyWith(
+                              color: snackbar.type.textColor(context),
+                            ),
+                            maxLines: 5,
+                            overflow: TextOverflow.ellipsis,
+                            textAlign: TextAlign.left,
+                          ),
+                        ],
+                      ),
+                  ],
+                ),
                 const Spacer(),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,

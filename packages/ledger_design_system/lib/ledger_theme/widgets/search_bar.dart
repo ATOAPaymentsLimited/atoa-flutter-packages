@@ -104,6 +104,12 @@ class _LedgerSearchBarState extends State<LedgerSearchBar> {
                 Spacing.lds300.value,
               ),
             ),
+            suffixIconConstraints: BoxConstraints.tight(
+              Size(
+                Spacing.lds600.value,
+                Spacing.lds300.value,
+              ),
+            ),
             label: widget.label,
             floatingLabelBehavior: widget.showFloatingLabel,
             suffixIcon: _showClear && widget.showClose
