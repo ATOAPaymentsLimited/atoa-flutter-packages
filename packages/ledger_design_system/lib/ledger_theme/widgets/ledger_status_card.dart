@@ -22,8 +22,8 @@ class LedgerStatusCard extends StatelessWidget {
     this.onTrailingPressed,
   })  : _type = LedgerStatusCardTypeEnum.info,
         assert(
-          prefixIcon is Icon || prefixIcon is SvgPicture,
-          'Prefix icon can be icon or svg',
+          prefixIcon is Icon || prefixIcon is SvgPicture || prefixIcon is SvgThemedIcon,
+          'Prefix icon can be icon or svg or svgThemedIcon',
         );
 
   const LedgerStatusCard.pending({
@@ -44,8 +44,8 @@ class LedgerStatusCard extends StatelessWidget {
     this.onTrailingPressed,
   })  : _type = LedgerStatusCardTypeEnum.pending,
         assert(
-          prefixIcon is Icon || prefixIcon is SvgPicture,
-          'Prefix icon can be icon or svg',
+          prefixIcon is Icon || prefixIcon is SvgPicture || prefixIcon is SvgThemedIcon,
+          'Prefix icon can be icon or svg or svgThemedIcon',
         );
 
   const LedgerStatusCard.success({
@@ -66,8 +66,8 @@ class LedgerStatusCard extends StatelessWidget {
         onTapCta = null,
         ctaButtonKey = null,
         assert(
-          prefixIcon is Icon || prefixIcon is SvgPicture,
-          'Prefix icon can be icon or svg',
+          prefixIcon is Icon || prefixIcon is SvgPicture || prefixIcon is SvgThemedIcon,
+          'Prefix icon can be icon or svg or svgThemedIcon',
         );
 
   /// [title] specifies the heading of the card.
