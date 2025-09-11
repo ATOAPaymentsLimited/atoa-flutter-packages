@@ -50,6 +50,15 @@ extension FigTreeTextTheme on BuildContext {
 
   /// Headline 3 is Flutter Headline Small with 28px size and 130% height
   TextStyle get headline3 => tt.headlineSmall!;
+  
+  /// Title 1 is Flutter Title Large with 24px size and 130% height
+  TextStyle get title1 => tt.titleLarge!;
+
+  /// Title 2 is Flutter Title Medium with 20px size and 140% height
+  TextStyle get title2 => tt.titleMedium!;
+
+  /// Title 3 is Flutter Title Small with 18px size and 140% height
+  TextStyle get title3 => tt.titleSmall!;
 
   /// Body 1 is Flutter Body Large with 16px size and 145% height
   TextStyle get body1 => tt.bodyLarge!;
@@ -59,15 +68,6 @@ extension FigTreeTextTheme on BuildContext {
 
   /// Body 3 is Flutter Body Small with 13px size and 150% height
   TextStyle get body3 => tt.bodySmall!;
-
-  /// Title 1 is Flutter Title Large with 24px size and 130% height
-  TextStyle get title1 => tt.titleLarge!;
-
-  /// Title 2 is Flutter Title Large with 20px size and 140% height
-  TextStyle get title2 => tt.titleMedium!;
-
-  /// Title 3 is Flutter Title Large with 18px size and 140% height
-  TextStyle get title3 => tt.titleSmall!;
 
   /// Caption is Text Style with 12px size and 150% height
   TextStyle get caption =>
@@ -85,7 +85,7 @@ extension FigTreeTextTheme on BuildContext {
   TextStyle get buttonMedium =>
       _defaultStyle.copyWith(fontSize: 14.sp, height: 1.6, package: 'ledger_design_system');
 
-  /// Label Small is Flutter Label Small with 14px size and 16% height and 10% letter spacing
+  /// Label Small is Flutter Label Small with 14px size and 150% height and 10% letter spacing
   TextStyle get labelSmall => tt.labelSmall!;
 
   /// Label Extra Small is Text Style with 12px size and 160% height and 10% letter spacing

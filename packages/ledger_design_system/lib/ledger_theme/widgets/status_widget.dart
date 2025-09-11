@@ -23,31 +23,34 @@ class StatusWidget extends StatelessWidget {
   final Widget? placeholder;
 
   @override
-  Widget build(BuildContext context) => Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          if (placeholder != null) placeholder! else _buildIcon(context),
-          if (title != null && title!.trim().isNotEmpty) ...[
-            Spacing.lds300.yBox,
-            CustomText.semantics(
-              title!,
-              textAlign: TextAlign.center,
-              style: titleStyle ?? context.title3.bold,
-            ),
+  Widget build(BuildContext context) => Padding(
+        padding: Spacing.lds200.x,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            if (placeholder != null) placeholder! else _buildIcon(context),
+            if (title != null && title!.trim().isNotEmpty) ...[
+              Spacing.lds300.yBox,
+              CustomText.semantics(
+                title!,
+                textAlign: TextAlign.center,
+                style: titleStyle ?? context.title3.bold,
+              ),
+            ],
+            if (description != null && description!.trim().isNotEmpty) ...[
+              Spacing.lds300.yBox,
+              CustomText.semantics(
+                description!,
+                style: descriptionStyle ?? context.body2,
+                textAlign: TextAlign.center,
+              ),
+            ],
+            if (cta != null) ...[
+              Spacing.lds300.yBox,
+              Center(child: cta),
+            ],
           ],
-          if (description != null && description!.trim().isNotEmpty) ...[
-            Spacing.lds300.yBox,
-            CustomText.semantics(
-              description!,
-              style: descriptionStyle ?? context.body2,
-              textAlign: TextAlign.center,
-            ),
-          ],
-          if (cta != null) ...[
-            Spacing.lds300.yBox,
-            Center(child: cta),
-          ],
-        ],
+        ),
       );
 
   Widget _buildIcon(BuildContext context) {

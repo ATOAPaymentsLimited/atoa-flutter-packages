@@ -59,6 +59,8 @@ Future<T?> showLedgerBottomSheet<T>({
                       : MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    if (titleAlign == TextAlign.center && showCloseButton)
+                      Spacing.lds600.xBox,
                     if (title != null)
                       Expanded(
                         child: CustomText.semantics(
@@ -69,7 +71,7 @@ Future<T?> showLedgerBottomSheet<T>({
                                   .copyWith(color: dialogContext.baseBlack),
                         ),
                       ),
-                    Spacing.lds200.xBox,
+                    if (showCloseButton) Spacing.lds200.xBox,
                     if (showCloseButton)
                       Padding(
                         padding: Spacing.lds50.top,
