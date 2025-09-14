@@ -109,7 +109,7 @@ class Snackbar extends StatelessWidget with EventTrackMixin {
         snackbar.headerIcon != null && snackbar.headerText != null;
     return Container(
       padding: Spacing.lds200.all,
-      alignment: Alignment.bottomCenter - const Alignment(0, 0.25),
+      alignment: Alignment.bottomCenter - const Alignment(0, 0.15),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -121,7 +121,7 @@ class Snackbar extends StatelessWidget with EventTrackMixin {
                 border: Border.all(
                   color: snackbar.type.borderColor(context),
                 ),
-                borderRadius: RadiusSpacing.rds2xl.topCorners,
+                borderRadius: RadiusSpacing.rdsl.topCorners,
               ),
               child: Row(
                 children: [
@@ -137,12 +137,12 @@ class Snackbar extends StatelessWidget with EventTrackMixin {
               ),
             ),
           Container(
-            padding: Spacing.lds150.x + Spacing.lds250.y,
+            padding: Spacing.lds150.all,
             decoration: BoxDecoration(
               color: snackbar.type.bg(context),
               borderRadius: hasHeader
-                  ? RadiusSpacing.rds2xl.bottomCorners
-                  : RadiusSpacing.rds2xl.all,
+                  ? RadiusSpacing.rdsl.bottomCorners
+                  : RadiusSpacing.rdsl.all,
               border: Border.all(
                 color: snackbar.type.borderColor(context),
               ),
