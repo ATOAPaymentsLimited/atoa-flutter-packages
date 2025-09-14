@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ledger_design_system/ledger_design_system.dart';
 
-
 class InfiniteListView extends StatefulWidget {
   const InfiniteListView({
     required this.itemBuilder,
@@ -97,7 +96,7 @@ class _InfiniteListViewState extends State<InfiniteListView> {
               child: Padding(
                 padding: Spacing.lds100.all,
                 child: LedgerInfiniteSpinner(
-                  size: Spacing.lds1000.value,
+                  size: Spacing.lds800.value,
                 ),
               ),
             );
