@@ -150,6 +150,16 @@ class LedgerTextField extends StatefulWidget {
 class _LedgerTextFieldState extends State<LedgerTextField> {
   late final TextEditingController _textEditingController;
   TextValidationState? _errorListenable;
+  final focusNode = FocusNode();
+
+  void onFocusChange() {
+    if (mounted) setState(() {});
+  }
+
+  FocusNode get node => widget.focusNode ?? focusNode;
+
+  bool get hideSuffixIcon =>
+      widget.readOnly || !widget.showClear || !node.hasFocus;
 
   @override
   void initState() {
@@ -158,6 +168,7 @@ class _LedgerTextFieldState extends State<LedgerTextField> {
           text: widget.initialValue ?? '',
         );
     _errorListenable = null;
+    node.addListener(onFocusChange);
     super.initState();
   }
 
@@ -171,7 +182,9 @@ class _LedgerTextFieldState extends State<LedgerTextField> {
 
   @override
   void dispose() {
+    node.removeListener(onFocusChange);
     if (widget.controller == null) _textEditingController.dispose();
+    focusNode.dispose();
     super.dispose();
   }
 
@@ -204,7 +217,7 @@ class _LedgerTextFieldState extends State<LedgerTextField> {
                           buttonItems: editableTextState.contextMenuButtonItems,
                         ),
                 controller: _textEditingController,
-                focusNode: widget.focusNode,
+                focusNode: widget.focusNode ?? focusNode,
                 decoration: (widget.decoration ??
                         InputDecoration(
                           isDense: true,
@@ -376,7 +389,7 @@ class _LedgerTextFieldState extends State<LedgerTextField> {
         ),
       );
 
-  Widget? get _buildSuffixIcon => widget.readOnly || !widget.showClear
+  Widget? get _buildSuffixIcon => hideSuffixIcon
       ? null
       : Builder(
           builder: (context) {

@@ -110,10 +110,12 @@ Future<T?> showLedgerBottomSheet<T>({
                 SizedBox(height: titleBottomSpacing)
               else
                 Spacing.lds150.yBox,
+              Builder(
+                builder: body,
+              ),
               SafeArea(
-                child: Builder(
-                  builder: body,
-                ),
+                top: false,
+                child: Spacing.lds100.yBox,
               ),
             ],
           ),

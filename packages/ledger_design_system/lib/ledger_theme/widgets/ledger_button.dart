@@ -1,4 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:ledger_design_system/ledger_design_system.dart';
 
@@ -211,14 +210,14 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
           else ...[
             if (prefixIcon != null) prefixIcon,
             if (prefixIcon != null) Spacing.lds150.xBox,
+            if (labelWidget != null) labelWidget!,
+            if (labelWidget != null) Spacing.lds150.xBox,
             if (label != null)
-              labelWidget ??
-                  AutoSizeText(
-                    label!,
-                    textAlign: TextAlign.center,
-                    semanticsLabel: label,
-                    style: style(context),
-                  ),
+              CustomText.semantics(
+                label!,
+                textAlign: TextAlign.center,
+                style: style(context),
+              ),
             if (suffixIcon != null) Spacing.lds150.xBox,
             if (suffixIcon != null) suffixIcon,
           ],
@@ -332,7 +331,10 @@ enum _LedgerButtonType {
 
   LedgerInfiniteSpinner spinner(BuildContext context) => switch (this) {
         primary1 => LedgerInfiniteSpinner.dark(size: spinnerSize),
-        primary2 => LedgerInfiniteSpinner(size: spinnerSize),
+        primary2 => context.brightness.map(
+            (l) => LedgerInfiniteSpinner.dark(size: spinnerSize),
+            (d) => LedgerInfiniteSpinner.light(size: spinnerSize),
+          ),
         secondary => LedgerInfiniteSpinner.dark(size: spinnerSize),
         tertiary1 => LedgerInfiniteSpinner(size: spinnerSize),
         tertiary2 => LedgerInfiniteSpinner(size: spinnerSize),

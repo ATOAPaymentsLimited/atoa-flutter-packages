@@ -242,9 +242,9 @@ enum LedgerStatusCardTypeEnum {
       case LedgerStatusCardTypeEnum.info:
         return context.grey.shade50;
       case LedgerStatusCardTypeEnum.pending:
-        return LedgerColors.lightColors.semantic.notice.defaultColor;
+        return context.notice.defaultColor;
       case LedgerStatusCardTypeEnum.success:
-        return LedgerColors.lightColors.semantic.positive.defaultColor;
+        return context.positive.defaultColor;
     }
   }
 
