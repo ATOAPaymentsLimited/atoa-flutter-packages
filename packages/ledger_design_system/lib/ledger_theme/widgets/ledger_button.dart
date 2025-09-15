@@ -262,16 +262,17 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
     };
     final typeStyle = switch (_type) {
       _LedgerButtonType.primary1 =>
-        sizeStyle.copyWith(color: context.intactWhite),
+        sizeStyle.copyWith(color: foregroundColor ?? context.intactWhite),
       _LedgerButtonType.primary2 =>
-        sizeStyle.copyWith(color: context.baseWhite),
+        sizeStyle.copyWith(color: foregroundColor ?? context.baseWhite),
       _LedgerButtonType.secondary =>
-        sizeStyle.copyWith(color: context.baseBlack),
+        sizeStyle.copyWith(color: foregroundColor ?? context.baseBlack),
       _LedgerButtonType.tertiary1 =>
-        sizeStyle.copyWith(color: context.primary.shade500),
+        sizeStyle.copyWith(color: foregroundColor ?? context.primary.shade500),
       _LedgerButtonType.tertiary2 =>
-        sizeStyle.copyWith(color: context.baseBlack),
-      _LedgerButtonType.ghost => sizeStyle.copyWith(color: context.baseBlack),
+        sizeStyle.copyWith(color: foregroundColor ?? context.baseBlack),
+      _LedgerButtonType.ghost =>
+        sizeStyle.copyWith(color: foregroundColor ?? context.baseBlack),
     };
     return typeStyle;
   }
