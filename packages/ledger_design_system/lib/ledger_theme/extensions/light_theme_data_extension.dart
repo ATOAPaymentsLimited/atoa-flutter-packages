@@ -10,9 +10,13 @@ extension LightThemeDataExtension on ThemeData {
         displayColor: LedgerColors.lightColors.base.black,
       );
   ThemeData get lightLedger => ThemeData.light().copyWith(
+        textTheme: _textTheme,
         extensions: [
           LedgerColors.lightColors,
         ],
+        iconTheme: IconThemeData(
+          color: LedgerColors.lightColors.background.dark,
+        ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
             elevation: 0,
@@ -25,6 +29,46 @@ extension LightThemeDataExtension on ThemeData {
             fixedSize: Size.fromHeight(60.sp),
             textStyle: _textTheme.bodyLarge!.bold.copyWith(
               color: LedgerColors.lightColors.base.white,
+            ),
+          ),
+        ),
+        textButtonTheme: TextButtonThemeData(
+          style: TextButton.styleFrom(
+            shape: const StadiumBorder(),
+            foregroundColor: LedgerColors.lightColors.brand.primary.shade500,
+            disabledForegroundColor:
+                LedgerColors.lightColors.brand.primary.shade800,
+            textStyle: _textTheme.bodyLarge!.bold.copyWith(
+              color: LedgerColors.lightColors.brand.primary.shade500,
+            ),
+          ),
+        ),
+        outlinedButtonTheme: OutlinedButtonThemeData(
+          style: OutlinedButton.styleFrom(
+            foregroundColor: LedgerColors.lightColors.brand.primary.shade500,
+            disabledForegroundColor:
+                LedgerColors.lightColors.brand.primary.shade800,
+            textStyle: _textTheme.bodyLarge!.bold.copyWith(
+              color: LedgerColors.lightColors.brand.primary.shade500,
+            ),
+            side: BorderSide(
+              color: LedgerColors.lightColors.brand.primary.shade500,
+            ),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(100.w),
+            ),
+          ).copyWith(
+            side: WidgetStateProperty.resolveWith(
+              (states) {
+                if (states.contains(WidgetState.disabled)) {
+                  return BorderSide(
+                    color: LedgerColors.lightColors.brand.primary.shade800,
+                  );
+                }
+                return BorderSide(
+                  color: LedgerColors.lightColors.brand.primary.shade500,
+                );
+              },
             ),
           ),
         ),
@@ -105,51 +149,11 @@ extension LightThemeDataExtension on ThemeData {
           ),
           surfaceTintColor: LedgerColors.lightColors.base.white,
         ),
-        textButtonTheme: TextButtonThemeData(
-          style: TextButton.styleFrom(
-            shape: const StadiumBorder(),
-            foregroundColor: LedgerColors.lightColors.brand.primary.shade500,
-            disabledForegroundColor:
-                LedgerColors.lightColors.brand.primary.shade800,
-            textStyle: _textTheme.bodyLarge!.bold.copyWith(
-              color: LedgerColors.lightColors.brand.primary.shade500,
-            ),
-          ),
-        ),
-        outlinedButtonTheme: OutlinedButtonThemeData(
-          style: OutlinedButton.styleFrom(
-            foregroundColor: LedgerColors.lightColors.brand.primary.shade500,
-            disabledForegroundColor:
-                LedgerColors.lightColors.brand.primary.shade800,
-            textStyle: _textTheme.bodyLarge!.bold.copyWith(
-              color: LedgerColors.lightColors.brand.primary.shade500,
-            ),
-            side: BorderSide(
-              color: LedgerColors.lightColors.brand.primary.shade500,
-            ),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(100.w),
-            ),
-          ).copyWith(
-            side: WidgetStateProperty.resolveWith(
-              (states) {
-                if (states.contains(WidgetState.disabled)) {
-                  return BorderSide(
-                    color: LedgerColors.lightColors.brand.primary.shade800,
-                  );
-                }
-                return BorderSide(
-                  color: LedgerColors.lightColors.brand.primary.shade500,
-                );
-              },
-            ),
-          ),
-        ),
-        iconTheme: IconThemeData(
-          color: LedgerColors.lightColors.background.dark,
-        ),
+        
+       
         checkboxTheme: CheckboxThemeData(
-          checkColor: WidgetStateProperty.all(Colors.white),
+          checkColor: WidgetStateProperty.all(
+              LedgerColors.lightColors.background.light),
           fillColor:
               WidgetStateProperty.all(LedgerColors.lightColors.background.dark),
           shape: RoundedRectangleBorder(
@@ -159,18 +163,20 @@ extension LightThemeDataExtension on ThemeData {
           visualDensity: VisualDensity.compact,
         ),
         bottomSheetTheme: BottomSheetThemeData(
-          backgroundColor: Colors.white,
+          backgroundColor: LedgerColors.lightColors.base.white,
           surfaceTintColor: LedgerColors.lightColors.base.white,
           shape: RoundedRectangleBorder(
             borderRadius: RadiusSpacing.rds2xl.topCorners,
           ),
         ),
         datePickerTheme: DatePickerThemeData(
+          headerHeadlineStyle: _textTheme.titleSmall,
           backgroundColor: LedgerColors.lightColors.base.white,
-          weekdayStyle: TextStyle(
+          weekdayStyle: _textTheme.bodySmall?.copyWith(
             color: LedgerColors.lightColors.brand.primary.shade500,
           ),
-          yearStyle: TextStyle(color: LedgerColors.lightColors.base.black),
+          yearStyle: _textTheme.bodySmall
+              ?.copyWith(color: LedgerColors.lightColors.base.black),
           dayForegroundColor: WidgetStateProperty.resolveWith((states) {
             if (states.contains(WidgetState.disabled)) {
               return LedgerColors.lightColors.neutral.grey.shade500;
@@ -234,6 +240,5 @@ extension LightThemeDataExtension on ThemeData {
         cupertinoOverrideTheme: CupertinoThemeData(
           primaryColor: LedgerColors.lightColors.brand.primary.shade500,
         ),
-        textTheme: _textTheme,
       );
 }

@@ -18,6 +18,58 @@ extension DarkThemeDataExtension on ThemeData {
         iconTheme: IconThemeData(
           color: LedgerColors.darkColors.base.black,
         ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            shape: const StadiumBorder(),
+            backgroundColor: LedgerColors.darkColors.brand.primary.shade500,
+            disabledBackgroundColor:
+                LedgerColors.darkColors.brand.primary.shade800,
+            foregroundColor: LedgerColors.darkColors.base.black,
+            textStyle: _textTheme.bodyLarge!.bold.copyWith(
+              color: LedgerColors.darkColors.base.black,
+            ),
+          ).copyWith(
+            elevation: const WidgetStatePropertyAll(0),
+          ),
+        ),
+        textButtonTheme: TextButtonThemeData(
+          style: TextButton.styleFrom(
+            foregroundColor: LedgerColors.darkColors.brand.primary.shade500,
+            shape: const StadiumBorder(),
+            disabledForegroundColor:
+                LedgerColors.darkColors.brand.primary.shade800,
+            textStyle: _textTheme.bodyLarge!.bold.copyWith(
+              color: LedgerColors.darkColors.brand.primary.shade500,
+            ),
+          ).copyWith(
+            elevation: const WidgetStatePropertyAll(0),
+          ),
+        ),
+        outlinedButtonTheme: OutlinedButtonThemeData(
+          style: OutlinedButton.styleFrom(
+            foregroundColor: LedgerColors.darkColors.base.black,
+            disabledForegroundColor:
+                LedgerColors.darkColors.neutral.grey.shade500,
+            textStyle: _textTheme.bodyLarge!.bold.copyWith(
+              color: LedgerColors.darkColors.brand.primary.shade500,
+            ),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(100.w),
+            ),
+          ).copyWith(
+            elevation: const WidgetStatePropertyAll(0),
+            side: WidgetStateProperty.resolveWith(
+              (states) {
+                if (states.contains(WidgetState.disabled)) {
+                  return BorderSide(
+                    color: LedgerColors.darkColors.neutral.grey.shade500,
+                  );
+                }
+                return BorderSide(color: LedgerColors.darkColors.base.black);
+              },
+            ),
+          ),
+        ),
         dialogTheme: ThemeData.dark().dialogTheme.copyWith(
               surfaceTintColor: LedgerColors.darkColors.base.white,
               backgroundColor: LedgerColors.darkColors.base.white,
@@ -97,57 +149,16 @@ extension DarkThemeDataExtension on ThemeData {
           ),
           surfaceTintColor: LedgerColors.darkColors.base.white,
         ),
-        textButtonTheme: TextButtonThemeData(
-          style: TextButton.styleFrom(
-            foregroundColor: LedgerColors.darkColors.brand.primary.shade500,
-            shape: const StadiumBorder(),
-            disabledForegroundColor:
-                LedgerColors.darkColors.brand.primary.shade800,
-            textStyle: _textTheme.bodyLarge!.bold.copyWith(
-              color: LedgerColors.darkColors.brand.primary.shade500,
-            ),
-          ).copyWith(
-            elevation: const WidgetStatePropertyAll(0),
+        checkboxTheme: CheckboxThemeData(
+          checkColor:
+              WidgetStateProperty.all(LedgerColors.darkColors.background.light),
+          fillColor:
+              WidgetStateProperty.all(LedgerColors.darkColors.background.dark),
+          shape: RoundedRectangleBorder(
+            side: BorderSide(color: LedgerColors.darkColors.background.dark),
+            borderRadius: BorderRadius.circular(4.r),
           ),
-        ),
-        elevatedButtonTheme: ElevatedButtonThemeData(
-          style: ElevatedButton.styleFrom(
-            shape: const StadiumBorder(),
-            backgroundColor: LedgerColors.darkColors.brand.primary.shade500,
-            disabledBackgroundColor:
-                LedgerColors.darkColors.brand.primary.shade800,
-            foregroundColor: LedgerColors.darkColors.base.black,
-            textStyle: _textTheme.bodyLarge!.bold.copyWith(
-              color: LedgerColors.darkColors.base.black,
-            ),
-          ).copyWith(
-            elevation: const WidgetStatePropertyAll(0),
-          ),
-        ),
-        outlinedButtonTheme: OutlinedButtonThemeData(
-          style: OutlinedButton.styleFrom(
-            foregroundColor: LedgerColors.darkColors.base.black,
-            disabledForegroundColor:
-                LedgerColors.darkColors.neutral.grey.shade500,
-            textStyle: _textTheme.bodyLarge!.bold.copyWith(
-              color: LedgerColors.darkColors.brand.primary.shade500,
-            ),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(100.w),
-            ),
-          ).copyWith(
-            elevation: const WidgetStatePropertyAll(0),
-            side: WidgetStateProperty.resolveWith(
-              (states) {
-                if (states.contains(WidgetState.disabled)) {
-                  return BorderSide(
-                    color: LedgerColors.darkColors.neutral.grey.shade500,
-                  );
-                }
-                return BorderSide(color: LedgerColors.darkColors.base.black);
-              },
-            ),
-          ),
+          visualDensity: VisualDensity.compact,
         ),
         bottomSheetTheme: BottomSheetThemeData(
           backgroundColor: LedgerColors.darkColors.base.white,
@@ -157,11 +168,13 @@ extension DarkThemeDataExtension on ThemeData {
           ),
         ),
         datePickerTheme: DatePickerThemeData(
+          headerHeadlineStyle: _textTheme.titleSmall,
           backgroundColor: LedgerColors.darkColors.base.white,
-          weekdayStyle: TextStyle(
+          weekdayStyle: _textTheme.bodySmall?.copyWith(
             color: LedgerColors.darkColors.brand.primary.shade500,
           ),
-          yearStyle: TextStyle(color: LedgerColors.darkColors.base.black),
+          yearStyle: _textTheme.bodySmall
+              ?.copyWith(color: LedgerColors.darkColors.base.black),
           dayForegroundColor: WidgetStateProperty.resolveWith((states) {
             if (states.contains(WidgetState.disabled)) {
               return LedgerColors.darkColors.neutral.grey.shade200;
