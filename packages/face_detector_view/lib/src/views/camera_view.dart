@@ -206,11 +206,8 @@ class _CameraViewState extends State<CameraView> with WidgetsBindingObserver {
 
     // get image format
     final format = InputImageFormatValue.fromRawValue(image.format.raw);
-    // validate format depending on platform
-    // only supported formats:
-    // * nv21 for Android
-    // * bgra8888 for iOS
 
+    // Getting NV21 format from YUV420_888 on Android
     if (format != null &&
         (Platform.isAndroid && format == InputImageFormat.yuv_420_888)) {
       return InputImage.fromBytes(
@@ -224,6 +221,10 @@ class _CameraViewState extends State<CameraView> with WidgetsBindingObserver {
       );
     }
 
+    // validate format depending on platform
+    // only supported formats:
+    // * nv21 for Android
+    // * bgra8888 for iOS
     if (format == null ||
         (Platform.isAndroid && format != InputImageFormat.nv21) ||
         (Platform.isIOS && format != InputImageFormat.bgra8888)) return null;
