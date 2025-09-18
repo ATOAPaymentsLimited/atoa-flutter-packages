@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:regal/regal.dart';
+import 'package:regal/ledger/atoa_dls.dart';
 
 class LedgerColorsScreen extends StatefulWidget {
   const LedgerColorsScreen({super.key});
@@ -22,7 +22,7 @@ class _LedgerColorsScreenState extends State<LedgerColorsScreen> {
               (e) => MapEntry(
                   e,
                   Padding(
-                    padding: Spacing.tiny.all,
+                    padding: Spacing.lds25.all,
                     child: Text(e.name),
                   )),
             ),
@@ -33,14 +33,14 @@ class _LedgerColorsScreenState extends State<LedgerColorsScreen> {
       }),
       body: ListView(
         children: [
-          context.baseColors.black,
-          context.baseColors.white,
+          context.baseBlack,
+          context.baseWhite,
           Colors.transparent,
-          context.intactColors.white,
-          context.intactColors.black,
+          context.intactWhite,
+          context.intactBlack,
           Colors.transparent,
-          context.backgroundColors.light,
-          context.backgroundColors.dark,
+          context.backgroundLight,
+          context.backgroundDark,
           Colors.transparent,
           context.error.subtle,
           context.error.lighter,
@@ -72,29 +72,29 @@ class _LedgerColorsScreenState extends State<LedgerColorsScreen> {
           context.info.darker,
           context.info.deep,
           Colors.transparent,
-          context.neutralColors.grey.shade10,
-          context.neutralColors.grey.shade50,
-          context.neutralColors.grey.shade100,
-          context.neutralColors.grey.shade200,
-          context.neutralColors.grey.shade300,
-          context.neutralColors.grey.shade400,
-          context.neutralColors.grey.shade500,
-          context.neutralColors.grey.shade600,
-          context.neutralColors.grey.shade700,
-          context.neutralColors.grey.shade800,
-          context.neutralColors.grey.shade900,
+          context.grey.shade10,
+          context.grey.shade50,
+          context.grey.shade100,
+          context.grey.shade200,
+          context.grey.shade300,
+          context.grey.shade400,
+          context.grey.shade500,
+          context.grey.shade600,
+          context.grey.shade700,
+          context.grey.shade800,
+          context.grey.shade900,
           Colors.transparent,
-          context.brandColors.primary.shade10,
-          context.brandColors.primary.shade50,
-          context.brandColors.primary.shade100,
-          context.brandColors.primary.shade200,
-          context.brandColors.primary.shade300,
-          context.brandColors.primary.shade400,
-          context.brandColors.primary.shade500,
-          context.brandColors.primary.shade600,
-          context.brandColors.primary.shade700,
-          context.brandColors.primary.shade800,
-          context.brandColors.primary.shade900,
+          context.primary.shade10,
+          context.primary.shade50,
+          context.primary.shade100,
+          context.primary.shade200,
+          context.primary.shade300,
+          context.primary.shade400,
+          context.primary.shade500,
+          context.primary.shade600,
+          context.primary.shade700,
+          context.primary.shade800,
+          context.primary.shade900,
         ].map((e) {
           if (e.toString() == "Color(0x00000000)") {
             return const ListTile(

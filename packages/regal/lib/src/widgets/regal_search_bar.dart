@@ -15,6 +15,10 @@ class RegalSearchBar extends StatefulWidget {
     this.fillColor,
     this.autofocus = false,
     this.showClose = true,
+    this.label,
+    this.showFloatingLabel,
+    this.isLightMode = false,
+    this.textStyle,
     required this.searchController,
     required this.semanticsLabel,
   });
@@ -30,6 +34,10 @@ class RegalSearchBar extends StatefulWidget {
   final BorderSide? border;
   final bool? filled;
   final Color? fillColor;
+  final Widget? label;
+  final bool isLightMode;
+  final FloatingLabelBehavior? showFloatingLabel;
+  final TextStyle? textStyle;
 
   @override
   State<RegalSearchBar> createState() => _RegalSearchBarState();
@@ -61,7 +69,10 @@ class _RegalSearchBarState extends State<RegalSearchBar> {
           autofocus: widget.autofocus,
           controller: widget.searchController,
           keyboardType: TextInputType.text,
-          style: context.labelSmall,
+          style: widget.textStyle ??
+              context.labelSmall?.textColor(
+                context.regalColor.licoriceBlack,
+              ),
           cursorColor: context.regalColor.licoriceBlack,
           decoration: InputDecoration(
             isDense: true,
@@ -94,6 +105,8 @@ class _RegalSearchBarState extends State<RegalSearchBar> {
                 color: context.regalColor.licoriceBlack,
               ),
             ),
+            label: widget.label,
+            floatingLabelBehavior: widget.showFloatingLabel,
             suffixIcon: _showClear && widget.showClose
                 ? CustomGestureDetector(
                     context: context,
