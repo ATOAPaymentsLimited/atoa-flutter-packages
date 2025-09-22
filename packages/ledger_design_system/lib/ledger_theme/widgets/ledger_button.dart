@@ -233,8 +233,12 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
       label: semanticsLabel ?? '$label Button',
       child: DisableWidget(
         ignoring: !enable,
-        child: GestureDetector(
+        child: InkWell(
           onTap: onClick(context),
+          focusColor: context.grey.shade50,
+          borderRadius: borderRadius,
+          splashColor: context.grey.shade50,
+          hoverColor: context.grey.shade100,
           child: Container(
             height: size.value,
             decoration: BoxDecoration(

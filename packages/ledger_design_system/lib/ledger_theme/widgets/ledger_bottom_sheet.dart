@@ -36,7 +36,8 @@ Future<T?> showLedgerBottomSheet<T>({
       builder: (dialogContext) => Theme(
         data: dialogContext.theme,
         child: Padding(
-          padding: padding ?? (Spacing.lds200.y + Spacing.lds250.x),
+          padding: (padding ?? (Spacing.lds200.y + Spacing.lds250.x)) +
+              EdgeInsets.only(bottom: MediaQuery.of(dialogContext).viewInsets.bottom),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
