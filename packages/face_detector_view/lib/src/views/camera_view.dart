@@ -4,6 +4,7 @@ import 'package:camera/camera.dart';
 import 'package:face_detector_view/src/utils/face_extension.dart';
 import 'package:face_detector_view/src/views/default_floating_action_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_mlkit_face_detection/google_mlkit_face_detection.dart';
 
@@ -161,7 +162,7 @@ class _CameraViewState extends State<CameraView> with WidgetsBindingObserver {
       ResolutionPreset.high,
       enableAudio: false,
       imageFormatGroup: Platform.isAndroid
-          ? ImageFormatGroup.nv21
+          ? ImageFormatGroup.yuv420
           : ImageFormatGroup.bgra8888,
     );
     _controller?.initialize().then((_) {
@@ -188,6 +189,14 @@ class _CameraViewState extends State<CameraView> with WidgetsBindingObserver {
     _processImage(inputImage);
   }
 
+  Uint8List concatenatePlanes(List<Plane> planes) {
+    final WriteBuffer allBytes = WriteBuffer();
+    for (final Plane plane in planes) {
+      allBytes.putUint8List(plane.bytes);
+    }
+    return allBytes.done().buffer.asUint8List();
+  }
+
   InputImage? _inputImageFromCameraImage(CameraImage image) {
     // get camera rotation
     final camera = widget.cameras[_cameraIndex];
@@ -197,6 +206,21 @@ class _CameraViewState extends State<CameraView> with WidgetsBindingObserver {
 
     // get image format
     final format = InputImageFormatValue.fromRawValue(image.format.raw);
+
+    // Getting NV21 format from YUV420_888 on Android
+    if (format != null &&
+        (Platform.isAndroid && format == InputImageFormat.yuv_420_888)) {
+      return InputImage.fromBytes(
+        bytes: concatenatePlanes(image.planes),
+        metadata: InputImageMetadata(
+          size: Size(image.width.toDouble(), image.height.toDouble()),
+          rotation: rotation, // used only in Android
+          format: InputImageFormat.nv21, // used only in iOS
+          bytesPerRow: image.planes.first.bytesPerRow, // used only in iOS
+        ),
+      );
+    }
+
     // validate format depending on platform
     // only supported formats:
     // * nv21 for Android
