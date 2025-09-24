@@ -1,9 +1,10 @@
 name: ledger_design_system
 description: "Ledger Design System for ATOA"
-version: 1.0.0
 homepage: https://github.com/ATOAPaymentsLimited/atoa-flutter-packages/tree/main/packages/ledger_design_system
 repository: https://github.com/ATOAPaymentsLimited/atoa-flutter-packages/tree/main/packages/ledger_design_system
 issue_tracker: https://github.com/ATOAPaymentsLimited/atoa-flutter-packages/issues
+
+version: 1.0.1
 
 environment:
   sdk: ">=3.5.0 <4.0.0"
