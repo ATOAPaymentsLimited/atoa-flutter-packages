@@ -76,7 +76,7 @@ extension DarkThemeDataExtension on ThemeData {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(16.r),
               ),
-              titleTextStyle: _textTheme.labelLarge?.copyWith(
+              titleTextStyle: _textTheme.labelLarge!.copyWith(
                 fontWeight: FontWeight.bold,
               ),
               contentTextStyle: _textTheme.bodyLarge,
@@ -119,8 +119,8 @@ extension DarkThemeDataExtension on ThemeData {
                 ),
               ),
               errorMaxLines: 2,
-              floatingLabelStyle: _textTheme.bodyLarge
-                  ?.copyWith(color: LedgerColors.darkColors.base.black),
+              floatingLabelStyle: _textTheme.bodyLarge!
+                  .copyWith(color: LedgerColors.darkColors.base.black),
             ),
         primaryColor: LedgerColors.darkColors.brand.primary.shade500,
         primaryColorDark: LedgerColors.darkColors.brand.primary.shade500,
@@ -170,11 +170,11 @@ extension DarkThemeDataExtension on ThemeData {
         datePickerTheme: DatePickerThemeData(
           headerHeadlineStyle: _textTheme.titleSmall,
           backgroundColor: LedgerColors.darkColors.base.white,
-          weekdayStyle: _textTheme.bodySmall?.copyWith(
+          weekdayStyle: _textTheme.bodySmall!.copyWith(
             color: LedgerColors.darkColors.brand.primary.shade500,
           ),
-          yearStyle: _textTheme.bodySmall
-              ?.copyWith(color: LedgerColors.darkColors.base.black),
+          yearStyle: _textTheme.bodySmall!
+              .copyWith(color: LedgerColors.darkColors.base.black),
           dayForegroundColor: WidgetStateProperty.resolveWith((states) {
             if (states.contains(WidgetState.disabled)) {
               return LedgerColors.darkColors.neutral.grey.shade200;

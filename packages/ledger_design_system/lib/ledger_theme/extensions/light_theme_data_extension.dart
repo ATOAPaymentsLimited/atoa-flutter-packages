@@ -78,7 +78,7 @@ extension LightThemeDataExtension on ThemeData {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(16.r),
               ),
-              titleTextStyle: _textTheme.labelLarge?.copyWith(
+              titleTextStyle: _textTheme.labelLarge!.copyWith(
                 fontWeight: FontWeight.bold,
               ),
               contentTextStyle: _textTheme.bodyLarge,
@@ -120,10 +120,10 @@ extension LightThemeDataExtension on ThemeData {
             ),
           ),
           errorMaxLines: 2,
-          labelStyle: kFigTreeTextTheme.labelSmall
-              ?.copyWith(color: LedgerColors.lightColors.base.black),
-          floatingLabelStyle: kFigTreeTextTheme.bodyLarge
-              ?.copyWith(color: LedgerColors.lightColors.base.black),
+          labelStyle: kFigTreeTextTheme.labelSmall!
+              .copyWith(color: LedgerColors.lightColors.base.black),
+          floatingLabelStyle: kFigTreeTextTheme.bodyLarge!
+              .copyWith(color: LedgerColors.lightColors.base.black),
         ),
         primaryColor: LedgerColors.lightColors.brand.primary.shade500,
         primaryColorDark: LedgerColors.lightColors.background.dark,
@@ -149,8 +149,6 @@ extension LightThemeDataExtension on ThemeData {
           ),
           surfaceTintColor: LedgerColors.lightColors.base.white,
         ),
-        
-       
         checkboxTheme: CheckboxThemeData(
           checkColor: WidgetStateProperty.all(
               LedgerColors.lightColors.background.light),
@@ -172,11 +170,11 @@ extension LightThemeDataExtension on ThemeData {
         datePickerTheme: DatePickerThemeData(
           headerHeadlineStyle: _textTheme.titleSmall,
           backgroundColor: LedgerColors.lightColors.base.white,
-          weekdayStyle: _textTheme.bodySmall?.copyWith(
+          weekdayStyle: _textTheme.bodySmall!.copyWith(
             color: LedgerColors.lightColors.brand.primary.shade500,
           ),
-          yearStyle: _textTheme.bodySmall
-              ?.copyWith(color: LedgerColors.lightColors.base.black),
+          yearStyle: _textTheme.bodySmall!
+              .copyWith(color: LedgerColors.lightColors.base.black),
           dayForegroundColor: WidgetStateProperty.resolveWith((states) {
             if (states.contains(WidgetState.disabled)) {
               return LedgerColors.lightColors.neutral.grey.shade500;
