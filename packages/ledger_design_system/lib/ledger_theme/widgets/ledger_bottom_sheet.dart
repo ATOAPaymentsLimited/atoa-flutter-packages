@@ -114,10 +114,6 @@ Future<T?> showLedgerBottomSheet<T>({
               Builder(
                 builder: body,
               ),
-              SafeArea(
-                top: false,
-                child: Spacing.lds100.yBox,
-              ),
             ],
           ),
         ),
