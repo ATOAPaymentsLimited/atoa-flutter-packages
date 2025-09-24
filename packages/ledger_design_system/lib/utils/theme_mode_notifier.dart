@@ -6,7 +6,7 @@ class ThemeModeNotifier extends StateNotifier<ThemeMode> {
   ThemeModeNotifier({
     required this.prefs,
     ThemeMode mode = ThemeMode.system,
-    this.prefsKey = 'regal/theme_mode',
+    this.prefsKey = 'ledger/theme_mode',
   }) : super(mode) {
     if (mode == ThemeMode.system) {
       _getModeFromPrefs();

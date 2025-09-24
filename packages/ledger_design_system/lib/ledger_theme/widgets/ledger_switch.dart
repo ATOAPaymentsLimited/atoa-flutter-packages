@@ -24,7 +24,6 @@ class LedgerSwitch extends StatefulWidget {
 }
 
 class _LedgerSwitchState extends State<LedgerSwitch> {
-  Alignment switchControlAlignment = Alignment.centerLeft;
 
   @override
   Widget build(BuildContext context) => Semantics(
