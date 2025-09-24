@@ -1,3 +1,9 @@
+# 1.0.1
+
+## 🐛 Bugfix:
+### Theme System
+- **Text Theme** labelLarge not largeSmall
+
 # 1.0.0
 
 ## 🚀 Updates:
