@@ -1,3 +1,12 @@
+# 1.0.2
+
+## 🚀 Updates:
+### Theme System
+- **Regal** Removed unused ledger code
+## 🐛 Bugfix:
+### Theme System
+- **Text Theme** bodyLarge not labelLarge in theme extensions
+
 # 1.0.1
 
 ## 🐛 Bugfix:
