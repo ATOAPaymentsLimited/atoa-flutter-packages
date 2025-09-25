@@ -76,7 +76,7 @@ extension DarkThemeDataExtension on ThemeData {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(16.r),
               ),
-              titleTextStyle: _textTheme.labelSmall!.copyWith(
+              titleTextStyle: _textTheme.labelLarge!.copyWith(
                 fontWeight: FontWeight.bold,
               ),
               contentTextStyle: _textTheme.bodyLarge,
@@ -119,6 +119,8 @@ extension DarkThemeDataExtension on ThemeData {
                 ),
               ),
               errorMaxLines: 2,
+              labelStyle: _textTheme.bodyLarge!
+                  .copyWith(color: LedgerColors.darkColors.base.black),
               floatingLabelStyle: _textTheme.bodyLarge!
                   .copyWith(color: LedgerColors.darkColors.base.black),
             ),

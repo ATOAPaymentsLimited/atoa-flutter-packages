@@ -78,7 +78,7 @@ extension LightThemeDataExtension on ThemeData {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(16.r),
               ),
-              titleTextStyle: _textTheme.labelSmall!.copyWith(
+              titleTextStyle: _textTheme.labelLarge!.copyWith(
                 fontWeight: FontWeight.bold,
               ),
               contentTextStyle: _textTheme.bodyLarge,
@@ -120,9 +120,9 @@ extension LightThemeDataExtension on ThemeData {
             ),
           ),
           errorMaxLines: 2,
-          labelStyle: kFigTreeTextTheme.labelSmall!
+          labelStyle: _textTheme.bodyLarge!
               .copyWith(color: LedgerColors.lightColors.base.black),
-          floatingLabelStyle: kFigTreeTextTheme.bodyLarge!
+          floatingLabelStyle: _textTheme.bodyLarge!
               .copyWith(color: LedgerColors.lightColors.base.black),
         ),
         primaryColor: LedgerColors.lightColors.brand.primary.shade500,
