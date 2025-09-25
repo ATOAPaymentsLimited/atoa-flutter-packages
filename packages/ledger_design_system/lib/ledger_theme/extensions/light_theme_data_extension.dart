@@ -78,7 +78,7 @@ extension LightThemeDataExtension on ThemeData {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(16.r),
               ),
-              titleTextStyle: _textTheme.labelLarge!.copyWith(
+              titleTextStyle: _textTheme.bodyLarge!.copyWith(
                 fontWeight: FontWeight.bold,
               ),
               contentTextStyle: _textTheme.bodyLarge,
