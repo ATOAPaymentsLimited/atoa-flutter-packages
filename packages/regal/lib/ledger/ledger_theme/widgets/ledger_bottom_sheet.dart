@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:regal/assets/assets.gen.dart';
 import 'package:regal/ledger/ledger_theme/ledger_theme.dart';
 import 'package:regal/ledger/spacing/spacing.dart';
 
@@ -74,8 +75,7 @@ Future<T?> showLedgerBottomSheet<T>({
                                   Navigator.pop(dialogContext);
                                 },
                           child: Container(
-                            width: Spacing.lds300.value +
-                                Spacing.lds50.value,
+                            width: Spacing.lds300.value + Spacing.lds50.value,
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               color: dialogContext.grey.shade50,
@@ -173,11 +173,9 @@ Future<T?> showLedgerBottomSheetDraggable<T>({
                 children: [
                   Container(
                     height: Spacing.lds50.value,
-                    width: Spacing.lds300.value * 2 +
-                        Spacing.lds25.value,
+                    width: Spacing.lds300.value * 2 + Spacing.lds25.value,
                     decoration: BoxDecoration(
-                      borderRadius:
-                          BorderRadius.circular(Spacing.lds50.value),
+                      borderRadius: BorderRadius.circular(Spacing.lds50.value),
                       color: dialogContext.grey.shade200,
                     ),
                   ),
@@ -211,8 +209,8 @@ Future<T?> showLedgerBottomSheetDraggable<T>({
                                       Navigator.pop(dialogContext);
                                     },
                               child: Container(
-                                width: Spacing.lds300.value +
-                                    Spacing.lds50.value,
+                                width:
+                                    Spacing.lds300.value + Spacing.lds50.value,
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,
                                   color: dialogContext.grey.shade50,
@@ -260,8 +258,6 @@ Future<T?> showLedgerBottomSheetDraggable<T>({
       useSafeArea: true,
       transitionAnimationController: transitionAnimationController,
     );
-
-
 
 Future<T?> showLedgerBottomSheetStacked<T>({
   required BuildContext context,
@@ -336,3 +332,227 @@ Future<T?> showLedgerBottomSheetStacked<T>({
       shape: shape,
       transitionAnimationController: transitionAnimationController,
     );
+
+Future<T?> showLedgerBottomSheetPageView<T>({
+  required BuildContext context,
+  required List<String> title,
+  required List<String> subTitle,
+  required PageController pageController,
+  double? height,
+  ScrollPhysics? physics,
+  void Function(BuildContext)? onClose,
+  TextStyle? titleStyle,
+  TextAlign? titleAlign,
+  BoxConstraints? constraints,
+  Color? barrierColor,
+  bool useRootNavigator = false,
+  bool isScrollControlled = true,
+  RouteSettings? routeSettings,
+  Color? backgroundColor,
+  required List<Widget> children,
+  Clip? clipBehavior,
+  double? elevation,
+  bool? showDragHandle,
+  double? titleBottomSpacing,
+  bool enableDrag = true,
+  bool isDismissable = true,
+  bool showCloseButton = true,
+  ShapeBorder? shape,
+  AnimationController? transitionAnimationController,
+  Alignment confettiAlignment = Alignment.center,
+  Widget? illustrationWidget,
+  bool showTitle = true,
+  Axis? scrollDirection,
+}) {
+  final index = ValueNotifier<int>(0);
+  return showModalBottomSheet<T>(
+    context: context,
+    builder: (dialogContext) => Theme(
+      data: context.theme,
+      child: Padding(
+        padding:
+            Spacing.lds250.x + Spacing.lds300.bottom + Spacing.lds150.bottom,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            if (showDragHandle ?? true)
+              Container(
+                height: Spacing.lds50.value,
+                width: Spacing.lds300.value * 2 + Spacing.lds25.value,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(Spacing.lds50.value),
+                  color: context.grey.shade200,
+                ),
+              ),
+            Spacing.lds300.yBox,
+            if (illustrationWidget != null) illustrationWidget,
+            if (showTitle) ...[
+              Column(
+                children: [
+                  ValueListenableBuilder(
+                    valueListenable: index,
+                    builder: (context, value, child) => Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            if (value != 0)
+                              Padding(
+                                padding: Spacing.lds50.top,
+                                child: CustomInkWell(
+                                  semanticsLabel: 'Back Button Sheet Icon',
+                                  context: dialogContext,
+                                  trackLabel: 'Back Button Sheet Icon',
+                                  onTap: () => pageController.animateToPage(
+                                    value - 1,
+                                    duration: const Duration(milliseconds: 300),
+                                    curve: Curves.easeInOut,
+                                  ),
+                                  child: Container(
+                                    width: Spacing.lds300.value +
+                                        Spacing.lds50.value,
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: context.grey.shade50,
+                                    ),
+                                    child: Center(
+                                      child: Padding(
+                                        padding: Spacing.lds50.all,
+                                        child: Assets.icons.chevronLeft.svg(
+                                          height: Spacing.lds200.value,
+                                          width: Spacing.lds200.value,
+                                          colorFilter: ColorFilter.mode(
+                                            context.grey.shade700,
+                                            BlendMode.srcIn,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            Expanded(
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment:
+                                    (subTitle[value].trim().isNotEmpty
+                                        ? CrossAxisAlignment.center
+                                        : CrossAxisAlignment.start),
+                                children: [
+                                  if (title[value].trim().isNotEmpty)
+                                    CustomText.semantics(
+                                      title[value],
+                                      textAlign: titleAlign ??
+                                          (subTitle[value].trim().isNotEmpty
+                                              ? TextAlign.center
+                                              : TextAlign.left),
+                                      style: titleStyle ??
+                                          dialogContext.body1.bold.copyWith(
+                                            color: context.baseBlack,
+                                          ),
+                                    ),
+                                ],
+                              ),
+                            ),
+                            Spacing.lds200.xBox,
+                            if (showCloseButton) child!,
+                          ],
+                        ),
+                        if (subTitle[value].trim().isNotEmpty) ...[
+                          Spacing.lds50.yBox,
+                          Align(
+                            child: CustomText.semantics(
+                              subTitle[value],
+                              textAlign: titleAlign ?? TextAlign.left,
+                              style: titleStyle ??
+                                  dialogContext.caption.medium.copyWith(
+                                    color: context.grey.shade500,
+                                  ),
+                            ),
+                          ),
+                          Spacing.lds300.yBox,
+                        ],
+                      ],
+                    ),
+                    child: Padding(
+                      padding: Spacing.lds50.top,
+                      child: CustomInkWell(
+                        semanticsLabel: 'Close Dialog Sheet Icon',
+                        context: dialogContext,
+                        trackLabel: 'Close Dialog Sheet Icon',
+                        onTap: onClose != null
+                            ? () => onClose.call(dialogContext)
+                            : () {
+                                Navigator.pop(dialogContext);
+                              },
+                        child: Container(
+                          width: Spacing.lds300.value + Spacing.lds50.value,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: context.grey.shade50,
+                          ),
+                          child: Center(
+                            child: Padding(
+                              padding: Spacing.lds50.all,
+                              child: Assets.icons.closeIcon.svg(
+                                height: Spacing.lds200.value,
+                                width: Spacing.lds200.value,
+                                colorFilter: ColorFilter.mode(
+                                  context.grey.shade700,
+                                  BlendMode.srcIn,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+            if (titleBottomSpacing != null)
+              SizedBox(
+                height: titleBottomSpacing,
+              )
+            else
+              Spacing.lds300.yBox,
+            Builder(
+              builder: (context) {
+                final pageView = PageView(
+                  physics: physics ?? const NeverScrollableScrollPhysics(),
+                  controller: pageController,
+                  onPageChanged: (val) => index.value = val,
+                  scrollDirection: scrollDirection ?? Axis.horizontal,
+                  children: children,
+                );
+
+                return (height ?? 0) > 0
+                    ? SizedBox(
+                        height: height,
+                        child: pageView,
+                      )
+                    : pageView;
+              },
+            ),
+          ],
+        ),
+      ),
+    ),
+    showDragHandle: showDragHandle,
+    isScrollControlled: isScrollControlled,
+    barrierColor: barrierColor,
+    constraints: constraints,
+    useRootNavigator: useRootNavigator,
+    routeSettings: routeSettings,
+    backgroundColor: backgroundColor,
+    clipBehavior: clipBehavior,
+    elevation: elevation,
+    enableDrag: enableDrag,
+    isDismissible: isDismissable,
+    shape: shape,
+    useSafeArea: true,
+    transitionAnimationController: transitionAnimationController,
+  );
+}
