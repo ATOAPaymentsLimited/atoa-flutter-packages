@@ -175,7 +175,7 @@ Future<T?> showLedgerBottomSheetDraggable<T>({
                   Container(
                     height: Spacing.lds50.value,
                     width: Spacing.lds300.value * 2 +
-                      Spacing.lds25.value,
+                       Spacing.lds25.value,
                     decoration: BoxDecoration(
                       borderRadius:
                           BorderRadius.circular(Spacing.lds50.value),
@@ -212,8 +212,8 @@ Future<T?> showLedgerBottomSheetDraggable<T>({
                                       Navigator.pop(dialogContext);
                                     },
                               child: Container(
-                                width:
-                                    Spacing.lds300.value + Spacing.lds50.value,
+                                width: Spacing.lds300.value +
+                                    Spacing.lds50.value,
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,
                                   color: dialogContext.grey.shade50,
