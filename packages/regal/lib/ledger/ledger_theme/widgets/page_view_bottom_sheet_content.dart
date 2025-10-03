@@ -82,6 +82,8 @@ class _PageViewBottomSheetContentState
                             child: CustomInkWell(
                               semanticsLabel: 'Back Button Sheet Icon',
                               context: context,
+                              borderRadius: RadiusSpacing.rdsl.all,
+                              splashColor: context.grey.shade200,
                               trackLabel: 'Back Button Sheet Icon',
                               onTap: () => widget.pageController.animateToPage(
                                 value - 1,
@@ -159,6 +161,8 @@ class _PageViewBottomSheetContentState
                   padding: Spacing.lds50.top,
                   child: CustomInkWell(
                     semanticsLabel: 'Close Dialog Sheet Icon',
+                    borderRadius: RadiusSpacing.rdsl.all,
+                    splashColor: context.grey.shade200,
                     context: context,
                     trackLabel: 'Close Dialog Sheet Icon',
                     onTap: widget.onClose != null
