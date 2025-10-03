@@ -383,6 +383,7 @@ Future<T?> showLedgerBottomSheetPageView<T>({
             physics: physics,
             scrollDirection: scrollDirection,
             children: children,
+            showTitle: showTitle
           ),
         ),
       ),
