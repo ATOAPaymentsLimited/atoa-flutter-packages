@@ -382,8 +382,8 @@ Future<T?> showLedgerBottomSheetPageView<T>({
             illustrationWidget: illustrationWidget,
             physics: physics,
             scrollDirection: scrollDirection,
-            children: children,
-            showTitle: showTitle
+            showTitle: showTitle,
+            children: children
           ),
         ),
       ),
