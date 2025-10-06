@@ -45,11 +45,11 @@ class PageViewBottomSheetContent extends StatefulWidget {
 
 class _PageViewBottomSheetContentState
     extends State<PageViewBottomSheetContent> {
-  final ValueNotifier<int> index = ValueNotifier<int>(0);
+  final ValueNotifier<int> currentIndex = ValueNotifier<int>(0);
 
   @override
   void dispose() {
-    index.dispose();
+    currentIndex.dispose();
     super.dispose();
   }
 
@@ -73,7 +73,7 @@ class _PageViewBottomSheetContentState
             Column(
               children: [
                 ValueListenableBuilder(
-                  valueListenable: index,
+                  valueListenable: currentIndex,
                   builder: (context, value, child) => Column(
                     children: [
                       Row(
@@ -210,9 +210,9 @@ class _PageViewBottomSheetContentState
             Spacing.lds300.yBox,
           Expanded(
             child: PageView(
-              physics: widget.physics ?? const NeverScrollableScrollPhysics(),
+              physics: widget.physics,
               controller: widget.pageController,
-              onPageChanged: (val) => index.value = val,
+              onPageChanged: (value) => currentIndex.value = value,
               scrollDirection: widget.scrollDirection ?? Axis.horizontal,
               children: widget.children,
             ),

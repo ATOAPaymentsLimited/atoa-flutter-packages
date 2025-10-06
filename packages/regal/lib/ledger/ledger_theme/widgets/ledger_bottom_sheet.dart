@@ -41,7 +41,7 @@ Future<T?> showLedgerBottomSheet<T>({
                 height: Spacing.lds50.value,
                 width: Spacing.lds300.value * 2 + Spacing.lds25.value,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(Spacing.lds50.value),
+                  borderRadius: RadiusSpacing.rdsxs.all,
                   color: dialogContext.grey.shade200,
                 ),
               ),
@@ -175,7 +175,7 @@ Future<T?> showLedgerBottomSheetDraggable<T>({
                     height: Spacing.lds50.value,
                     width: Spacing.lds300.value * 2 + Spacing.lds25.value,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(Spacing.lds50.value),
+                      borderRadius: RadiusSpacing.rdsxs.all,
                       color: dialogContext.grey.shade200,
                     ),
                   ),
