@@ -71,13 +71,9 @@ class _RegalSearchBarState extends State<RegalSearchBar> {
           keyboardType: TextInputType.text,
           style: widget.textStyle ??
               context.labelSmall?.textColor(
-                widget.isLightMode
-                    ? context.intactColors.black
-                    : context.regalColor.licoriceBlack,
+                context.regalColor.licoriceBlack,
               ),
-          cursorColor: widget.isLightMode
-              ? context.intactColors.black
-              : context.regalColor.licoriceBlack,
+          cursorColor: context.regalColor.licoriceBlack,
           decoration: InputDecoration(
             isDense: true,
             fillColor: widget.fillColor ?? context.grey.shade05,
@@ -106,9 +102,7 @@ class _RegalSearchBarState extends State<RegalSearchBar> {
               child: Icon(
                 Icons.search,
                 size: widget.iconSize ?? 18.sp,
-                color: widget.isLightMode
-                    ? context.intactColors.black
-                    : context.regalColor.licoriceBlack,
+                color: context.regalColor.licoriceBlack,
               ),
             ),
             label: widget.label,
@@ -125,9 +119,7 @@ class _RegalSearchBarState extends State<RegalSearchBar> {
                     child: Icon(
                       Icons.clear_sharp,
                       size: 18.sp,
-                      color: widget.isLightMode
-                          ? context.intactColors.black
-                          : context.regalColor.licoriceBlack,
+                      color: context.regalColor.licoriceBlack,
                     ),
                   )
                 : null,

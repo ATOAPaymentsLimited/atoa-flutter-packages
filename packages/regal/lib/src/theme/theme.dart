@@ -2,8 +2,6 @@ export 'brightness_extension.dart';
 export 'colors/color_system.dart';
 export 'colors/colors.dart';
 export 'colors/regal_colors.dart';
-export 'ledger_colors/ledger_colors.dart'
-    show LedgerColorX, NeutralColors, BaseColors, SemanticsColors, BrandColors, IntactColors;
 
 export 'text/text.dart';
 export 'theme_data.dart';

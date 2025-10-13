@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:regal/regal.dart';
-import 'package:regal/src/theme/ledger_colors/ledger_colors.dart';
 import 'package:regal/src/theme/text/figtree_x.dart';
 import 'package:regal/src/theme/theme.dart';
 
@@ -38,14 +37,6 @@ final kThemeData = ThemeData.light().copyWith(
       licoriceBlack: RegalColors.licoriceBlack,
       grey: RegalColors.grey,
       pink: RegalColors.vividRed,
-    ),
-    LedgerColorsX(
-      base: BaseColors.light(),
-      brand: BrandColors.light(),
-      neutral: NeutralColors.light(),
-      semantic: SemanticsColors.light(),
-      background: BackgroundColors.light(),
-      intact: IntactColors.light(),
     ),
     MontserratX(
       displayLarge: kMontserratTextTheme.displayLarge!.copyWith(
@@ -452,14 +443,6 @@ final kDarkThemeData = kThemeData.copyWith(
       licoriceBlack: RegalColors.snowWhite,
       grey: RegalColors.darkGrey,
       pink: RegalColors.snowWhite,
-    ),
-    LedgerColorsX(
-      base: BaseColors.dark(),
-      brand: BrandColors.dark(),
-      neutral: NeutralColors.dark(),
-      semantic: SemanticsColors.dark(),
-      background: BackgroundColors.dark(),
-      intact: IntactColors.dark(),
     ),
     MontserratX(
       displayLarge: kMontserratTextTheme.displayLarge!.copyWith(

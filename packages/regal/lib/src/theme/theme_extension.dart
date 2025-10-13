@@ -1,9 +1,7 @@
 // coverage:ignore-file
 
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-import 'package:regal/src/regal.dart';
 import 'package:regal/src/theme/text/figtree_x.dart';
 import 'package:regal/src/theme/theme.dart';
 
@@ -164,68 +162,4 @@ extension ThemeX on BuildContext {
   FigTreeX get figtree => theme.extension<FigTreeX>()!;
 
   Brightness get brightness => theme.brightness;
-
-  ThemeData get ledgerTheme => theme.copyWith(
-        appBarTheme: theme.appBarTheme.copyWith(
-          backgroundColor: baseColors.white,
-        ),
-        bottomSheetTheme: theme.bottomSheetTheme.copyWith(
-          backgroundColor: baseColors.white,
-        ),
-        scaffoldBackgroundColor: baseColors.white,
-        textTheme: kFigTreeTextTheme.apply(
-          displayColor: baseColors.black,
-          bodyColor: baseColors.black,
-        ),
-        inputDecorationTheme: kThemeData.inputDecorationTheme.copyWith(
-          labelStyle: kFigTreeTextTheme.bodyLarge?.w600.textColor(
-            baseColors.black,
-          ),
-          hintStyle: kFigTreeTextTheme.bodyLarge?.height130.textColor(
-            neutralColors.grey.shade500,
-          ),
-          errorStyle: kFigTreeTextTheme.bodyLarge?.textColor(
-            error.defaultColor,
-          ),
-          filled: true,
-          fillColor: baseColors.white,
-          floatingLabelStyle: kFigTreeTextTheme.bodyLarge?.height150,
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(Spacing.smallMedium.value),
-            borderSide: BorderSide(color: neutralColors.grey.shade400),
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(Spacing.smallMedium.value),
-            borderSide: BorderSide(color: neutralColors.grey.shade400),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(Spacing.smallMedium.value),
-            borderSide: BorderSide(color: neutralColors.grey.shade800),
-          ),
-          disabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(Spacing.smallMedium.value),
-            borderSide: BorderSide(color: neutralColors.grey.shade300),
-          ),
-          errorBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(Spacing.smallMedium.value),
-            borderSide: BorderSide(
-              color: error.defaultColor,
-            ),
-          ),
-        ),
-        elevatedButtonTheme: ElevatedButtonThemeData(
-          style: ElevatedButton.styleFrom(
-            elevation: 0,
-            textStyle: TextStyle(
-              fontFamily: 'FigTree',
-              package: 'regal',
-              color: baseColors.white,
-              fontSize: 14.sp,
-              fontVariations: const [
-                FontVariation.weight(700),
-              ],
-            ),
-          ),
-        ),
-      );
 }
