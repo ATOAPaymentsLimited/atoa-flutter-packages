@@ -378,6 +378,7 @@ Future<T?> showLedgerBottomSheetPageView<T>({
             titleAlign: titleAlign,
             showCloseButton: showCloseButton,
             onClose: onClose,
+            showDragHandle: showDragHandle
             titleBottomSpacing: titleBottomSpacing,
             illustrationWidget: illustrationWidget,
             physics: physics,
