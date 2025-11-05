@@ -101,6 +101,7 @@ class CarouselItemWidget extends StatelessWidget {
               semanticsLabel: 'Carousel Item',
               borderRadius: RadiusSpacing.rds2xl.all,
               onTap: onTap,
+              enabled: onTap != null,
               splashColor: context.grey.shade50.withOpacity(0.22),
             ),
             if (widget != null) widget!,

@@ -241,7 +241,7 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
         context: context,
         enableFeedback: enableFeedback ?? LedgerUtility.enableButtonFeedbacks,
         onTap: onClick(context),
-        enable: enable,
+        enabled: enable,
         focusColor: context.grey.shade50,
         borderRadius: borderRadius,
         splashColor: context.grey.shade50,
