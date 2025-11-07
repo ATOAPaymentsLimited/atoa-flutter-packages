@@ -22,6 +22,7 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
     this.labelWidget,
     this.textStyle,
     this.shrink = false,
+    this.enableFeedback,
   })  : _type = _LedgerButtonType.primary1,
         assert(
           label != null || prefixIconPath != null || suffixIconPath != null,
@@ -46,6 +47,7 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
     this.labelWidget,
     this.textStyle,
     this.shrink = false,
+    this.enableFeedback,
   })  : _type = _LedgerButtonType.primary2,
         assert(
           label != null || prefixIconPath != null || suffixIconPath != null,
@@ -70,6 +72,7 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
     this.labelWidget,
     this.textStyle,
     this.shrink = false,
+    this.enableFeedback,
   })  : _type = _LedgerButtonType.secondary,
         assert(
           label != null || prefixIconPath != null || suffixIconPath != null,
@@ -94,6 +97,7 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
     this.labelWidget,
     this.textStyle,
     this.shrink = false,
+    this.enableFeedback,
   })  : _type = _LedgerButtonType.tertiary1,
         assert(
           label != null || prefixIconPath != null || suffixIconPath != null,
@@ -118,6 +122,7 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
     this.labelWidget,
     this.textStyle,
     this.shrink = false,
+    this.enableFeedback,
   })  : _type = _LedgerButtonType.tertiary2,
         assert(
           label != null || prefixIconPath != null || suffixIconPath != null,
@@ -142,6 +147,7 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
     this.labelWidget,
     this.textStyle,
     this.shrink = false,
+    this.enableFeedback,
   })  : _type = _LedgerButtonType.ghost,
         assert(
           label != null || prefixIconPath != null || suffixIconPath != null,
@@ -182,6 +188,8 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
   final Color? backgroundColor;
 
   final TextStyle? textStyle;
+
+  final bool? enableFeedback;
 
   @override
   Widget build(BuildContext context) {
@@ -225,33 +233,31 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
       ),
     );
 
-    return Semantics(
-      button: true,
-      container: true,
-      enabled: true,
-      explicitChildNodes: true,
-      label: semanticsLabel ?? '$label Button',
-      child: DisableWidget(
-        ignoring: !enable,
-        child: InkWell(
-          onTap: onClick(context),
-          focusColor: context.grey.shade50,
-          borderRadius: borderRadius,
-          splashColor: context.grey.shade50,
-          hoverColor: context.grey.shade100,
-          child: Container(
-            height: size.value,
-            decoration: BoxDecoration(
-              border: _type == _LedgerButtonType.ghost
-                  ? Border.all(
-                      color: context.baseBlack,
-                    )
-                  : null,
-              color: backgroundColor ?? _type.backgroundColor(context),
-              borderRadius: borderRadius,
-            ),
-            child: child,
+    return DisableWidget(
+      ignoring: !enable,
+      child: CustomInkWell(
+        trackLabel: semanticsLabel ?? '$label Button',
+        semanticsLabel: semanticsLabel ?? '$label Button',
+        context: context,
+        enableFeedback: enableFeedback ?? LedgerUtility.enableButtonFeedbacks,
+        onTap: onClick(context),
+        enabled: enable,
+        focusColor: context.grey.shade50,
+        borderRadius: borderRadius,
+        splashColor: context.grey.shade50,
+        hoverColor: context.grey.shade100,
+        child: Container(
+          height: size.value,
+          decoration: BoxDecoration(
+            border: _type == _LedgerButtonType.ghost
+                ? Border.all(
+                    color: context.baseBlack,
+                  )
+                : null,
+            color: backgroundColor ?? _type.backgroundColor(context),
+            borderRadius: borderRadius,
           ),
+          child: child,
         ),
       ),
     );

@@ -1,3 +1,8 @@
+# 1.0.3
+
+## 💅 Style:
+- **Ledger** Custom inkwell updated for enabling disabling visual/haptic feedback
+
 # 1.0.2
 
 ## 🚀 Updates:

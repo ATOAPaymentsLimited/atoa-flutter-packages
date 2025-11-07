@@ -38,6 +38,7 @@ class _LedgerSwitchState extends State<LedgerSwitch> {
           trackProperties: <String, dynamic>{
             'updated_value': !widget.value,
           },
+          enabled: true,
           splashColor: Colors.transparent,
           semanticsLabel: widget.semanticsLabel,
           child: AnimatedContainer(

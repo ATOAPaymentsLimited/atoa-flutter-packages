@@ -33,7 +33,9 @@ class CustomInkWell extends InkWell with EventTrackMixin {
     super.onFocusChange,
     super.autofocus,
     super.statesController,
+    super.enableFeedback,
     this.trackProperties,
+    this.enabled = true,
     this.enableTracking = true,
   }) : super();
 
@@ -47,6 +49,8 @@ class CustomInkWell extends InkWell with EventTrackMixin {
   final bool enableTracking;
 
   final String semanticsLabel;
+
+  final bool enabled;
 
   @override
   VoidCallback? get onTap => super.onTap != null
@@ -63,12 +67,15 @@ class CustomInkWell extends InkWell with EventTrackMixin {
 
   @override
   Widget? get child => super.child != null
-      ? Semantics(
-          label: semanticsLabel,
-          container: true,
-          enabled: true,
-          explicitChildNodes: true,
-          child: super.child,
+      ? Ink(
+          decoration: BoxDecoration(borderRadius: borderRadius),
+          child: Semantics(
+            label: semanticsLabel,
+            container: true,
+            enabled: enabled,
+            explicitChildNodes: true,
+            child: super.child,
+          ),
         )
       : null;
 }
