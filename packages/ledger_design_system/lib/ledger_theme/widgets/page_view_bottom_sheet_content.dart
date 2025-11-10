@@ -110,6 +110,7 @@ class _PageViewBottomSheetContentState
                                           context.grey.shade700,
                                           BlendMode.srcIn,
                                         ),
+                                        package: 'ledger_design_system',
                                       ),
                                     ),
                                   ),
@@ -183,16 +184,13 @@ class _PageViewBottomSheetContentState
                         ),
                         child: Center(
                           child: Padding(
-                              padding: Spacing.lds50.all,
-                              child: SvgPicture.asset(
-                                'assets/icons/close_icon.svg',
-                                height: Spacing.lds200.value,
-                                width: Spacing.lds200.value,
-                                colorFilter: ColorFilter.mode(
-                                  context.grey.shade700,
-                                  BlendMode.srcIn,
-                                ),
-                              )),
+                            padding: Spacing.lds50.all,
+                            child: Icon(
+                              Icons.close,
+                              size: Spacing.lds200.value,
+                              color: context.grey.shade700,
+                            ),
+                          ),
                         ),
                       ),
                     ),

@@ -366,6 +366,7 @@ Future<T?> showLedgerBottomSheetPageView<T>({
   TextStyle? titleStyle,
   TextAlign? titleAlign,
   BoxConstraints? constraints,
+  EdgeInsets? padding,
   Color? barrierColor,
   bool useRootNavigator = false,
   bool isScrollControlled = true,
@@ -388,11 +389,14 @@ Future<T?> showLedgerBottomSheetPageView<T>({
 }) =>
     showModalBottomSheet<T>(
       context: context,
+      barrierColor: barrierColor ?? context.grey.shade700.withOpacity(0.5),
       builder: (dialogContext) => Theme(
-        data: context.theme,
+        data: dialogContext.theme,
         child: Padding(
-          padding:
-              Spacing.lds250.x + Spacing.lds300.bottom + Spacing.lds150.bottom,
+          padding: (padding ?? (Spacing.lds200.y + Spacing.lds250.x)) +
+              EdgeInsets.only(
+                bottom: MediaQuery.of(dialogContext).viewInsets.bottom,
+              ),
           child: PageViewBottomSheetContent(
             title: title,
             subTitle: subTitle,
@@ -413,7 +417,6 @@ Future<T?> showLedgerBottomSheetPageView<T>({
       ),
       showDragHandle: showDragHandle,
       isScrollControlled: isScrollControlled,
-      barrierColor: barrierColor,
       constraints: constraints,
       useRootNavigator: useRootNavigator,
       routeSettings: routeSettings,
