@@ -8,4 +8,6 @@ class LedgerUtility {
   static final _instance = LedgerUtility._();
 
   static bool enableTracking = false;
+
+  static bool enableButtonFeedbacks = true;
 }
