@@ -27,13 +27,6 @@ class $AssetsAnimationsGen {
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
-  /// File path: assets/icons/chevron_left.svg
-  SvgGenImage get chevronLeft =>
-      const SvgGenImage('assets/icons/chevron_left.svg');
-
-  /// File path: assets/icons/close_icon.svg
-  SvgGenImage get closeIcon => const SvgGenImage('assets/icons/close_icon.svg');
-
   /// File path: assets/icons/info_fill.svg
   SvgGenImage get infoFill => const SvgGenImage('assets/icons/info_fill.svg');
 
@@ -46,8 +39,7 @@ class $AssetsIconsGen {
       const SvgGenImage('assets/icons/warning_fill.svg');
 
   /// List of all assets
-  List<SvgGenImage> get values =>
-      [chevronLeft, closeIcon, infoFill, successFill, warningFill];
+  List<SvgGenImage> get values => [infoFill, successFill, warningFill];
 }
 
 class Assets {
