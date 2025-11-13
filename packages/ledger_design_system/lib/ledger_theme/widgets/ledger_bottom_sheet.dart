@@ -86,6 +86,7 @@ Future<T?> showLedgerBottomSheet<T>({
                               : () {
                                   Navigator.pop(dialogContext);
                                 },
+                          enabled: true,
                           child: Container(
                             width: Spacing.lds300.value + Spacing.lds50.value,
                             decoration: BoxDecoration(
@@ -220,6 +221,7 @@ Future<T?> showLedgerBottomSheetDraggable<T>({
                                   : () {
                                       Navigator.pop(dialogContext);
                                     },
+                              enabled: true,
                               child: Container(
                                 width:
                                     Spacing.lds300.value + Spacing.lds50.value,
@@ -325,6 +327,7 @@ Future<T?> showLedgerBottomSheetStacked<T>({
                           : () {
                               Navigator.pop(dialogContext);
                             },
+                      enabled: true,
                       child: Icon(
                         Icons.close,
                         size: Spacing.lds300.value,
