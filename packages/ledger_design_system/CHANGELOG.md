@@ -1,3 +1,8 @@
+# 1.0.4
+
+## 🚀 Updates:
+- **Ledger** Ledger bottom sheet with page view added to support children inside bottom sheet and navigation between children
+
 # 1.0.3
 
 ## 💅 Style:
