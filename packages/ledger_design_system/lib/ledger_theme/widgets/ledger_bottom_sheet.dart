@@ -3,6 +3,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:ledger_design_system/ledger_design_system.dart';
+import 'package:ledger_design_system/ledger_theme/widgets/page_view_bottom_sheet_content.dart';
 
 Future<T?> showLedgerBottomSheet<T>({
   required BuildContext context,
@@ -187,7 +188,7 @@ Future<T?> showLedgerBottomSheetDraggable<T>({
                     height: Spacing.lds50.value,
                     width: Spacing.lds300.value * 2 + Spacing.lds25.value,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(Spacing.lds50.value),
+                      borderRadius: RadiusSpacing.rdsxs.all,
                       color: dialogContext.grey.shade200,
                     ),
                   ),
@@ -355,5 +356,79 @@ Future<T?> showLedgerBottomSheetStacked<T>({
       enableDrag: enableDrag,
       isDismissible: isDismissable,
       shape: shape,
+      transitionAnimationController: transitionAnimationController,
+    );
+
+Future<T?> showLedgerBottomSheetPageView<T>({
+  required BuildContext context,
+  required List<String> title,
+  required List<String> subTitle,
+  required PageController pageController,
+  ScrollPhysics? physics,
+  void Function(BuildContext)? onClose,
+  TextStyle? titleStyle,
+  TextAlign? titleAlign,
+  BoxConstraints? constraints,
+  EdgeInsets? padding,
+  Color? barrierColor,
+  bool useRootNavigator = false,
+  bool isScrollControlled = true,
+  RouteSettings? routeSettings,
+  Color? backgroundColor,
+  required List<Widget> children,
+  Clip? clipBehavior,
+  double? elevation,
+  bool? showDragHandle,
+  double? titleBottomSpacing,
+  bool enableDrag = true,
+  bool isDismissable = true,
+  bool showCloseButton = true,
+  ShapeBorder? shape,
+  AnimationController? transitionAnimationController,
+  Alignment confettiAlignment = Alignment.center,
+  Widget? illustrationWidget,
+  bool showTitle = true,
+  Axis? scrollDirection,
+}) =>
+    showModalBottomSheet<T>(
+      context: context,
+      barrierColor: barrierColor ?? context.grey.shade700.withOpacity(0.5),
+      builder: (dialogContext) => Theme(
+        data: dialogContext.theme,
+        child: Padding(
+          padding: (padding ?? (Spacing.lds200.y + Spacing.lds250.x)) +
+              EdgeInsets.only(
+                bottom: MediaQuery.of(dialogContext).viewInsets.bottom,
+              ),
+          child: PageViewBottomSheetContent(
+            title: title,
+            subTitle: subTitle,
+            pageController: pageController,
+            titleStyle: titleStyle,
+            titleAlign: titleAlign,
+            showCloseButton: showCloseButton,
+            onClose: onClose,
+            showDragHandle: showDragHandle,
+            titleBottomSpacing: titleBottomSpacing,
+            illustrationWidget: illustrationWidget,
+            physics: physics,
+            scrollDirection: scrollDirection,
+            showTitle: showTitle,
+            children: children,
+          ),
+        ),
+      ),
+      showDragHandle: showDragHandle,
+      isScrollControlled: isScrollControlled,
+      constraints: constraints,
+      useRootNavigator: useRootNavigator,
+      routeSettings: routeSettings,
+      backgroundColor: backgroundColor,
+      clipBehavior: clipBehavior,
+      elevation: elevation,
+      enableDrag: enableDrag,
+      isDismissible: isDismissable,
+      shape: shape,
+      useSafeArea: true,
       transitionAnimationController: transitionAnimationController,
     );
