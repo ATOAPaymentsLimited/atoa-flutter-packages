@@ -189,12 +189,50 @@ class _CameraViewState extends State<CameraView> with WidgetsBindingObserver {
     _processImage(inputImage);
   }
 
-  Uint8List concatenatePlanes(List<Plane> planes) {
-    final WriteBuffer allBytes = WriteBuffer();
-    for (final Plane plane in planes) {
-      allBytes.putUint8List(plane.bytes);
+  Uint8List _yuv420ToNv21(CameraImage image) {
+    final yPlane = image.planes[0];
+    final uPlane = image.planes[1];
+    final vPlane = image.planes[2];
+
+    final ySize = image.width * image.height;
+    final uvSize = (image.width * image.height) ~/ 2;
+
+    final nv21 = Uint8List(ySize + uvSize);
+
+    // Copy Y plane, accounting for row stride
+    int yOffset = 0;
+    int nv21Offset = 0;
+    for (int y = 0; y < image.height; y++) {
+      final yRowBytes = yPlane.bytes.buffer.asUint8List(
+        yOffset,
+        image.width,
+      );
+      nv21.setRange(nv21Offset, nv21Offset + image.width, yRowBytes);
+      yOffset += yPlane.bytesPerRow;
+      nv21Offset += image.width;
     }
-    return allBytes.done().buffer.asUint8List();
+
+    // Interleave U and V planes (V first, then U) to create NV21 format
+    // Account for row stride - UV planes are half resolution
+    int uvOffset = 0;
+    final uvHeight = image.height ~/ 2;
+    final uvWidth = image.width ~/ 2;
+
+    for (int y = 0; y < uvHeight; y++) {
+      int uRowOffset = y * uPlane.bytesPerRow;
+      int vRowOffset = y * vPlane.bytesPerRow;
+
+      for (int x = 0; x < uvWidth; x++) {
+        if (vRowOffset + x < vPlane.bytes.length &&
+            uRowOffset + x < uPlane.bytes.length) {
+          nv21[ySize + uvOffset] = vPlane.bytes[vRowOffset + x];
+          nv21[ySize + uvOffset + 1] = uPlane.bytes[uRowOffset + x];
+          uvOffset += 2;
+        }
+      }
+    }
+
+    return nv21;
   }
 
   InputImage? _inputImageFromCameraImage(CameraImage image) {
@@ -210,8 +248,12 @@ class _CameraViewState extends State<CameraView> with WidgetsBindingObserver {
     // Getting NV21 format from YUV420_888 on Android
     if (format != null &&
         (Platform.isAndroid && format == InputImageFormat.yuv_420_888)) {
+      if (image.planes.length != 3) return null;
+
+      final nv21Bytes = _yuv420ToNv21(image);
+
       return InputImage.fromBytes(
-        bytes: concatenatePlanes(image.planes),
+        bytes: nv21Bytes,
         metadata: InputImageMetadata(
           size: Size(image.width.toDouble(), image.height.toDouble()),
           rotation: rotation, // used only in Android
