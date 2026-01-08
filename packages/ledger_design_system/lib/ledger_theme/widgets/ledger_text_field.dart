@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:regal/regal.dart';
-import 'package:regal/src/enums/text_validation_state_enum.dart';
+import 'package:ledger_design_system/ledger_design_system.dart';
 
 class LedgerTextField extends StatefulWidget {
   const LedgerTextField({
     super.key,
     this.margin,
     this.suffix,
+    this.prefix,
     this.label,
     this.hintText,
     this.onClear,
@@ -81,6 +81,7 @@ class LedgerTextField extends StatefulWidget {
   final bool showLabel;
   final bool showClear;
   final Widget? suffix;
+  final Widget? prefix;
   final EdgeInsets? margin;
   final TextEditingController? controller;
   final ValueChanged<String>? onChanged;
@@ -149,6 +150,16 @@ class LedgerTextField extends StatefulWidget {
 class _LedgerTextFieldState extends State<LedgerTextField> {
   late final TextEditingController _textEditingController;
   TextValidationState? _errorListenable;
+  final focusNode = FocusNode();
+
+  void onFocusChange() {
+    if (mounted) setState(() {});
+  }
+
+  FocusNode get node => widget.focusNode ?? focusNode;
+
+  bool get hideSuffixIcon =>
+      widget.readOnly || !widget.showClear || !node.hasFocus;
 
   @override
   void initState() {
@@ -157,6 +168,7 @@ class _LedgerTextFieldState extends State<LedgerTextField> {
           text: widget.initialValue ?? '',
         );
     _errorListenable = null;
+    node.addListener(onFocusChange);
     super.initState();
   }
 
@@ -170,7 +182,9 @@ class _LedgerTextFieldState extends State<LedgerTextField> {
 
   @override
   void dispose() {
+    node.removeListener(onFocusChange);
     if (widget.controller == null) _textEditingController.dispose();
+    focusNode.dispose();
     super.dispose();
   }
 
@@ -181,7 +195,7 @@ class _LedgerTextFieldState extends State<LedgerTextField> {
         explicitChildNodes: true,
         label: '${widget.label} TextFormField',
         child: Container(
-          margin: widget.margin ?? Spacing.large.y,
+          margin: widget.margin ?? Spacing.lds100.y,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -189,9 +203,10 @@ class _LedgerTextFieldState extends State<LedgerTextField> {
                 CustomText.semantics(
                   widget.label!,
                   style: widget.labelStyle ??
-                      context.theme.inputDecorationTheme.labelStyle,
+                      context.body3.semiBold
+                          .copyWith(color: context.grey.shade700),
                 ),
-                Spacing.smallMedium.yBox,
+                Spacing.lds100.yBox,
               ],
               TextFormField(
                 restorationId: widget.restorationId,
@@ -202,20 +217,79 @@ class _LedgerTextFieldState extends State<LedgerTextField> {
                           buttonItems: editableTextState.contextMenuButtonItems,
                         ),
                 controller: _textEditingController,
-                focusNode: widget.focusNode,
-                decoration:
-                    (widget.decoration ?? const InputDecoration()).copyWith(
+                focusNode: widget.focusNode ?? focusNode,
+                decoration: (widget.decoration ??
+                        InputDecoration(
+                          isDense: true,
+                          isCollapsed: true,
+                          contentPadding: Spacing.lds200.x +
+                              Spacing.lds150.y +
+                              Spacing.lds25.y,
+                          border: OutlineInputBorder(
+                            borderRadius: RadiusSpacing.rdsm.all,
+                            borderSide: BorderSide(
+                              color: context.grey.shade700,
+                            ),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: RadiusSpacing.rdsm.all,
+                            borderSide: BorderSide(
+                              color: context.grey.shade300,
+                            ),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: RadiusSpacing.rdsm.all,
+                            borderSide: BorderSide(
+                              width: 1.5,
+                              color: context.grey.shade700,
+                            ),
+                          ),
+                          disabledBorder: OutlineInputBorder(
+                            borderRadius: RadiusSpacing.rdsm.all,
+                            borderSide: BorderSide(
+                              color: context.grey.shade200,
+                            ),
+                          ),
+                          errorBorder: OutlineInputBorder(
+                            borderRadius: RadiusSpacing.rdsm.all,
+                            borderSide: BorderSide(
+                              width: 1.5,
+                              color: context.error.defaultColor,
+                            ),
+                          ),
+                          errorMaxLines: 2,
+                          labelStyle: context.labelSmall
+                              .copyWith(color: context.baseBlack),
+                          floatingLabelStyle:
+                              context.body1.copyWith(color: context.baseBlack),
+                        ))
+                    .copyWith(
+                  prefixIcon: widget.prefix,
                   suffixIcon: widget.suffix ?? _buildSuffixIcon,
-                  filled: widget.filled ??
-                      widget.decoration?.filled ??
-                      context.theme.inputDecorationTheme.filled,
+                  filled: widget.filled ?? widget.decoration?.filled,
                   fillColor: widget.fillColor ??
                       widget.decoration?.fillColor ??
-                      context.theme.inputDecorationTheme.fillColor,
+                      context.grey.shade10,
                   hintText: widget.hintText ?? widget.decoration?.hintText,
                   hintStyle: widget.hintStyle ??
                       widget.decoration?.hintStyle ??
-                      context.theme.inputDecorationTheme.hintStyle,
+                      context.body2.medium
+                          .copyWith(color: context.grey.shade400),
+                  prefixIconConstraints: BoxConstraints.tight(
+                    Size(
+                      Spacing.lds600.value,
+                      Spacing.lds250.value,
+                    ),
+                  ),
+                  suffixIconConstraints: BoxConstraints.tight(
+                    Size(
+                      Spacing.lds600.value,
+                      Spacing.lds250.value,
+                    ),
+                  ),
+                  errorStyle: context.caption.bold.copyWith(
+                    color: context.error.defaultColor,
+                  ),
                 ),
                 validator: (value) {
                   final result = widget.validator?.call(value);
@@ -244,7 +318,9 @@ class _LedgerTextFieldState extends State<LedgerTextField> {
                 onSaved: widget.onSaved,
                 keyboardType: widget.keyboardType,
                 textInputAction: widget.textInputAction,
-                style: widget.style ?? context.titleSmall?.w600,
+                style: widget.style ??
+                    context.body2.semiBold
+                        .copyWith(color: context.grey.shade700),
                 strutStyle: widget.strutStyle,
                 textAlign: widget.textAlign,
                 textAlignVertical: widget.textAlignVertical,
@@ -292,7 +368,7 @@ class _LedgerTextFieldState extends State<LedgerTextField> {
                 cursorWidth: widget.cursorWidth,
                 cursorHeight: widget.cursorHeight,
                 cursorRadius: widget.cursorRadius,
-                cursorColor: context.regalColor.licoriceBlack,
+                cursorColor: context.baseBlack,
                 scrollPadding: widget.scrollPadding,
                 scrollPhysics: widget.scrollPhysics,
                 keyboardAppearance: widget.keyboardAppearance,
@@ -313,16 +389,17 @@ class _LedgerTextFieldState extends State<LedgerTextField> {
         ),
       );
 
-  Widget? get _buildSuffixIcon => widget.readOnly || !widget.showClear
+  Widget? get _buildSuffixIcon => hideSuffixIcon
       ? null
       : Builder(
           builder: (context) {
             final value = _errorListenable;
             if (value == null || value.isNone) return const SizedBox.shrink();
 
-            return RegalIconButton.iconData(
-              iconData: value.ledgerIconData,
+            return LedgerIconButton(
+              assetPath: value.assetPath,
               iconColor: value.suffixColor,
+              package: 'ledger_design_system',
               trackLabel: 'Clear ${widget.label}',
               semanticsLabel: 'Clear ${widget.label}',
               onPressed: value == TextValidationState.typing
@@ -343,4 +420,26 @@ class _LedgerTextFieldState extends State<LedgerTextField> {
       if (mounted) setState(() {});
     });
   }
+}
+
+enum TextValidationState {
+  none,
+  typing,
+  invalid;
+
+  bool get isNone => this == none;
+
+  Color get labelColor => this == invalid
+      ? LedgerColors.lightColors.semantic.error.defaultColor
+      : LedgerColors.lightColors.neutral.grey.shade500;
+
+  Color get suffixColor => this == none
+      ? Colors.transparent
+      : this == invalid
+          ? LedgerColors.lightColors.semantic.error.defaultColor
+          : LedgerColors.lightColors.neutral.grey.shade500;
+
+  String get assetPath => this == invalid
+      ? 'assets/icons/high_importance.svg'
+      : 'assets/icons/close.svg';
 }

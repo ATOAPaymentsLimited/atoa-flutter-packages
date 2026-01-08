@@ -18,7 +18,7 @@ Host atoa.github.com
 
 ## List of Packages
 
-### 1. Regal - Atoa Design System
+### 1. Regal - Previous Atoa Design System
 
 #### Usage
 
@@ -26,17 +26,13 @@ Host atoa.github.com
 
 ```yaml
 dependencies:
-  regal:
-    git:
-      url: git@atoa.github.com:ATOAPaymentsLimited/atoa-flutter-packages.git
-      ref: main
-      path: packages/regal
+  regal: ^3.7.8
 ```
 
 Need to include the import the package to the dart file where it will be used, use the below command,
 
 ```dart
-import 'package:regal/regal.dart';;
+import 'package:regal/regal.dart';
 ```
 
 ### 2. Custom Semantics Lint - Custom lint to add semanticsLabel or Wrap with Semantics widget for improving accessibility
@@ -55,9 +51,26 @@ analyzer:
 custom_semantics_lints:
     git:
       url: git@atoa.github.com:ATOAPaymentsLimited/atoa-flutter-packages.git
-      ref: main
+      ref: v3.7.9
       path: packages/custom_semantics_lints
 ```
 ```yaml
 flutter_lints: ^2.0.0
+```
+
+### 3. Ledger - Latest Atoa Design System
+
+#### Usage
+
+- Add dependecies
+
+```yaml
+dependencies:
+  ledger_design_system: ^1.0.0
+```
+
+Need to include the import the package to the dart file where it will be used, use the below command,
+
+```dart
+import 'package:ledger_design_system/ledger_design_system.dart';
 ```
