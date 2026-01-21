@@ -1,3 +1,7 @@
+# 1.0.7
+
+- Fix: yuv420 to nv21 conversion
+
 # 1.0.6
 
 - Add supoort for InputImageFormat.yuv_420_888
