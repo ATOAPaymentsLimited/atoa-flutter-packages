@@ -2,6 +2,12 @@
 
 ## 🚀 Updates:
 
+- Ledger Buttons support package for assets used.
+
+# 1.0.5
+
+## 🚀 Updates:
+
 - Ledger Text Field label string assertion removed to support semantics.
 
 # 1.0.4

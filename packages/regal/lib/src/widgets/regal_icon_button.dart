@@ -17,6 +17,7 @@ class RegalIconButton extends StatelessWidget {
     this.padding,
     this.border,
     this.bgOpacity,
+    this.package,
   })  : _type = _RegalIconButtonType.asset,
         _assetPath = assetPath,
         _iconData = null;
@@ -36,7 +37,8 @@ class RegalIconButton extends StatelessWidget {
     this.bgOpacity,
   })  : _type = _RegalIconButtonType.icon,
         _assetPath = '',
-        _iconData = iconData;
+        _iconData = iconData,
+        package = null;
   final _RegalIconButtonType _type;
   final RegalIconButtonSize size;
   final void Function(BuildContext context)? onPressed;
@@ -50,6 +52,7 @@ class RegalIconButton extends StatelessWidget {
   final EdgeInsets? padding;
   final BoxBorder? border;
   final double? bgOpacity;
+  final String? package;
 
   @override
   Widget build(BuildContext context) {
@@ -76,6 +79,7 @@ class RegalIconButton extends StatelessWidget {
             iconColor: iconColor,
             iconSize: size.value,
             disabled: disabled,
+            package: package,
           ),
         ),
       ),
@@ -91,6 +95,7 @@ class _BuildIcon extends StatelessWidget {
     this.iconColor,
     this.iconSize,
     this.disabled = false,
+    this.package,
   });
   final _RegalIconButtonType type;
   final String assetPath;
@@ -98,12 +103,14 @@ class _BuildIcon extends StatelessWidget {
   final Color? iconColor;
   final double? iconSize;
   final bool disabled;
+  final String? package;
 
   @override
   Widget build(BuildContext context) {
     if (type == _RegalIconButtonType.asset) {
       return SvgPicture.asset(
         assetPath,
+        package: package,
         colorFilter: ColorFilter.mode(
           (iconColor ?? context.regalColor.licoriceBlack)
               .withOpacity(disabled ? 0.3 : 1.0),

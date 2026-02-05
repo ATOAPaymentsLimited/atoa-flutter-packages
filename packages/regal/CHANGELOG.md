@@ -1,3 +1,9 @@
+# 3.8.2
+
+## 🚀 Updates:
+
+- Regal Icon Buttons support package for assets used.
+
 # 3.8.1
 
 ## 🚀 Updates:
