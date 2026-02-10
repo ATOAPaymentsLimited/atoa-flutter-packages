@@ -11,6 +11,7 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
     this.label,
     this.prefixIconPath,
     this.suffixIconPath,
+    this.package,
     this.onPressed,
     this.size = LedgerButtonSize.xtraLarge,
     this.loading = false,
@@ -36,6 +37,7 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
     this.label,
     this.prefixIconPath,
     this.suffixIconPath,
+    this.package,
     this.onPressed,
     this.size = LedgerButtonSize.xtraLarge,
     this.loading = false,
@@ -61,6 +63,7 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
     this.label,
     this.prefixIconPath,
     this.suffixIconPath,
+    this.package,
     this.onPressed,
     this.size = LedgerButtonSize.xtraLarge,
     this.loading = false,
@@ -86,6 +89,7 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
     this.label,
     this.prefixIconPath,
     this.suffixIconPath,
+    this.package,
     this.onPressed,
     this.size = LedgerButtonSize.xtraLarge,
     this.loading = false,
@@ -111,6 +115,7 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
     this.label,
     this.prefixIconPath,
     this.suffixIconPath,
+    this.package,
     this.onPressed,
     this.size = LedgerButtonSize.xtraLarge,
     this.loading = false,
@@ -136,6 +141,7 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
     this.label,
     this.prefixIconPath,
     this.suffixIconPath,
+    this.package,
     this.onPressed,
     this.size = LedgerButtonSize.xtraLarge,
     this.loading = false,
@@ -163,6 +169,8 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
   final String? prefixIconPath;
 
   final String? suffixIconPath;
+
+  final String? package;
 
   final VoidCallback? onPressed;
 
@@ -197,12 +205,14 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
         ? SvgThemedIcon(
             svgPath: prefixIconPath!,
             color: _type.iconColor(context),
+            package: package,
           )
         : null;
     final suffixIcon = suffixIconPath != null
         ? SvgThemedIcon(
             svgPath: suffixIconPath!,
             color: _type.iconColor(context),
+            package: package,
           )
         : null;
     final child = Padding(
