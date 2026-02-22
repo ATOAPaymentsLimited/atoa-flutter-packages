@@ -16,6 +16,7 @@ class LedgerCheckboxWithLabel extends StatefulWidget {
     this.subtitle,
     this.labelStyle,
     this.subtitleStyle,
+    this.enabled,
   }) : _type = _LedgerCheckboxType._checkbox;
 
   const LedgerCheckboxWithLabel.circular({
@@ -32,9 +33,11 @@ class LedgerCheckboxWithLabel extends StatefulWidget {
     this.subtitle,
     this.labelStyle,
     this.subtitleStyle,
+    this.enabled,
   }) : _type = _LedgerCheckboxType._circular;
 
   final bool checked;
+  final bool? enabled;
   final double size;
   final Color? activeColor;
   final Color? borderColor;
@@ -71,6 +74,7 @@ class _LedgerCheckboxWithLabelState extends State<LedgerCheckboxWithLabel> {
   @override
   Widget build(BuildContext context) => Semantics(
         checked: widget.checked,
+        enabled: widget.enabled,
         child: CustomGestureDetector(
           behavior: HitTestBehavior.translucent,
           semanticsLabel: widget.semanticsLabel,

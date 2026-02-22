@@ -6,6 +6,7 @@ class LedgerSwitch extends StatefulWidget {
   const LedgerSwitch({
     super.key,
     this.value = false,
+    this.enabled,
     required this.trackLabel,
     required this.onChanged,
     required this.semanticsLabel,
@@ -13,6 +14,7 @@ class LedgerSwitch extends StatefulWidget {
     this.inActiveColor,
   });
   final bool value;
+  final bool? enabled;
   final ValueChanged<bool> onChanged;
   final Color? activeColor;
   final Color? inActiveColor;
@@ -24,13 +26,12 @@ class LedgerSwitch extends StatefulWidget {
 }
 
 class _LedgerSwitchState extends State<LedgerSwitch> {
-
   @override
   Widget build(BuildContext context) => Semantics(
         checked: widget.value,
         container: true,
         excludeSemantics: true,
-        enabled: true,
+        enabled: widget.enabled,
         label: widget.semanticsLabel,
         child: CustomInkWell(
           context: context,

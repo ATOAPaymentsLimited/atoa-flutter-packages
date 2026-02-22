@@ -1,4 +1,15 @@
-# 1.0.5
+# 1.0.7
+
+## 🐛 Bugfix:
+
+- Ledger Text Field assertion removed for showLabel.
+- intl version flexibility based on host app.
+
+## 🚀 Updates:
+
+- Supporting `enabled` in switch and checkbox with label for semantics.
+
+# 1.0.6
 
 ## 🚀 Updates:
 

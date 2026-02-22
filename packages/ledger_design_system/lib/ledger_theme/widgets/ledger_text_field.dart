@@ -71,10 +71,7 @@ class LedgerTextField extends StatefulWidget {
     this.spellCheckConfiguration,
     this.magnifierConfiguration,
     this.showCursor,
-  }) : assert(
-          showLabel && label != null,
-          'Please provide label or make showLabel false',
-        );
+  });
 
   final String? label;
   final String? hintText;
