@@ -19,6 +19,7 @@ class LedgerSearchBar extends StatefulWidget {
     this.textStyle,
     this.searchController,
     required this.semanticsLabel,
+    this.identifier,
   });
   final TextEditingController? searchController;
   final String? hintText;
@@ -27,6 +28,7 @@ class LedgerSearchBar extends StatefulWidget {
   final bool autofocus;
   final bool showClose;
   final String semanticsLabel;
+  final String? identifier;
   final TextStyle? hintStyle;
   final BorderSide? border;
   final bool? filled;
@@ -63,6 +65,7 @@ class _LedgerSearchBarState extends State<LedgerSearchBar> {
         enabled: true,
         explicitChildNodes: true,
         label: widget.semanticsLabel,
+        identifier: widget.identifier ?? widget.semanticsLabel,
         textField: true,
         child: TextField(
           autofocus: widget.autofocus,

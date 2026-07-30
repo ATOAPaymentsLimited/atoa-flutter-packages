@@ -8,6 +8,7 @@ class CustomGestureDetector extends GestureDetector with EventTrackMixin {
     required this.context,
     required this.trackLabel,
     required this.semanticsLabel,
+    this.identifier,
     super.child,
     super.onTapDown,
     super.onTapUp,
@@ -85,6 +86,8 @@ class CustomGestureDetector extends GestureDetector with EventTrackMixin {
 
   final String semanticsLabel;
 
+  final String? identifier;
+
   @override
   VoidCallback? get onTap => super.onTap != null
       ? () {
@@ -102,6 +105,7 @@ class CustomGestureDetector extends GestureDetector with EventTrackMixin {
   Widget? get child => super.child != null
       ? Semantics(
           label: semanticsLabel,
+          identifier: identifier ?? semanticsLabel,
           container: true,
           enabled: true,
           explicitChildNodes: true,

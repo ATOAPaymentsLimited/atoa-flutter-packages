@@ -7,6 +7,7 @@ class LedgerCheckboxWithLabel extends StatefulWidget {
     required this.checked,
     required this.trackLabel,
     required this.semanticsLabel,
+    this.identifier,
     this.size = 20.0,
     this.activeColor,
     this.borderColor,
@@ -24,6 +25,7 @@ class LedgerCheckboxWithLabel extends StatefulWidget {
     required this.checked,
     required this.trackLabel,
     required this.semanticsLabel,
+    this.identifier,
     this.size = 20.0,
     this.activeColor,
     this.borderColor,
@@ -48,6 +50,7 @@ class LedgerCheckboxWithLabel extends StatefulWidget {
   final TextStyle? subtitleStyle;
   final ValueChanged<bool>? onChanged;
   final String semanticsLabel;
+  final String? identifier;
   final String trackLabel;
   final _LedgerCheckboxType _type;
 
@@ -78,6 +81,7 @@ class _LedgerCheckboxWithLabelState extends State<LedgerCheckboxWithLabel> {
         child: CustomGestureDetector(
           behavior: HitTestBehavior.translucent,
           semanticsLabel: widget.semanticsLabel,
+          identifier: widget.identifier,
           context: context,
           trackLabel: widget.trackLabel,
           onTap: () {
@@ -174,6 +178,7 @@ class LedgerCheckbox extends StatefulWidget {
     required this.checked,
     required this.trackLabel,
     required this.semanticsLabel,
+    this.identifier,
     this.size = 20.0,
     this.activeColor,
     this.borderColor,
@@ -186,6 +191,7 @@ class LedgerCheckbox extends StatefulWidget {
     required this.checked,
     required this.trackLabel,
     required this.semanticsLabel,
+    this.identifier,
     this.size = 20.0,
     this.activeColor,
     this.borderColor,
@@ -200,6 +206,7 @@ class LedgerCheckbox extends StatefulWidget {
   final Color? checkColor;
   final ValueChanged<bool>? onChanged;
   final String semanticsLabel;
+  final String? identifier;
   final String trackLabel;
   final _LedgerCheckboxType _type;
 
@@ -228,6 +235,7 @@ class _LedgerCheckboxState extends State<LedgerCheckbox> {
         child: CustomGestureDetector(
           behavior: HitTestBehavior.translucent,
           semanticsLabel: widget.semanticsLabel,
+          identifier: widget.identifier,
           context: context,
           trackLabel: widget.trackLabel,
           onTap: () {

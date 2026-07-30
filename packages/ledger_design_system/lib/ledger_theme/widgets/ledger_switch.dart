@@ -10,6 +10,7 @@ class LedgerSwitch extends StatefulWidget {
     required this.trackLabel,
     required this.onChanged,
     required this.semanticsLabel,
+    this.identifier,
     this.activeColor,
     this.inActiveColor,
   });
@@ -19,6 +20,7 @@ class LedgerSwitch extends StatefulWidget {
   final Color? activeColor;
   final Color? inActiveColor;
   final String semanticsLabel;
+  final String? identifier;
   final String trackLabel;
 
   @override
@@ -33,6 +35,7 @@ class _LedgerSwitchState extends State<LedgerSwitch> {
         excludeSemantics: true,
         enabled: widget.enabled,
         label: widget.semanticsLabel,
+        identifier: widget.identifier ?? widget.semanticsLabel,
         child: CustomInkWell(
           context: context,
           trackLabel: widget.trackLabel,

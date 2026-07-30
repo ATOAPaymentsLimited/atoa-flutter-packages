@@ -18,13 +18,17 @@ class CustomText extends Text {
     super.textHeightBehavior,
     super.selectionColor,
     this.gradient,
+    this.identifier,
   }) : super(semanticsLabel: data);
 
   final Gradient? gradient;
 
+  final String? identifier;
+
   @override
   Widget build(BuildContext context) => Semantics(
         container: true,
+        identifier: identifier ?? data,
         child: Builder(
           builder: (context) => gradient != null
               ? ShaderMask(
