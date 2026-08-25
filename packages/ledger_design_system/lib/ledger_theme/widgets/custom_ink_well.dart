@@ -8,6 +8,7 @@ class CustomInkWell extends InkWell with EventTrackMixin {
     required this.context,
     required this.trackLabel,
     required this.semanticsLabel,
+    this.identifier,
     super.child,
     super.onTap,
     super.onDoubleTap,
@@ -50,6 +51,8 @@ class CustomInkWell extends InkWell with EventTrackMixin {
 
   final String semanticsLabel;
 
+  final String? identifier;
+
   final bool enabled;
 
   @override
@@ -71,6 +74,7 @@ class CustomInkWell extends InkWell with EventTrackMixin {
           decoration: BoxDecoration(borderRadius: borderRadius),
           child: Semantics(
             label: semanticsLabel,
+            identifier: identifier ?? semanticsLabel,
             container: true,
             enabled: enabled,
             explicitChildNodes: true,

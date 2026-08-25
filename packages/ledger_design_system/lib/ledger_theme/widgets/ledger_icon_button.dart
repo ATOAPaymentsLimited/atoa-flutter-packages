@@ -11,6 +11,7 @@ class LedgerIconButton extends StatelessWidget {
     this.onPressed,
     this.iconColor,
     required this.semanticsLabel,
+    this.identifier,
     required this.trackLabel,
     this.borderRadius,
     this.color,
@@ -27,6 +28,7 @@ class LedgerIconButton extends StatelessWidget {
   final String assetPath;
   final String trackLabel;
   final String semanticsLabel;
+  final String? identifier;
   final BorderRadius? borderRadius;
   final Color? color;
   final EdgeInsets? padding;
@@ -40,6 +42,7 @@ class LedgerIconButton extends StatelessWidget {
     final disabled = onPressed == null;
     return CustomGestureDetector(
       semanticsLabel: semanticsLabel,
+      identifier: identifier,
       context: context,
       trackLabel: trackLabel,
       onTap: () => onPressed?.call(context),

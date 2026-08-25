@@ -20,6 +20,7 @@ class LedgerStatusCard extends StatelessWidget {
     this.descriptionStyle,
     this.trailingAssetPath,
     this.onTrailingPressed,
+    this.identifier,
   })  : _type = LedgerStatusCardTypeEnum.info,
         assert(
           prefixIcon is Icon || prefixIcon is SvgPicture || prefixIcon is SvgThemedIcon,
@@ -42,6 +43,7 @@ class LedgerStatusCard extends StatelessWidget {
     this.descriptionStyle,
     this.trailingAssetPath,
     this.onTrailingPressed,
+    this.identifier,
   })  : _type = LedgerStatusCardTypeEnum.pending,
         assert(
           prefixIcon is Icon || prefixIcon is SvgPicture || prefixIcon is SvgThemedIcon,
@@ -61,6 +63,7 @@ class LedgerStatusCard extends StatelessWidget {
     this.textColor,
     this.trailingAssetPath,
     this.onTrailingPressed,
+    this.identifier,
   })  : _type = LedgerStatusCardTypeEnum.success,
         ctaText = null,
         onTapCta = null,
@@ -72,6 +75,8 @@ class LedgerStatusCard extends StatelessWidget {
 
   /// [title] specifies the heading of the card.
   final String? title;
+
+  final String? identifier;
 
   /// [title] specifies the heading of the card.
   final String? description;
@@ -141,6 +146,7 @@ class LedgerStatusCard extends StatelessWidget {
   Widget build(BuildContext context) => Semantics(
         container: true,
         label: 'Ledger Status Card',
+        identifier: identifier ?? 'Ledger Status Card',
         child: Container(
           clipBehavior: Clip.hardEdge,
           decoration: BoxDecoration(

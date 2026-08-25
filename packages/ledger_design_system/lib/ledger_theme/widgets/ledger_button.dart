@@ -18,6 +18,7 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
     this.enable = true,
     this.trackProperties,
     this.semanticsLabel,
+    this.identifier,
     this.foregroundColor,
     this.backgroundColor,
     this.labelWidget,
@@ -44,6 +45,7 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
     this.enable = true,
     this.trackProperties,
     this.semanticsLabel,
+    this.identifier,
     this.foregroundColor,
     this.backgroundColor,
     this.labelWidget,
@@ -70,6 +72,7 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
     this.enable = true,
     this.trackProperties,
     this.semanticsLabel,
+    this.identifier,
     this.foregroundColor,
     this.backgroundColor,
     this.labelWidget,
@@ -96,6 +99,7 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
     this.enable = true,
     this.trackProperties,
     this.semanticsLabel,
+    this.identifier,
     this.foregroundColor,
     this.backgroundColor,
     this.labelWidget,
@@ -122,6 +126,7 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
     this.enable = true,
     this.trackProperties,
     this.semanticsLabel,
+    this.identifier,
     this.foregroundColor,
     this.backgroundColor,
     this.labelWidget,
@@ -148,6 +153,7 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
     this.enable = true,
     this.trackProperties,
     this.semanticsLabel,
+    this.identifier,
     this.foregroundColor,
     this.backgroundColor,
     this.labelWidget,
@@ -190,6 +196,8 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
   final Map<String, dynamic>? trackProperties;
 
   final String? semanticsLabel;
+
+  final String? identifier;
 
   final Color? foregroundColor;
 
@@ -248,6 +256,7 @@ class LedgerButton extends StatelessWidget with EventTrackMixin {
       child: CustomInkWell(
         trackLabel: semanticsLabel ?? '$label Button',
         semanticsLabel: semanticsLabel ?? '$label Button',
+        identifier: identifier,
         context: context,
         enableFeedback: enableFeedback ?? LedgerUtility.enableButtonFeedbacks,
         onTap: onClick(context),

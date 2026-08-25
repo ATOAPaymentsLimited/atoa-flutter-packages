@@ -9,6 +9,7 @@ class LedgerTextField extends StatefulWidget {
     this.suffix,
     this.prefix,
     this.label,
+    this.identifier,
     this.hintText,
     this.onClear,
     this.showLabel = true,
@@ -74,6 +75,7 @@ class LedgerTextField extends StatefulWidget {
   });
 
   final String? label;
+  final String? identifier;
   final String? hintText;
   final bool showLabel;
   final bool showClear;
@@ -191,6 +193,7 @@ class _LedgerTextFieldState extends State<LedgerTextField> {
         container: true,
         explicitChildNodes: true,
         label: '${widget.label} TextFormField',
+        identifier: widget.identifier ?? '${widget.label} TextFormField',
         child: Container(
           margin: widget.margin ?? Spacing.lds100.y,
           child: Column(
